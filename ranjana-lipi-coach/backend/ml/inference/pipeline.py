@@ -20,7 +20,6 @@ from ml.training.model import RanjanaRecognizerCNN
 
 
 CANVAS_SIZE = 128
-RECOGNIZER_MISMATCH_SCORE_CAP = 65.0
 VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
 
 
@@ -286,13 +285,10 @@ def analyze_attempt(
         "matches_target": recognizer_result.predicted_class == target_class,
         "model_route": model_route,
     }
+    feedback["predicted_class"] = recognizer_result.predicted_class
+    feedback["recognizer_confidence"] = recognizer_result.confidence
     if not feedback["recognizer"]["matches_target"]:
-        feedback["recognizer"]["warning"] = (
-            f"Attempt resembles {recognizer_result.predicted_class}, not {target_class}."
-        )
-        feedback["raw_autoencoder_score"] = feedback["overall_score"]
-        feedback["overall_score"] = min(
-            float(feedback["overall_score"]),
-            RECOGNIZER_MISMATCH_SCORE_CAP,
-        )
+        warning = f"Attempt resembles {recognizer_result.predicted_class}, not {target_class}."
+        feedback["recognizer"]["warning"] = warning
+        feedback["warning"] = warning
     return {"normalized": normalized, "feedback": feedback}

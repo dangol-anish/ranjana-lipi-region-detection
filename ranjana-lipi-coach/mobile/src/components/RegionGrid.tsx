@@ -38,21 +38,17 @@ function extractRankMap(feedback: RegionFeedback | null): Map<string, number> {
     return ranks;
   }
 
+  const problemRegions = feedback.fine_grid?.problem_regions ?? feedback.problem_regions ?? [];
+  if (!Array.isArray(problemRegions) || problemRegions.length === 0) {
+    return ranks;
+  }
+
   extractRegions(feedback)
     .filter((region) => typeof region.row === "number" && typeof region.col === "number")
     .slice(0, 3)
     .forEach((region, index) => {
       ranks.set(regionKey(region), index + 1);
     });
-
-  const problemRegions = feedback.fine_grid?.problem_regions ?? feedback.problem_regions ?? [];
-  if (Array.isArray(problemRegions)) {
-    for (const region of problemRegions) {
-      if (!ranks.has(regionKey(region))) {
-        ranks.set(regionKey(region), 1);
-      }
-    }
-  }
 
   return ranks;
 }

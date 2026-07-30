@@ -215,7 +215,7 @@ export default function App() {
     }
 
     const image = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
+      allowsEditing: false,
       mediaTypes: ["images"],
       quality: 1,
     });
@@ -234,7 +234,7 @@ export default function App() {
     }
 
     const image = await ImagePicker.launchCameraAsync({
-      allowsEditing: true,
+      allowsEditing: false,
       mediaTypes: ["images"],
       quality: 1,
     });
@@ -491,15 +491,6 @@ export default function App() {
           <Text style={[styles.scoreValue, { color: scoreColor(score) }]}>
             {typeof score === "number" ? `${score.toFixed(1)}%` : "--"}
           </Text>
-          {feedback?.predicted_class ? (
-            <Text style={styles.resultMeta}>
-              Recognizer: {feedback.predicted_class}
-              {typeof feedback.recognizer_confidence === "number"
-                ? ` (${(feedback.recognizer_confidence * 100).toFixed(1)}%)`
-                : ""}
-            </Text>
-          ) : null}
-          {feedback?.warning ? <Text style={styles.warning}>{feedback.warning}</Text> : null}
         </View>
 
         <Text style={styles.sectionTitle}>Comparison</Text>

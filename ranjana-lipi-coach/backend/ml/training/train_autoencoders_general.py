@@ -51,10 +51,10 @@ class ReconstructionImageDataset(Dataset):
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train 62 general per-class autoencoders")
-    parser.add_argument("--epochs", type=int, default=30)
-    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=12)
+    parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
-    parser.add_argument("--patience", type=int, default=5)
+    parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--visualization-samples", type=int, default=3)

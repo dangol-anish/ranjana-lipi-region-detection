@@ -1,0 +1,11 @@
+filename,class,type,intended_flaw_region,expected_result_summary
+a-top-region.jpeg,a,flawed,top,should flag top region
+ka-top.jpeg,ka,flawed,top,should flag top region
+ka_synthetic_middle_ka_00024_v2.png,ka,flawed,middle,should flag middle region
+da-top.jpeg,da,flawed,top,should flag top region
+aa_synthetic_middle_aa_000101_v5.png,aa,flawed,middle,should flag middle region
+aa_00023.png,aa,good,,should score clean, no flags
+a_00023.png,a,good,,should score clean, no flags
+ka_00027.png,ka,good,,should score clean, no flags
+da_00089.png,da,good,,should score clean, no flags
+dda_00082.png,dda,good,,should score clean, no flags

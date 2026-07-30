@@ -39,10 +39,10 @@ class ImagePathDataset(Dataset):
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train the 62-class general recognizer")
-    parser.add_argument("--epochs", type=int, default=40)
-    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=15)
+    parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
-    parser.add_argument("--patience", type=int, default=8)
+    parser.add_argument("--patience", type=int, default=4)
     parser.add_argument("--seed", type=int, default=SPLIT_SEED)
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--device", choices=("cpu", "cuda", "mps"), default="cpu")
