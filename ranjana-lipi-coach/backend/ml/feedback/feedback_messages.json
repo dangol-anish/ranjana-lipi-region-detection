@@ -8,7 +8,10 @@
     "middle-right": "right-side stroke needs improvement",
     "bottom-left": "bottom-left region needs improvement",
     "bottom-center": "base stroke needs improvement",
-    "bottom-right": "bottom-right region needs improvement"
+    "bottom-right": "bottom-right region needs improvement",
+    "top": "top region needs improvement",
+    "middle": "middle region needs improvement",
+    "bottom": "bottom region needs improvement"
   },
   "aa": {},
   "a": {},

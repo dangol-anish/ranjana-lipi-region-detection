@@ -1,0 +1,16 @@
+filename,class_name,intended_flaw_region,fine_grid_top_3_problem_regions_ranked,broad_bands_top_3_problem_regions_ranked,overall_reconstruction_error_score
+aa-bottom.jpeg,aa,bottom,middle-center;top-center;middle-left,middle;top;bottom,66.4067
+aa-center.jpeg,aa,middle,middle-center;top-center;bottom-right,middle;bottom;top,73.2546
+aa-top.jpeg,aa,top,middle-center;top-center;middle-right,middle;top;bottom,59.5513
+a-bottom.jpeg,a,bottom,middle-center;middle-left;middle-right,middle;top;bottom,64.7969
+a-center.jpeg,a,middle,top-center;middle-center;middle-right,middle;top;bottom,68.9597
+a-top-region.jpeg,a,top,middle-center;middle-left;middle-right,middle;top;bottom,66.0294
+ka-bottom.jpeg,ka,bottom,middle-center;middle-right;top-center,middle;top;bottom,63.8091
+ka-middle.jpeg,ka,middle,middle-center;middle-right;bottom-right,middle;bottom;top,68.6098
+ka-top.jpeg,ka,top,middle-center;middle-left;middle-right,middle;bottom;top,55.2477
+da-bottom.jpeg,da,bottom,middle-center;top-center;middle-right,middle;top;bottom,76.3905
+da-middle.jpeg,da,middle,middle-center;top-center;bottom-center,middle;top;bottom,69.3290
+da-top.jpeg,da,top,middle-center;top-center;bottom-center,middle;top;bottom,79.4546
+da-middle.jpeg,dda,middle,top-center;bottom-right;middle-right,top;middle;bottom,77.4292
+dda-lower-middle.jpeg,dda,bottom,top-center;bottom-right;middle-center,middle;top;bottom,66.7698
+dda-top.jpeg,dda,top,top-center;middle-left;middle-center,middle;top;bottom,64.7003

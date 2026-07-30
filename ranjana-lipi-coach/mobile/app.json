@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Ranjana Lipi Coach",
+    "slug": "ranjana-lipi-coach",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Use the camera to photograph handwriting practice attempts.",
+        "NSPhotoLibraryUsageDescription": "Choose handwriting practice images from your photo library."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Choose handwriting practice images for region feedback.",
+          "cameraPermission": "Photograph handwriting practice attempts for region feedback."
+        }
+      ]
+    ]
+  }
+}

@@ -1,7 +1,10 @@
 """FastAPI entry point for the Ranjana Lipi coaching backend."""
 
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.api.auth import router as auth_router
 from app.api.characters import router as characters_router
@@ -26,6 +29,15 @@ app.include_router(auth_router)
 app.include_router(characters_router)
 app.include_router(practice_router)
 app.include_router(progress_router)
+
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
+UPLOADS_DIR = BACKEND_ROOT / "uploads"
+
+if REFERENCES_DIR.is_dir():
+    app.mount("/references", StaticFiles(directory=str(REFERENCES_DIR)), name="references")
+if UPLOADS_DIR.is_dir():
+    app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 
 
 @app.on_event("startup")

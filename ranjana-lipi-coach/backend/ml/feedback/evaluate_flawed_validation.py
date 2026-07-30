@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -25,7 +26,7 @@ sys.path.append(str(TRAINING_DIR))
 sys.path.append(str(PREPROCESSING_DIR))
 from autoencoder import RanjanaAutoencoder  # noqa: E402
 from dataset import CLASSES  # noqa: E402
-from normalize import normalize_image  # noqa: E402
+from normalize import apply_fixed_transform  # noqa: E402
 
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
@@ -54,6 +55,15 @@ BROAD_REGION_MAP = {
     "left": {"top-left", "middle-left", "bottom-left", "top-center", "middle-center", "bottom-center"},
     "right": {"top-right", "middle-right", "bottom-right", "top-center", "middle-center", "bottom-center"},
 }
+BROAD_BAND_TOKENS = {
+    "top": "top",
+    "upper": "top",
+    "middle": "middle",
+    "center": "middle",
+    "central": "middle",
+    "bottom": "bottom",
+    "lower": "bottom",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -66,6 +76,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-regions", type=int, default=3)
     parser.add_argument("--min-problem-region-error", type=float, default=0.012)
     parser.add_argument("--device", choices=("cpu", "cuda", "mps"), default="cpu")
+    parser.add_argument(
+        "--csv-output",
+        type=Path,
+        default=None,
+        help="Optional CSV output path. Defaults to saved_models/flawed_validation_results_v2.csv.",
+    )
     return parser.parse_args()
 
 
@@ -103,6 +119,14 @@ def expected_regions_from_name(path: Path) -> set[str]:
     return expected
 
 
+def intended_broad_band_from_name(path: Path) -> str:
+    tokens = re.split(r"[^a-z0-9]+", path.stem.lower())
+    for token in tokens:
+        if token in BROAD_BAND_TOKENS:
+            return BROAD_BAND_TOKENS[token]
+    return "unknown"
+
+
 def load_autoencoder(saved_models_root: Path, class_name: str, device: torch.device) -> RanjanaAutoencoder:
     checkpoint_path = saved_models_root / f"autoencoder_{class_name}.pt"
     if not checkpoint_path.is_file():
@@ -112,6 +136,13 @@ def load_autoencoder(saved_models_root: Path, class_name: str, device: torch.dev
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
     return model
+
+
+def load_alignment_transforms(processed_root: Path) -> dict[str, dict[str, object]]:
+    transforms_path = processed_root / "alignment_transforms.json"
+    if not transforms_path.is_file():
+        raise FileNotFoundError(f"Missing alignment transforms: {transforms_path}")
+    return json.loads(transforms_path.read_text(encoding="utf-8"))
 
 
 def _font(size: int) -> ImageFont.ImageFont:
@@ -154,10 +185,11 @@ def evaluate_sample(
     image_path: Path,
     saved_models_root: Path,
     output_root: Path,
+    transform: dict[str, object],
     device: torch.device,
     args: argparse.Namespace,
 ) -> dict[str, object]:
-    normalized = normalize_image(image_path)
+    normalized = apply_fixed_transform(image_path, transform)
     image_tensor = torch.from_numpy(normalized).unsqueeze(0).unsqueeze(0).to(device)
     model = load_autoencoder(saved_models_root, class_name, device)
     with torch.no_grad():
@@ -172,7 +204,8 @@ def evaluate_sample(
         max_regions=args.max_regions,
         min_problem_region_error=args.min_problem_region_error,
     )
-    predicted_top_regions = result["all_regions"][: args.top_k]
+    predicted_top_regions = result["fine_grid"]["all_regions"][: args.top_k]
+    predicted_broad_bands = result["broad_bands"]["all_regions"][: args.top_k]
     expected = expected_regions_from_name(image_path)
     predicted_names = {region["region"] for region in predicted_top_regions}
     strict_names = {region["region"] for region in result["problem_regions"]}
@@ -181,8 +214,11 @@ def evaluate_sample(
     result.update(
         {
             "image_path": str(image_path.resolve()),
+            "filename": image_path.name,
+            "intended_broad_band": intended_broad_band_from_name(image_path),
             "expected_regions": sorted(expected),
             "predicted_top_regions": predicted_top_regions,
+            "predicted_broad_bands": predicted_broad_bands,
             "matched_expected_in_top_k": matched,
             "matched_expected_in_problem_regions": bool(expected & strict_names) if expected else None,
         }
@@ -193,20 +229,52 @@ def evaluate_sample(
     return result
 
 
+def region_names(regions: list[dict[str, object]]) -> str:
+    return ";".join(str(region["region"]) for region in regions)
+
+
+def write_summary_csv(results: list[dict[str, object]], output_path: Path) -> None:
+    fieldnames = [
+        "filename",
+        "class_name",
+        "intended_flaw_region",
+        "fine_grid_top_3_problem_regions_ranked",
+        "broad_bands_top_3_problem_regions_ranked",
+        "overall_reconstruction_error_score",
+    ]
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for result in results:
+            writer.writerow(
+                {
+                    "filename": result["filename"],
+                    "class_name": result["class_name"],
+                    "intended_flaw_region": result["intended_broad_band"],
+                    "fine_grid_top_3_problem_regions_ranked": region_names(result["predicted_top_regions"]),
+                    "broad_bands_top_3_problem_regions_ranked": region_names(result["predicted_broad_bands"]),
+                    "overall_reconstruction_error_score": f"{float(result['overall_score']):.4f}",
+                }
+            )
+
+
 def main() -> None:
     args = parse_args()
     root = project_root()
     data_root = root / "data" / "FlawedValidation"
     saved_models_root = root / "ranjana-lipi-coach" / "backend" / "ml" / "saved_models"
+    processed_root = root / "ranjana-lipi-coach" / "backend" / "ml" / "processed"
     output_root = saved_models_root / "flawed_validation"
     device = resolve_device(args.device)
+    transforms = load_alignment_transforms(processed_root)
 
     samples = flawed_images(data_root)
     if not samples:
         raise FileNotFoundError(f"No flawed validation images found under {data_root}")
 
     results = [
-        evaluate_sample(class_name, path, saved_models_root, output_root, device, args)
+        evaluate_sample(class_name, path, saved_models_root, output_root, transforms[class_name], device, args)
         for class_name, path in samples
     ]
     matched = [item for item in results if item["matched_expected_in_top_k"] is True]
@@ -228,22 +296,48 @@ def main() -> None:
 
     output_root.mkdir(parents=True, exist_ok=True)
     output_path = saved_models_root / "flawed_validation_results.json"
+    csv_output_path = args.csv_output or saved_models_root / "flawed_validation_results_v2.csv"
     output_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    write_summary_csv(results, csv_output_path)
+
+    broad_rank_1 = 0
+    broad_top_2 = 0
+    broad_evaluated = 0
+    for result in results:
+        intended = result["intended_broad_band"]
+        if intended == "unknown":
+            continue
+        broad_evaluated += 1
+        broad_regions = [region["region"] for region in result["predicted_broad_bands"]]
+        if broad_regions and broad_regions[0] == intended:
+            broad_rank_1 += 1
+        if intended in broad_regions[:2]:
+            broad_top_2 += 1
 
     print(
         f"Flawed validation: {len(matched)}/{len(evaluated)} matched expected broad "
         f"region in top {args.top_k} regions"
     )
+    print(
+        f"Broad-band #1 match: {broad_rank_1}/{broad_evaluated}; "
+        f"broad-band top-2 match: {broad_top_2}/{broad_evaluated}"
+    )
+    print()
+    print(
+        "filename,intended_flaw_region,fine_grid_top_3_problem_regions_ranked,"
+        "broad_bands_top_3_problem_regions_ranked,overall_reconstruction_error_score"
+    )
     for result in results:
         top_regions = ", ".join(region["region"] for region in result["predicted_top_regions"])
+        broad_regions = ", ".join(region["region"] for region in result["predicted_broad_bands"])
         expected = ", ".join(result["expected_regions"]) or "unknown"
         print(
-            f"{Path(result['image_path']).name}: expected=[{expected}] "
-            f"top_regions=[{top_regions}] "
-            f"problem_regions={len(result['problem_regions'])} "
-            f"overall={result['overall_score']:.2f}"
+            f"{Path(result['image_path']).name},{result['intended_broad_band']},"
+            f"\"{top_regions}\",\"{broad_regions}\",{result['overall_score']:.2f}"
+            f"  expected=[{expected}] problem_regions={len(result['problem_regions'])}"
         )
     print(f"Saved results: {output_path}")
+    print(f"Saved CSV: {csv_output_path}")
     print(f"Saved overlays: {output_root}")
 
 
