@@ -32,10 +32,17 @@ app.include_router(progress_router)
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
+GENERAL_REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed_general" / "references"
 UPLOADS_DIR = BACKEND_ROOT / "uploads"
 
 if REFERENCES_DIR.is_dir():
     app.mount("/references", StaticFiles(directory=str(REFERENCES_DIR)), name="references")
+if GENERAL_REFERENCES_DIR.is_dir():
+    app.mount(
+        "/references_general",
+        StaticFiles(directory=str(GENERAL_REFERENCES_DIR)),
+        name="references_general",
+    )
 if UPLOADS_DIR.is_dir():
     app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 

@@ -15,12 +15,13 @@ import torch
 from ml.feedback.grid_feedback import build_region_feedback
 from ml.preprocessing.normalize import apply_fixed_transform
 from ml.training.autoencoder import RanjanaAutoencoder
-from ml.training.dataset import CLASSES
+from ml.training.dataset import CLASSES as VALIDATED_CLASSES
 from ml.training.model import RanjanaRecognizerCNN
 
 
 CANVAS_SIZE = 128
 RECOGNIZER_MISMATCH_SCORE_CAP = 65.0
+VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
 
 
 @dataclass(frozen=True)
@@ -60,6 +61,16 @@ def load_alignment_transforms() -> dict[str, dict[str, Any]]:
         return json.load(file)
 
 
+@lru_cache(maxsize=1)
+def load_general_alignment_transforms() -> dict[str, dict[str, Any]]:
+    transforms_path = ml_root() / "processed_general" / "alignment_transforms.json"
+    if not transforms_path.is_file():
+        raise FileNotFoundError(f"Missing general alignment transforms: {transforms_path}")
+
+    with transforms_path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
 def normalize_attempt_for_class(
     image: np.ndarray,
     target_class: str,
@@ -71,6 +82,17 @@ def normalize_attempt_for_class(
     return apply_fixed_transform(image, transforms[target_class], canvas_size=canvas_size)
 
 
+def normalize_general_attempt_for_class(
+    image: np.ndarray,
+    target_class: str,
+    canvas_size: int = CANVAS_SIZE,
+) -> np.ndarray:
+    transforms = load_general_alignment_transforms()
+    if target_class not in transforms:
+        raise ValueError(f"Missing general alignment transform for class: {target_class}")
+    return apply_fixed_transform(image, transforms[target_class], canvas_size=canvas_size)
+
+
 @lru_cache(maxsize=1)
 def load_recognizer(device_name: str = "cpu") -> tuple[RanjanaRecognizerCNN, list[str]]:
     device = torch.device(device_name)
@@ -79,16 +101,31 @@ def load_recognizer(device_name: str = "cpu") -> tuple[RanjanaRecognizerCNN, lis
         raise FileNotFoundError(f"Missing recognizer checkpoint: {checkpoint_path}")
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
-    classes = checkpoint.get("classes", list(CLASSES))
+    classes = checkpoint.get("classes", list(VALIDATED_CLASSES))
     model = RanjanaRecognizerCNN(num_classes=len(classes)).to(device)
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
     return model, classes
 
 
-@lru_cache(maxsize=len(CLASSES))
+@lru_cache(maxsize=1)
+def load_general_recognizer(device_name: str = "cpu") -> tuple[RanjanaRecognizerCNN, list[str]]:
+    device = torch.device(device_name)
+    checkpoint_path = ml_root() / "saved_models" / "recognizer_general_best.pt"
+    if not checkpoint_path.is_file():
+        raise FileNotFoundError(f"Missing general recognizer checkpoint: {checkpoint_path}")
+
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    classes = checkpoint["classes"]
+    model = RanjanaRecognizerCNN(num_classes=len(classes)).to(device)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model.eval()
+    return model, classes
+
+
+@lru_cache(maxsize=len(VALIDATED_CLASSES))
 def load_autoencoder(class_name: str, device_name: str = "cpu") -> RanjanaAutoencoder:
-    if class_name not in CLASSES:
+    if class_name not in VALIDATED_CLASSES:
         raise ValueError(f"Unsupported class: {class_name}")
 
     device = torch.device(device_name)
@@ -103,9 +140,55 @@ def load_autoencoder(class_name: str, device_name: str = "cpu") -> RanjanaAutoen
     return model
 
 
+@lru_cache(maxsize=128)
+def load_general_autoencoder(class_name: str, device_name: str = "cpu") -> RanjanaAutoencoder:
+    device = torch.device(device_name)
+    checkpoint_path = ml_root() / "saved_models" / "autoencoders_general" / f"autoencoder_{class_name}.pt"
+    if not checkpoint_path.is_file():
+        raise FileNotFoundError(f"Missing general autoencoder checkpoint: {checkpoint_path}")
+
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    model = RanjanaAutoencoder().to(device)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model.eval()
+    return model
+
+
+@lru_cache(maxsize=128)
+def load_general_region_baseline(class_name: str) -> dict[str, Any]:
+    baseline_path = ml_root() / "saved_models" / "autoencoders_general" / f"region_baseline_{class_name}.json"
+    if not baseline_path.is_file():
+        raise FileNotFoundError(f"Missing general region baseline: {baseline_path}")
+
+    with baseline_path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
 def recognize(normalized: np.ndarray, device_name: str = "cpu") -> RecognizerResult:
     device = torch.device(device_name)
     model, classes = load_recognizer(device_name)
+    image_tensor = tensor_from_normalized(normalized).to(device)
+
+    with torch.no_grad():
+        logits = model(image_tensor)
+        probabilities_tensor = torch.softmax(logits, dim=1).cpu().squeeze(0)
+
+    probabilities = {
+        class_name: float(probabilities_tensor[index])
+        for index, class_name in enumerate(classes)
+    }
+    predicted_index = int(torch.argmax(probabilities_tensor).item())
+    predicted_class = classes[predicted_index]
+    return RecognizerResult(
+        predicted_class=predicted_class,
+        confidence=probabilities[predicted_class],
+        probabilities=probabilities,
+    )
+
+
+def recognize_general(normalized: np.ndarray, device_name: str = "cpu") -> RecognizerResult:
+    device = torch.device(device_name)
+    model, classes = load_general_recognizer(device_name)
     image_tensor = tensor_from_normalized(normalized).to(device)
 
     with torch.no_grad():
@@ -150,6 +233,33 @@ def reconstruct_and_feedback(
     )
 
 
+def reconstruct_and_feedback_general(
+    normalized: np.ndarray,
+    target_class: str,
+    rows: int = 3,
+    cols: int = 3,
+    device_name: str = "cpu",
+) -> dict[str, Any]:
+    device = torch.device(device_name)
+    model = load_general_autoencoder(target_class, device_name)
+    baseline = load_general_region_baseline(target_class)
+    image_tensor = tensor_from_normalized(normalized).to(device)
+
+    with torch.no_grad():
+        reconstruction = model(image_tensor).cpu().squeeze(0).squeeze(0).numpy()
+
+    return build_region_feedback(
+        class_name=target_class,
+        input_image=normalized,
+        reconstruction=reconstruction,
+        rows=rows,
+        cols=cols,
+        max_regions=3,
+        min_problem_region_error=0.012,
+        baseline=baseline,
+    )
+
+
 def analyze_attempt(
     image_bytes: bytes,
     target_class: str,
@@ -158,15 +268,23 @@ def analyze_attempt(
     device_name: str = "cpu",
 ) -> dict[str, Any]:
     decoded = decode_upload_image(image_bytes)
-    normalized = normalize_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
-    recognizer_result = recognize(normalized, device_name)
-    feedback = reconstruct_and_feedback(normalized, target_class, rows, cols, device_name)
+    if target_class in VALIDATED_CLASS_SET:
+        normalized = normalize_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
+        recognizer_result = recognize(normalized, device_name)
+        feedback = reconstruct_and_feedback(normalized, target_class, rows, cols, device_name)
+        model_route = "validated_5_class"
+    else:
+        normalized = normalize_general_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
+        recognizer_result = recognize_general(normalized, device_name)
+        feedback = reconstruct_and_feedback_general(normalized, target_class, rows, cols, device_name)
+        model_route = "general_62_class"
 
     feedback["recognizer"] = {
         "predicted_class": recognizer_result.predicted_class,
         "confidence": recognizer_result.confidence,
         "probabilities": recognizer_result.probabilities,
         "matches_target": recognizer_result.predicted_class == target_class,
+        "model_route": model_route,
     }
     if not feedback["recognizer"]["matches_target"]:
         feedback["recognizer"]["warning"] = (

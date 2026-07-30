@@ -1,0 +1,6 @@
+class,filename,overall_score,num_problem_regions_fine,num_problem_regions_broad,max_z_score,overlay_path
+aa,aa_00023.png,91.5329,0,0,-0.2339,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/final_demo_set/good_samples/known_good_aa_aa_00023.png
+a,a_00023.png,92.4463,0,0,-0.1385,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/final_demo_set/good_samples/known_good_a_a_00023.png
+ka,ka_00027.png,93.2584,0,0,0.0071,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/final_demo_set/good_samples/known_good_ka_ka_00027.png
+da,da_00089.png,94.1075,0,0,-0.6831,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/final_demo_set/good_samples/known_good_da_da_00089.png
+dda,dda_00082.png,95.5986,0,0,-0.0136,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/final_demo_set/good_samples/known_good_dda_dda_00082.png

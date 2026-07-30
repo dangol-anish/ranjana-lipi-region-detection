@@ -20,6 +20,9 @@ DEFAULT_MIN_PROBLEM_REGION_ERROR = 0.02
 Z_SCORE_EPSILON = 1e-6
 DEFAULT_INK_THRESHOLD = 0.05
 DEFAULT_MIN_INK_PIXELS = 8
+# Calibrated on 100 real processed correct samples, 20 per validated class, to
+# keep "any region flagged" false positives at roughly 10%.
+DEFAULT_MIN_PROBLEM_Z_SCORE = 3.75
 
 
 @dataclass(frozen=True)
@@ -310,6 +313,7 @@ def _rank_regions(
     min_problem_region_error: float,
     max_regions: int,
     baseline_regions: dict[str, dict[str, Any]] | None = None,
+    min_problem_z_score: float = DEFAULT_MIN_PROBLEM_Z_SCORE,
 ) -> dict[str, Any]:
     enriched_regions: list[dict[str, Any]] = []
     for region in regions:
@@ -347,7 +351,7 @@ def _rank_regions(
     z_threshold = max(
         mean_z_score + std_multiplier * std_z_score,
         max_z_score * min_relative_to_max,
-        1.0,
+        min_problem_z_score,
     )
 
     problem_regions: list[dict[str, Any]] = []
@@ -391,6 +395,7 @@ def build_region_feedback(
     baseline: dict[str, Any] | None = None,
     ink_threshold: float = DEFAULT_INK_THRESHOLD,
     min_ink_pixels: int = DEFAULT_MIN_INK_PIXELS,
+    min_problem_z_score: float = DEFAULT_MIN_PROBLEM_Z_SCORE,
 ) -> dict[str, Any]:
     """Return ranked fixed-grid feedback from an input/reconstruction pair.
 
@@ -417,6 +422,7 @@ def build_region_feedback(
         min_problem_region_error=min_problem_region_error,
         max_regions=max_regions,
         baseline_regions=loaded_baseline.get("fine_grid") if loaded_baseline else None,
+        min_problem_z_score=min_problem_z_score,
     )
     broad_regions = aggregate_broad_band_errors(error_map, ink_mask=ink_mask, min_ink_pixels=min_ink_pixels)
     broad_feedback = _rank_regions(
@@ -428,6 +434,7 @@ def build_region_feedback(
         min_problem_region_error=min_problem_region_error,
         max_regions=max_regions,
         baseline_regions=loaded_baseline.get("broad_bands") if loaded_baseline else None,
+        min_problem_z_score=min_problem_z_score,
     )
 
     raw_global_mean_error = float(error_map.mean())
@@ -439,6 +446,7 @@ def build_region_feedback(
         "scoring": fine_feedback["scoring"],
         "ink_threshold": ink_threshold,
         "min_ink_pixels": min_ink_pixels,
+        "min_problem_z_score": min_problem_z_score,
     }
     fine_grid = {
         "rows": rows,

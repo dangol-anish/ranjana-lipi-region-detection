@@ -6,13 +6,22 @@ data/FlawedValidation/
 # Generated ML image outputs: reproducible from preprocessing scripts.
 ranjana-lipi-coach/backend/ml/processed/
 ranjana-lipi-coach/backend/ml/augmented/
+ranjana-lipi-coach/backend/ml/processed_general/
+ranjana-lipi-coach/backend/ml/augmented_general/
 
 # Model checkpoints are large; keep report-friendly metrics/plots tracked.
 ranjana-lipi-coach/backend/ml/saved_models/*.pt
 ranjana-lipi-coach/backend/ml/saved_models/*.pth
 ranjana-lipi-coach/backend/ml/saved_models/*.ckpt
+ranjana-lipi-coach/backend/ml/saved_models/**/*.pt
+ranjana-lipi-coach/backend/ml/saved_models/**/*.pth
+ranjana-lipi-coach/backend/ml/saved_models/**/*.ckpt
 !ranjana-lipi-coach/backend/ml/saved_models/*.json
 !ranjana-lipi-coach/backend/ml/saved_models/*.png
+!ranjana-lipi-coach/backend/ml/saved_models/**/*.json
+!ranjana-lipi-coach/backend/ml/saved_models/**/*.png
+!ranjana-lipi-coach/backend/ml/saved_models/**/*.csv
+!ranjana-lipi-coach/backend/ml/saved_models/**/*.txt
 
 # Secrets.
 ranjana-lipi-coach/backend/.env

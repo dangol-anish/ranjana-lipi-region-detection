@@ -26,7 +26,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -790,7 +791,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -1530,7 +1532,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -2271,7 +2274,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -3058,7 +3062,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -3798,7 +3803,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -4585,7 +4591,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -5326,7 +5333,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [],
       "all_regions": [
@@ -6018,7 +6026,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -6759,7 +6768,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -7523,7 +7533,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -8286,7 +8297,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -9096,7 +9108,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -9836,7 +9849,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {
@@ -10624,7 +10638,8 @@
         "min_problem_region_error": 0.012,
         "scoring": "z_score",
         "ink_threshold": 0.05,
-        "min_ink_pixels": 8
+        "min_ink_pixels": 8,
+        "min_problem_z_score": 3.75
       },
       "problem_regions": [
         {

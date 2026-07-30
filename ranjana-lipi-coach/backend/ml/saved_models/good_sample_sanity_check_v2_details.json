@@ -1,0 +1,3720 @@
+[
+  {
+    "filename": "Slice 1682.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/Slice 1682.png",
+    "class": "aa",
+    "overall_score": 92.30736587196589,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.2252070351124396,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "top-center",
+      "top-right"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-left": 1.2252070351124396,
+      "top-center": 0.4418335512615907,
+      "top-right": 0.11980027433501533,
+      "top-left": 0.004810122474864336,
+      "bottom-right": -0.5862288468405825,
+      "middle-right": -0.6022775627228297,
+      "middle-center": -0.8270061081197638,
+      "bottom-center": -1.27876941500559,
+      "middle-left": -1.6599283046897708
+    },
+    "broad_z_scores": {
+      "top": 0.16127470380048867,
+      "bottom": -0.893294846201911,
+      "middle": -1.0817791877457927
+    }
+  },
+  {
+    "filename": "aa_000150.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000150.png",
+    "class": "aa",
+    "overall_score": 93.65128390491009,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.9186086661188763,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-right",
+      "middle-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-right": 0.9186086661188763,
+      "middle-left": 0.9134937980747071,
+      "top-center": 0.546432550569417,
+      "bottom-center": 0.1483425747896812,
+      "bottom-right": 0.0027039814853689224,
+      "top-left": -0.03907009790978238,
+      "middle-center": -0.04912660019338992,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.30938023025764644,
+      "top": 0.06316622885779986,
+      "bottom": 0.02755726859248991
+    }
+  },
+  {
+    "filename": "aa_000140.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000140.png",
+    "class": "aa",
+    "overall_score": 91.9212032109499,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.20040353264808586,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-left": 0.20040353264808586,
+      "top-left": -0.5119984478486302,
+      "middle-center": -0.5557696610081068,
+      "middle-right": -0.7744857507463988,
+      "top-right": -0.9381012412843368,
+      "top-center": -0.9518626858568566,
+      "bottom-center": -1.041456188661522,
+      "middle-left": -1.1420517200885347,
+      "bottom-right": -1.2622638438710145
+    },
+    "broad_z_scores": {
+      "middle": -0.5359394398945106,
+      "top": -0.5894495383136825,
+      "bottom": -1.296615666899758
+    }
+  },
+  {
+    "filename": "aa_00083.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00083.png",
+    "class": "aa",
+    "overall_score": 92.98030529171228,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": -0.07928836037865175,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "bottom-center",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": -0.07928836037865175,
+      "bottom-center": -0.1577989926904615,
+      "middle-center": -0.32701987644053804,
+      "middle-left": -0.40503720895214523,
+      "middle-right": -0.7625722888671502,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.1776801092684724,
+      "middle": -0.32167453716120215,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "aa_000142.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000142.png",
+    "class": "aa",
+    "overall_score": 93.80735829472542,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.6663874803128101,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-right",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 0.6663874803128101,
+      "top-right": 0.28286648879719145,
+      "bottom-right": 0.19244724948191771,
+      "top-left": 0.14241425948282188,
+      "middle-center": -0.38921063357765284,
+      "middle-right": -0.5435877108545334,
+      "top-center": -0.8142731970514923,
+      "middle-left": -1.7510319211405578,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.6120424367297014,
+      "top": -0.2522260664518854,
+      "middle": -0.6844027214264303
+    }
+  },
+  {
+    "filename": "aa_000111.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000111.png",
+    "class": "aa",
+    "overall_score": 91.90465174615383,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.6556265848414924,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "middle-left",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-center": 1.6556265848414924,
+      "middle-left": 1.3127842638662575,
+      "middle-right": 0.11095864110301988,
+      "bottom-right": 0.09278109590501533,
+      "bottom-center": -0.06940546887860662,
+      "top-left": -0.16165626252811194,
+      "top-center": -0.20328808904366907,
+      "top-right": -0.2447554736955939,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.39519494775958,
+      "bottom": 0.01401631748552569,
+      "top": -0.3033323674024344
+    }
+  },
+  {
+    "filename": "aa_00061.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00061.png",
+    "class": "aa",
+    "overall_score": 92.93478708714247,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.7145630586479556,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "bottom-center",
+      "top-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-left": 0.7145630586479556,
+      "bottom-center": -0.09241655340267324,
+      "top-left": -0.4247552507631509,
+      "bottom-right": -0.7543693217921944,
+      "top-right": -0.9288683246331406,
+      "middle-right": -0.9478387865581029,
+      "middle-center": -1.118151459094495,
+      "top-center": -2.037218551663063,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.4391793186017731,
+      "middle": -0.9027235232762878,
+      "top": -0.9544418357899417
+    }
+  },
+  {
+    "filename": "aa_000121.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000121.png",
+    "class": "aa",
+    "overall_score": 90.65287206321955,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.4651491351842054,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-right",
+      "middle-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-right": 0.4651491351842054,
+      "middle-center": 0.3252643935476986,
+      "bottom-right": 0.10711993422135759,
+      "middle-right": -0.03395742151207099,
+      "top-left": -0.05102916193493355,
+      "top-center": -0.3772479382775599,
+      "bottom-center": -1.2398475439535683,
+      "middle-left": -1.5441553664348646,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.009789674371809923,
+      "top": -0.11577040956843848,
+      "bottom": -0.6555775259441687
+    }
+  },
+  {
+    "filename": "aa_00031.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00031.png",
+    "class": "aa",
+    "overall_score": 91.18992630392313,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.15803903217766535,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "top-right",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.15803903217766535,
+      "top-right": 0.06663624438781018,
+      "middle-left": -0.0005235219428783169,
+      "top-center": -0.03375369750307551,
+      "top-left": -0.39069391775060447,
+      "middle-right": -0.4876541693202754,
+      "bottom-center": -0.5258844105812424,
+      "bottom-left": -0.7517589528794519,
+      "bottom-right": -1.0983282205188418
+    },
+    "broad_z_scores": {
+      "middle": -0.12715313625244906,
+      "top": -0.13227652407587673,
+      "bottom": -0.8062374154872803
+    }
+  },
+  {
+    "filename": "aa_00076.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00076.png",
+    "class": "aa",
+    "overall_score": 93.2454165071249,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.6439505824574592,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-center",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.0811706749150995,
+      "top-center": 0.8603655216592946,
+      "middle-right": 0.7284031403651554,
+      "middle-center": 0.39392089488278587,
+      "middle-left": -0.01787933419127208,
+      "top-right": -0.4302640524632549,
+      "top-left": -0.47161611624726046,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.6439505824574592,
+      "middle": 0.5677555820534752,
+      "top": -0.015594858201854281
+    }
+  },
+  {
+    "filename": "Slice 1549.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/Slice 1549.png",
+    "class": "aa",
+    "overall_score": 92.27624721825123,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.41240756044996585,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "top-right",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-left": 0.41240756044996585,
+      "top-right": 0.39132092663041634,
+      "middle-center": -0.20758809547877377,
+      "top-center": -0.33995120204381735,
+      "middle-right": -0.5659346656713958,
+      "bottom-right": -0.6672577184000468,
+      "bottom-center": -0.7258523827525516,
+      "middle-left": -1.044324291248175,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.038576556185916065,
+      "middle": -0.6543832766752251,
+      "bottom": -0.8073670274612496
+    }
+  },
+  {
+    "filename": "aa_00038.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00038.png",
+    "class": "aa",
+    "overall_score": 91.15785881876945,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.578873169270768,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-left",
+      "top-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.578873169270768,
+      "bottom-left": 0.8199756268418913,
+      "top-right": 0.6331564724193662,
+      "middle-center": -0.25445123652277146,
+      "top-left": -0.3986808899012395,
+      "middle-right": -0.4508655312374228,
+      "bottom-right": -1.0787874728104094,
+      "bottom-center": -1.0943503119131435,
+      "middle-left": -3.0642341226923064
+    },
+    "broad_z_scores": {
+      "top": 0.6187378505537304,
+      "middle": -0.9437743745857481,
+      "bottom": -1.0943670112181942
+    }
+  },
+  {
+    "filename": "aa_00074.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00074.png",
+    "class": "aa",
+    "overall_score": 93.31566300243139,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.6407758013272662,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "middle-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 1.6407758013272662,
+      "middle-left": 0.6435196512200031,
+      "top-center": 0.4826243289987979,
+      "top-left": 0.38780111917309606,
+      "middle-right": 0.082686374653382,
+      "top-right": -0.4826311917824341,
+      "bottom-right": -1.5617347937600863,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.7201052177314883,
+      "top": -0.04102478478207857,
+      "bottom": -1.198871539432484
+    }
+  },
+  {
+    "filename": "aa_00092.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00092.png",
+    "class": "aa",
+    "overall_score": 91.25568121671677,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.14853543875807043,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "top-right",
+      "bottom-left"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-left": 0.14853543875807043,
+      "top-right": -0.07698293714853272,
+      "bottom-left": -0.18403543751093596,
+      "bottom-right": -0.3677512940853471,
+      "middle-center": -0.39062195243938136,
+      "middle-right": -0.49938737787511117,
+      "bottom-center": -0.7501353272770988,
+      "top-center": -0.9106137019925343,
+      "middle-left": -1.2744123851133795
+    },
+    "broad_z_scores": {
+      "top": -0.34009206290930144,
+      "bottom": -0.5834094255365914,
+      "middle": -0.6082804245853387
+    }
+  },
+  {
+    "filename": "aa_000127.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000127.png",
+    "class": "aa",
+    "overall_score": 93.86233352124691,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.0020797041434972,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-right",
+      "middle-right",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-right": 1.0020797041434972,
+      "middle-right": -0.005576655172346313,
+      "bottom-center": -0.19152999743449034,
+      "top-center": -0.41511927835758483,
+      "top-left": -0.6214621914874282,
+      "middle-center": -0.7069352659304969,
+      "middle-left": -1.4040202605791476,
+      "bottom-right": -1.6185950146166899,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.39758316317681447,
+      "middle": -0.6013560402442646,
+      "bottom": -0.8844656147883355
+    }
+  },
+  {
+    "filename": "aa_000106.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000106.png",
+    "class": "aa",
+    "overall_score": 93.83925702422857,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.917380918505051,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "top-right",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-left": 1.917380918505051,
+      "top-right": 0.8506275334731765,
+      "middle-right": 0.7167390760288518,
+      "top-center": -0.33567343934160854,
+      "top-left": -0.39638401859084593,
+      "middle-center": -0.5721748131577288,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.10739126206360393,
+      "top": -0.30633001089998657,
+      "bottom": -1000000.0
+    }
+  },
+  {
+    "filename": "aa_00023.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00023.png",
+    "class": "aa",
+    "overall_score": 91.53287801891565,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": -0.23387107821276545,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-right",
+      "top-right",
+      "top-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-right": -0.23387107821276545,
+      "top-right": -0.27432232083108754,
+      "top-left": -0.3187872943161955,
+      "middle-center": -0.3992811265002521,
+      "top-center": -0.6348687946857936,
+      "bottom-left": -0.6967538300750461,
+      "bottom-center": -0.7634735896524741,
+      "bottom-right": -2.8511582730181613,
+      "middle-left": -3.040273695192047
+    },
+    "broad_z_scores": {
+      "top": -0.3012557533430884,
+      "middle": -0.8935403366256477,
+      "bottom": -1.7125419209612929
+    }
+  },
+  {
+    "filename": "aa_000144.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_000144.png",
+    "class": "aa",
+    "overall_score": 92.75701977312565,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.24726017000162348,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-right",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.24726017000162348,
+      "top-right": -0.15904320055863475,
+      "bottom-center": -0.2099780864581236,
+      "bottom-right": -0.24830060047069658,
+      "top-left": -0.4356291370352782,
+      "middle-center": -0.8097790795952342,
+      "middle-right": -1.1303085582495467,
+      "middle-left": -1.8121760045577204,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.1441683070025908,
+      "bottom": -0.18240498789275553,
+      "middle": -1.2737062909970822
+    }
+  },
+  {
+    "filename": "aa_00054.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00054.png",
+    "class": "aa",
+    "overall_score": 90.96574280411005,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.03748930564462521,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "top-right",
+      "top-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-left": 0.03748930564462521,
+      "top-right": -0.32846697771712835,
+      "top-center": -0.5574834180137486,
+      "top-left": -0.6996875437919116,
+      "middle-right": -0.8050501589121135,
+      "middle-center": -0.9574699650460605,
+      "bottom-center": -1.3542931543277192,
+      "middle-left": -1.3615389945359146,
+      "bottom-right": -3.207737953436986
+    },
+    "broad_z_scores": {
+      "top": -0.47468446617089016,
+      "middle": -1.091392127961121,
+      "bottom": -2.0974468178723775
+    }
+  },
+  {
+    "filename": "aa_00010.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/aa/aa_00010.png",
+    "class": "aa",
+    "overall_score": 93.54701079428196,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.16567181586888904,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.16567181586888904,
+      "top-left": 0.0873713941629727,
+      "middle-center": -0.15073152891791644,
+      "middle-right": -0.6377702902948261,
+      "bottom-center": -0.7688574288518799,
+      "top-right": -0.8968289594387538,
+      "middle-left": -1.2704913697367723,
+      "bottom-right": -1.785775793138812,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.33850846217874214,
+      "middle": -0.6917620515221005,
+      "bottom": -1.450322671378112
+    }
+  },
+  {
+    "filename": "a_00094.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00094.png",
+    "class": "a",
+    "overall_score": 95.10254729539156,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.4608680849718763,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "middle-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.0839526295567548,
+      "middle-left": 1.1288095739244972,
+      "middle-center": 0.6089367739331232,
+      "middle-right": 0.45728473382047996,
+      "bottom-center": 0.39368390127940034,
+      "bottom-right": 0.3167889718346332,
+      "top-left": -1000000.0,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 2.4608680849718763,
+      "middle": 0.7782776345981319,
+      "bottom": 0.6983961380408236
+    }
+  },
+  {
+    "filename": "a_000134.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000134.png",
+    "class": "a",
+    "overall_score": 92.92159229516983,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.8304418313290248,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-center",
+      "top-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 0.8304418313290248,
+      "middle-center": 0.7452747552817006,
+      "top-right": -0.15895677397624203,
+      "top-center": -0.6917349166613225,
+      "top-left": -0.793903482234138,
+      "middle-left": -0.8294202544776644,
+      "middle-right": -1.1268606693207652,
+      "bottom-right": -1.1505868998970108,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.02191750930353639,
+      "bottom": -0.11033579070479066,
+      "top": -0.6825493670110853
+    }
+  },
+  {
+    "filename": "a_00020.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00020.png",
+    "class": "a",
+    "overall_score": 94.3423880264163,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.7698909416256643,
+    "fine_problem_regions": [
+      "top-left"
+    ],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "top-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-left": 3.7698909416256643,
+      "top-center": 1.424511883189077,
+      "middle-left": 1.1805068796851559,
+      "middle-center": 0.7417738440807555,
+      "bottom-center": -0.07430713185252134,
+      "bottom-right": -0.4650768563602214,
+      "top-right": -0.7707815092027707,
+      "middle-right": -1.3039009163878028,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.2536581784130185,
+      "middle": -0.029533887597791006,
+      "bottom": -0.2256234007843314
+    }
+  },
+  {
+    "filename": "a_00059.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00059.png",
+    "class": "a",
+    "overall_score": 92.99325421452522,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.609168765366681,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "bottom-right",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-left": 0.609168765366681,
+      "bottom-right": 0.29479625540087134,
+      "middle-center": 0.26572115470233115,
+      "top-center": 0.06853152647490646,
+      "middle-right": -0.29868881290310895,
+      "bottom-center": -0.49695471779536393,
+      "top-left": -0.6286813031039785,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.5846091836348208,
+      "bottom": 0.19432758319676055,
+      "top": -0.19794975402514045
+    }
+  },
+  {
+    "filename": "Slice 909.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/Slice 909.png",
+    "class": "a",
+    "overall_score": 93.0421844124794,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.24092440131737625,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "middle-right",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.24092440131737625,
+      "middle-right": 0.1049041139525212,
+      "middle-left": -0.17683948093962457,
+      "top-left": -0.7604658483811225,
+      "bottom-center": -0.8159122228007073,
+      "top-right": -1.0925476730828803,
+      "top-center": -1.2849509116489135,
+      "middle-center": -1.4516598103989695,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.41564448274114246,
+      "middle": -0.6926602263149177,
+      "top": -1.5759453346762815
+    }
+  },
+  {
+    "filename": "a_000124.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000124.png",
+    "class": "a",
+    "overall_score": 95.25295943021774,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.1352507771396323,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.7437404761675048,
+      "top-left": 0.5482717696396509,
+      "middle-center": 0.48709680100202424,
+      "middle-right": 0.436157712521,
+      "middle-left": -1.4263408536312734,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.1352507771396323,
+      "middle": 0.5850071596104132,
+      "bottom": -1000000.0
+    }
+  },
+  {
+    "filename": "a_00088.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00088.png",
+    "class": "a",
+    "overall_score": 94.4337747991085,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.176923746133596,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.176923746133596,
+      "top-left": 0.9686196371348306,
+      "top-center": 0.8594049920914947,
+      "middle-center": -0.020908589033533383,
+      "top-right": -0.12269652743438118,
+      "middle-left": -0.46949498232375675,
+      "bottom-right": -0.8215121152183884,
+      "middle-right": -1.2465353266306336,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.1484716171583476,
+      "bottom": -0.3051059448114545,
+      "middle": -0.877820810186376
+    }
+  },
+  {
+    "filename": "a_00097.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00097.png",
+    "class": "a",
+    "overall_score": 94.16570365428925,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.4743306508221505,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-right",
+      "middle-right",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-right": 1.4743306508221505,
+      "middle-right": 0.7242860928228616,
+      "bottom-right": 0.3102263375399745,
+      "top-center": -0.42312654686903206,
+      "middle-left": -0.5857824003851498,
+      "top-left": -1.3147106074794457,
+      "middle-center": -1.4180910488605536,
+      "bottom-center": -1.4755009573453854,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.8317074945531904,
+      "middle": -0.9354984960013024,
+      "bottom": -1.0055295551012515
+    }
+  },
+  {
+    "filename": "a_00018.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00018.png",
+    "class": "a",
+    "overall_score": 92.81261302530766,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.6913900741059906,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.6913900741059906,
+      "top-left": 0.4354154981694737,
+      "top-center": -0.04725625657268589,
+      "middle-left": -0.844956296491123,
+      "bottom-center": -1.447501580851475,
+      "middle-center": -1.8401488789557103,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.7933580696579202,
+      "middle": -0.9325097190368755,
+      "bottom": -2.3081804750667847
+    }
+  },
+  {
+    "filename": "a_000146.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000146.png",
+    "class": "a",
+    "overall_score": 95.66917736083269,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.7477002504436547,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "middle-center",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.7477002504436547,
+      "middle-center": 0.2515432241673048,
+      "bottom-center": 0.1671044236439379,
+      "middle-left": -0.5103211912841172,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.4204564440764958,
+      "middle": 0.3025295782641803,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "a_00012.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00012.png",
+    "class": "a",
+    "overall_score": 92.61638261377811,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.5456401842437826,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-right",
+      "top-center",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-right": 2.5456401842437826,
+      "top-center": 0.37400176047245587,
+      "middle-center": -0.21330199039528905,
+      "bottom-center": -0.6343542571735019,
+      "top-left": -0.7735389540656339,
+      "bottom-right": -0.8036193885963988,
+      "middle-left": -0.8351225546248624,
+      "middle-right": -1.1228220498378265,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.6764264187634318,
+      "middle": -0.5565134364942839,
+      "bottom": -0.9475124041878565
+    }
+  },
+  {
+    "filename": "a_000101.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000101.png",
+    "class": "a",
+    "overall_score": 93.30774378031492,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.17264402614285967,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "middle-left",
+      "top-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.17264402614285967,
+      "middle-left": -0.07972877009233113,
+      "top-left": -0.5773570710597661,
+      "top-center": -0.6027621597171894,
+      "bottom-center": -0.62552844162559,
+      "bottom-right": -1.021566136168487,
+      "top-right": -1.0740751651367095,
+      "middle-right": -1.2225178419080875,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.432543920097278,
+      "bottom": -1.0904027348347891,
+      "top": -1.2564190367189216
+    }
+  },
+  {
+    "filename": "a_00042.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00042.png",
+    "class": "a",
+    "overall_score": 93.92814710736275,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.208826137706134,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 2.208826137706134,
+      "top-left": 2.0790792876227457,
+      "top-center": 1.225491550356493,
+      "middle-center": 1.1003099864061878,
+      "bottom-center": 0.9457048081992548,
+      "middle-left": -0.6962858000398552,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.4306310067600694,
+      "bottom": 1.425666860027446,
+      "middle": 1.22428377043796
+    }
+  },
+  {
+    "filename": "a_00080.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00080.png",
+    "class": "a",
+    "overall_score": 93.71937345713377,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.4400775924545992,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-right",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 1.4400775924545992,
+      "bottom-right": 0.03322220660144444,
+      "bottom-center": -0.2750371610527909,
+      "middle-center": -0.4654331320974243,
+      "middle-left": -0.6747394967812929,
+      "top-left": -0.7624797034338783,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.1974525690469755,
+      "bottom": -0.2590283526975706,
+      "middle": -0.3557396445690129
+    }
+  },
+  {
+    "filename": "a_00023.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00023.png",
+    "class": "a",
+    "overall_score": 92.44632720947266,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": -0.1384875487152013,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-right",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": -0.1384875487152013,
+      "top-right": -0.7043903324707884,
+      "middle-center": -0.9386744549118776,
+      "middle-right": -0.9802467557149027,
+      "middle-left": -1.0474863638491494,
+      "top-left": -1.0499884633274954,
+      "bottom-center": -1.177462051703389,
+      "bottom-left": -1.3315298184673283,
+      "bottom-right": -2.431078296266282
+    },
+    "broad_z_scores": {
+      "top": -0.521492055412089,
+      "middle": -1.1844853249185534,
+      "bottom": -1.8235557076159743
+    }
+  },
+  {
+    "filename": "a_0008.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_0008.png",
+    "class": "a",
+    "overall_score": 93.05903650820255,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.019173804902082998,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "bottom-center",
+      "top-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.019173804902082998,
+      "bottom-center": -0.056264985895495646,
+      "top-center": -0.2497233016293167,
+      "top-left": -0.46460235912679665,
+      "bottom-right": -0.7902043616909686,
+      "top-right": -1.060015486143503,
+      "middle-right": -1.2621887862120313,
+      "middle-left": -1.2846614710197284,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.5091057908737466,
+      "top": -0.7013475688477722,
+      "middle": -1.2546721192390293
+    }
+  },
+  {
+    "filename": "a_00027.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00027.png",
+    "class": "a",
+    "overall_score": 93.18131059408188,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.6681174647837159,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "bottom-center",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.6681174647837159,
+      "bottom-center": 0.06332150558452723,
+      "middle-right": -0.2831216266237475,
+      "top-center": -0.379761263590172,
+      "top-left": -0.8054004207203548,
+      "top-right": -1.093732742289644,
+      "bottom-right": -1.0951180618301175,
+      "middle-left": -1.8433159775424215,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.051678084921515634,
+      "top": -0.7041354266028207,
+      "bottom": -0.8409302530773461
+    }
+  },
+  {
+    "filename": "a_000127.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000127.png",
+    "class": "a",
+    "overall_score": 94.64203491806984,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.794400736805398,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "bottom-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.794400736805398,
+      "bottom-center": 0.1664021557378657,
+      "middle-left": -0.35046556643536897,
+      "top-center": -0.679733738472793,
+      "top-left": -0.9225972118071707,
+      "middle-center": -1.0439898135451355,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.4344450639498538,
+      "middle": -0.7616909682631119,
+      "top": -1.0968058663876286
+    }
+  },
+  {
+    "filename": "a_000110.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_000110.png",
+    "class": "a",
+    "overall_score": 95.2249700203538,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.3982636014289925,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-center",
+      "top-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 0.3960201025311143,
+      "top-center": 0.06934604293804805,
+      "top-left": -0.29527070065648575,
+      "middle-left": -0.7916671190356032,
+      "middle-center": -1.1233325616322072,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.3982636014289925,
+      "top": 0.2570186220468941,
+      "middle": -0.8263787408469765
+    }
+  },
+  {
+    "filename": "a_00025.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/a/a_00025.png",
+    "class": "a",
+    "overall_score": 96.14852359518409,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.692199429793825,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "bottom-right",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-left": 2.692199429793825,
+      "bottom-right": 1.6177818232831198,
+      "middle-right": 0.3173999179128439,
+      "bottom-center": -0.6542043312111067,
+      "middle-left": -0.8926360991345219,
+      "top-center": -0.9024750472041575,
+      "middle-center": -1.3123945885942574,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.43718496741964735,
+      "top": -1.2259030739531376,
+      "middle": -1.3299364990890081
+    }
+  },
+  {
+    "filename": "ka_00079.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00079.png",
+    "class": "ka",
+    "overall_score": 93.49197633564472,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.32406468089168,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "bottom-right",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-left": 2.32406468089168,
+      "bottom-right": 0.40836526614864627,
+      "bottom-center": 0.15798639824900473,
+      "middle-left": -0.39521119347880235,
+      "middle-right": -0.502450201301689,
+      "middle-center": -0.6973484738742334,
+      "top-center": -0.8753782913253944,
+      "top-left": -1.4233885836793327,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.5333397352403485,
+      "middle": -0.5603443628974506,
+      "top": -1.1475360079414307
+    }
+  },
+  {
+    "filename": "ka_00024.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00024.png",
+    "class": "ka",
+    "overall_score": 92.61601213365793,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.20204259278127848,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "top-left",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.20204259278127848,
+      "top-left": -0.17825899571530135,
+      "middle-right": -0.18748860910936802,
+      "middle-left": -0.6575263092245085,
+      "top-center": -0.7793586133562872,
+      "bottom-right": -1.1488671059080344,
+      "bottom-left": -1.7713241308371963,
+      "bottom-center": -1.9801967480436704,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.09533109266691228,
+      "top": -0.35562044823861727,
+      "bottom": -2.0160756906253328
+    }
+  },
+  {
+    "filename": "ka_00074.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00074.png",
+    "class": "ka",
+    "overall_score": 94.87185329198837,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.9314405484633488,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "bottom-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.9314405484633488,
+      "bottom-left": 1.080266097146009,
+      "middle-center": 0.9056233070490887,
+      "middle-left": -0.06106590013587962,
+      "bottom-center": -0.6453706126607672,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.5349667232992469,
+      "bottom": -0.43464868986071303,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "ka_000115.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_000115.png",
+    "class": "ka",
+    "overall_score": 95.06965056061745,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.5483542411917655,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-right",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 2.5483542411917655,
+      "middle-right": 1.154376546876774,
+      "middle-left": 0.6943540629430759,
+      "middle-center": 0.08915717127576842,
+      "bottom-right": -0.6402353910928578,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.26517851144348253,
+      "bottom": -0.11331814763331069,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "ka_00090.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00090.png",
+    "class": "ka",
+    "overall_score": 95.42919006198645,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.5496098231452688,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "bottom-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-left": 1.5496098231452688,
+      "bottom-center": 0.4377924616456283,
+      "bottom-right": 0.2470301277298013,
+      "middle-center": -0.2684808144979913,
+      "middle-right": -1.7431815354641864,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.42300883039512477,
+      "middle": -0.4534114395249398,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "ka_000102.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_000102.png",
+    "class": "ka",
+    "overall_score": 92.47190989553928,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.382201115261706,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-left",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 2.382201115261706,
+      "top-left": 1.601944895390261,
+      "bottom-right": 0.9426227641371965,
+      "middle-left": 0.9062142583911447,
+      "middle-center": 0.23905223720990948,
+      "top-center": -0.3431673639204795,
+      "middle-right": -0.7491778625788842,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.7921746415128208,
+      "top": 0.3909853012721832,
+      "middle": 0.14420244381217787
+    }
+  },
+  {
+    "filename": "ka_00098.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00098.png",
+    "class": "ka",
+    "overall_score": 94.58634778857231,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.2265566419604492,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "bottom-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": -0.06712362167224568,
+      "bottom-center": -0.2259622033162015,
+      "bottom-right": -0.6082788515486521,
+      "middle-left": -1.0154208927858346,
+      "middle-right": -1.159841493132938,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 2.2265566419604492,
+      "middle": -0.5205271189451052,
+      "bottom": -0.5230706370415281
+    }
+  },
+  {
+    "filename": "ka_00028.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00028.png",
+    "class": "ka",
+    "overall_score": 92.48014707118273,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.6336531213715613,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-right",
+      "top-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.6336531213715613,
+      "top-right": 0.24514801196797795,
+      "top-left": 0.16364090082889982,
+      "middle-left": -0.1685867407317145,
+      "middle-center": -0.48774450841800054,
+      "middle-right": -0.4912121064802287,
+      "bottom-center": -0.7542864657963183,
+      "top-center": -1.1780625539380063,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.45745109013649715,
+      "top": -0.2800885011090638,
+      "middle": -0.44650352860842246
+    }
+  },
+  {
+    "filename": "ka_00027.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00027.png",
+    "class": "ka",
+    "overall_score": 93.25841572135687,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.007142453570219418,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "middle-center",
+      "top-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.007142453570219418,
+      "middle-center": -0.20768497579208373,
+      "top-right": -0.6155710535773719,
+      "top-center": -0.7207204804505966,
+      "middle-left": -0.8555028286051765,
+      "bottom-center": -1.0662184052629136,
+      "middle-right": -1.3464591202588052,
+      "top-left": -1.5818590611739056,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.2146110661042403,
+      "middle": -0.7358150850008522,
+      "top": -1.0438098409604533
+    }
+  },
+  {
+    "filename": "ka_00012.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00012.png",
+    "class": "ka",
+    "overall_score": 92.71355792880058,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.5556303033368198,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "middle-center",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "top-left": 0.5556303033368198,
+      "middle-center": 0.44046151457276517,
+      "bottom-center": 0.12725368997972583,
+      "bottom-right": -0.47584990051152365,
+      "top-right": -0.49357884786297623,
+      "top-center": -1.4875983557446026,
+      "middle-right": -1.7744929990871765,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.29940714889031256,
+      "middle": -0.5949461210031506,
+      "top": -0.6860400196295804
+    }
+  },
+  {
+    "filename": "ka_000109.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_000109.png",
+    "class": "ka",
+    "overall_score": 95.021459646523,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 1,
+    "max_z_score": 4.773597106907978,
+    "fine_problem_regions": [
+      "top-left"
+    ],
+    "broad_problem_regions": [
+      "top"
+    ],
+    "fine_top3": [
+      "top-left",
+      "top-center",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-left": 4.609351937905133,
+      "top-center": 1.1742822364267596,
+      "bottom-center": 0.7775279908407812,
+      "middle-center": -0.02395205097513647,
+      "middle-left": -0.6652784004049106,
+      "bottom-right": -0.7188080741807804,
+      "middle-right": -0.9273728455561397,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 4.773597106907978,
+      "bottom": -0.3049090230956641,
+      "middle": -0.33061591884257413
+    }
+  },
+  {
+    "filename": "ka_000101.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_000101.png",
+    "class": "ka",
+    "overall_score": 94.15475241839886,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.8188731373584001,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-right",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 0.8188731373584001,
+      "middle-right": 0.6864633495734594,
+      "bottom-right": 0.38112714771815964,
+      "middle-center": 0.1610234155802429,
+      "middle-left": 0.05011008065487208,
+      "top-center": -0.18853052257491976,
+      "top-left": -0.9826553105746938,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.7664683173858378,
+      "middle": 0.24272863092753927,
+      "top": -0.40053477975490154
+    }
+  },
+  {
+    "filename": "ka_00048.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00048.png",
+    "class": "ka",
+    "overall_score": 93.80224253982306,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.917212238708589,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.308369346294267,
+      "top-left": 1.7081761109928295,
+      "middle-center": 0.16295021792495856,
+      "middle-right": -0.09531156409920079,
+      "middle-left": -0.29587721404452655,
+      "bottom-right": -0.33843513802465774,
+      "bottom-center": -0.4995191952120216,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 2.917212238708589,
+      "middle": 0.016993093923737955,
+      "bottom": -0.5300948470767998
+    }
+  },
+  {
+    "filename": "ka_00018.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00018.png",
+    "class": "ka",
+    "overall_score": 93.84477455168962,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.2530664318553532,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "middle-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-left": 0.2530664318553532,
+      "middle-center": 0.2441828896436083,
+      "middle-left": -0.07171640451786337,
+      "top-center": -0.15677023646096236,
+      "top-left": -0.5114541600880097,
+      "bottom-center": -0.9638976689936292,
+      "middle-right": -1.1582272412033747,
+      "bottom-right": -1.4428654082750412,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.011887862074520694,
+      "top": -0.07509092245152228,
+      "bottom": -1.255935846615329
+    }
+  },
+  {
+    "filename": "ka_00060.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00060.png",
+    "class": "ka",
+    "overall_score": 93.45499873161316,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.682468287673817,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-right",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.682468287673817,
+      "middle-right": 0.6481373199339651,
+      "bottom-right": 0.4290202388862196,
+      "top-center": -0.38502905908500784,
+      "middle-left": -0.42095719323893477,
+      "middle-center": -0.9405468030022829,
+      "top-left": -1.246291504484677,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.3536863765378895,
+      "top": -0.7552408235538538,
+      "middle": -0.7560839981698885
+    }
+  },
+  {
+    "filename": "ka_00019.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00019.png",
+    "class": "ka",
+    "overall_score": 94.07395534217358,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.1739883214066553,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "middle-left",
+      "top-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-left": 1.1739883214066553,
+      "middle-left": -0.2967310722040606,
+      "top-right": -0.5199546888577401,
+      "middle-center": -0.6171542376142157,
+      "bottom-right": -0.7740634877948684,
+      "bottom-center": -0.8725171583798715,
+      "middle-right": -1.198524834240712,
+      "top-center": -1.3055384598471178,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.1806827333300854,
+      "middle": -0.7170919992727779,
+      "bottom": -1.005140197840894
+    }
+  },
+  {
+    "filename": "ka_00089.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00089.png",
+    "class": "ka",
+    "overall_score": 96.08964826911688,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.3469114773590976,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "bottom-right",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 0.3469114773590976,
+      "bottom-right": 0.11506281373470936,
+      "middle-left": 0.05559455114960016,
+      "middle-center": -0.6272981895089372,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.13922861100114373,
+      "middle": -0.6888619087902402,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "ka_000105.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_000105.png",
+    "class": "ka",
+    "overall_score": 93.5597937554121,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.8120219654450792,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "middle-left",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 0.6651845956887305,
+      "middle-left": 0.3491729409212883,
+      "bottom-center": 0.1400662122004099,
+      "middle-center": -0.18062526835743925,
+      "top-left": -0.3378146064722151,
+      "middle-right": -0.9398886252250749,
+      "top-center": -1.0652134036416538,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.8120219654450792,
+      "middle": -0.3041586287687625,
+      "top": -0.9435212771696371
+    }
+  },
+  {
+    "filename": "ka_00013.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00013.png",
+    "class": "ka",
+    "overall_score": 92.71286725997925,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.1107204951676943,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "middle-left",
+      "bottom-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.1107204951676943,
+      "middle-left": 0.02447737391890572,
+      "bottom-left": -0.10912827640439211,
+      "middle-right": -0.3251000934273529,
+      "bottom-right": -0.6926647012783492,
+      "top-center": -0.8406896002739476,
+      "top-left": -1.0006213658882661,
+      "bottom-center": -1.0589045239298,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.048830464559848484,
+      "top": -0.9244327733850567,
+      "bottom": -0.9880995138787224
+    }
+  },
+  {
+    "filename": "ka_00044.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/ka/ka_00044.png",
+    "class": "ka",
+    "overall_score": 93.91361903399229,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.6147510181486244,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-left",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 2.6147510181486244,
+      "top-left": 1.8983387907004956,
+      "middle-left": 1.0465241484161019,
+      "bottom-right": 0.8690761871933825,
+      "middle-right": 0.18122267553331595,
+      "middle-center": -0.17009523983138933,
+      "top-right": -0.5634199054019625,
+      "top-center": -1.3712005706969355,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.6744931549021427,
+      "middle": 0.02389314203536742,
+      "top": -0.7464496984537319
+    }
+  },
+  {
+    "filename": "da_00044.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00044.png",
+    "class": "da",
+    "overall_score": 94.37750428915024,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.0278894307982953,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "top-left",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-center": 1.849354446905416,
+      "top-left": 1.777584697052731,
+      "bottom-right": 1.386680436687528,
+      "top-right": 0.6342389493514364,
+      "middle-right": 0.2884515904275592,
+      "bottom-center": -0.4309261740435687,
+      "top-center": -1.2261416082887393,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 2.0278894307982953,
+      "bottom": -0.12187659678766673,
+      "top": -1.6653605643997216
+    }
+  },
+  {
+    "filename": "da_00053.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00053.png",
+    "class": "da",
+    "overall_score": 93.02612412720919,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.3057218395056167,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 1.4609016614343528,
+      "top-left": 1.4592356435998934,
+      "middle-left": 1.1354328885347096,
+      "bottom-center": 0.2382616739458709,
+      "middle-right": 0.21701306847613333,
+      "middle-center": -0.6869274107094016,
+      "bottom-right": -1.1733943333530013,
+      "bottom-left": -1.3474473242255849,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 2.3057218395056167,
+      "middle": -0.25875536341014416,
+      "bottom": -0.7582212323083997
+    }
+  },
+  {
+    "filename": "Slice 767.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/Slice 767.png",
+    "class": "da",
+    "overall_score": 95.12788131833076,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.5030601267536328,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-right",
+      "middle-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-right": 0.5030601267536328,
+      "middle-left": 0.33279006916578613,
+      "middle-center": -0.3821850505812121,
+      "top-center": -0.6574022691889703,
+      "top-left": -1.0756630881668228,
+      "bottom-center": -1.0880271336647542,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.17260020002596782,
+      "top": -0.8996811883901595,
+      "bottom": -1.029226061301556
+    }
+  },
+  {
+    "filename": "da_00034.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00034.png",
+    "class": "da",
+    "overall_score": 94.19380705803633,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.961538250105456,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 2.961538250105456,
+      "top-left": 1.8282680328841348,
+      "middle-center": 0.9364288686238297,
+      "top-center": 0.5766338098818723,
+      "top-right": -0.12268983294848619,
+      "middle-right": -0.3758114268101014,
+      "bottom-center": -0.882605318341456,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.4832409095889116,
+      "middle": 0.8072594462951077,
+      "bottom": 0.05041736125755286
+    }
+  },
+  {
+    "filename": "da_00063.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00063.png",
+    "class": "da",
+    "overall_score": 93.58599055558443,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.8842587047132435,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-right",
+      "top-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.3602023967469166,
+      "middle-right": 1.2349825977351654,
+      "top-center": 0.9465211696586269,
+      "middle-center": 0.8767056462126076,
+      "middle-left": 0.602689444472839,
+      "top-left": 0.19623893606789522,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.8842587047132435,
+      "bottom": 1.4500056744422731,
+      "middle": 1.3100768197682826
+    }
+  },
+  {
+    "filename": "da_00090.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00090.png",
+    "class": "da",
+    "overall_score": 95.15937771648169,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.2938621498334713,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "middle-left",
+      "top-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.6464727638482392,
+      "middle-left": -0.531346255545206,
+      "top-left": -0.8169095998689261,
+      "middle-center": -1.127617538356541,
+      "bottom-center": -1.858157871266695,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.2938621498334713,
+      "middle": -0.8823097799009801,
+      "bottom": -1.8222409978804266
+    }
+  },
+  {
+    "filename": "da_00048.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00048.png",
+    "class": "da",
+    "overall_score": 95.44372763484716,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.5465308115117735,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "middle-center",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "top-left": 2.5465308115117735,
+      "middle-center": 0.8263221696059001,
+      "bottom-center": 0.001863460761478623,
+      "top-center": -0.18981579459811962,
+      "top-right": -1000000.0,
+      "middle-left": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.030963228033965,
+      "bottom": 0.11497236791636892,
+      "top": -0.017420446425690957
+    }
+  },
+  {
+    "filename": "da_00081.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00081.png",
+    "class": "da",
+    "overall_score": 95.45531421899796,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 5.2300167790540675,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.9865754335798487,
+      "top-left": 1.987772504319557,
+      "middle-right": 1.3547328146232127,
+      "middle-center": 0.4917655600662402,
+      "middle-left": -0.6403126176710187,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 5.2300167790540675,
+      "middle": 0.8130837515638561,
+      "bottom": -1000000.0
+    }
+  },
+  {
+    "filename": "Slice 1138.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/Slice 1138.png",
+    "class": "da",
+    "overall_score": 94.90946736186743,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.8780504405412959,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-center",
+      "bottom-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.3654855000550687,
+      "middle-center": 0.3837456216981429,
+      "bottom-left": -0.09631293090092663,
+      "middle-left": -0.8067050445859075,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.8780504405412959,
+      "middle": 0.44739843783812255,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "Slice 763.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/Slice 763.png",
+    "class": "da",
+    "overall_score": 95.50257753580809,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.2119753830546567,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-right",
+      "top-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-right": 2.6780676130412,
+      "top-center": 1.8613496996336567,
+      "middle-left": 1.5028710424726535,
+      "top-left": 1.1185875388710294,
+      "middle-center": -0.024561352823343114,
+      "bottom-center": -1.3610456680284226,
+      "top-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 3.2119753830546567,
+      "middle": 0.21749458920027526,
+      "bottom": -1.3343898659983764
+    }
+  },
+  {
+    "filename": "da_00094.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00094.png",
+    "class": "da",
+    "overall_score": 94.0182039514184,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 1,
+    "max_z_score": 5.224007878138007,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [
+      "top"
+    ],
+    "fine_top3": [
+      "top-center",
+      "top-right",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.0197904668836313,
+      "top-right": 1.1208960891561957,
+      "bottom-center": 0.538339963158531,
+      "bottom-right": -0.01036379754990869,
+      "middle-right": -0.5785090827466665,
+      "middle-center": -0.6312720927969105,
+      "top-left": -1000000.0,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 5.224007878138007,
+      "bottom": -0.2943503945934816,
+      "middle": -0.7807038350835885
+    }
+  },
+  {
+    "filename": "da_00083.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00083.png",
+    "class": "da",
+    "overall_score": 96.17200018838048,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.1602521614802368,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-center",
+      "top-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": -0.02652318057601132,
+      "middle-center": -1.2189812809612928,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-left": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.1602521614802368,
+      "middle": -1.287199914916831,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "da_00089.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00089.png",
+    "class": "da",
+    "overall_score": 94.10747848451138,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": -0.6831043032057619,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-left",
+      "top-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-left": -0.6831043032057619,
+      "top-center": -1.261530189263793,
+      "middle-left": -1.7225741125323482,
+      "middle-center": -1.7284288932519627,
+      "top-left": -1.9315755557763754,
+      "bottom-center": -2.7138783160704723,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -1.8607995066786598,
+      "bottom": -1.889630503188072,
+      "top": -2.8093359001804394
+    }
+  },
+  {
+    "filename": "da_00058.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00058.png",
+    "class": "da",
+    "overall_score": 94.24144867807627,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.8138173950106151,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-center",
+      "top-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.8138173950106151,
+      "top-center": 0.34307821293160085,
+      "top-left": 0.1793152450873034,
+      "middle-left": -0.22777901786878424,
+      "middle-center": -0.7273862233539586,
+      "bottom-center": -1.6931676839705565,
+      "bottom-left": -2.6411335568280645,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.7182955573038395,
+      "middle": -0.5263035489679472,
+      "bottom": -1.3275976480506326
+    }
+  },
+  {
+    "filename": "da_00066.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00066.png",
+    "class": "da",
+    "overall_score": 92.9777666926384,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.3617171811061399,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "top-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-left": 0.14404575518586937,
+      "top-center": -0.029167020201379873,
+      "bottom-right": -0.11180653462741233,
+      "bottom-center": -0.4094777523183049,
+      "top-left": -0.4172306379318768,
+      "middle-center": -0.5021439500162569,
+      "middle-right": -0.6802347861458418,
+      "bottom-left": -1.057904670076339,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.3617171811061399,
+      "middle": 0.08453992517646537,
+      "bottom": -0.3765141407179231
+    }
+  },
+  {
+    "filename": "da_00086.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00086.png",
+    "class": "da",
+    "overall_score": 95.66238969564438,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.7984418686228154,
+    "fine_problem_regions": [
+      "bottom-center"
+    ],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-center",
+      "top-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 3.7984418686228154,
+      "middle-center": 0.09988223489886955,
+      "top-center": -0.30993079822124087,
+      "top-left": -0.4183722838468336,
+      "top-right": -1000000.0,
+      "middle-left": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 3.538842626908182,
+      "middle": 0.3478844116965201,
+      "top": -0.1693933827345993
+    }
+  },
+  {
+    "filename": "da_0004.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_0004.png",
+    "class": "da",
+    "overall_score": 93.4872293844819,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.8633142892845405,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "top-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-left": 0.8633142892845405,
+      "top-center": -0.11343799261201849,
+      "bottom-right": -0.12761848148871616,
+      "middle-center": -0.5954514206525366,
+      "middle-left": -0.6250241209290391,
+      "bottom-center": -0.7329325224388581,
+      "top-right": -0.8271178139977173,
+      "bottom-left": -1.2297818525776223,
+      "middle-right": -1.2860064298795315
+    },
+    "broad_z_scores": {
+      "top": 0.5295026110865692,
+      "bottom": -0.6727662318801912,
+      "middle": -0.8312131766183668
+    }
+  },
+  {
+    "filename": "da_00031.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00031.png",
+    "class": "da",
+    "overall_score": 92.82274171710014,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.2212972927045773,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-center",
+      "middle-right"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.104205453894685,
+      "bottom-center": 1.657717699952846,
+      "middle-right": 0.377167565102478,
+      "bottom-right": 0.19119463848747706,
+      "middle-left": -0.09455013033124685,
+      "middle-center": -0.24029385151556557,
+      "bottom-left": -0.4998974920446204,
+      "top-right": -0.802623765465725,
+      "top-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 3.2212972927045773,
+      "bottom": 0.8196237537520742,
+      "middle": 0.026055848243297604
+    }
+  },
+  {
+    "filename": "da_00095.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_00095.png",
+    "class": "da",
+    "overall_score": 95.14427352696657,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.8441410926969644,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "middle-left",
+      "bottom-left"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.8441410926969644,
+      "middle-left": -0.3353500168455353,
+      "bottom-left": -0.34769668930487135,
+      "bottom-center": -0.78920240300307,
+      "middle-center": -1.574210366407416,
+      "top-left": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.06935597882766381,
+      "bottom": -0.3413196862542917,
+      "middle": -1.2017501097928514
+    }
+  },
+  {
+    "filename": "da_0006.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/da/da_0006.png",
+    "class": "da",
+    "overall_score": 93.06924734264612,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.2937567417268212,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "top-left",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.46666614652364036,
+      "top-left": 0.19567741856151685,
+      "middle-left": 0.06994182814216171,
+      "middle-center": -0.15339774695209094,
+      "bottom-right": -0.8905420772965804,
+      "middle-right": -1.0103805905250534,
+      "bottom-left": -1.0230806734144058,
+      "top-right": -1.1091582689600241,
+      "bottom-center": -1.2026928230135658
+    },
+    "broad_z_scores": {
+      "top": 1.2937567417268212,
+      "middle": -0.4690245932631979,
+      "bottom": -1.346408015812831
+    }
+  },
+  {
+    "filename": "dda_00064.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00064.png",
+    "class": "dda",
+    "overall_score": 94.54538598656654,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.573697566645299,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 3.2768676179389047,
+      "bottom-center": 2.099805223683933,
+      "bottom-right": 1.5040549839077493,
+      "middle-center": 1.3246097867972955,
+      "middle-right": 0.5098319770259258,
+      "top-left": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 3.573697566645299,
+      "top": 3.3542972195581395,
+      "middle": 1.7728874082989907
+    }
+  },
+  {
+    "filename": "dda_00071.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00071.png",
+    "class": "dda",
+    "overall_score": 94.1333120688796,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 1,
+    "max_z_score": 3.881795935931733,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [
+      "bottom"
+    ],
+    "fine_top3": [
+      "bottom-right",
+      "top-center",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.434707544556726,
+      "top-center": 1.2325849627972827,
+      "middle-center": 0.6113283760212981,
+      "middle-right": 0.1695472016454325,
+      "middle-left": 0.0513658464973696,
+      "top-left": -0.9589003014547921,
+      "top-right": -1.8836941669386165,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 3.881795935931733,
+      "middle": 0.7923982344544642,
+      "top": 0.3774187796563653
+    }
+  },
+  {
+    "filename": "Slice 1166.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/Slice 1166.png",
+    "class": "dda",
+    "overall_score": 93.62178966403008,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.3704904533016575,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-center",
+      "bottom-right",
+      "top-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-center": 0.9079853447341938,
+      "bottom-right": 0.6370917124777383,
+      "top-left": 0.6011163837892549,
+      "middle-right": 0.5511240793634025,
+      "top-center": 0.41347547446545396,
+      "middle-left": 0.20901157876603993,
+      "bottom-center": -0.536488929759127,
+      "top-right": -1.4231817983580746,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.3704904533016575,
+      "top": 0.7961685390285886,
+      "bottom": 0.3208900539122126
+    }
+  },
+  {
+    "filename": "Slice 1167.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/Slice 1167.png",
+    "class": "dda",
+    "overall_score": 94.56502590328455,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.7812311104831176,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-right",
+      "top-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.7812311104831176,
+      "top-right": 0.6503425365177283,
+      "top-left": 0.6213804470112226,
+      "middle-right": 0.49443207335560957,
+      "middle-center": 0.2665215236707951,
+      "middle-left": 0.023268456816601335,
+      "bottom-center": -0.2367881452877244,
+      "top-center": -1.445311130194648,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 0.6313976673864271,
+      "bottom": 0.46606825930974294,
+      "top": -1.0031129437418174
+    }
+  },
+  {
+    "filename": "dda_00031.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00031.png",
+    "class": "dda",
+    "overall_score": 92.11989734321833,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.9092487835314227,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "middle-center",
+      "top-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-left": 1.9092487835314227,
+      "middle-center": 0.64317212279898,
+      "top-center": 0.38963576640284964,
+      "middle-left": 0.22062636387244272,
+      "bottom-center": 0.08819406071721467,
+      "middle-right": -0.5392959610110322,
+      "bottom-left": -1.018264550350296,
+      "bottom-right": -2.1561847807931525,
+      "top-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.0567317610226812,
+      "top": 0.4283116350708505,
+      "bottom": -0.46477576879400795
+    }
+  },
+  {
+    "filename": "Slice 1165.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/Slice 1165.png",
+    "class": "dda",
+    "overall_score": 93.26305706053972,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.7397457829250917,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-right",
+      "middle-center",
+      "top-left"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-right": 1.276939009554489,
+      "middle-center": 1.1139463884585215,
+      "top-left": 0.6777907243016142,
+      "bottom-right": 0.29693578142095467,
+      "top-center": -0.05348005125680563,
+      "middle-left": -0.18842350001395303,
+      "top-right": -1.1841524563464074,
+      "bottom-center": -1.5108242004475307,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.7397457829250917,
+      "top": 0.7500665154323332,
+      "bottom": -0.7827651341508759
+    }
+  },
+  {
+    "filename": "dda_00020.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00020.png",
+    "class": "dda",
+    "overall_score": 93.92513409256935,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.077105351153376,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "top-left",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "top",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "middle-left": 3.077105351153376,
+      "top-left": 2.143117666772763,
+      "bottom-center": 1.4623875083808586,
+      "top-center": 0.6887566071317321,
+      "middle-center": 0.6237396684596351,
+      "middle-right": -0.5041846677104278,
+      "bottom-right": -1.87610189861407,
+      "top-right": -2.085043499445824,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": -0.03770007313440144,
+      "top": -0.07831764673239847,
+      "bottom": -0.8898834904759574
+    }
+  },
+  {
+    "filename": "dda_00034.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00034.png",
+    "class": "dda",
+    "overall_score": 94.64831687510014,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.041085996442043,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-right",
+      "top-left"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 2.5290824551309536,
+      "bottom-right": 2.0843636819512694,
+      "top-left": 0.22063216632565627,
+      "bottom-left": -0.24675037037337147,
+      "bottom-center": -0.3166888350455068,
+      "middle-left": -0.866324711674367,
+      "middle-center": -2.497276784995625,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 3.041085996442043,
+      "bottom": -0.02261028916207616,
+      "middle": -2.238116976079417
+    }
+  },
+  {
+    "filename": "dda_00090.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00090.png",
+    "class": "dda",
+    "overall_score": 95.81256546080112,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 4.32504050271463,
+    "fine_problem_regions": [
+      "bottom-right"
+    ],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "top-center",
+      "bottom-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 4.32504050271463,
+      "top-center": 1.9824835933838492,
+      "bottom-center": 0.6542105715312629,
+      "middle-left": -0.7840389794840293,
+      "middle-center": -1.0257314689245627,
+      "top-left": -1.3082482304922414,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 0.998893075630364,
+      "top": 0.09590697260252463,
+      "middle": -0.9952588478672818
+    }
+  },
+  {
+    "filename": "dda_00088.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00088.png",
+    "class": "dda",
+    "overall_score": 95.14903277158737,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.677902200809571,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "bottom-center",
+      "middle-left"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "top-center": 1.677902200809571,
+      "bottom-center": 0.5731649918599351,
+      "middle-left": 0.08029692020196136,
+      "bottom-right": 0.05413088044849309,
+      "top-left": -0.8039233910863113,
+      "middle-center": -1.2221966104585622,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.1146215000468471,
+      "top": 1.0293138941220576,
+      "middle": -0.9769155395070562
+    }
+  },
+  {
+    "filename": "dda_000100.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_000100.png",
+    "class": "dda",
+    "overall_score": 95.74394784867764,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.7158121396958035,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-center",
+      "bottom-right"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 2.090285404334253,
+      "middle-center": 1.3576369536852007,
+      "bottom-right": 1.080371194037007,
+      "middle-left": 1.0399693439277413,
+      "top-center": 0.05847184845771497,
+      "top-left": -0.6857683039612291,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 2.7158121396958035,
+      "middle": 2.1859690413496327,
+      "top": -0.16864614155645466
+    }
+  },
+  {
+    "filename": "Slice 1781.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/Slice 1781.png",
+    "class": "dda",
+    "overall_score": 94.13128644227982,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.7014534171474807,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-right",
+      "bottom-center",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-right": 1.313908586201498,
+      "bottom-center": 0.3471954590697164,
+      "middle-center": 0.05144814509774746,
+      "top-left": -0.10593894441822847,
+      "middle-left": -0.6035810785339443,
+      "top-center": -0.8875378939186088,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.7014534171474807,
+      "middle": 0.12509994771601107,
+      "top": -1.1288209808923801
+    }
+  },
+  {
+    "filename": "dda_00096.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00096.png",
+    "class": "dda",
+    "overall_score": 92.47154779732227,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.6205928669945897,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.6205928669945897,
+      "top-left": 1.5997094262783609,
+      "middle-center": 1.4248503430395536,
+      "top-center": 0.7968545553529117,
+      "middle-left": -0.1630148811898853,
+      "middle-right": -0.824885440401879,
+      "top-right": -1.3045881576236444,
+      "bottom-right": -1.4426519784002476,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.181169110082664,
+      "middle": 1.098118355576406,
+      "bottom": -0.34891060481304415
+    }
+  },
+  {
+    "filename": "dda_00082.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00082.png",
+    "class": "dda",
+    "overall_score": 95.59857631102204,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": -0.013621630604767196,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "bottom-center": -0.013621630604767196,
+      "middle-left": -0.2792044164551042,
+      "middle-center": -1.9106756241127067,
+      "top-left": -1000000.0,
+      "top-center": -1000000.0,
+      "top-right": -1000000.0,
+      "middle-right": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-right": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": -0.4250076806035242,
+      "middle": -1.5194870798523412,
+      "top": -1000000.0
+    }
+  },
+  {
+    "filename": "dda_000104.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_000104.png",
+    "class": "dda",
+    "overall_score": 95.64603408798575,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 4.4700908857205395,
+    "fine_problem_regions": [
+      "top-left"
+    ],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-left",
+      "middle-right",
+      "top-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "middle",
+      "top"
+    ],
+    "fine_z_scores": {
+      "top-left": 4.4700908857205395,
+      "middle-right": 2.9103655570331877,
+      "top-center": 1.4599466013863118,
+      "middle-center": 0.9502605917187568,
+      "bottom-right": 0.5448747039481385,
+      "top-right": -1.1336982123494814,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0,
+      "bottom-center": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 2.359398956719854,
+      "middle": 2.082617548149447,
+      "top": 1.797477339047172
+    }
+  },
+  {
+    "filename": "dda_00044.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00044.png",
+    "class": "dda",
+    "overall_score": 94.43028010427952,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 2.125144504647963,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "middle-left",
+      "bottom-right",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "middle",
+      "bottom",
+      "top"
+    ],
+    "fine_z_scores": {
+      "middle-left": 2.125144504647963,
+      "bottom-right": 1.099811599450873,
+      "middle-center": 0.6791313870423329,
+      "middle-right": 0.47758809419167064,
+      "bottom-center": 0.43908524490278716,
+      "top-left": -0.00666286554605213,
+      "top-center": -0.6575218792207564,
+      "top-right": -1.2941294020160885,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "middle": 1.5997380008771915,
+      "bottom": 1.4875490017477655,
+      "top": -0.852867433506614
+    }
+  },
+  {
+    "filename": "dda_00068.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00068.png",
+    "class": "dda",
+    "overall_score": 94.31354980915785,
+    "num_problem_regions_fine": 1,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 7.435610904982583,
+    "fine_problem_regions": [
+      "bottom-center"
+    ],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "middle-left",
+      "top-center"
+    ],
+    "broad_top3": [
+      "bottom",
+      "top",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 7.435610904982583,
+      "middle-left": 3.1762342982223437,
+      "top-center": 1.2623080465611154,
+      "middle-center": 0.5216425349032794,
+      "top-left": -0.4805692863744708,
+      "bottom-right": -0.6896036063516874,
+      "middle-right": -1.1011345934693988,
+      "top-right": -1.3148693362368054,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "bottom": 1.0459792441155014,
+      "top": 0.9669474761453183,
+      "middle": -0.48005063069865206
+    }
+  },
+  {
+    "filename": "dda_0009.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_0009.png",
+    "class": "dda",
+    "overall_score": 92.85472594201565,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 0.6521432535693068,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "top-center",
+      "middle-left",
+      "top-left"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "top-center": 0.6521432535693068,
+      "middle-left": 0.6316795872536707,
+      "top-left": 0.20622029380013454,
+      "middle-center": -0.12792353713829005,
+      "middle-right": -0.4893276304483425,
+      "bottom-center": -0.5879666610104669,
+      "bottom-right": -1.178714979148928,
+      "top-right": -1.6825808818995684,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 0.40055733157077295,
+      "middle": 0.052479014007159694,
+      "bottom": -0.7394614233243889
+    }
+  },
+  {
+    "filename": "dda_00097.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/dda_00097.png",
+    "class": "dda",
+    "overall_score": 92.85022597759962,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 1.8203630188272966,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-center",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "middle",
+      "bottom"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 1.8203630188272966,
+      "top-center": 1.0597982221364413,
+      "middle-center": 0.9712544644741199,
+      "top-right": 0.603065910119693,
+      "top-left": 0.08794207507770137,
+      "middle-left": 0.038716789633894515,
+      "middle-right": -0.8622874238781068,
+      "bottom-right": -1.4494944481790777,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": 1.1445631457831151,
+      "middle": 0.750340214495986,
+      "bottom": -0.42720757889090516
+    }
+  },
+  {
+    "filename": "Slice 796.png",
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed/dda/Slice 796.png",
+    "class": "dda",
+    "overall_score": 95.00076361000538,
+    "num_problem_regions_fine": 0,
+    "num_problem_regions_broad": 0,
+    "max_z_score": 3.7397049272325202,
+    "fine_problem_regions": [],
+    "broad_problem_regions": [],
+    "fine_top3": [
+      "bottom-center",
+      "top-left",
+      "middle-center"
+    ],
+    "broad_top3": [
+      "top",
+      "bottom",
+      "middle"
+    ],
+    "fine_z_scores": {
+      "bottom-center": 3.7397049272325202,
+      "top-left": 2.6230686275432045,
+      "middle-center": 0.29154668222516045,
+      "top-center": 0.02209173209157329,
+      "middle-right": -1.145283267678434,
+      "bottom-right": -1.4696493499780872,
+      "top-right": -2.001388613597092,
+      "middle-left": -1000000.0,
+      "bottom-left": -1000000.0
+    },
+    "broad_z_scores": {
+      "top": -0.46275899345643007,
+      "bottom": -0.6749293978312577,
+      "middle": -1.2560642319071336
+    }
+  }
+]

@@ -44,6 +44,7 @@ type InputMode = "gallery" | "camera" | "canvas";
 
 const TOKEN_KEY = "ranjana_lipi_token";
 const API_BASE_URL_KEY = "ranjana_lipi_api_base_url";
+const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
 const PRACTICE_MODES: { value: PracticeMode; label: string }[] = [
   { value: "app_suggested", label: "Suggested" },
   { value: "free_practice", label: "Free" },
@@ -478,7 +479,9 @@ export default function App() {
   function renderResults() {
     const feedback = result?.region_feedback ?? null;
     const score = result?.overall_score ?? feedback?.overall_score ?? null;
-    const referenceUri = selectedCharacter ? `${apiBaseUrl}/references/${selectedCharacter.name}.png` : null;
+    const referenceUri = selectedCharacter
+      ? `${apiBaseUrl}/${VALIDATED_CLASSES.has(selectedCharacter.name) ? "references" : "references_general"}/${selectedCharacter.name}.png`
+      : null;
 
     return (
       <ScrollView contentContainerStyle={styles.scrollContent}>
