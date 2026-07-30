@@ -1,0 +1,51 @@
+# Raw source data: large image folders, kept outside git.
+data/Dataset/
+data/Reference/
+
+# Generated ML image outputs: reproducible from preprocessing scripts.
+ranjana-lipi-coach/backend/ml/processed/
+ranjana-lipi-coach/backend/ml/augmented/
+
+# Model checkpoints are large; keep report-friendly metrics/plots tracked.
+ranjana-lipi-coach/backend/ml/saved_models/*.pt
+ranjana-lipi-coach/backend/ml/saved_models/*.pth
+ranjana-lipi-coach/backend/ml/saved_models/*.ckpt
+!ranjana-lipi-coach/backend/ml/saved_models/*.json
+!ranjana-lipi-coach/backend/ml/saved_models/*.png
+
+# Secrets.
+ranjana-lipi-coach/backend/.env
+!ranjana-lipi-coach/backend/.env.example
+
+# Python.
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / Expo.
+node_modules/
+.expo/
+dist/
+*.jks
+*.p8
+*.p12
+*.key
+
+# macOS.
+.DS_Store
+**/.DS_Store
+
+# IDEs.
+.vscode/
+.idea/

@@ -1,0 +1,80 @@
+{
+  "accuracy": 0.19047619047619047,
+  "per_class": {
+    "aa": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 25
+    },
+    "a": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 23
+    },
+    "ka": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 19
+    },
+    "da": {
+      "precision": 1.0,
+      "recall": 0.05263157894736842,
+      "f1": 0.1,
+      "support": 19
+    },
+    "dda": {
+      "precision": 0.20652173913043478,
+      "recall": 1.0,
+      "f1": 0.34234234234234234,
+      "support": 19
+    }
+  },
+  "classes": [
+    "aa",
+    "a",
+    "ka",
+    "da",
+    "dda"
+  ],
+  "confusion_matrix": [
+    [
+      0,
+      12,
+      0,
+      0,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      23
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      19
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      19
+    ]
+  ],
+  "best_checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/recognizer_best.pt"
+}
