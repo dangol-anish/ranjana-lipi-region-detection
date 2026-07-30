@@ -4,6 +4,9 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
 
+from app.schemas.attempt import AttemptOut
+from app.schemas.character import CharacterOut
+
 
 class UserCharacterProgressBase(BaseModel):
     character_id: int
@@ -22,3 +25,14 @@ class UserCharacterProgressOut(UserCharacterProgressBase):
     user_id: int
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class ProgressDashboardItem(BaseModel):
+    character: CharacterOut
+    progress: UserCharacterProgressOut | None = None
+
+
+class CharacterProgressDetail(BaseModel):
+    character: CharacterOut
+    progress: UserCharacterProgressOut | None = None
+    attempts: list[AttemptOut]

@@ -1,6 +1,7 @@
 # Raw source data: large image folders, kept outside git.
 data/Dataset/
 data/Reference/
+data/FlawedValidation/
 
 # Generated ML image outputs: reproducible from preprocessing scripts.
 ranjana-lipi-coach/backend/ml/processed/
@@ -16,6 +17,9 @@ ranjana-lipi-coach/backend/ml/saved_models/*.ckpt
 # Secrets.
 ranjana-lipi-coach/backend/.env
 !ranjana-lipi-coach/backend/.env.example
+
+# User uploads / local practice attempts.
+ranjana-lipi-coach/backend/uploads/
 
 # Python.
 __pycache__/

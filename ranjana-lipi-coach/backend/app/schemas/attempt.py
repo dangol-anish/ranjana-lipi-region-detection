@@ -26,3 +26,9 @@ class AttemptOut(AttemptBase):
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class PracticeAttemptResponse(BaseModel):
+    attempt: AttemptOut
+    overall_score: float
+    region_feedback: dict[str, Any]
