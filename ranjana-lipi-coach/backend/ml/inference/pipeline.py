@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -12,7 +13,7 @@ import numpy as np
 import torch
 
 from ml.feedback.grid_feedback import build_region_feedback
-from ml.preprocessing.normalize import normalize_image
+from ml.preprocessing.normalize import apply_fixed_transform
 from ml.training.autoencoder import RanjanaAutoencoder
 from ml.training.dataset import CLASSES
 from ml.training.model import RanjanaRecognizerCNN
@@ -47,6 +48,27 @@ def decode_upload_image(image_bytes: bytes) -> np.ndarray:
 
 def tensor_from_normalized(normalized: np.ndarray) -> torch.Tensor:
     return torch.from_numpy(normalized.astype(np.float32)).unsqueeze(0).unsqueeze(0)
+
+
+@lru_cache(maxsize=1)
+def load_alignment_transforms() -> dict[str, dict[str, Any]]:
+    transforms_path = ml_root() / "processed" / "alignment_transforms.json"
+    if not transforms_path.is_file():
+        raise FileNotFoundError(f"Missing alignment transforms: {transforms_path}")
+
+    with transforms_path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
+def normalize_attempt_for_class(
+    image: np.ndarray,
+    target_class: str,
+    canvas_size: int = CANVAS_SIZE,
+) -> np.ndarray:
+    transforms = load_alignment_transforms()
+    if target_class not in transforms:
+        raise ValueError(f"Missing alignment transform for class: {target_class}")
+    return apply_fixed_transform(image, transforms[target_class], canvas_size=canvas_size)
 
 
 @lru_cache(maxsize=1)
@@ -136,7 +158,7 @@ def analyze_attempt(
     device_name: str = "cpu",
 ) -> dict[str, Any]:
     decoded = decode_upload_image(image_bytes)
-    normalized = normalize_image(decoded, canvas_size=CANVAS_SIZE)
+    normalized = normalize_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
     recognizer_result = recognize(normalized, device_name)
     feedback = reconstruct_and_feedback(normalized, target_class, rows, cols, device_name)
 

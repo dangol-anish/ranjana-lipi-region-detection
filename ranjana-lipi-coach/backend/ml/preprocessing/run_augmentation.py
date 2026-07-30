@@ -65,9 +65,17 @@ def main() -> None:
     root = project_root()
     processed_root = root / "ranjana-lipi-coach" / "backend" / "ml" / "processed"
     augmented_root = root / "ranjana-lipi-coach" / "backend" / "ml" / "augmented"
+    transforms_path = processed_root / "alignment_transforms.json"
+
+    if not transforms_path.is_file():
+        raise FileNotFoundError(
+            f"Missing corrected alignment transforms: {transforms_path}. "
+            "Run build_dataset.py before regenerating augmented images."
+        )
 
     print(f"Processed source: {processed_root}")
     print(f"Augmented output: {augmented_root}")
+    print(f"Alignment transforms: {transforms_path}")
     print(f"Target per class: {TARGET_COUNT}")
     print()
 
