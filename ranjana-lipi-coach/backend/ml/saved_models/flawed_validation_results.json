@@ -1,0 +1,3483 @@
+{
+  "sample_count": 15,
+  "evaluated_with_expected_region_count": 15,
+  "top_k": 3,
+  "top_k_match_count": 15,
+  "top_k_match_rate": 1.0,
+  "note": "Broad-region demo validation: filenames like top/middle/bottom are matched against that band plus adjacent center cells, because deliberate flaws may span multiple grid cells after normalization.",
+  "results": [
+    {
+      "class_name": "aa",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 79.02222648262978,
+      "mean_error": 0.017481477931141853,
+      "std_error": 0.011564255692064762,
+      "max_region_error": 0.043797530233860016,
+      "threshold": 0.031936797546222806,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.043797530233860016,
+          "max_error": 0.9869801998138428,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.043797530233860016,
+          "max_error": 0.9869801998138428,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.02544795721769333,
+          "max_error": 0.9405403733253479,
+          "normalized_score": 0.5810363525480126,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.023604625836014748,
+          "max_error": 0.9780250787734985,
+          "normalized_score": 0.5389487879790521,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.017003970220685005,
+          "max_error": 0.9855572581291199,
+          "normalized_score": 0.38824039003777383,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.015384710393846035,
+          "max_error": 0.975009024143219,
+          "normalized_score": 0.351268902874164,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.011700614355504513,
+          "max_error": 0.9445674419403076,
+          "normalized_score": 0.2671523780685407,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.010764759965240955,
+          "max_error": 0.9704833626747131,
+          "normalized_score": 0.24578463460751684,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.006551950704306364,
+          "max_error": 0.9513198733329773,
+          "normalized_score": 0.1495963509659508,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.003077178029343486,
+          "max_error": 0.9309130907058716,
+          "normalized_score": 0.07025916787802133,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/aa/aa-bottom.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "bottom-left",
+        "bottom-right",
+        "middle-center",
+        "middle-left",
+        "middle-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.043797530233860016,
+          "max_error": 0.9869801998138428,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.02544795721769333,
+          "max_error": 0.9405403733253479,
+          "normalized_score": 0.5810363525480126,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.023604625836014748,
+          "max_error": 0.9780250787734985,
+          "normalized_score": 0.5389487879790521,
+          "message": "left-side stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_aa_aa-bottom_overlay.png"
+    },
+    {
+      "class_name": "aa",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 94.71722953021526,
+      "mean_error": 0.004402308724820614,
+      "std_error": 0.005114804022014141,
+      "max_region_error": 0.01577804982662201,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01577804982662201,
+          "max_error": 0.9813060760498047,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "base stroke needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01577804982662201,
+          "max_error": 0.9813060760498047,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.007922453805804253,
+          "max_error": 0.9821945428848267,
+          "normalized_score": 0.5021186960911256,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.007087551988661289,
+          "max_error": 0.9783804416656494,
+          "normalized_score": 0.44920329613249127,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.006726786959916353,
+          "max_error": 0.9778936505317688,
+          "normalized_score": 0.42633830123710037,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0016183605184778571,
+          "max_error": 0.9444045424461365,
+          "normalized_score": 0.10257037696428285,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00013221567496657372,
+          "max_error": 0.01927199587225914,
+          "normalized_score": 0.008379722235601555,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.00012545684876386076,
+          "max_error": 0.005336526781320572,
+          "normalized_score": 0.00795135331314392,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0001163514461950399,
+          "max_error": 0.0008784446981735528,
+          "normalized_score": 0.007374260283975163,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00011355427704984322,
+          "max_error": 0.0009158399770967662,
+          "normalized_score": 0.0071969779724136256,
+          "message": "top curve needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/aa/aa-center.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01577804982662201,
+          "max_error": 0.9813060760498047,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.007922453805804253,
+          "max_error": 0.9821945428848267,
+          "normalized_score": 0.5021186960911256,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.007087551988661289,
+          "max_error": 0.9783804416656494,
+          "normalized_score": 0.44920329613249127,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_aa_aa-center_overlay.png"
+    },
+    {
+      "class_name": "aa",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 87.27237284183502,
+      "mean_error": 0.010606355965137482,
+      "std_error": 0.00712374784052372,
+      "max_region_error": 0.022643133997917175,
+      "threshold": 0.01951104076579213,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.022643133997917175,
+          "max_error": 0.9776002168655396,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.020179396495223045,
+          "max_error": 0.9850534200668335,
+          "normalized_score": 0.8911927340570102,
+          "is_problem": true,
+          "message": "bottom-right region needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.022643133997917175,
+          "max_error": 0.9776002168655396,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.020179396495223045,
+          "max_error": 0.9850534200668335,
+          "normalized_score": 0.8911927340570102,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.013030501082539558,
+          "max_error": 0.9757681488990784,
+          "normalized_score": 0.5754725067536219,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.012848901562392712,
+          "max_error": 0.9654687643051147,
+          "normalized_score": 0.5674524367331225,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.011199587024748325,
+          "max_error": 0.9830061197280884,
+          "normalized_score": 0.49461293766925185,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.007301693316549063,
+          "max_error": 0.9756132960319519,
+          "normalized_score": 0.322468317204708,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.005194533616304398,
+          "max_error": 0.9710805416107178,
+          "normalized_score": 0.22940877427931203,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.002938012359663844,
+          "max_error": 0.9795560240745544,
+          "normalized_score": 0.1297529025767412,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.00012144234642619267,
+          "max_error": 0.005336526781320572,
+          "normalized_score": 0.005363318807253604,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/aa/aa-top.jpeg",
+      "expected_regions": [
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center",
+        "top-left",
+        "top-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.022643133997917175,
+          "max_error": 0.9776002168655396,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.020179396495223045,
+          "max_error": 0.9850534200668335,
+          "normalized_score": 0.8911927340570102,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.013030501082539558,
+          "max_error": 0.9757681488990784,
+          "normalized_score": 0.5754725067536219,
+          "message": "base stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_aa_aa-top_overlay.png"
+    },
+    {
+      "class_name": "a",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 81.41954354941845,
+      "mean_error": 0.015483713708817959,
+      "std_error": 0.01470937579870224,
+      "max_region_error": 0.04680638387799263,
+      "threshold": 0.03387043345719576,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.04680638387799263,
+          "max_error": 0.9719967842102051,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.03742071986198425,
+          "max_error": 0.9713443517684937,
+          "normalized_score": 0.7994789761910807,
+          "is_problem": true,
+          "message": "left-side stroke needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.04680638387799263,
+          "max_error": 0.9719967842102051,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.03742071986198425,
+          "max_error": 0.9713443517684937,
+          "normalized_score": 0.7994789761910807,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012203516438603401,
+          "max_error": 0.9804249405860901,
+          "normalized_score": 0.2607233336036719,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.011387902311980724,
+          "max_error": 0.9526035785675049,
+          "normalized_score": 0.24329805826625872,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.008958249352872372,
+          "max_error": 0.9140943884849548,
+          "normalized_score": 0.1913894774743398,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00852532684803009,
+          "max_error": 0.9759091138839722,
+          "normalized_score": 0.1821402582658926,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.00787090789526701,
+          "max_error": 0.9295850396156311,
+          "normalized_score": 0.16815885447984252,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.003884275443851948,
+          "max_error": 0.9466574192047119,
+          "normalized_score": 0.0829860186161113,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.002296145772561431,
+          "max_error": 0.9702698588371277,
+          "normalized_score": 0.049056252210097136,
+          "message": "top curve needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/a/a-bottom.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "bottom-left",
+        "bottom-right",
+        "middle-center",
+        "middle-left",
+        "middle-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.04680638387799263,
+          "max_error": 0.9719967842102051,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.03742071986198425,
+          "max_error": 0.9713443517684937,
+          "normalized_score": 0.7994789761910807,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012203516438603401,
+          "max_error": 0.9804249405860901,
+          "normalized_score": 0.2607233336036719,
+          "message": "base stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_a_a-bottom_overlay.png"
+    },
+    {
+      "class_name": "a",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 77.9584489762783,
+      "mean_error": 0.018367959186434746,
+      "std_error": 0.0069377063773572445,
+      "max_region_error": 0.025187909603118896,
+      "threshold": 0.0270400921581313,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.025187909603118896,
+          "max_error": 0.9777535796165466,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.024964477866888046,
+          "max_error": 0.9690828323364258,
+          "normalized_score": 0.9911294053475885,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.024410031735897064,
+          "max_error": 0.9817971587181091,
+          "normalized_score": 0.969117013699084,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.022136453539133072,
+          "max_error": 0.9714465737342834,
+          "normalized_score": 0.8788523497159137,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01775638945400715,
+          "max_error": 0.9489215612411499,
+          "normalized_score": 0.7049568516717426,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.017054231837391853,
+          "max_error": 0.9696401357650757,
+          "normalized_score": 0.6770800795346713,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.01614764705300331,
+          "max_error": 0.9722714424133301,
+          "normalized_score": 0.6410872242849334,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.01601652055978775,
+          "max_error": 0.9755745530128479,
+          "normalized_score": 0.6358812943256118,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0016379548469558358,
+          "max_error": 0.9200488924980164,
+          "normalized_score": 0.06502940786928249,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/a/a-center.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.025187909603118896,
+          "max_error": 0.9777535796165466,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.024964477866888046,
+          "max_error": 0.9690828323364258,
+          "normalized_score": 0.9911294053475885,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.024410031735897064,
+          "max_error": 0.9817971587181091,
+          "normalized_score": 0.969117013699084,
+          "message": "bottom-right region needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": false,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_a_a-center_overlay.png"
+    },
+    {
+      "class_name": "a",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 80.61783239245415,
+      "mean_error": 0.016151806339621544,
+      "std_error": 0.009515595622360706,
+      "max_region_error": 0.031371839344501495,
+      "threshold": 0.028046300867572427,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.031371839344501495,
+          "max_error": 0.9753462672233582,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.029660703614354134,
+          "max_error": 0.9876921772956848,
+          "normalized_score": 0.9454563147746302,
+          "is_problem": true,
+          "message": "left-side stroke needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.031371839344501495,
+          "max_error": 0.9753462672233582,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.029660703614354134,
+          "max_error": 0.9876921772956848,
+          "normalized_score": 0.9454563147746302,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.022252026945352554,
+          "max_error": 0.9782792925834656,
+          "normalized_score": 0.7092994038697524,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.016910076141357422,
+          "max_error": 0.9827711582183838,
+          "normalized_score": 0.5390208701397431,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012731045484542847,
+          "max_error": 0.9587624073028564,
+          "normalized_score": 0.40581125463318435,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012408406473696232,
+          "max_error": 0.9570789933204651,
+          "normalized_score": 0.395526903521232,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.011387878097593784,
+          "max_error": 0.9713366031646729,
+          "normalized_score": 0.36299682567352315,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.008487456478178501,
+          "max_error": 0.9592617750167847,
+          "normalized_score": 0.270543795184457,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.00015681612421758473,
+          "max_error": 0.0065417601726949215,
+          "normalized_score": 0.004998627032847843,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/a/a-top-region.jpeg",
+      "expected_regions": [
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center",
+        "top-left",
+        "top-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.031371839344501495,
+          "max_error": 0.9753462672233582,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.029660703614354134,
+          "max_error": 0.9876921772956848,
+          "normalized_score": 0.9454563147746302,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.022252026945352554,
+          "max_error": 0.9782792925834656,
+          "normalized_score": 0.7092994038697524,
+          "message": "top curve needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_a_a-top-region_overlay.png"
+    },
+    {
+      "class_name": "ka",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 94.19056326150894,
+      "mean_error": 0.004841197282075882,
+      "std_error": 0.0033146298956125975,
+      "max_region_error": 0.01291330624371767,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01291330624371767,
+          "max_error": 0.9835675954818726,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01291330624371767,
+          "max_error": 0.9835675954818726,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.005645837169140577,
+          "max_error": 0.9844016432762146,
+          "normalized_score": 0.43721081670213463,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0055963266640901566,
+          "max_error": 0.9832566976547241,
+          "normalized_score": 0.43337674786523184,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.005359306465834379,
+          "max_error": 0.970153272151947,
+          "normalized_score": 0.4150220218343915,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.004415787756443024,
+          "max_error": 0.9786443710327148,
+          "normalized_score": 0.3419564031938998,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.003812158713117242,
+          "max_error": 0.983599841594696,
+          "normalized_score": 0.2952116709051068,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.003497373079881072,
+          "max_error": 0.941236674785614,
+          "normalized_score": 0.2708348283447971,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0022060838527977467,
+          "max_error": 0.9787952899932861,
+          "normalized_score": 0.17083803413018317,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0001245984749402851,
+          "max_error": 0.007190110627561808,
+          "normalized_score": 0.009648843804111152,
+          "message": "top-right region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/ka/ka-bottom.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "bottom-left",
+        "bottom-right",
+        "middle-center",
+        "middle-left",
+        "middle-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01291330624371767,
+          "max_error": 0.9835675954818726,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.005645837169140577,
+          "max_error": 0.9844016432762146,
+          "normalized_score": 0.43721081670213463,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0055963266640901566,
+          "max_error": 0.9832566976547241,
+          "normalized_score": 0.43337674786523184,
+          "message": "base stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_ka_ka-bottom_overlay.png"
+    },
+    {
+      "class_name": "ka",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 90.57718627154827,
+      "mean_error": 0.007852344773709774,
+      "std_error": 0.006917980499565601,
+      "max_region_error": 0.01775461435317993,
+      "threshold": 0.016499820398166776,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01775461435317993,
+          "max_error": 0.9806093573570251,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01743912510573864,
+          "max_error": 0.9937596321105957,
+          "normalized_score": 0.9822305772930074,
+          "is_problem": true,
+          "message": "bottom-right region needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01775461435317993,
+          "max_error": 0.9806093573570251,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01743912510573864,
+          "max_error": 0.9937596321105957,
+          "normalized_score": 0.9822305772930074,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.016162827610969543,
+          "max_error": 0.9864328503608704,
+          "normalized_score": 0.9103451806642429,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.007899739779531956,
+          "max_error": 0.9744582176208496,
+          "normalized_score": 0.4449400940165775,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0046435012482106686,
+          "max_error": 0.9808148741722107,
+          "normalized_score": 0.26153771384952645,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.00427562091499567,
+          "max_error": 0.9748595356941223,
+          "normalized_score": 0.24081744778815134,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0011980627896264195,
+          "max_error": 0.9763683080673218,
+          "normalized_score": 0.0674789531213806,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.001171980402432382,
+          "max_error": 0.972439706325531,
+          "normalized_score": 0.06600990475596982,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00012563260679598898,
+          "max_error": 0.007190110627561808,
+          "normalized_score": 0.007076053824480148,
+          "message": "top-right region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/ka/ka-middle.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01775461435317993,
+          "max_error": 0.9806093573570251,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.01743912510573864,
+          "max_error": 0.9937596321105957,
+          "normalized_score": 0.9822305772930074,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.016162827610969543,
+          "max_error": 0.9864328503608704,
+          "normalized_score": 0.9103451806642429,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_ka_ka-middle_overlay.png"
+    },
+    {
+      "class_name": "ka",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 92.45741423219442,
+      "mean_error": 0.00628548813983798,
+      "std_error": 0.005304065532982349,
+      "max_region_error": 0.01621049828827381,
+      "threshold": 0.012915570056065917,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01621049828827381,
+          "max_error": 0.9861966967582703,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "left-side stroke needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01621049828827381,
+          "max_error": 0.9861966967582703,
+          "normalized_score": 1.0,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012207726947963238,
+          "max_error": 0.9812151193618774,
+          "normalized_score": 0.7530753670165674,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.009852680377662182,
+          "max_error": 0.9843041300773621,
+          "normalized_score": 0.6077962689641265,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.007037401665002108,
+          "max_error": 0.9813016653060913,
+          "normalized_score": 0.43412617797768455,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.006454420741647482,
+          "max_error": 0.9828563332557678,
+          "normalized_score": 0.39816300689019635,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.002294432371854782,
+          "max_error": 0.9841333627700806,
+          "normalized_score": 0.1415399040209952,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0017257729778066278,
+          "max_error": 0.9886178970336914,
+          "normalized_score": 0.10646020542471543,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0006611644057556987,
+          "max_error": 0.9752371311187744,
+          "normalized_score": 0.0407861864575727,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00012529621017165482,
+          "max_error": 0.007190110627561808,
+          "normalized_score": 0.007729325030205293,
+          "message": "top-right region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/ka/ka-top.jpeg",
+      "expected_regions": [
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center",
+        "top-left",
+        "top-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01621049828827381,
+          "max_error": 0.9861966967582703,
+          "normalized_score": 1.0,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012207726947963238,
+          "max_error": 0.9812151193618774,
+          "normalized_score": 0.7530753670165674,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.009852680377662182,
+          "max_error": 0.9843041300773621,
+          "normalized_score": 0.6077962689641265,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_ka_ka-top_overlay.png"
+    },
+    {
+      "class_name": "da",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 88.3569497615099,
+      "mean_error": 0.00970254186540842,
+      "std_error": 0.005486126057803631,
+      "max_region_error": 0.018098941072821617,
+      "threshold": 0.01656019943766296,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.018098941072821617,
+          "max_error": 0.9641807079315186,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.016898298636078835,
+          "max_error": 0.9670227766036987,
+          "normalized_score": 0.9336622826765409,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.018098941072821617,
+          "max_error": 0.9641807079315186,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.016898298636078835,
+          "max_error": 0.9670227766036987,
+          "normalized_score": 0.9336622826765409,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.015664154663681984,
+          "max_error": 0.9314382672309875,
+          "normalized_score": 0.8654735434883621,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.009820426814258099,
+          "max_error": 0.9864206910133362,
+          "normalized_score": 0.5425967615865108,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.00839908141642809,
+          "max_error": 0.9724974036216736,
+          "normalized_score": 0.4640647970858704,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.005615693517029285,
+          "max_error": 0.9710680842399597,
+          "normalized_score": 0.3102774628877114,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.005544410552829504,
+          "max_error": 0.9539118409156799,
+          "normalized_score": 0.30633894715284204,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0050315288826823235,
+          "max_error": 0.9093152284622192,
+          "normalized_score": 0.27800128540326313,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.002250342397019267,
+          "max_error": 0.9308659434318542,
+          "normalized_score": 0.1243355833893789,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/da/da-bottom.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "bottom-left",
+        "bottom-right",
+        "middle-center",
+        "middle-left",
+        "middle-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.018098941072821617,
+          "max_error": 0.9641807079315186,
+          "normalized_score": 1.0,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.016898298636078835,
+          "max_error": 0.9670227766036987,
+          "normalized_score": 0.9336622826765409,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.015664154663681984,
+          "max_error": 0.9314382672309875,
+          "normalized_score": 0.8654735434883621,
+          "message": "top curve needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_da_da-bottom_overlay.png"
+    },
+    {
+      "class_name": "da",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 92.3265241086483,
+      "mean_error": 0.006394563242793083,
+      "std_error": 0.0041277906857430935,
+      "max_region_error": 0.013579520396888256,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.013579520396888256,
+          "max_error": 0.9526782035827637,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.013579520396888256,
+          "max_error": 0.9526782035827637,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01180216297507286,
+          "max_error": 0.9598467350006104,
+          "normalized_score": 0.8691148604760242,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.009288940578699112,
+          "max_error": 0.9668257236480713,
+          "normalized_score": 0.684040401075407,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.007257613819092512,
+          "max_error": 0.9567704200744629,
+          "normalized_score": 0.5344528825005921,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.005524022970348597,
+          "max_error": 0.9499484896659851,
+          "normalized_score": 0.40679072668976035,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0038923444226384163,
+          "max_error": 0.9657524824142456,
+          "normalized_score": 0.286633423631835,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0023706755600869656,
+          "max_error": 0.9736387729644775,
+          "normalized_score": 0.17457726714930266,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0021025240421295166,
+          "max_error": 0.9406439661979675,
+          "normalized_score": 0.15483050805029236,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0017332670977339149,
+          "max_error": 0.9774240255355835,
+          "normalized_score": 0.12763831468827813,
+          "message": "bottom-right region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/da/da-middle.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.013579520396888256,
+          "max_error": 0.9526782035827637,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.01180216297507286,
+          "max_error": 0.9598467350006104,
+          "normalized_score": 0.8691148604760242,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.009288940578699112,
+          "max_error": 0.9668257236480713,
+          "normalized_score": 0.684040401075407,
+          "message": "base stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_da_da-middle_overlay.png"
+    },
+    {
+      "class_name": "da",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 97.9963568970561,
+      "mean_error": 0.001669702585786581,
+      "std_error": 0.0015381861012429,
+      "max_region_error": 0.004005383234471083,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.004005383234471083,
+          "max_error": 0.9734392762184143,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0036518375854939222,
+          "max_error": 0.9620181322097778,
+          "normalized_score": 0.9117323790806133,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0029696414712816477,
+          "max_error": 0.9457385540008545,
+          "normalized_score": 0.7414125683965404,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0026944454293698072,
+          "max_error": 0.9509355425834656,
+          "normalized_score": 0.6727060237784246,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.000665979809127748,
+          "max_error": 0.9760341644287109,
+          "normalized_score": 0.16627118309084643,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0006599253974854946,
+          "max_error": 0.9733295440673828,
+          "normalized_score": 0.1647596144623696,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0001401315093971789,
+          "max_error": 0.007004938088357449,
+          "normalized_score": 0.03498579316735056,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00012371783668641,
+          "max_error": 0.005973232444375753,
+          "normalized_score": 0.030887889983078523,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.00011626099148998037,
+          "max_error": 0.000539371045306325,
+          "normalized_score": 0.029026184183679696,
+          "message": "top curve needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/da/da-top.jpeg",
+      "expected_regions": [
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center",
+        "top-left",
+        "top-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.004005383234471083,
+          "max_error": 0.9734392762184143,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0036518375854939222,
+          "max_error": 0.9620181322097778,
+          "normalized_score": 0.9117323790806133,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0029696414712816477,
+          "max_error": 0.9457385540008545,
+          "normalized_score": 0.7414125683965404,
+          "message": "right-side stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": false,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_da_da-top_overlay.png"
+    },
+    {
+      "class_name": "dda",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 99.26326326094568,
+      "mean_error": 0.0006139472825452685,
+      "std_error": 0.0005073401844128966,
+      "max_region_error": 0.0011768816038966179,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0011768816038966179,
+          "max_error": 0.9765945076942444,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0011572608491405845,
+          "max_error": 0.9796193838119507,
+          "normalized_score": 0.9833281829785854,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0011377949267625809,
+          "max_error": 0.981774091720581,
+          "normalized_score": 0.9667879275157142,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0011348742991685867,
+          "max_error": 0.9796976447105408,
+          "normalized_score": 0.9643062610640303,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0006157333264127374,
+          "max_error": 0.9794448018074036,
+          "normalized_score": 0.5231905438695479,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 7.962564995978028e-05,
+          "max_error": 0.005809318739920855,
+          "normalized_score": 0.06765816518513185,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 7.644051947863773e-05,
+          "max_error": 0.0031155033502727747,
+          "normalized_score": 0.06495174979840417,
+          "message": "bottom-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 7.504366658395156e-05,
+          "max_error": 0.0004228957695886493,
+          "normalized_score": 0.06376483950083368,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 7.187069422798231e-05,
+          "max_error": 0.0003799578989855945,
+          "normalized_score": 0.061068754911301794,
+          "message": "right-side stroke needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/dda/da-middle.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0011768816038966179,
+          "max_error": 0.9765945076942444,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0011572608491405845,
+          "max_error": 0.9796193838119507,
+          "normalized_score": 0.9833281829785854,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0011377949267625809,
+          "max_error": 0.981774091720581,
+          "normalized_score": 0.9667879275157142,
+          "message": "top-left region needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": false,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_dda_da-middle_overlay.png"
+    },
+    {
+      "class_name": "dda",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 96.68784765526652,
+      "mean_error": 0.002760126953944564,
+      "std_error": 0.002497480483725667,
+      "max_region_error": 0.008358503691852093,
+      "threshold": 0.012,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.008358503691852093,
+          "max_error": 0.9860890507698059,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.004840480629354715,
+          "max_error": 0.9851742386817932,
+          "normalized_score": 0.5791085112606025,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0037121044006198645,
+          "max_error": 0.9839857816696167,
+          "normalized_score": 0.4441111157537013,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.002720673568546772,
+          "max_error": 0.9799826145172119,
+          "normalized_score": 0.32549768102619814,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0022375457920134068,
+          "max_error": 0.9829734563827515,
+          "normalized_score": 0.2676969317121408,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.002195758745074272,
+          "max_error": 0.9854918122291565,
+          "normalized_score": 0.2626975863173582,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0006202111253514886,
+          "max_error": 0.9840197563171387,
+          "normalized_score": 0.07420121450159473,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 7.967194687807932e-05,
+          "max_error": 0.005809318739920855,
+          "normalized_score": 0.009531843235978218,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 7.619423558935523e-05,
+          "max_error": 0.0031155033502727747,
+          "normalized_score": 0.009115774592960904,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/dda/dda-lower-middle.jpeg",
+      "expected_regions": [
+        "bottom-center",
+        "bottom-left",
+        "bottom-right",
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.008358503691852093,
+          "max_error": 0.9860890507698059,
+          "normalized_score": 1.0,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.004840480629354715,
+          "max_error": 0.9851742386817932,
+          "normalized_score": 0.5791085112606025,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.0037121044006198645,
+          "max_error": 0.9839857816696167,
+          "normalized_score": 0.4441111157537013,
+          "message": "right-side stroke needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": false,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_dda_dda-lower-middle_overlay.png"
+    },
+    {
+      "class_name": "dda",
+      "grid": {
+        "rows": 3,
+        "cols": 3
+      },
+      "overall_score": 88.08829970657825,
+      "mean_error": 0.009926416911184788,
+      "std_error": 0.0077062975615262985,
+      "max_region_error": 0.02564231865108013,
+      "threshold": 0.01955928886309266,
+      "threshold_settings": {
+        "std_multiplier": 1.25,
+        "min_relative_to_max": 0.55,
+        "min_problem_region_error": 0.012
+      },
+      "problem_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.02564231865108013,
+          "max_error": 0.9865972399711609,
+          "normalized_score": 1.0,
+          "is_problem": true,
+          "message": "left-side stroke needs improvement"
+        }
+      ],
+      "all_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.02564231865108013,
+          "max_error": 0.9865972399711609,
+          "normalized_score": 1.0,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.017592038959264755,
+          "max_error": 0.9857839345932007,
+          "normalized_score": 0.6860549234506812,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.013948008418083191,
+          "max_error": 0.983248770236969,
+          "normalized_score": 0.5439448985825491,
+          "message": "central stroke balance needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "region": "bottom-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.012842641212046146,
+          "max_error": 0.9875926971435547,
+          "normalized_score": 0.5008377513281225,
+          "message": "base stroke needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "region": "bottom-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.007280897349119186,
+          "max_error": 0.988741934299469,
+          "normalized_score": 0.283940678227727,
+          "message": "bottom-right region needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "region": "middle-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.004908665083348751,
+          "max_error": 0.9791390299797058,
+          "normalized_score": 0.19142828502140868,
+          "message": "right-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 0,
+          "region": "top-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0027390997856855392,
+          "max_error": 0.988745927810669,
+          "normalized_score": 0.10681950501267014,
+          "message": "top-left region needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "region": "top-right",
+          "bounds": {
+            "x_start": 85,
+            "x_end": 128,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.0027300624642521143,
+          "max_error": 0.987333357334137,
+          "normalized_score": 0.10646706724928387,
+          "message": "top-right region needs improvement"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "region": "bottom-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 85,
+            "y_end": 128
+          },
+          "mean_error": 0.0016540118958801031,
+          "max_error": 0.9799582958221436,
+          "normalized_score": 0.06450321121059897,
+          "message": "bottom-left region needs improvement"
+        }
+      ],
+      "image_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/FlawedValidation/dda/dda-top.jpeg",
+      "expected_regions": [
+        "middle-center",
+        "middle-left",
+        "middle-right",
+        "top-center",
+        "top-left",
+        "top-right"
+      ],
+      "predicted_top_regions": [
+        {
+          "row": 1,
+          "col": 0,
+          "region": "middle-left",
+          "bounds": {
+            "x_start": 0,
+            "x_end": 43,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.02564231865108013,
+          "max_error": 0.9865972399711609,
+          "normalized_score": 1.0,
+          "message": "left-side stroke needs improvement"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "region": "top-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 0,
+            "y_end": 43
+          },
+          "mean_error": 0.017592038959264755,
+          "max_error": 0.9857839345932007,
+          "normalized_score": 0.6860549234506812,
+          "message": "top curve needs improvement"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "region": "middle-center",
+          "bounds": {
+            "x_start": 43,
+            "x_end": 85,
+            "y_start": 43,
+            "y_end": 85
+          },
+          "mean_error": 0.013948008418083191,
+          "max_error": 0.983248770236969,
+          "normalized_score": 0.5439448985825491,
+          "message": "central stroke balance needs improvement"
+        }
+      ],
+      "matched_expected_in_top_k": true,
+      "matched_expected_in_problem_regions": true,
+      "overlay_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/flawed_validation/flawed_dda_dda-top_overlay.png"
+    }
+  ]
+}

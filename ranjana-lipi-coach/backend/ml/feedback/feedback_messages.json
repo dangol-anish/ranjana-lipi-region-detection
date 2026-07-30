@@ -1,0 +1,18 @@
+{
+  "default": {
+    "top-left": "top-left region needs improvement",
+    "top-center": "top curve needs improvement",
+    "top-right": "top-right region needs improvement",
+    "middle-left": "left-side stroke needs improvement",
+    "middle-center": "central stroke balance needs improvement",
+    "middle-right": "right-side stroke needs improvement",
+    "bottom-left": "bottom-left region needs improvement",
+    "bottom-center": "base stroke needs improvement",
+    "bottom-right": "bottom-right region needs improvement"
+  },
+  "aa": {},
+  "a": {},
+  "ka": {},
+  "da": {},
+  "dda": {}
+}
