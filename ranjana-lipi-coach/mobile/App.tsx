@@ -297,7 +297,7 @@ export default function App() {
     return (
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} style={styles.centerScreen}>
         <View style={styles.authPanel}>
-          <Text style={styles.brand}>Ranjana Lipi Coach</Text>
+          <Text style={styles.brand}>Ranjana Lipi Learning App</Text>
           <Text style={styles.subtitle}>Sign in to save attempts and progress.</Text>
 
           <Text style={styles.label}>Backend URL</Text>
