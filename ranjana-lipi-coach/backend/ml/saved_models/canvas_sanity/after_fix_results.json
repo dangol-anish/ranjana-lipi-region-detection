@@ -1,0 +1,38 @@
+{
+  "near_empty_canvas": {
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/near_empty_canvas_raw.png",
+    "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/near_empty_canvas_raw_normalized_after_fix.png",
+    "ink_pixel_count": 62,
+    "min_required_ink_pixels": 300,
+    "insufficient_input_after_fix": true,
+    "message_after_fix": "Insufficient input \u2014 please draw the full character.",
+    "overall_score_after_fix": 0.0,
+    "fine_problem_regions_after_fix": [],
+    "broad_problem_regions_after_fix": [],
+    "recognizer_skipped": true
+  },
+  "proper_canvas_da": {
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/proper_canvas_da_raw.png",
+    "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/proper_canvas_da_raw_normalized_after_fix.png",
+    "ink_pixel_count": 543,
+    "min_required_ink_pixels": 300,
+    "insufficient_input_after_fix": false,
+    "message_after_fix": null,
+    "overall_score_after_fix": 95.666697435081,
+    "fine_problem_regions_after_fix": [],
+    "broad_problem_regions_after_fix": [],
+    "recognizer_skipped": false
+  },
+  "normal_photo_or_demo_da": {
+    "path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/demo_ready/da_00089.png",
+    "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/da_00089_normalized_after_fix.png",
+    "ink_pixel_count": 2350,
+    "min_required_ink_pixels": 300,
+    "insufficient_input_after_fix": false,
+    "message_after_fix": null,
+    "overall_score_after_fix": 94.10747848451138,
+    "fine_problem_regions_after_fix": [],
+    "broad_problem_regions_after_fix": [],
+    "recognizer_skipped": false
+  }
+}

@@ -12,7 +12,7 @@ import cv2
 import numpy as np
 import torch
 
-from ml.feedback.grid_feedback import build_region_feedback
+from ml.feedback.grid_feedback import DEFAULT_INK_THRESHOLD, build_region_feedback
 from ml.preprocessing.normalize import apply_fixed_transform
 from ml.training.autoencoder import RanjanaAutoencoder
 from ml.training.dataset import CLASSES as VALIDATED_CLASSES
@@ -21,6 +21,8 @@ from ml.training.model import RanjanaRecognizerCNN
 
 CANVAS_SIZE = 128
 VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
+MIN_NORMALIZED_INK_PIXELS = 300
+INSUFFICIENT_INPUT_MESSAGE = "Insufficient input — please draw the full character."
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,62 @@ def decode_upload_image(image_bytes: bytes) -> np.ndarray:
 
 def tensor_from_normalized(normalized: np.ndarray) -> torch.Tensor:
     return torch.from_numpy(normalized.astype(np.float32)).unsqueeze(0).unsqueeze(0)
+
+
+def normalized_ink_pixel_count(
+    normalized: np.ndarray,
+    ink_threshold: float = DEFAULT_INK_THRESHOLD,
+) -> int:
+    return int(np.count_nonzero(np.asarray(normalized, dtype=np.float32) > ink_threshold))
+
+
+def has_enough_ink(normalized: np.ndarray) -> bool:
+    return normalized_ink_pixel_count(normalized) >= MIN_NORMALIZED_INK_PIXELS
+
+
+def insufficient_input_feedback(
+    class_name: str,
+    normalized: np.ndarray,
+    rows: int = 3,
+    cols: int = 3,
+) -> dict[str, Any]:
+    ink_pixel_count = normalized_ink_pixel_count(normalized)
+    return {
+        "class_name": class_name,
+        "grid": {"rows": rows, "cols": cols},
+        "overall_score": 0.0,
+        "mean_error": 0.0,
+        "std_error": 0.0,
+        "max_region_error": 0.0,
+        "threshold": 0.0,
+        "mean_z_score": 0.0,
+        "std_z_score": 0.0,
+        "max_z_score": 0.0,
+        "insufficient_input": True,
+        "message": INSUFFICIENT_INPUT_MESSAGE,
+        "warning": INSUFFICIENT_INPUT_MESSAGE,
+        "ink_pixel_count": ink_pixel_count,
+        "min_required_ink_pixels": MIN_NORMALIZED_INK_PIXELS,
+        "threshold_settings": {
+            "ink_threshold": DEFAULT_INK_THRESHOLD,
+            "min_required_ink_pixels": MIN_NORMALIZED_INK_PIXELS,
+        },
+        "problem_regions": [],
+        "all_regions": [],
+        "fine_grid": {
+            "rows": rows,
+            "cols": cols,
+            "problem_regions": [],
+            "all_regions": [],
+            "insufficient_input": True,
+        },
+        "broad_bands": {
+            "bands": ["top", "middle", "bottom"],
+            "problem_regions": [],
+            "all_regions": [],
+            "insufficient_input": True,
+        },
+    }
 
 
 @lru_cache(maxsize=1)
@@ -269,14 +327,40 @@ def analyze_attempt(
     decoded = decode_upload_image(image_bytes)
     if target_class in VALIDATED_CLASS_SET:
         normalized = normalize_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
+        model_route = "validated_5_class"
+        if not has_enough_ink(normalized):
+            feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
+            feedback["recognizer"] = {
+                "predicted_class": None,
+                "confidence": 0.0,
+                "probabilities": {},
+                "matches_target": False,
+                "model_route": model_route,
+                "skipped": True,
+            }
+            feedback["predicted_class"] = None
+            feedback["recognizer_confidence"] = 0.0
+            return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize(normalized, device_name)
         feedback = reconstruct_and_feedback(normalized, target_class, rows, cols, device_name)
-        model_route = "validated_5_class"
     else:
         normalized = normalize_general_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
+        model_route = "general_62_class"
+        if not has_enough_ink(normalized):
+            feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
+            feedback["recognizer"] = {
+                "predicted_class": None,
+                "confidence": 0.0,
+                "probabilities": {},
+                "matches_target": False,
+                "model_route": model_route,
+                "skipped": True,
+            }
+            feedback["predicted_class"] = None
+            feedback["recognizer_confidence"] = 0.0
+            return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize_general(normalized, device_name)
         feedback = reconstruct_and_feedback_general(normalized, target_class, rows, cols, device_name)
-        model_route = "general_62_class"
 
     feedback["recognizer"] = {
         "predicted_class": recognizer_result.predicted_class,

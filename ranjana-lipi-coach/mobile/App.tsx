@@ -21,6 +21,7 @@ import {
   DEFAULT_API_BASE_URL,
   fetchCharacters,
   fetchCurrentUser,
+  fetchProfile,
   fetchProgress,
   loginUser,
   registerUser,
@@ -36,20 +37,89 @@ import type {
   RegionFeedback,
   SelectedImage,
   User,
+  UserProfile,
 } from "./src/types";
 
-type Screen = "auth" | "home" | "practice" | "results" | "progress";
+type Screen = "auth" | "home" | "practice" | "results" | "progress" | "profile";
 type AuthMode = "login" | "register";
 type InputMode = "gallery" | "camera" | "canvas";
+type SuggestedPick = {
+  item: ProgressDashboardItem;
+  reason: string;
+};
 
 const TOKEN_KEY = "ranjana_lipi_token";
 const API_BASE_URL_KEY = "ranjana_lipi_api_base_url";
 const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
 const PRACTICE_MODES: { value: PracticeMode; label: string }[] = [
-  { value: "app_suggested", label: "Suggested" },
-  { value: "free_practice", label: "Free" },
-  { value: "assessment", label: "Assessment" },
+  { value: "app_suggested", label: "Suggestive Learning" },
+  { value: "free_practice", label: "Free Practice" },
 ];
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const DEVANAGARI_LABELS: Record<string, string> = {
+  a: "अ",
+  aa: "आ",
+  ah: "अः",
+  ai: "ऐ",
+  am: "अं",
+  au: "औ",
+  ba: "ब",
+  bha: "भ",
+  ca: "च",
+  cha: "छ",
+  da: "द",
+  dda: "ड",
+  ddha: "ढ",
+  dha: "ध",
+  e: "ए",
+  eight: "८",
+  five: "५",
+  four: "४",
+  ga: "ग",
+  gha: "घ",
+  gyan: "ज्ञ",
+  ha: "ह",
+  i: "इ",
+  ii: "ई",
+  ja: "ज",
+  jha: "झ",
+  ka: "क",
+  kha: "ख",
+  ksa: "क्ष",
+  la: "ल",
+  lu: "ऌ",
+  luu: "ॡ",
+  ma: "म",
+  na: "न",
+  nine: "९",
+  nna: "ण",
+  nnna: "ऩ",
+  nya: "ञ",
+  o: "ओ",
+  one: "१",
+  pa: "प",
+  pha: "फ",
+  ra: "र",
+  ri: "ऋ",
+  rii: "ॠ",
+  sa: "स",
+  saa: "ष",
+  seven: "७",
+  sha: "श",
+  six: "६",
+  ta: "त",
+  tha: "थ",
+  three: "३",
+  tra: "त्र",
+  tta: "ट",
+  ttha: "ठ",
+  two: "२",
+  u: "उ",
+  uu: "ऊ",
+  wo: "व",
+  ya: "य",
+  zero: "०",
+};
 
 function scoreColor(score: number | null | undefined): string {
   if (typeof score !== "number") {
@@ -62,6 +132,107 @@ function scoreColor(score: number | null | undefined): string {
     return "#a46a16";
   }
   return "#b33b2e";
+}
+
+function characterDisplayLabel(character: Character): string {
+  return DEVANAGARI_LABELS[character.name] ?? character.display_label;
+}
+
+function characterGlyphUri(baseUrl: string, characterName: string): string {
+  return `${baseUrl}/display_glyphs/${characterName}.png`;
+}
+
+function heatmapColor(attempts: number): string {
+  if (attempts <= 0) {
+    return "#e7ede9";
+  }
+  if (attempts === 1) {
+    return "#bcd9ca";
+  }
+  if (attempts === 2) {
+    return "#7eb996";
+  }
+  if (attempts <= 4) {
+    return "#3f8a63";
+  }
+  return "#1f5f40";
+}
+
+function scoreText(score: number | null | undefined): string {
+  return typeof score === "number" ? `${score.toFixed(1)}%` : "--";
+}
+
+function hoursSince(timestamp: string | null | undefined, now: number): number {
+  if (!timestamp) {
+    return Number.POSITIVE_INFINITY;
+  }
+  return Math.max(0, (now - new Date(timestamp).getTime()) / (1000 * 60 * 60));
+}
+
+function ankiStyleIntervalHours(item: ProgressDashboardItem): number {
+  const progress = item.progress;
+  if (!progress || progress.attempts_count === 0 || progress.best_score === null) {
+    return 0;
+  }
+
+  const attempts = Math.max(1, progress.attempts_count);
+  const score = progress.best_score;
+  if (score < 70) {
+    return 0.25;
+  }
+  if (score < 85) {
+    return Math.min(24, 4 * attempts);
+  }
+  if (score < 95) {
+    return Math.min(24 * 7, 24 * Math.pow(1.7, attempts - 1));
+  }
+  return Math.min(24 * 30, 24 * 3 * Math.pow(2.3, attempts - 1));
+}
+
+function suggestedReason(item: ProgressDashboardItem, intervalHours: number, elapsedHours: number): string {
+  const progress = item.progress;
+  if (!progress || progress.attempts_count === 0) {
+    return "New character";
+  }
+  if ((progress.best_score ?? 0) < 70) {
+    return "Needs quick review";
+  }
+  if (elapsedHours >= intervalHours) {
+    return "Due for review";
+  }
+  return "Weakest upcoming review";
+}
+
+function chooseSuggestedPick(progress: ProgressDashboardItem[]): SuggestedPick | null {
+  if (progress.length === 0) {
+    return null;
+  }
+
+  const now = Date.now();
+  const ranked = progress
+    .map((item, index) => {
+      const intervalHours = ankiStyleIntervalHours(item);
+      const elapsedHours = hoursSince(item.progress?.last_practiced_at, now);
+      const score = item.progress?.best_score ?? 0;
+      const dueRatio = intervalHours === 0 ? 10 : elapsedHours / intervalHours;
+      const weaknessBoost = Math.max(0, 100 - score) / 25;
+      const newBoost = item.progress ? 0 : 4;
+      const masteredPenalty = item.progress?.mastered ? 1.5 : 0;
+      return {
+        item,
+        index,
+        intervalHours,
+        elapsedHours,
+        priority: dueRatio + weaknessBoost + newBoost - masteredPenalty,
+      };
+    })
+    .sort((a, b) => b.priority - a.priority || a.index - b.index);
+
+  const top = ranked[0];
+  return {
+    item: top.item,
+    reason: suggestedReason(top.item, top.intervalHours, top.elapsedHours),
+  };
 }
 
 function toSelectedImage(asset: ImagePicker.ImagePickerAsset, source: "camera" | "gallery"): SelectedImage {
@@ -78,6 +249,10 @@ function toSelectedImage(asset: ImagePicker.ImagePickerAsset, source: "camera" |
 }
 
 function problemRegionText(feedback: RegionFeedback | null): string {
+  if (feedback?.insufficient_input) {
+    return feedback.message ?? feedback.warning ?? "Insufficient input — please draw the full character.";
+  }
+
   const regions = feedback?.problem_regions;
   if (!Array.isArray(regions) || regions.length === 0) {
     return "No strong flawed region was flagged.";
@@ -99,6 +274,7 @@ export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [progress, setProgress] = useState<ProgressDashboardItem[]>([]);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(null);
   const [selectedMode, setSelectedMode] = useState<PracticeMode>("app_suggested");
   const [inputMode, setInputMode] = useState<InputMode>("gallery");
@@ -108,6 +284,9 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [characterSearch, setCharacterSearch] = useState("");
+  const [characterPickerOpen, setCharacterPickerOpen] = useState(false);
+  const [suggestedReasonText, setSuggestedReasonText] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const drawingRef = useRef<DrawingCanvasHandle>(null);
@@ -116,6 +295,20 @@ export default function App() {
     () => characters.find((character) => character.id === selectedCharacterId) ?? characters[0] ?? null,
     [characters, selectedCharacterId],
   );
+
+  const filteredCharacters = useMemo(() => {
+    const query = characterSearch.trim().toLowerCase();
+    if (!query) {
+      return characters;
+    }
+    return characters.filter((character) => {
+      return (
+        character.name.toLowerCase().includes(query) ||
+        character.display_label.toLowerCase().includes(query) ||
+        characterDisplayLabel(character).includes(query)
+      );
+    });
+  }, [characterSearch, characters]);
 
   const loadSession = useCallback(async () => {
     const storedBaseUrl = await SecureStore.getItemAsync(API_BASE_URL_KEY);
@@ -145,12 +338,14 @@ export default function App() {
       return;
     }
 
-    const [nextCharacters, nextProgress] = await Promise.all([
+    const [nextCharacters, nextProgress, nextProfile] = await Promise.all([
       fetchCharacters(apiBaseUrl, token),
       fetchProgress(apiBaseUrl, token),
+      fetchProfile(apiBaseUrl, token),
     ]);
     setCharacters(nextCharacters);
     setProgress(nextProgress);
+    setProfile(nextProfile);
     setSelectedCharacterId((current) => current ?? nextCharacters[0]?.id ?? null);
   }, [apiBaseUrl, token]);
 
@@ -167,12 +362,25 @@ export default function App() {
   }, [refreshAppData, token]);
 
   async function handleAuth() {
-    if (!email.trim() || !password.trim()) {
+    const emailValue = email.trim();
+    const displayNameValue = displayName.trim();
+
+    if (!emailValue || !password.trim()) {
       setMessage("Email and password are required.");
       return;
     }
 
-    if (authMode === "register" && !displayName.trim()) {
+    if (!EMAIL_PATTERN.test(emailValue)) {
+      setMessage("Enter a valid email address, for example name@example.com.");
+      return;
+    }
+
+    if (authMode === "register" && password.length < 8) {
+      setMessage("Password must be at least 8 characters.");
+      return;
+    }
+
+    if (authMode === "register" && !displayNameValue) {
       setMessage("Display name is required for registration.");
       return;
     }
@@ -182,8 +390,8 @@ export default function App() {
     try {
       const response =
         authMode === "register"
-          ? await registerUser(apiBaseUrl, email.trim(), password, displayName.trim())
-          : await loginUser(apiBaseUrl, email.trim(), password);
+          ? await registerUser(apiBaseUrl, emailValue, password, displayNameValue)
+          : await loginUser(apiBaseUrl, emailValue, password);
       await SecureStore.setItemAsync(TOKEN_KEY, response.access_token);
       await SecureStore.setItemAsync(API_BASE_URL_KEY, apiBaseUrl);
       const currentUser = await fetchCurrentUser(apiBaseUrl, response.access_token);
@@ -285,11 +493,42 @@ export default function App() {
   }
 
   function beginPractice(mode: PracticeMode) {
+    if (mode === "app_suggested") {
+      const pick = chooseSuggestedPick(progress);
+      if (pick) {
+        setSelectedCharacterId(pick.item.character.id);
+        setSuggestedReasonText(pick.reason);
+      } else {
+        setSuggestedReasonText(null);
+      }
+    } else {
+      setSuggestedReasonText(null);
+    }
+
     setSelectedMode(mode);
     setSelectedImage(null);
     setSubmittedImage(null);
     setResult(null);
     setMessage(null);
+    setCharacterSearch("");
+    setCharacterPickerOpen(mode === "free_practice");
+    setScreen("practice");
+  }
+
+  function continuePractice() {
+    if (selectedMode === "app_suggested") {
+      const pick = chooseSuggestedPick(progress);
+      if (pick) {
+        setSelectedCharacterId(pick.item.character.id);
+        setSuggestedReasonText(pick.reason);
+      }
+    }
+
+    setSelectedImage(null);
+    setSubmittedImage(null);
+    setResult(null);
+    setMessage(null);
+    drawingRef.current?.clear();
     setScreen("practice");
   }
 
@@ -357,39 +596,24 @@ export default function App() {
   function renderHome() {
     return (
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Header title="Practice" userName={user?.display_name ?? user?.email ?? "Student"} onLogout={handleLogout} />
+        <Header
+          title="Ranjana Lipi Learning App"
+          userName={user?.display_name ?? user?.email ?? "Student"}
+          onLogout={handleLogout}
+          onProfile={() => setScreen("profile")}
+        />
 
-        <Text style={styles.sectionTitle}>Choose Mode</Text>
+        <Text style={styles.sectionTitle}>Learn at your pace</Text>
         <View style={styles.modeGrid}>
           {PRACTICE_MODES.map((mode) => (
             <Pressable key={mode.value} style={styles.modeButton} onPress={() => beginPractice(mode.value)}>
               <Text style={styles.modeTitle}>{mode.label}</Text>
               <Text style={styles.modeText}>
-                {mode.value === "assessment"
-                  ? "Record a scored attempt."
-                  : mode.value === "free_practice"
-                    ? "Pick any character."
-                    : "Start with the app's character set."}
+                {mode.value === "free_practice"
+                  ? "Practice character of your liking."
+                  : "Learn characters with spaced repetition."}
               </Text>
             </Pressable>
-          ))}
-        </View>
-
-        <Text style={styles.sectionTitle}>Characters</Text>
-        <View style={styles.characterGrid}>
-          {characters.map((character) => (
-            <TouchableOpacity
-              key={character.id}
-              style={[styles.characterChip, selectedCharacter?.id === character.id && styles.selectedChip]}
-              onPress={() => setSelectedCharacterId(character.id)}
-            >
-              <Text style={[styles.characterName, selectedCharacter?.id === character.id && styles.selectedChipText]}>
-                {character.display_label}
-              </Text>
-              <Text style={[styles.characterSlug, selectedCharacter?.id === character.id && styles.selectedChipText]}>
-                {character.name}
-              </Text>
-            </TouchableOpacity>
           ))}
         </View>
 
@@ -407,72 +631,120 @@ export default function App() {
   }
 
   function renderPractice() {
+    const practiceTitle =
+      selectedMode === "free_practice"
+        ? "Free Practice"
+        : selectedMode === "app_suggested"
+          ? "Suggestive Learning"
+          : "Practice Attempt";
+
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <TopNav title="Practice Attempt" onBack={() => setScreen("home")} />
+      <View style={styles.practiceScreen}>
+        <ScrollView contentContainerStyle={styles.practiceScrollContent} keyboardShouldPersistTaps="handled">
+          <TopNav title={practiceTitle} onBack={() => setScreen("home")} />
 
-        <Text style={styles.sectionTitle}>Character</Text>
-        <View style={styles.characterGrid}>
-          {characters.map((character) => (
-            <TouchableOpacity
-              key={character.id}
-              style={[styles.characterChip, selectedCharacter?.id === character.id && styles.selectedChip]}
-              onPress={() => setSelectedCharacterId(character.id)}
-            >
-              <Text style={[styles.characterName, selectedCharacter?.id === character.id && styles.selectedChipText]}>
-                {character.display_label}
-              </Text>
-              <Text style={[styles.characterSlug, selectedCharacter?.id === character.id && styles.selectedChipText]}>
-                {character.name}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+          {selectedCharacter ? (
+            <View style={styles.practiceGlyphBox}>
+              <Image
+                source={{ uri: characterGlyphUri(apiBaseUrl, selectedCharacter.name) }}
+                style={styles.practiceGlyphImage}
+                resizeMode="contain"
+              />
+              <Text style={styles.practiceDevanagariLabel}>{characterDisplayLabel(selectedCharacter)}</Text>
+            </View>
+          ) : null}
 
-        <Text style={styles.sectionTitle}>Mode</Text>
-        <View style={styles.segmented}>
-          {PRACTICE_MODES.map((mode) => (
-            <TouchableOpacity
-              key={mode.value}
-              style={[styles.segmentButton, selectedMode === mode.value && styles.segmentButtonActive]}
-              onPress={() => setSelectedMode(mode.value)}
-            >
-              <Text style={[styles.segmentText, selectedMode === mode.value && styles.segmentTextActive]}>
-                {mode.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <Text style={styles.sectionTitle}>Input</Text>
-        <View style={styles.inputActions}>
-          <SecondaryButton label="Gallery" onPress={pickFromGallery} active={inputMode === "gallery"} />
-          <SecondaryButton label="Camera" onPress={takePhoto} active={inputMode === "camera"} />
-          <SecondaryButton
-            label="Canvas"
-            onPress={() => {
-              setInputMode("canvas");
-              setSelectedImage(null);
-            }}
-            active={inputMode === "canvas"}
-          />
-        </View>
-
-        {inputMode === "canvas" ? (
-          <View style={styles.canvasWrap}>
-            <DrawingCanvas ref={drawingRef} />
+          <Text style={styles.sectionTitle}>Character</Text>
+          <View style={styles.selectedCharacterPanel}>
+            <View>
+              <Text style={styles.selectedCharacterLabel}>Selected</Text>
+              <Text style={styles.selectedCharacterName}>{selectedCharacter?.name ?? "No character"}</Text>
+              {selectedMode === "app_suggested" && suggestedReasonText ? (
+                <Text style={styles.suggestedReasonText}>{suggestedReasonText}</Text>
+              ) : null}
+            </View>
+            {selectedMode === "free_practice" ? (
+              <TouchableOpacity
+                style={styles.changeCharacterButton}
+                onPress={() => setCharacterPickerOpen((current) => !current)}
+              >
+                <Text style={styles.changeCharacterText}>{characterPickerOpen ? "Done" : "Change"}</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
-        ) : selectedImage ? (
-          <View style={styles.previewWrap}>
-            <Image source={{ uri: selectedImage.uri }} style={styles.previewImage} resizeMode="contain" />
-            <Text style={styles.previewText}>{selectedImage.name}</Text>
-          </View>
-        ) : (
-          <Text style={styles.emptyText}>Choose a photo from gallery or camera.</Text>
-        )}
 
-        <PrimaryButton disabled={loading} label={loading ? "Analyzing..." : "Submit Attempt"} onPress={submitAttempt} />
-      </ScrollView>
+          {selectedMode === "free_practice" && characterPickerOpen ? (
+            <View style={styles.characterPickerPanel}>
+              <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholder="Search characters"
+                style={styles.input}
+                value={characterSearch}
+                onChangeText={setCharacterSearch}
+              />
+              <View style={styles.characterGrid}>
+                {filteredCharacters.map((character) => (
+                  <TouchableOpacity
+                    key={character.id}
+                    style={[styles.characterChip, selectedCharacter?.id === character.id && styles.selectedChip]}
+                    onPress={() => {
+                      setSelectedCharacterId(character.id);
+                      setCharacterPickerOpen(false);
+                      setCharacterSearch("");
+                    }}
+                  >
+                    <Text
+                      style={[styles.characterName, selectedCharacter?.id === character.id && styles.selectedChipText]}
+                    >
+                      {characterDisplayLabel(character)}
+                    </Text>
+                    <Text
+                      style={[styles.characterSlug, selectedCharacter?.id === character.id && styles.selectedChipText]}
+                    >
+                      {character.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              {filteredCharacters.length === 0 ? (
+                <Text style={styles.emptyText}>No characters match that search.</Text>
+              ) : null}
+            </View>
+          ) : null}
+
+          <Text style={styles.sectionTitle}>How would you like to input?</Text>
+          <View style={styles.inputActions}>
+            <SecondaryButton label="Gallery" onPress={pickFromGallery} active={inputMode === "gallery"} />
+            <SecondaryButton label="Camera" onPress={takePhoto} active={inputMode === "camera"} />
+            <SecondaryButton
+              label="Canvas"
+              onPress={() => {
+                setInputMode("canvas");
+                setSelectedImage(null);
+              }}
+              active={inputMode === "canvas"}
+            />
+          </View>
+
+          {inputMode === "canvas" ? (
+            <View style={styles.canvasWrap}>
+              <DrawingCanvas ref={drawingRef} />
+            </View>
+          ) : selectedImage ? (
+            <View style={styles.previewWrap}>
+              <Image source={{ uri: selectedImage.uri }} style={styles.previewImage} resizeMode="contain" />
+              <Text style={styles.previewText}>{selectedImage.name}</Text>
+            </View>
+          ) : (
+            <Text style={styles.emptyText}>Choose a photo from gallery or camera.</Text>
+          )}
+        </ScrollView>
+
+        <View style={styles.stickySubmitBar}>
+          <PrimaryButton disabled={loading} label={loading ? "Analyzing..." : "Submit Attempt"} onPress={submitAttempt} />
+        </View>
+      </View>
     );
   }
 
@@ -528,7 +800,7 @@ export default function App() {
         <Text style={styles.problemText}>{problemRegionText(feedback)}</Text>
 
         <View style={styles.resultActions}>
-          <SecondaryButton label="Try Again" onPress={() => setScreen("practice")} />
+          <SecondaryButton label={selectedMode === "app_suggested" ? "Next Suggested" : "Try Again"} onPress={continuePractice} />
           <SecondaryButton label="Progress" onPress={() => setScreen("progress")} />
         </View>
       </ScrollView>
@@ -546,6 +818,88 @@ export default function App() {
     );
   }
 
+  function renderProfile() {
+    const stats = profile?.stats;
+    const displayName = profile?.user.display_name ?? profile?.user.email ?? user?.display_name ?? user?.email ?? "Student";
+    const heatmap = profile?.heatmap ?? [];
+
+    return (
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <TopNav title="Profile" onBack={() => setScreen("home")} />
+
+        <View style={styles.profileHeader}>
+          <View style={styles.profileAvatar}>
+            <Text style={styles.profileAvatarText}>{displayName.slice(0, 1).toUpperCase()}</Text>
+          </View>
+          <View style={styles.profileIdentity}>
+            <Text style={styles.profileName}>{displayName}</Text>
+            <Text style={styles.profileEmail}>{profile?.user.email ?? user?.email}</Text>
+          </View>
+        </View>
+
+        <View style={styles.profileStatsGrid}>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{stats?.total_attempts ?? 0}</Text>
+            <Text style={styles.profileStatLabel}>Attempts</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{stats?.practiced_characters ?? 0}</Text>
+            <Text style={styles.profileStatLabel}>Practiced</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{stats?.mastered_characters ?? 0}</Text>
+            <Text style={styles.profileStatLabel}>Mastered</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{stats?.current_streak_days ?? 0}</Text>
+            <Text style={styles.profileStatLabel}>Day Streak</Text>
+          </View>
+        </View>
+
+        <View style={styles.profileScoreRow}>
+          <View>
+            <Text style={styles.profileScoreLabel}>Average Score</Text>
+            <Text style={[styles.profileScoreValue, { color: scoreColor(stats?.average_score) }]}>
+              {scoreText(stats?.average_score)}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.profileScoreLabel}>Best Score</Text>
+            <Text style={[styles.profileScoreValue, { color: scoreColor(stats?.best_score) }]}>
+              {scoreText(stats?.best_score)}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.profileScoreLabel}>Longest Streak</Text>
+            <Text style={styles.profileScoreValue}>{stats?.longest_streak_days ?? 0}d</Text>
+          </View>
+        </View>
+
+        <Text style={styles.sectionTitle}>Practice Heatmap</Text>
+        <View style={styles.heatmapPanel}>
+          <View style={styles.heatmapGrid}>
+            {heatmap.map((day) => (
+              <View
+                key={day.date}
+                style={[
+                  styles.heatmapCell,
+                  { backgroundColor: heatmapColor(day.attempts_count) },
+                ]}
+              />
+            ))}
+          </View>
+          <View style={styles.heatmapLegend}>
+            <Text style={styles.heatmapLegendText}>Less</Text>
+            {[0, 1, 2, 4, 6].map((count) => (
+              <View key={count} style={[styles.heatmapLegendCell, { backgroundColor: heatmapColor(count) }]} />
+            ))}
+            <Text style={styles.heatmapLegendText}>More</Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
+
   return (
     <View style={styles.app}>
       <StatusBar style="dark" />
@@ -554,10 +908,12 @@ export default function App() {
         : screen === "home"
           ? renderHome()
           : screen === "practice"
-            ? renderPractice()
-            : screen === "results"
-              ? renderResults()
-              : renderProgress()}
+          ? renderPractice()
+          : screen === "results"
+            ? renderResults()
+            : screen === "progress"
+              ? renderProgress()
+              : renderProfile()}
       {loading && screen !== "auth" ? (
         <View style={styles.loadingOverlay}>
           <ActivityIndicator color="#ffffff" />
@@ -572,16 +928,56 @@ export default function App() {
   );
 }
 
-function Header({ title, userName, onLogout }: { title: string; userName: string; onLogout: () => void }) {
+function Header({
+  title,
+  userName,
+  onLogout,
+  onProfile,
+}: {
+  title: string;
+  userName: string;
+  onLogout: () => void;
+  onProfile: () => void;
+}) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <View style={styles.header}>
       <View>
         <Text style={styles.screenTitle}>{title}</Text>
         <Text style={styles.subtitle}>Welcome, {userName}</Text>
       </View>
-      <TouchableOpacity style={styles.smallButton} onPress={onLogout}>
-        <Text style={styles.smallButtonText}>Logout</Text>
-      </TouchableOpacity>
+      <View style={styles.headerMenu}>
+        <TouchableOpacity
+          accessibilityLabel="Open account menu"
+          style={styles.iconButton}
+          onPress={() => setMenuOpen((current) => !current)}
+        >
+          <Text style={styles.iconButtonText}>⋮</Text>
+        </TouchableOpacity>
+        {menuOpen ? (
+          <View style={styles.menuPopover}>
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => {
+                setMenuOpen(false);
+                onProfile();
+              }}
+            >
+              <Text style={styles.menuItemText}>Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => {
+                setMenuOpen(false);
+                onLogout();
+              }}
+            >
+              <Text style={styles.menuItemText}>Logout</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
+      </View>
     </View>
   );
 }
@@ -589,8 +985,8 @@ function Header({ title, userName, onLogout }: { title: string; userName: string
 function TopNav({ title, onBack }: { title: string; onBack: () => void }) {
   return (
     <View style={styles.header}>
-      <TouchableOpacity style={styles.smallButton} onPress={onBack}>
-        <Text style={styles.smallButtonText}>Back</Text>
+      <TouchableOpacity accessibilityLabel="Go back" style={styles.backIconButton} onPress={onBack}>
+        <Text style={styles.backIconText}>‹</Text>
       </TouchableOpacity>
       <Text style={styles.screenTitle}>{title}</Text>
       <View style={styles.navSpacer} />
@@ -627,7 +1023,7 @@ function ProgressRow({ item, large }: { item: ProgressDashboardItem; large?: boo
   return (
     <View style={[styles.progressRow, large && styles.progressRowLarge]}>
       <View>
-        <Text style={styles.progressName}>{item.character.display_label}</Text>
+        <Text style={styles.progressName}>{characterDisplayLabel(item.character)}</Text>
         <Text style={styles.progressMeta}>
           {item.progress?.attempts_count ?? 0} attempts
           {item.progress?.mastered ? " | mastered" : ""}
@@ -693,6 +1089,14 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
     paddingTop: 56,
   },
+  practiceScreen: {
+    flex: 1,
+  },
+  practiceScrollContent: {
+    padding: 18,
+    paddingBottom: 120,
+    paddingTop: 56,
+  },
   header: {
     alignItems: "center",
     flexDirection: "row",
@@ -715,8 +1119,55 @@ const styles = StyleSheet.create({
     color: "#263238",
     fontWeight: "700",
   },
+  backIconButton: {
+    alignItems: "center",
+    height: 42,
+    justifyContent: "center",
+    width: 42,
+  },
+  backIconText: {
+    color: "#263238",
+    fontSize: 40,
+    fontWeight: "700",
+    lineHeight: 40,
+  },
+  headerMenu: {
+    alignItems: "flex-end",
+    position: "relative",
+  },
+  iconButton: {
+    alignItems: "center",
+    height: 38,
+    justifyContent: "center",
+    width: 34,
+  },
+  iconButtonText: {
+    color: "#263238",
+    fontSize: 28,
+    fontWeight: "900",
+    lineHeight: 30,
+  },
+  menuPopover: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    minWidth: 120,
+    position: "absolute",
+    right: 0,
+    top: 44,
+    zIndex: 20,
+  },
+  menuItem: {
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  menuItemText: {
+    color: "#263238",
+    fontWeight: "800",
+  },
   navSpacer: {
-    width: 58,
+    width: 42,
   },
   sectionTitle: {
     color: "#263238",
@@ -748,15 +1199,80 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 10,
+    marginTop: 12,
   },
   characterChip: {
     backgroundColor: "#ffffff",
     borderColor: "#cfdad5",
     borderRadius: 8,
     borderWidth: 1,
-    minWidth: 88,
+    flexBasis: "30%",
+    flexGrow: 1,
     paddingHorizontal: 14,
     paddingVertical: 12,
+  },
+  practiceGlyphBox: {
+    alignItems: "center",
+    alignSelf: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 220,
+    justifyContent: "center",
+    marginBottom: 10,
+    marginTop: 8,
+    width: "72%",
+  },
+  practiceGlyphImage: {
+    height: 150,
+    width: "88%",
+  },
+  practiceDevanagariLabel: {
+    color: "#17211e",
+    fontSize: 32,
+    fontWeight: "900",
+    marginTop: 8,
+  },
+  selectedCharacterPanel: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 14,
+  },
+  selectedCharacterLabel: {
+    color: "#66736f",
+    fontSize: 12,
+    fontWeight: "800",
+  },
+  selectedCharacterName: {
+    color: "#17211e",
+    fontSize: 18,
+    fontWeight: "900",
+    marginTop: 2,
+  },
+  suggestedReasonText: {
+    color: "#66736f",
+    fontSize: 12,
+    fontWeight: "700",
+    marginTop: 3,
+  },
+  changeCharacterButton: {
+    backgroundColor: "#21443a",
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+  },
+  changeCharacterText: {
+    color: "#ffffff",
+    fontWeight: "800",
+  },
+  characterPickerPanel: {
+    marginTop: 10,
   },
   selectedChip: {
     backgroundColor: "#21443a",
@@ -820,6 +1336,7 @@ const styles = StyleSheet.create({
   canvasWrap: {
     alignItems: "center",
     marginBottom: 18,
+    width: "100%",
   },
   previewWrap: {
     alignItems: "center",
@@ -857,6 +1374,17 @@ const styles = StyleSheet.create({
   },
   disabled: {
     opacity: 0.65,
+  },
+  stickySubmitBar: {
+    backgroundColor: "#f3f6f2",
+    borderColor: "#d7e0dc",
+    borderTopWidth: 1,
+    bottom: 0,
+    left: 0,
+    padding: 18,
+    paddingTop: 2,
+    position: "absolute",
+    right: 0,
   },
   secondaryButton: {
     alignItems: "center",
@@ -973,6 +1501,122 @@ const styles = StyleSheet.create({
   progressScore: {
     fontSize: 18,
     fontWeight: "900",
+  },
+  profileHeader: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    marginBottom: 12,
+    padding: 16,
+  },
+  profileAvatar: {
+    alignItems: "center",
+    backgroundColor: "#21443a",
+    borderRadius: 28,
+    height: 56,
+    justifyContent: "center",
+    width: 56,
+  },
+  profileAvatarText: {
+    color: "#ffffff",
+    fontSize: 24,
+    fontWeight: "900",
+  },
+  profileIdentity: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  profileName: {
+    color: "#17211e",
+    fontSize: 20,
+    fontWeight: "900",
+  },
+  profileEmail: {
+    color: "#66736f",
+    marginTop: 3,
+  },
+  profileStatsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  profileStatBox: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexBasis: "47%",
+    flexGrow: 1,
+    padding: 14,
+  },
+  profileStatValue: {
+    color: "#17211e",
+    fontSize: 28,
+    fontWeight: "900",
+  },
+  profileStatLabel: {
+    color: "#66736f",
+    fontSize: 12,
+    fontWeight: "800",
+    marginTop: 3,
+  },
+  profileScoreRow: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 12,
+    padding: 14,
+  },
+  profileScoreLabel: {
+    color: "#66736f",
+    fontSize: 11,
+    fontWeight: "800",
+  },
+  profileScoreValue: {
+    color: "#17211e",
+    fontSize: 18,
+    fontWeight: "900",
+    marginTop: 4,
+  },
+  heatmapPanel: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 12,
+  },
+  heatmapGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 4,
+  },
+  heatmapCell: {
+    borderRadius: 3,
+    height: 13,
+    width: 13,
+  },
+  heatmapLegend: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 5,
+    justifyContent: "flex-end",
+    marginTop: 12,
+  },
+  heatmapLegendCell: {
+    borderRadius: 3,
+    height: 11,
+    width: 11,
+  },
+  heatmapLegendText: {
+    color: "#66736f",
+    fontSize: 11,
+    fontWeight: "700",
   },
   loadingOverlay: {
     alignItems: "center",

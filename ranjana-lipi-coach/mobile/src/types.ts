@@ -41,6 +41,10 @@ export type RegionFeedback = {
   predicted_class?: string;
   recognizer_confidence?: number;
   overall_score: number;
+  insufficient_input?: boolean;
+  message?: string | null;
+  ink_pixel_count?: number;
+  min_required_ink_pixels?: number;
   warning?: string | null;
   problem_regions?: RegionScore[];
   all_regions?: RegionScore[];
@@ -83,6 +87,30 @@ export type Progress = {
 export type ProgressDashboardItem = {
   character: Character;
   progress: Progress | null;
+};
+
+export type PracticeHeatmapDay = {
+  date: string;
+  attempts_count: number;
+  average_score: number | null;
+  best_score: number | null;
+};
+
+export type UserProfileStats = {
+  total_attempts: number;
+  practiced_characters: number;
+  mastered_characters: number;
+  average_score: number | null;
+  best_score: number | null;
+  current_streak_days: number;
+  longest_streak_days: number;
+};
+
+export type UserProfile = {
+  user: User;
+  stats: UserProfileStats;
+  heatmap: PracticeHeatmapDay[];
+  generated_at: string;
 };
 
 export type SelectedImage = {

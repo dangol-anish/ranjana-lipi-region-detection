@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from app.api.auth import router as auth_router
 from app.api.characters import router as characters_router
 from app.api.practice import router as practice_router
+from app.api.profile import router as profile_router
 from app.api.progress import router as progress_router
 from app.core.database import SessionLocal
 from app.services.characters import seed_default_characters
@@ -28,11 +29,13 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(characters_router)
 app.include_router(practice_router)
+app.include_router(profile_router)
 app.include_router(progress_router)
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
 GENERAL_REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed_general" / "references"
+DISPLAY_GLYPHS_DIR = BACKEND_ROOT / "ml" / "display_glyphs"
 UPLOADS_DIR = BACKEND_ROOT / "uploads"
 
 if REFERENCES_DIR.is_dir():
@@ -43,6 +46,8 @@ if GENERAL_REFERENCES_DIR.is_dir():
         StaticFiles(directory=str(GENERAL_REFERENCES_DIR)),
         name="references_general",
     )
+if DISPLAY_GLYPHS_DIR.is_dir():
+    app.mount("/display_glyphs", StaticFiles(directory=str(DISPLAY_GLYPHS_DIR)), name="display_glyphs")
 if UPLOADS_DIR.is_dir():
     app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 

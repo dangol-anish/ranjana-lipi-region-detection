@@ -1,0 +1,13 @@
+{
+  "exact_canvas_with_border": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/near_empty_canvas_with_border_raw.png",
+  "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_sanity/near_empty_canvas_with_border_raw_normalized_after_fix.png",
+  "ink_pixel_count": 172,
+  "min_required_ink_pixels": 300,
+  "would_have_scored_before_fix_by_bypassing_guard": 93.49927585572004,
+  "would_have_broad_before_fix": [
+    "top"
+  ],
+  "after_fix_insufficient_input": true,
+  "after_fix_score": 0.0,
+  "after_fix_message": "Insufficient input \u2014 please draw the full character."
+}

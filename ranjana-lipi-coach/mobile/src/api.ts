@@ -6,6 +6,7 @@ import type {
   SelectedImage,
   TokenResponse,
   User,
+  UserProfile,
 } from "./types";
 
 export const DEFAULT_API_BASE_URL = "http://192.168.8.100:8000";
@@ -16,13 +17,64 @@ type ApiOptions = {
   headers?: Record<string, string>;
 };
 
+type ValidationDetail = {
+  loc?: Array<string | number>;
+  msg?: string;
+  type?: string;
+};
+
+function friendlyFieldName(field: string): string {
+  const names: Record<string, string> = {
+    email: "Email",
+    password: "Password",
+    display_name: "Display name",
+    character_id: "Character",
+    mode: "Practice mode",
+    image: "Image",
+  };
+  return names[field] ?? field.replaceAll("_", " ");
+}
+
+function friendlyValidationMessage(detail: ValidationDetail): string {
+  const field = detail.loc?.[detail.loc.length - 1];
+  const fieldName = typeof field === "string" ? friendlyFieldName(field) : "This field";
+  const type = detail.type ?? "";
+
+  if (field === "password" && type.includes("string_too_short")) {
+    return "Password must be at least 8 characters.";
+  }
+  if (field === "email" && type.includes("string_too_long")) {
+    return "Email is too long.";
+  }
+  if (field === "display_name" && type.includes("string_too_long")) {
+    return "Display name is too long.";
+  }
+  if (type.includes("missing")) {
+    return `${fieldName} is required.`;
+  }
+
+  return detail.msg ? `${fieldName}: ${detail.msg}` : `${fieldName} is invalid.`;
+}
+
+function apiErrorMessage(status: number, data: unknown): string {
+  const detail = typeof data === "object" && data !== null && "detail" in data ? (data as { detail?: unknown }).detail : null;
+
+  if (typeof detail === "string") {
+    return detail;
+  }
+  if (Array.isArray(detail)) {
+    return detail.map((item) => friendlyValidationMessage(item as ValidationDetail)).join("\n");
+  }
+
+  return `Request failed (${status}). Please try again.`;
+}
+
 async function parseApiResponse<T>(response: Response): Promise<T> {
   const text = await response.text();
   const data = text ? JSON.parse(text) : null;
 
   if (!response.ok) {
-    const detail = data?.detail;
-    throw new Error(typeof detail === "string" ? detail : `Request failed (${response.status})`);
+    throw new Error(apiErrorMessage(response.status, data));
   }
 
   return data as T;
@@ -88,6 +140,10 @@ export function fetchCharacters(baseUrl: string, token: string): Promise<Charact
 
 export function fetchProgress(baseUrl: string, token: string): Promise<ProgressDashboardItem[]> {
   return apiRequest<ProgressDashboardItem[]>(baseUrl, "/progress", { token });
+}
+
+export function fetchProfile(baseUrl: string, token: string): Promise<UserProfile> {
+  return apiRequest<UserProfile>(baseUrl, "/profile/me", { token });
 }
 
 export async function submitPracticeAttempt(
