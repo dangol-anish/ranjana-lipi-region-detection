@@ -1,11 +1,12 @@
 """Practice attempt endpoints."""
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, UploadFile, status
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.security import get_current_user
-from app.models.attempt import PracticeMode
+from app.models.attempt import Attempt, PracticeMode
 from app.models.user import User
 from app.schemas.attempt import AttemptOut, PracticeAttemptResponse
 from app.services.attempts import create_attempt_with_progress, save_attempt_image
@@ -14,6 +15,22 @@ from ml.inference.pipeline import analyze_attempt
 
 
 router = APIRouter(prefix="/practice", tags=["practice"])
+
+
+@router.get("/attempts", response_model=list[AttemptOut])
+def list_practice_attempts(
+    limit: int = Query(default=50, ge=1, le=200),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[Attempt]:
+    return list(
+        db.scalars(
+            select(Attempt)
+            .where(Attempt.user_id == current_user.id)
+            .order_by(Attempt.created_at.desc())
+            .limit(limit)
+        ).all()
+    )
 
 
 @router.post("/attempt", response_model=PracticeAttemptResponse)

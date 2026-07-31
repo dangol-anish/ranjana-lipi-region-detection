@@ -19,6 +19,8 @@ import {
 
 import {
   DEFAULT_API_BASE_URL,
+  fetchAttemptHistory,
+  fetchCharacterProgress,
   fetchCharacters,
   fetchCurrentUser,
   fetchProfile,
@@ -30,7 +32,9 @@ import {
 import { DrawingCanvas, type DrawingCanvasHandle } from "./src/components/DrawingCanvas";
 import { RegionGrid } from "./src/components/RegionGrid";
 import type {
+  Attempt,
   Character,
+  CharacterProgressDetail,
   PracticeAttemptResponse,
   PracticeMode,
   ProgressDashboardItem,
@@ -40,7 +44,7 @@ import type {
   UserProfile,
 } from "./src/types";
 
-type Screen = "auth" | "home" | "practice" | "results" | "progress" | "profile";
+type Screen = "auth" | "home" | "practice" | "results" | "progress" | "profile" | "history" | "character_detail";
 type AuthMode = "login" | "register";
 type InputMode = "gallery" | "camera" | "canvas";
 type SuggestedPick = {
@@ -142,6 +146,10 @@ function characterGlyphUri(baseUrl: string, characterName: string): string {
   return `${baseUrl}/display_glyphs/${characterName}.png`;
 }
 
+function demoCanvasUri(baseUrl: string, characterName: string): string {
+  return `${baseUrl}/demo_canvas/${characterName}_canvas_demo_high_score.png`;
+}
+
 function heatmapColor(attempts: number): string {
   if (attempts <= 0) {
     return "#e7ede9";
@@ -160,6 +168,34 @@ function heatmapColor(attempts: number): string {
 
 function scoreText(score: number | null | undefined): string {
   return typeof score === "number" ? `${score.toFixed(1)}%` : "--";
+}
+
+function attemptImageUri(baseUrl: string, attempt: Attempt): string {
+  return `${baseUrl}/${attempt.image_path}`;
+}
+
+function formatAttemptDate(value: string): string {
+  return new Date(value).toLocaleString(undefined, {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function attemptCharacterLabel(characters: Character[], attempt: Attempt): string {
+  const character = characters.find((item) => item.id === attempt.character_id);
+  return character ? `${characterDisplayLabel(character)} ${character.name}` : `Character ${attempt.character_id}`;
+}
+
+function topRegionSummary(feedback: RegionFeedback | null | undefined): string {
+  if (feedback?.insufficient_input) {
+    return "Insufficient input";
+  }
+  const broad = feedback?.broad_bands as { problem_regions?: Array<{ region?: string }> } | undefined;
+  const fine = feedback?.fine_grid as { problem_regions?: Array<{ region?: string }> } | undefined;
+  const region = broad?.problem_regions?.[0]?.region ?? fine?.problem_regions?.[0]?.region;
+  return region ? `Needs work: ${region}` : "No strong region flagged";
 }
 
 function hoursSince(timestamp: string | null | undefined, now: number): number {
@@ -275,6 +311,8 @@ export default function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [progress, setProgress] = useState<ProgressDashboardItem[]>([]);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [attemptHistory, setAttemptHistory] = useState<Attempt[]>([]);
+  const [characterDetail, setCharacterDetail] = useState<CharacterProgressDetail | null>(null);
   const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(null);
   const [selectedMode, setSelectedMode] = useState<PracticeMode>("app_suggested");
   const [inputMode, setInputMode] = useState<InputMode>("gallery");
@@ -338,14 +376,16 @@ export default function App() {
       return;
     }
 
-    const [nextCharacters, nextProgress, nextProfile] = await Promise.all([
+    const [nextCharacters, nextProgress, nextProfile, nextAttempts] = await Promise.all([
       fetchCharacters(apiBaseUrl, token),
       fetchProgress(apiBaseUrl, token),
       fetchProfile(apiBaseUrl, token),
+      fetchAttemptHistory(apiBaseUrl, token, 50),
     ]);
     setCharacters(nextCharacters);
     setProgress(nextProgress);
     setProfile(nextProfile);
+    setAttemptHistory(nextAttempts);
     setSelectedCharacterId((current) => current ?? nextCharacters[0]?.id ?? null);
   }, [apiBaseUrl, token]);
 
@@ -464,16 +504,19 @@ export default function App() {
     try {
       let image = selectedImage;
       if (inputMode === "canvas") {
-        if (!drawingRef.current?.hasDrawing()) {
+        if (image?.source === "demo_canvas") {
+          // Use the prepared demo image instead of capturing the drawing pad.
+        } else if (!drawingRef.current?.hasDrawing()) {
           throw new Error("Draw the character on the canvas before submitting.");
+        } else {
+          const uri = await drawingRef.current.capture();
+          image = {
+            uri,
+            name: `${selectedCharacter.name}_canvas_${Date.now()}.png`,
+            type: "image/png",
+            source: "canvas",
+          };
         }
-        const uri = await drawingRef.current.capture();
-        image = {
-          uri,
-          name: `${selectedCharacter.name}_canvas_${Date.now()}.png`,
-          type: "image/png",
-          source: "canvas",
-        };
       }
 
       if (!image) {
@@ -530,6 +573,24 @@ export default function App() {
     setMessage(null);
     drawingRef.current?.clear();
     setScreen("practice");
+  }
+
+  async function openCharacterDetail(characterId: number) {
+    if (!token) {
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      const detail = await fetchCharacterProgress(apiBaseUrl, token, characterId);
+      setCharacterDetail(detail);
+      setScreen("character_detail");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Could not load character profile.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   function renderAuth() {
@@ -600,6 +661,7 @@ export default function App() {
           title="Ranjana Lipi Learning App"
           userName={user?.display_name ?? user?.email ?? "Student"}
           onLogout={handleLogout}
+          onHistory={() => setScreen("history")}
           onProfile={() => setScreen("profile")}
         />
 
@@ -624,7 +686,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         {progress.slice(0, 5).map((item) => (
-          <ProgressRow key={item.character.id} item={item} />
+          <ProgressRow key={item.character.id} item={item} onPress={() => void openCharacterDetail(item.character.id)} />
         ))}
       </ScrollView>
     );
@@ -729,6 +791,27 @@ export default function App() {
 
           {inputMode === "canvas" ? (
             <View style={styles.canvasWrap}>
+              {selectedCharacter?.name === "a" ? (
+                <TouchableOpacity
+                  style={styles.demoCanvasButton}
+                  onPress={() => {
+                    setSelectedImage({
+                      uri: demoCanvasUri(apiBaseUrl, "a"),
+                      name: "a_canvas_demo_high_score.png",
+                      type: "image/png",
+                      source: "demo_canvas",
+                    });
+                  }}
+                >
+                  <Text style={styles.demoCanvasButtonText}>Use Demo Image</Text>
+                </TouchableOpacity>
+              ) : null}
+              {selectedImage?.source === "demo_canvas" ? (
+                <View style={styles.previewWrap}>
+                  <Image source={{ uri: selectedImage.uri }} style={styles.previewImage} resizeMode="contain" />
+                  <Text style={styles.previewText}>Demo canvas image selected.</Text>
+                </View>
+              ) : null}
               <DrawingCanvas ref={drawingRef} />
             </View>
           ) : selectedImage ? (
@@ -789,6 +872,23 @@ export default function App() {
           </View>
         </View>
 
+        {result?.attempt ? (
+          <>
+            <Text style={styles.sectionTitle}>Normalized Input</Text>
+            <View style={styles.pipelinePanel}>
+              <Image
+                source={{ uri: attemptImageUri(apiBaseUrl, result.attempt) }}
+                style={styles.pipelineImage}
+                resizeMode="contain"
+              />
+              <Text style={styles.explainText}>
+                The submitted image is binarized, aligned to the selected character reference, and placed on a fixed
+                canvas before feedback is calculated.
+              </Text>
+            </View>
+          </>
+        ) : null}
+
         <Text style={styles.sectionTitle}>Region Map</Text>
         <RegionGrid
           feedback={feedback}
@@ -798,6 +898,12 @@ export default function App() {
 
         <Text style={styles.sectionTitle}>Problem Regions</Text>
         <Text style={styles.problemText}>{problemRegionText(feedback)}</Text>
+
+        <Text style={styles.sectionTitle}>How This Feedback Was Produced</Text>
+        <Text style={styles.explainText}>
+          The app compares the normalized attempt with the expected reconstruction for this character. Regions with
+          unusually high ink-masked reconstruction error are highlighted as likely places to improve.
+        </Text>
 
         <View style={styles.resultActions}>
           <SecondaryButton label={selectedMode === "app_suggested" ? "Next Suggested" : "Try Again"} onPress={continuePractice} />
@@ -812,8 +918,115 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <TopNav title="Progress Dashboard" onBack={() => setScreen("home")} />
         {progress.map((item) => (
-          <ProgressRow key={item.character.id} item={item} large />
+          <ProgressRow key={item.character.id} item={item} large onPress={() => void openCharacterDetail(item.character.id)} />
         ))}
+      </ScrollView>
+    );
+  }
+
+  function renderAttemptCard(attempt: Attempt) {
+    return (
+      <View key={attempt.id} style={styles.attemptCard}>
+        <Image source={{ uri: attemptImageUri(apiBaseUrl, attempt) }} style={styles.attemptThumb} resizeMode="contain" />
+        <View style={styles.attemptBody}>
+          <Text style={styles.attemptTitle}>{attemptCharacterLabel(characters, attempt)}</Text>
+          <Text style={styles.attemptMeta}>{formatAttemptDate(attempt.created_at)} | {attempt.mode.replace("_", " ")}</Text>
+          <Text style={[styles.attemptScore, { color: scoreColor(attempt.overall_score) }]}>
+            {scoreText(attempt.overall_score)}
+          </Text>
+          <Text style={styles.attemptRegion}>{topRegionSummary(attempt.region_feedback)}</Text>
+        </View>
+      </View>
+    );
+  }
+
+  function renderHistory() {
+    return (
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <TopNav title="Attempt History" onBack={() => setScreen("profile")} />
+        <Text style={styles.explainText}>
+          Saved attempts show the normalized handwriting image, score, and strongest region feedback from the same
+          reconstruction-based pipeline used during practice.
+        </Text>
+        {attemptHistory.length > 0 ? (
+          attemptHistory.map((attempt) => renderAttemptCard(attempt))
+        ) : (
+          <Text style={styles.emptyText}>No attempts yet.</Text>
+        )}
+      </ScrollView>
+    );
+  }
+
+  function renderCharacterDetail() {
+    const detail = characterDetail;
+    if (!detail) {
+      return (
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <TopNav title="Character Profile" onBack={() => setScreen("progress")} />
+          <Text style={styles.emptyText}>No character profile loaded.</Text>
+        </ScrollView>
+      );
+    }
+
+    const progressItem: ProgressDashboardItem = {
+      character: detail.character,
+      progress: detail.progress,
+    };
+    const intervalHours = ankiStyleIntervalHours(progressItem);
+    const elapsedHours = hoursSince(detail.progress?.last_practiced_at, Date.now());
+    const reviewStatus = suggestedReason(progressItem, intervalHours, elapsedHours);
+
+    return (
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <TopNav title="Character Profile" onBack={() => setScreen("progress")} />
+        <View style={styles.characterDetailHero}>
+          <Image
+            source={{ uri: characterGlyphUri(apiBaseUrl, detail.character.name) }}
+            style={styles.characterDetailGlyph}
+            resizeMode="contain"
+          />
+          <Text style={styles.characterDetailDevanagari}>{characterDisplayLabel(detail.character)}</Text>
+          <Text style={styles.characterDetailSlug}>{detail.character.name}</Text>
+        </View>
+
+        <View style={styles.profileStatsGrid}>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{detail.progress?.attempts_count ?? 0}</Text>
+            <Text style={styles.profileStatLabel}>Attempts</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{scoreText(detail.progress?.best_score)}</Text>
+            <Text style={styles.profileStatLabel}>Best Score</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{detail.progress?.mastered ? "Yes" : "No"}</Text>
+            <Text style={styles.profileStatLabel}>Mastered</Text>
+          </View>
+          <View style={styles.profileStatBox}>
+            <Text style={styles.profileStatValue}>{reviewStatus}</Text>
+            <Text style={styles.profileStatLabel}>Review Status</Text>
+          </View>
+        </View>
+
+        <PrimaryButton
+          label="Practice This Character"
+          onPress={() => {
+            setSelectedCharacterId(detail.character.id);
+            setSelectedMode("free_practice");
+            setCharacterPickerOpen(false);
+            setSelectedImage(null);
+            setSubmittedImage(null);
+            setResult(null);
+            setScreen("practice");
+          }}
+        />
+
+        <Text style={styles.sectionTitle}>Recent Attempts</Text>
+        {detail.attempts.length > 0 ? (
+          detail.attempts.slice(0, 10).map((attempt) => renderAttemptCard(attempt))
+        ) : (
+          <Text style={styles.emptyText}>No attempts for this character yet.</Text>
+        )}
       </ScrollView>
     );
   }
@@ -896,6 +1109,8 @@ export default function App() {
             <Text style={styles.heatmapLegendText}>More</Text>
           </View>
         </View>
+
+        <PrimaryButton label="View Attempt History" onPress={() => setScreen("history")} />
       </ScrollView>
     );
   }
@@ -913,7 +1128,11 @@ export default function App() {
             ? renderResults()
             : screen === "progress"
               ? renderProgress()
-              : renderProfile()}
+              : screen === "profile"
+                ? renderProfile()
+                : screen === "history"
+                  ? renderHistory()
+                  : renderCharacterDetail()}
       {loading && screen !== "auth" ? (
         <View style={styles.loadingOverlay}>
           <ActivityIndicator color="#ffffff" />
@@ -932,11 +1151,13 @@ function Header({
   title,
   userName,
   onLogout,
+  onHistory,
   onProfile,
 }: {
   title: string;
   userName: string;
   onLogout: () => void;
+  onHistory: () => void;
   onProfile: () => void;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -965,6 +1186,15 @@ function Header({
               }}
             >
               <Text style={styles.menuItemText}>Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => {
+                setMenuOpen(false);
+                onHistory();
+              }}
+            >
+              <Text style={styles.menuItemText}>Attempt History</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.menuItem}
@@ -1018,10 +1248,11 @@ function SecondaryButton({
   );
 }
 
-function ProgressRow({ item, large }: { item: ProgressDashboardItem; large?: boolean }) {
+function ProgressRow({ item, large, onPress }: { item: ProgressDashboardItem; large?: boolean; onPress?: () => void }) {
   const bestScore = item.progress?.best_score ?? null;
+  const Container = onPress ? TouchableOpacity : View;
   return (
-    <View style={[styles.progressRow, large && styles.progressRowLarge]}>
+    <Container style={[styles.progressRow, large && styles.progressRowLarge]} onPress={onPress}>
       <View>
         <Text style={styles.progressName}>{characterDisplayLabel(item.character)}</Text>
         <Text style={styles.progressMeta}>
@@ -1032,7 +1263,7 @@ function ProgressRow({ item, large }: { item: ProgressDashboardItem; large?: boo
       <Text style={[styles.progressScore, { color: scoreColor(bestScore) }]}>
         {typeof bestScore === "number" ? `${bestScore.toFixed(1)}%` : "New"}
       </Text>
-    </View>
+    </Container>
   );
 }
 
@@ -1338,6 +1569,18 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     width: "100%",
   },
+  demoCanvasButton: {
+    alignItems: "center",
+    backgroundColor: "#21443a",
+    borderRadius: 8,
+    marginBottom: 10,
+    paddingVertical: 12,
+    width: "100%",
+  },
+  demoCanvasButtonText: {
+    color: "#ffffff",
+    fontWeight: "900",
+  },
   previewWrap: {
     alignItems: "center",
     backgroundColor: "#ffffff",
@@ -1437,6 +1680,26 @@ const styles = StyleSheet.create({
     color: "#263238",
     lineHeight: 22,
   },
+  explainText: {
+    color: "#4f625d",
+    lineHeight: 21,
+    marginBottom: 12,
+  },
+  pipelinePanel: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 12,
+  },
+  pipelineImage: {
+    alignSelf: "center",
+    backgroundColor: "#f8faf7",
+    borderRadius: 6,
+    height: 160,
+    marginBottom: 10,
+    width: 160,
+  },
   resultActions: {
     flexDirection: "row",
     gap: 10,
@@ -1501,6 +1764,72 @@ const styles = StyleSheet.create({
   progressScore: {
     fontSize: 18,
     fontWeight: "900",
+  },
+  attemptCard: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    marginBottom: 10,
+    padding: 10,
+  },
+  attemptThumb: {
+    backgroundColor: "#f8faf7",
+    borderRadius: 6,
+    height: 72,
+    width: 72,
+  },
+  attemptBody: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  attemptTitle: {
+    color: "#17211e",
+    fontSize: 16,
+    fontWeight: "900",
+  },
+  attemptMeta: {
+    color: "#66736f",
+    fontSize: 12,
+    marginTop: 2,
+  },
+  attemptScore: {
+    fontSize: 20,
+    fontWeight: "900",
+    marginTop: 5,
+  },
+  attemptRegion: {
+    color: "#4f625d",
+    fontSize: 12,
+    fontWeight: "700",
+    marginTop: 3,
+  },
+  characterDetailHero: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    marginBottom: 12,
+    padding: 16,
+  },
+  characterDetailGlyph: {
+    height: 140,
+    width: "80%",
+  },
+  characterDetailDevanagari: {
+    color: "#17211e",
+    fontSize: 34,
+    fontWeight: "900",
+    marginTop: 6,
+  },
+  characterDetailSlug: {
+    color: "#66736f",
+    fontSize: 14,
+    fontWeight: "800",
+    marginTop: 2,
   },
   profileHeader: {
     alignItems: "center",

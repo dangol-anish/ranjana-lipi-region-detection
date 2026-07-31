@@ -33,10 +33,14 @@ app.include_router(profile_router)
 app.include_router(progress_router)
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = BACKEND_ROOT.parents[1]
 REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
 GENERAL_REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed_general" / "references"
 DISPLAY_GLYPHS_DIR = BACKEND_ROOT / "ml" / "display_glyphs"
 UPLOADS_DIR = BACKEND_ROOT / "uploads"
+DEMO_CANVAS_DIR = PROJECT_ROOT / "data" / "Canvas"
+
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 if REFERENCES_DIR.is_dir():
     app.mount("/references", StaticFiles(directory=str(REFERENCES_DIR)), name="references")
@@ -48,8 +52,9 @@ if GENERAL_REFERENCES_DIR.is_dir():
     )
 if DISPLAY_GLYPHS_DIR.is_dir():
     app.mount("/display_glyphs", StaticFiles(directory=str(DISPLAY_GLYPHS_DIR)), name="display_glyphs")
-if UPLOADS_DIR.is_dir():
-    app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
+if DEMO_CANVAS_DIR.is_dir():
+    app.mount("/demo_canvas", StaticFiles(directory=str(DEMO_CANVAS_DIR)), name="demo_canvas")
+app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 
 
 @app.on_event("startup")

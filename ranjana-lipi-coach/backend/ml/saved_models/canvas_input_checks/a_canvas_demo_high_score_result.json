@@ -1,0 +1,10 @@
+{
+  "demo_file": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Canvas/a_canvas_demo_high_score.png",
+  "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_input_checks/a_canvas_demo_high_score_normalized.png",
+  "overall_score": 95.75612507760525,
+  "insufficient_input": false,
+  "normalized_ink_pixel_count": 528,
+  "fine_problem_regions": [],
+  "broad_problem_regions": [],
+  "message": null
+}

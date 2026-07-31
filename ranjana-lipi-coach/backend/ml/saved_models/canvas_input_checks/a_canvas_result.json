@@ -1,0 +1,113 @@
+{
+  "input_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Canvas/a.png",
+  "image_info": {
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1183,
+      1201
+    ]
+  },
+  "normalized_path": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/canvas_input_checks/a_canvas_normalized.png",
+  "normalized_ink_pixel_count": 579,
+  "min_required_ink_pixels": 300,
+  "insufficient_input": false,
+  "overall_score": 68.56588944792747,
+  "message": "Attempt resembles aa, not a.",
+  "fine_grid_problem_regions": [
+    {
+      "region": "top-center",
+      "mean_error": 0.306925892829895,
+      "z_score": 35.053711662761124,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 234
+    },
+    {
+      "region": "middle-center",
+      "mean_error": 0.2647212743759155,
+      "z_score": 29.298139962839624,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 352
+    }
+  ],
+  "fine_grid_top_5_all_regions": [
+    {
+      "region": "top-center",
+      "mean_error": 0.306925892829895,
+      "z_score": 35.053711662761124,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 234
+    },
+    {
+      "region": "middle-center",
+      "mean_error": 0.2647212743759155,
+      "z_score": 29.298139962839624,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 352
+    },
+    {
+      "region": "top-left",
+      "mean_error": 0.25609713792800903,
+      "z_score": 17.89699500363896,
+      "is_problem": false,
+      "insufficient_data": false,
+      "ink_pixel_count": 186
+    },
+    {
+      "region": "bottom-right",
+      "mean_error": 0.1937147080898285,
+      "z_score": 11.702919412926157,
+      "is_problem": false,
+      "insufficient_data": false,
+      "ink_pixel_count": 228
+    },
+    {
+      "region": "bottom-center",
+      "mean_error": 0.1713646650314331,
+      "z_score": 10.31334924441813,
+      "is_problem": false,
+      "insufficient_data": false,
+      "ink_pixel_count": 169
+    }
+  ],
+  "broad_band_problem_regions": [
+    {
+      "region": "top",
+      "mean_error": 0.27530884742736816,
+      "z_score": 44.44457358815106,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 561
+    }
+  ],
+  "broad_band_all_regions": [
+    {
+      "region": "top",
+      "mean_error": 0.27530884742736816,
+      "z_score": 44.44457358815106,
+      "is_problem": true,
+      "insufficient_data": false,
+      "ink_pixel_count": 561
+    },
+    {
+      "region": "middle",
+      "mean_error": 0.2234700322151184,
+      "z_score": 28.534928892886235,
+      "is_problem": false,
+      "insufficient_data": false,
+      "ink_pixel_count": 892
+    },
+    {
+      "region": "bottom",
+      "mean_error": 0.18374674022197723,
+      "z_score": 17.547425016379346,
+      "is_problem": false,
+      "insufficient_data": false,
+      "ink_pixel_count": 398
+    }
+  ]
+}

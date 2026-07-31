@@ -1,5 +1,7 @@
 import type {
   Character,
+  Attempt,
+  CharacterProgressDetail,
   PracticeAttemptResponse,
   PracticeMode,
   ProgressDashboardItem,
@@ -142,8 +144,20 @@ export function fetchProgress(baseUrl: string, token: string): Promise<ProgressD
   return apiRequest<ProgressDashboardItem[]>(baseUrl, "/progress", { token });
 }
 
+export function fetchCharacterProgress(
+  baseUrl: string,
+  token: string,
+  characterId: number,
+): Promise<CharacterProgressDetail> {
+  return apiRequest<CharacterProgressDetail>(baseUrl, `/progress/${characterId}`, { token });
+}
+
 export function fetchProfile(baseUrl: string, token: string): Promise<UserProfile> {
   return apiRequest<UserProfile>(baseUrl, "/profile/me", { token });
+}
+
+export function fetchAttemptHistory(baseUrl: string, token: string, limit = 50): Promise<Attempt[]> {
+  return apiRequest<Attempt[]>(baseUrl, `/practice/attempts?limit=${limit}`, { token });
 }
 
 export async function submitPracticeAttempt(

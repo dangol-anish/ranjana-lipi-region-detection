@@ -89,6 +89,12 @@ export type ProgressDashboardItem = {
   progress: Progress | null;
 };
 
+export type CharacterProgressDetail = {
+  character: Character;
+  progress: Progress | null;
+  attempts: Attempt[];
+};
+
 export type PracticeHeatmapDay = {
   date: string;
   attempts_count: number;
@@ -117,5 +123,5 @@ export type SelectedImage = {
   uri: string;
   name: string;
   type: string;
-  source: "camera" | "gallery" | "canvas";
+  source: "camera" | "gallery" | "canvas" | "demo_canvas";
 };
