@@ -1,0 +1,94 @@
+{
+  "class_name": "tra",
+  "rows": 3,
+  "cols": 3,
+  "validation_sample_count": 18,
+  "scoring": "ink_masked_z_score",
+  "ink_threshold": 0.05,
+  "min_ink_pixels": 8,
+  "mean_image_error": 0.018186770379543304,
+  "fine_grid": {
+    "bottom-center": {
+      "mean": 0.03400517627596855,
+      "std": 0.006406398024410009,
+      "sample_count": 18
+    },
+    "bottom-left": {
+      "mean": 0.011944583617150784,
+      "std": 0.005493275821208954,
+      "sample_count": 18
+    },
+    "bottom-right": {
+      "mean": 0.01699419878423214,
+      "std": 0.009594141505658627,
+      "sample_count": 18
+    },
+    "middle-center": {
+      "mean": 0.038366302847862244,
+      "std": 0.005790548864752054,
+      "sample_count": 18
+    },
+    "middle-left": {
+      "mean": 0.017295055091381073,
+      "std": 0.005461022723466158,
+      "sample_count": 18
+    },
+    "middle-right": {
+      "mean": 0.006816101726144552,
+      "std": 0.0024574960116297007,
+      "sample_count": 18
+    },
+    "top-center": {
+      "mean": 0.019968219101428986,
+      "std": 0.006511607673019171,
+      "sample_count": 18
+    },
+    "top-left": {
+      "mean": 0.013555387035012245,
+      "std": 0.003277418902143836,
+      "sample_count": 18
+    },
+    "top-right": {
+      "mean": 0.006575388368219137,
+      "std": 0.000782957358751446,
+      "sample_count": 18
+    }
+  },
+  "broad_bands": {
+    "bottom": {
+      "mean": 0.0205705426633358,
+      "std": 0.004822695627808571,
+      "sample_count": 18
+    },
+    "middle": {
+      "mean": 0.02082042768597603,
+      "std": 0.0018833050271496177,
+      "sample_count": 18
+    },
+    "top": {
+      "mean": 0.013355718925595284,
+      "std": 0.0030793710611760616,
+      "sample_count": 18
+    }
+  },
+  "validation_files": [
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/Slice 1267.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/Slice 1269.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/Slice 1798.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/Slice 899.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_0001.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00015.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00025.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00050.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00052.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00055.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00056.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00062.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00066.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00079.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00081.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00084.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00087.png",
+    "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/processed_general/tra/tra_00093.png"
+  ]
+}

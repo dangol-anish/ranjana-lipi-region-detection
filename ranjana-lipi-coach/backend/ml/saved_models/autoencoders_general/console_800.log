@@ -1,0 +1,996 @@
+[2026-07-31T14:10:14] Device: cpu
+[2026-07-31T14:10:14] Output root: /Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general
+[2026-07-31T14:10:14] Classes: 62
+[2026-07-31T14:10:14] a: train=800 val=23
+[2026-07-31T14:10:14] aa: train=800 val=25
+[2026-07-31T14:10:14] ah: train=800 val=8
+[2026-07-31T14:10:14] ai: train=800 val=16
+[2026-07-31T14:10:15] am: train=800 val=14
+[2026-07-31T14:10:15] au: train=800 val=15
+[2026-07-31T14:10:15] ba: train=800 val=17
+[2026-07-31T14:10:15] bha: train=800 val=18
+[2026-07-31T14:10:15] ca: train=800 val=18
+[2026-07-31T14:10:15] cha: train=800 val=18
+[2026-07-31T14:10:15] da: train=800 val=19
+[2026-07-31T14:10:15] dda: train=800 val=19
+[2026-07-31T14:10:15] ddha: train=800 val=18
+[2026-07-31T14:10:15] dha: train=800 val=18
+[2026-07-31T14:10:15] e: train=800 val=17
+[2026-07-31T14:10:15] eight: train=800 val=18
+[2026-07-31T14:10:15] five: train=800 val=18
+[2026-07-31T14:10:15] four: train=800 val=18
+[2026-07-31T14:10:15] ga: train=800 val=18
+[2026-07-31T14:10:15] gha: train=800 val=18
+[2026-07-31T14:10:15] gyan: train=800 val=18
+[2026-07-31T14:10:15] ha: train=800 val=18
+[2026-07-31T14:10:15] i: train=800 val=18
+[2026-07-31T14:10:15] ii: train=800 val=17
+[2026-07-31T14:10:15] ja: train=800 val=18
+[2026-07-31T14:10:15] jha: train=800 val=18
+[2026-07-31T14:10:15] ka: train=800 val=19
+[2026-07-31T14:10:15] kha: train=800 val=18
+[2026-07-31T14:10:15] ksa: train=800 val=18
+[2026-07-31T14:10:15] la: train=800 val=18
+[2026-07-31T14:10:15] lu: train=800 val=4
+[2026-07-31T14:10:15] luu: train=800 val=3
+[2026-07-31T14:10:15] ma: train=800 val=18
+[2026-07-31T14:10:15] na: train=800 val=17
+[2026-07-31T14:10:15] nine: train=800 val=18
+[2026-07-31T14:10:15] nna: train=800 val=18
+[2026-07-31T14:10:15] nnna: train=800 val=18
+[2026-07-31T14:10:15] nya: train=800 val=18
+[2026-07-31T14:10:15] o: train=800 val=16
+[2026-07-31T14:10:15] one: train=800 val=17
+[2026-07-31T14:10:15] pa: train=800 val=18
+[2026-07-31T14:10:15] pha: train=800 val=18
+[2026-07-31T14:10:15] ra: train=800 val=18
+[2026-07-31T14:10:15] ri: train=800 val=11
+[2026-07-31T14:10:15] rii: train=800 val=7
+[2026-07-31T14:10:15] sa: train=800 val=17
+[2026-07-31T14:10:15] saa: train=800 val=18
+[2026-07-31T14:10:15] seven: train=800 val=18
+[2026-07-31T14:10:15] sha: train=800 val=17
+[2026-07-31T14:10:15] six: train=800 val=18
+[2026-07-31T14:10:15] ta: train=800 val=18
+[2026-07-31T14:10:15] tha: train=800 val=18
+[2026-07-31T14:10:15] three: train=800 val=18
+[2026-07-31T14:10:15] tra: train=800 val=18
+[2026-07-31T14:10:15] tta: train=800 val=18
+[2026-07-31T14:10:15] ttha: train=800 val=11
+[2026-07-31T14:10:15] two: train=800 val=18
+[2026-07-31T14:10:15] u: train=800 val=18
+[2026-07-31T14:10:15] uu: train=800 val=16
+[2026-07-31T14:10:15] wo: train=800 val=17
+[2026-07-31T14:10:15] ya: train=800 val=18
+[2026-07-31T14:10:15] zero: train=800 val=18
+[2026-07-31T14:10:15] START a
+[2026-07-31T14:10:20] a epoch 001/12 train_loss=0.192953 val_loss=0.198627
+[2026-07-31T14:10:25] a epoch 002/12 train_loss=0.133560 val_loss=0.132523
+[2026-07-31T14:10:28] a epoch 003/12 train_loss=0.095418 val_loss=0.090906
+[2026-07-31T14:10:31] a epoch 004/12 train_loss=0.065614 val_loss=0.065555
+[2026-07-31T14:10:34] a epoch 005/12 train_loss=0.044852 val_loss=0.048982
+[2026-07-31T14:10:38] a epoch 006/12 train_loss=0.032090 val_loss=0.037549
+[2026-07-31T14:10:41] a epoch 007/12 train_loss=0.024083 val_loss=0.029979
+[2026-07-31T14:10:44] a epoch 008/12 train_loss=0.018820 val_loss=0.025559
+[2026-07-31T14:10:47] a epoch 009/12 train_loss=0.015187 val_loss=0.021928
+[2026-07-31T14:10:50] a epoch 010/12 train_loss=0.012742 val_loss=0.019752
+[2026-07-31T14:10:53] a epoch 011/12 train_loss=0.010954 val_loss=0.017690
+[2026-07-31T14:10:56] a epoch 012/12 train_loss=0.009495 val_loss=0.015697
+[2026-07-31T14:10:56] SUCCESS a final_reconstruction_loss=0.015697
+[2026-07-31T14:10:56] START aa
+[2026-07-31T14:10:59] aa epoch 001/12 train_loss=0.171007 val_loss=0.192708
+[2026-07-31T14:11:03] aa epoch 002/12 train_loss=0.104298 val_loss=0.120833
+[2026-07-31T14:11:06] aa epoch 003/12 train_loss=0.073431 val_loss=0.082092
+[2026-07-31T14:11:09] aa epoch 004/12 train_loss=0.051720 val_loss=0.058007
+[2026-07-31T14:11:12] aa epoch 005/12 train_loss=0.036022 val_loss=0.042772
+[2026-07-31T14:11:15] aa epoch 006/12 train_loss=0.025968 val_loss=0.033901
+[2026-07-31T14:11:18] aa epoch 007/12 train_loss=0.019678 val_loss=0.028769
+[2026-07-31T14:11:21] aa epoch 008/12 train_loss=0.015400 val_loss=0.024488
+[2026-07-31T14:11:25] aa epoch 009/12 train_loss=0.012621 val_loss=0.021647
+[2026-07-31T14:11:28] aa epoch 010/12 train_loss=0.010563 val_loss=0.019218
+[2026-07-31T14:11:31] aa epoch 011/12 train_loss=0.009238 val_loss=0.017262
+[2026-07-31T14:11:34] aa epoch 012/12 train_loss=0.008322 val_loss=0.017007
+[2026-07-31T14:11:34] SUCCESS aa final_reconstruction_loss=0.017007
+[2026-07-31T14:11:34] START ah
+[2026-07-31T14:11:37] ah epoch 001/12 train_loss=0.148057 val_loss=0.170086
+[2026-07-31T14:11:41] ah epoch 002/12 train_loss=0.088408 val_loss=0.105584
+[2026-07-31T14:11:44] ah epoch 003/12 train_loss=0.056830 val_loss=0.062399
+[2026-07-31T14:11:47] ah epoch 004/12 train_loss=0.038288 val_loss=0.042056
+[2026-07-31T14:11:50] ah epoch 005/12 train_loss=0.027424 val_loss=0.034231
+[2026-07-31T14:11:53] ah epoch 006/12 train_loss=0.020923 val_loss=0.028859
+[2026-07-31T14:11:56] ah epoch 007/12 train_loss=0.016561 val_loss=0.025001
+[2026-07-31T14:11:59] ah epoch 008/12 train_loss=0.013795 val_loss=0.022033
+[2026-07-31T14:12:02] ah epoch 009/12 train_loss=0.011667 val_loss=0.019664
+[2026-07-31T14:12:05] ah epoch 010/12 train_loss=0.010085 val_loss=0.017913
+[2026-07-31T14:12:09] ah epoch 011/12 train_loss=0.008899 val_loss=0.016691
+[2026-07-31T14:12:12] ah epoch 012/12 train_loss=0.008111 val_loss=0.015641
+[2026-07-31T14:12:12] SUCCESS ah final_reconstruction_loss=0.015641
+[2026-07-31T14:12:12] START ai
+[2026-07-31T14:12:16] ai epoch 001/12 train_loss=0.187064 val_loss=0.187136
+[2026-07-31T14:12:19] ai epoch 002/12 train_loss=0.129330 val_loss=0.127953
+[2026-07-31T14:12:22] ai epoch 003/12 train_loss=0.090446 val_loss=0.087973
+[2026-07-31T14:12:26] ai epoch 004/12 train_loss=0.060708 val_loss=0.063426
+[2026-07-31T14:12:29] ai epoch 005/12 train_loss=0.040013 val_loss=0.043080
+[2026-07-31T14:12:32] ai epoch 006/12 train_loss=0.027510 val_loss=0.033376
+[2026-07-31T14:12:35] ai epoch 007/12 train_loss=0.020053 val_loss=0.026262
+[2026-07-31T14:12:38] ai epoch 008/12 train_loss=0.015478 val_loss=0.022730
+[2026-07-31T14:12:41] ai epoch 009/12 train_loss=0.012490 val_loss=0.019727
+[2026-07-31T14:12:44] ai epoch 010/12 train_loss=0.010452 val_loss=0.016851
+[2026-07-31T14:12:47] ai epoch 011/12 train_loss=0.009120 val_loss=0.015055
+[2026-07-31T14:12:50] ai epoch 012/12 train_loss=0.007762 val_loss=0.013910
+[2026-07-31T14:12:51] SUCCESS ai final_reconstruction_loss=0.013910
+[2026-07-31T14:12:51] START am
+[2026-07-31T14:12:54] am epoch 001/12 train_loss=0.208586 val_loss=0.207743
+[2026-07-31T14:12:57] am epoch 002/12 train_loss=0.142314 val_loss=0.133650
+[2026-07-31T14:13:00] am epoch 003/12 train_loss=0.096969 val_loss=0.087621
+[2026-07-31T14:13:03] am epoch 004/12 train_loss=0.064526 val_loss=0.062082
+[2026-07-31T14:13:07] am epoch 005/12 train_loss=0.044232 val_loss=0.046457
+[2026-07-31T14:13:10] am epoch 006/12 train_loss=0.031805 val_loss=0.037084
+[2026-07-31T14:13:13] am epoch 007/12 train_loss=0.023863 val_loss=0.030668
+[2026-07-31T14:13:16] am epoch 008/12 train_loss=0.018690 val_loss=0.025190
+[2026-07-31T14:13:19] am epoch 009/12 train_loss=0.015064 val_loss=0.022041
+[2026-07-31T14:13:23] am epoch 010/12 train_loss=0.012624 val_loss=0.019293
+[2026-07-31T14:13:26] am epoch 011/12 train_loss=0.010786 val_loss=0.018382
+[2026-07-31T14:13:29] am epoch 012/12 train_loss=0.009310 val_loss=0.015371
+[2026-07-31T14:13:29] SUCCESS am final_reconstruction_loss=0.015371
+[2026-07-31T14:13:29] START au
+[2026-07-31T14:13:33] au epoch 001/12 train_loss=0.194168 val_loss=0.218381
+[2026-07-31T14:13:37] au epoch 002/12 train_loss=0.115169 val_loss=0.120701
+[2026-07-31T14:13:44] au epoch 003/12 train_loss=0.072503 val_loss=0.072626
+[2026-07-31T14:13:48] au epoch 004/12 train_loss=0.047479 val_loss=0.052300
+[2026-07-31T14:13:51] au epoch 005/12 train_loss=0.033197 val_loss=0.041581
+[2026-07-31T14:13:55] au epoch 006/12 train_loss=0.024942 val_loss=0.033795
+[2026-07-31T14:13:58] au epoch 007/12 train_loss=0.019370 val_loss=0.028852
+[2026-07-31T14:14:02] au epoch 008/12 train_loss=0.015902 val_loss=0.025758
+[2026-07-31T14:14:05] au epoch 009/12 train_loss=0.013586 val_loss=0.023264
+[2026-07-31T14:14:10] au epoch 010/12 train_loss=0.011809 val_loss=0.021517
+[2026-07-31T14:14:14] au epoch 011/12 train_loss=0.010376 val_loss=0.020072
+[2026-07-31T14:14:19] au epoch 012/12 train_loss=0.009125 val_loss=0.018230
+[2026-07-31T14:14:19] SUCCESS au final_reconstruction_loss=0.018230
+[2026-07-31T14:14:19] START ba
+[2026-07-31T14:14:23] ba epoch 001/12 train_loss=0.209227 val_loss=0.231948
+[2026-07-31T14:14:27] ba epoch 002/12 train_loss=0.129040 val_loss=0.137067
+[2026-07-31T14:14:31] ba epoch 003/12 train_loss=0.083327 val_loss=0.080871
+[2026-07-31T14:14:36] ba epoch 004/12 train_loss=0.054767 val_loss=0.056164
+[2026-07-31T14:14:41] ba epoch 005/12 train_loss=0.037523 val_loss=0.042221
+[2026-07-31T14:14:45] ba epoch 006/12 train_loss=0.027209 val_loss=0.031726
+[2026-07-31T14:14:50] ba epoch 007/12 train_loss=0.020722 val_loss=0.025911
+[2026-07-31T14:14:54] ba epoch 008/12 train_loss=0.016364 val_loss=0.021976
+[2026-07-31T14:14:59] ba epoch 009/12 train_loss=0.013416 val_loss=0.019374
+[2026-07-31T14:15:04] ba epoch 010/12 train_loss=0.011291 val_loss=0.017499
+[2026-07-31T14:15:08] ba epoch 011/12 train_loss=0.009716 val_loss=0.015703
+[2026-07-31T14:15:12] ba epoch 012/12 train_loss=0.008508 val_loss=0.014353
+[2026-07-31T14:15:13] SUCCESS ba final_reconstruction_loss=0.014353
+[2026-07-31T14:15:13] START bha
+[2026-07-31T14:15:17] bha epoch 001/12 train_loss=0.163265 val_loss=0.174407
+[2026-07-31T14:15:22] bha epoch 002/12 train_loss=0.097755 val_loss=0.097129
+[2026-07-31T14:15:26] bha epoch 003/12 train_loss=0.062046 val_loss=0.060482
+[2026-07-31T14:15:31] bha epoch 004/12 train_loss=0.040953 val_loss=0.041960
+[2026-07-31T14:15:35] bha epoch 005/12 train_loss=0.028185 val_loss=0.033234
+[2026-07-31T14:15:39] bha epoch 006/12 train_loss=0.020754 val_loss=0.026042
+[2026-07-31T14:15:43] bha epoch 007/12 train_loss=0.016055 val_loss=0.021570
+[2026-07-31T14:15:47] bha epoch 008/12 train_loss=0.012824 val_loss=0.018618
+[2026-07-31T14:15:51] bha epoch 009/12 train_loss=0.010575 val_loss=0.016573
+[2026-07-31T14:15:55] bha epoch 010/12 train_loss=0.009034 val_loss=0.015285
+[2026-07-31T14:15:59] bha epoch 011/12 train_loss=0.007927 val_loss=0.013371
+[2026-07-31T14:16:03] bha epoch 012/12 train_loss=0.006970 val_loss=0.012341
+[2026-07-31T14:16:03] SUCCESS bha final_reconstruction_loss=0.012341
+[2026-07-31T14:16:03] START ca
+[2026-07-31T14:16:07] ca epoch 001/12 train_loss=0.105872 val_loss=0.152925
+[2026-07-31T14:16:12] ca epoch 002/12 train_loss=0.056729 val_loss=0.095243
+[2026-07-31T14:16:16] ca epoch 003/12 train_loss=0.037255 val_loss=0.052267
+[2026-07-31T14:16:20] ca epoch 004/12 train_loss=0.025446 val_loss=0.031923
+[2026-07-31T14:16:24] ca epoch 005/12 train_loss=0.017993 val_loss=0.023005
+[2026-07-31T14:16:27] ca epoch 006/12 train_loss=0.013328 val_loss=0.018585
+[2026-07-31T14:16:31] ca epoch 007/12 train_loss=0.010457 val_loss=0.016048
+[2026-07-31T14:16:35] ca epoch 008/12 train_loss=0.008660 val_loss=0.014353
+[2026-07-31T14:16:39] ca epoch 009/12 train_loss=0.007466 val_loss=0.012799
+[2026-07-31T14:16:43] ca epoch 010/12 train_loss=0.006410 val_loss=0.011827
+[2026-07-31T14:16:47] ca epoch 011/12 train_loss=0.005725 val_loss=0.010964
+[2026-07-31T14:16:51] ca epoch 012/12 train_loss=0.005184 val_loss=0.010244
+[2026-07-31T14:16:51] SUCCESS ca final_reconstruction_loss=0.010244
+[2026-07-31T14:16:51] START cha
+[2026-07-31T14:16:55] cha epoch 001/12 train_loss=0.168392 val_loss=0.190562
+[2026-07-31T14:17:00] cha epoch 002/12 train_loss=0.093546 val_loss=0.103148
+[2026-07-31T14:17:05] cha epoch 003/12 train_loss=0.056631 val_loss=0.055484
+[2026-07-31T14:17:09] cha epoch 004/12 train_loss=0.036465 val_loss=0.037675
+[2026-07-31T14:17:13] cha epoch 005/12 train_loss=0.025365 val_loss=0.029536
+[2026-07-31T14:17:17] cha epoch 006/12 train_loss=0.018914 val_loss=0.024153
+[2026-07-31T14:17:22] cha epoch 007/12 train_loss=0.014887 val_loss=0.020493
+[2026-07-31T14:17:26] cha epoch 008/12 train_loss=0.012182 val_loss=0.018221
+[2026-07-31T14:17:30] cha epoch 009/12 train_loss=0.010271 val_loss=0.015974
+[2026-07-31T14:17:34] cha epoch 010/12 train_loss=0.008804 val_loss=0.014511
+[2026-07-31T14:17:39] cha epoch 011/12 train_loss=0.007769 val_loss=0.013024
+[2026-07-31T14:17:44] cha epoch 012/12 train_loss=0.006886 val_loss=0.012152
+[2026-07-31T14:17:44] SUCCESS cha final_reconstruction_loss=0.012152
+[2026-07-31T14:17:44] START da
+[2026-07-31T14:17:49] da epoch 001/12 train_loss=0.240526 val_loss=0.218057
+[2026-07-31T14:17:53] da epoch 002/12 train_loss=0.185151 val_loss=0.171965
+[2026-07-31T14:17:57] da epoch 003/12 train_loss=0.151287 val_loss=0.134362
+[2026-07-31T14:18:02] da epoch 004/12 train_loss=0.118316 val_loss=0.106823
+[2026-07-31T14:18:06] da epoch 005/12 train_loss=0.086859 val_loss=0.082710
+[2026-07-31T14:18:12] da epoch 006/12 train_loss=0.062095 val_loss=0.063189
+[2026-07-31T14:18:20] da epoch 007/12 train_loss=0.044368 val_loss=0.046829
+[2026-07-31T14:18:25] da epoch 008/12 train_loss=0.031162 val_loss=0.035470
+[2026-07-31T14:18:32] da epoch 009/12 train_loss=0.022222 val_loss=0.026450
+[2026-07-31T14:18:37] da epoch 010/12 train_loss=0.016839 val_loss=0.021895
+[2026-07-31T14:18:41] da epoch 011/12 train_loss=0.013271 val_loss=0.018714
+[2026-07-31T14:18:46] da epoch 012/12 train_loss=0.010879 val_loss=0.016390
+[2026-07-31T14:18:46] SUCCESS da final_reconstruction_loss=0.016390
+[2026-07-31T14:18:46] START dda
+[2026-07-31T14:18:53] dda epoch 001/12 train_loss=0.173436 val_loss=0.174610
+[2026-07-31T14:18:59] dda epoch 002/12 train_loss=0.109043 val_loss=0.111551
+[2026-07-31T14:19:06] dda epoch 003/12 train_loss=0.070513 val_loss=0.068248
+[2026-07-31T14:19:11] dda epoch 004/12 train_loss=0.044432 val_loss=0.045531
+[2026-07-31T14:19:17] dda epoch 005/12 train_loss=0.029357 val_loss=0.033096
+[2026-07-31T14:19:22] dda epoch 006/12 train_loss=0.020689 val_loss=0.025882
+[2026-07-31T14:19:27] dda epoch 007/12 train_loss=0.015545 val_loss=0.021770
+[2026-07-31T14:19:32] dda epoch 008/12 train_loss=0.012336 val_loss=0.018196
+[2026-07-31T14:19:37] dda epoch 009/12 train_loss=0.010023 val_loss=0.016206
+[2026-07-31T14:19:41] dda epoch 010/12 train_loss=0.008456 val_loss=0.014467
+[2026-07-31T14:19:45] dda epoch 011/12 train_loss=0.007334 val_loss=0.012974
+[2026-07-31T14:19:50] dda epoch 012/12 train_loss=0.006494 val_loss=0.012206
+[2026-07-31T14:19:50] SUCCESS dda final_reconstruction_loss=0.012206
+[2026-07-31T14:19:50] START ddha
+[2026-07-31T14:19:54] ddha epoch 001/12 train_loss=0.230375 val_loss=0.224735
+[2026-07-31T14:19:59] ddha epoch 002/12 train_loss=0.162994 val_loss=0.143270
+[2026-07-31T14:20:03] ddha epoch 003/12 train_loss=0.114776 val_loss=0.098183
+[2026-07-31T14:20:08] ddha epoch 004/12 train_loss=0.075355 val_loss=0.064676
+[2026-07-31T14:20:12] ddha epoch 005/12 train_loss=0.047741 val_loss=0.043849
+[2026-07-31T14:20:17] ddha epoch 006/12 train_loss=0.031136 val_loss=0.031988
+[2026-07-31T14:20:21] ddha epoch 007/12 train_loss=0.021619 val_loss=0.025178
+[2026-07-31T14:20:26] ddha epoch 008/12 train_loss=0.015913 val_loss=0.020268
+[2026-07-31T14:20:30] ddha epoch 009/12 train_loss=0.012404 val_loss=0.017084
+[2026-07-31T14:20:34] ddha epoch 010/12 train_loss=0.010132 val_loss=0.014760
+[2026-07-31T14:20:39] ddha epoch 011/12 train_loss=0.008516 val_loss=0.013232
+[2026-07-31T14:20:43] ddha epoch 012/12 train_loss=0.007334 val_loss=0.012217
+[2026-07-31T14:20:43] SUCCESS ddha final_reconstruction_loss=0.012217
+[2026-07-31T14:20:43] START dha
+[2026-07-31T14:20:47] dha epoch 001/12 train_loss=0.222669 val_loss=0.229482
+[2026-07-31T14:20:52] dha epoch 002/12 train_loss=0.138625 val_loss=0.137634
+[2026-07-31T14:20:56] dha epoch 003/12 train_loss=0.093218 val_loss=0.089235
+[2026-07-31T14:21:03] dha epoch 004/12 train_loss=0.063609 val_loss=0.064460
+[2026-07-31T14:21:09] dha epoch 005/12 train_loss=0.044532 val_loss=0.047963
+[2026-07-31T14:21:15] dha epoch 006/12 train_loss=0.032397 val_loss=0.037580
+[2026-07-31T14:21:21] dha epoch 007/12 train_loss=0.024557 val_loss=0.030829
+[2026-07-31T14:21:26] dha epoch 008/12 train_loss=0.019350 val_loss=0.026249
+[2026-07-31T14:21:30] dha epoch 009/12 train_loss=0.015643 val_loss=0.022498
+[2026-07-31T14:21:35] dha epoch 010/12 train_loss=0.013001 val_loss=0.019763
+[2026-07-31T14:21:40] dha epoch 011/12 train_loss=0.011245 val_loss=0.017585
+[2026-07-31T14:21:47] dha epoch 012/12 train_loss=0.009638 val_loss=0.016479
+[2026-07-31T14:21:47] SUCCESS dha final_reconstruction_loss=0.016479
+[2026-07-31T14:21:47] START e
+[2026-07-31T14:21:52] e epoch 001/12 train_loss=0.149661 val_loss=0.176013
+[2026-07-31T14:21:57] e epoch 002/12 train_loss=0.079700 val_loss=0.098609
+[2026-07-31T14:22:02] e epoch 003/12 train_loss=0.050675 val_loss=0.062615
+[2026-07-31T14:22:07] e epoch 004/12 train_loss=0.033598 val_loss=0.039605
+[2026-07-31T14:22:12] e epoch 005/12 train_loss=0.023387 val_loss=0.030952
+[2026-07-31T14:22:17] e epoch 006/12 train_loss=0.017331 val_loss=0.023753
+[2026-07-31T14:22:23] e epoch 007/12 train_loss=0.013448 val_loss=0.019819
+[2026-07-31T14:22:29] e epoch 008/12 train_loss=0.011035 val_loss=0.017087
+[2026-07-31T14:22:35] e epoch 009/12 train_loss=0.009222 val_loss=0.015051
+[2026-07-31T14:22:41] e epoch 010/12 train_loss=0.008120 val_loss=0.014160
+[2026-07-31T14:22:48] e epoch 011/12 train_loss=0.007255 val_loss=0.012531
+[2026-07-31T14:22:54] e epoch 012/12 train_loss=0.006224 val_loss=0.011632
+[2026-07-31T14:22:54] SUCCESS e final_reconstruction_loss=0.011632
+[2026-07-31T14:22:54] START eight
+[2026-07-31T14:23:02] eight epoch 001/12 train_loss=0.157763 val_loss=0.175595
+[2026-07-31T14:23:09] eight epoch 002/12 train_loss=0.087702 val_loss=0.088175
+[2026-07-31T14:23:21] eight epoch 003/12 train_loss=0.054345 val_loss=0.052493
+[2026-07-31T14:23:28] eight epoch 004/12 train_loss=0.034787 val_loss=0.037048
+[2026-07-31T14:23:37] eight epoch 005/12 train_loss=0.023497 val_loss=0.026395
+[2026-07-31T14:23:45] eight epoch 006/12 train_loss=0.016864 val_loss=0.020351
+[2026-07-31T14:23:50] eight epoch 007/12 train_loss=0.012817 val_loss=0.016156
+[2026-07-31T14:23:57] eight epoch 008/12 train_loss=0.010107 val_loss=0.013384
+[2026-07-31T14:24:03] eight epoch 009/12 train_loss=0.008234 val_loss=0.011801
+[2026-07-31T14:24:09] eight epoch 010/12 train_loss=0.006966 val_loss=0.010392
+[2026-07-31T14:24:15] eight epoch 011/12 train_loss=0.006007 val_loss=0.010357
+[2026-07-31T14:24:22] eight epoch 012/12 train_loss=0.005380 val_loss=0.008653
+[2026-07-31T14:24:22] SUCCESS eight final_reconstruction_loss=0.008653
+[2026-07-31T14:24:22] START five
+[2026-07-31T14:24:30] five epoch 001/12 train_loss=0.162814 val_loss=0.173205
+[2026-07-31T14:24:40] five epoch 002/12 train_loss=0.101595 val_loss=0.101546
+[2026-07-31T14:24:49] five epoch 003/12 train_loss=0.065920 val_loss=0.061318
+[2026-07-31T14:24:57] five epoch 004/12 train_loss=0.042279 val_loss=0.040754
+[2026-07-31T14:25:17] five epoch 005/12 train_loss=0.027649 val_loss=0.029747
+[2026-07-31T14:25:37] five epoch 006/12 train_loss=0.019158 val_loss=0.023505
+[2026-07-31T14:25:57] five epoch 007/12 train_loss=0.014312 val_loss=0.019590
+[2026-07-31T14:26:13] five epoch 008/12 train_loss=0.011355 val_loss=0.016714
+[2026-07-31T14:26:31] five epoch 009/12 train_loss=0.009314 val_loss=0.014868
+[2026-07-31T14:26:50] five epoch 010/12 train_loss=0.008061 val_loss=0.013481
+[2026-07-31T14:27:08] five epoch 011/12 train_loss=0.006991 val_loss=0.012592
+[2026-07-31T14:27:28] five epoch 012/12 train_loss=0.006183 val_loss=0.012230
+[2026-07-31T14:27:29] SUCCESS five final_reconstruction_loss=0.012230
+[2026-07-31T14:27:29] START four
+[2026-07-31T14:27:45] four epoch 001/12 train_loss=0.125953 val_loss=0.167611
+[2026-07-31T14:27:56] four epoch 002/12 train_loss=0.061299 val_loss=0.081104
+[2026-07-31T14:28:06] four epoch 003/12 train_loss=0.035898 val_loss=0.044045
+[2026-07-31T14:28:16] four epoch 004/12 train_loss=0.023236 val_loss=0.028134
+[2026-07-31T14:28:44] four epoch 005/12 train_loss=0.016539 val_loss=0.021703
+[2026-07-31T14:29:07] four epoch 006/12 train_loss=0.012586 val_loss=0.018390
+[2026-07-31T14:29:29] four epoch 007/12 train_loss=0.010120 val_loss=0.015832
+[2026-07-31T14:29:38] four epoch 008/12 train_loss=0.008433 val_loss=0.014136
+[2026-07-31T14:29:45] four epoch 009/12 train_loss=0.007235 val_loss=0.012633
+[2026-07-31T14:29:51] four epoch 010/12 train_loss=0.006325 val_loss=0.011688
+[2026-07-31T14:29:58] four epoch 011/12 train_loss=0.005613 val_loss=0.011196
+[2026-07-31T14:30:05] four epoch 012/12 train_loss=0.005146 val_loss=0.010273
+[2026-07-31T14:30:05] SUCCESS four final_reconstruction_loss=0.010273
+[2026-07-31T14:30:05] START ga
+[2026-07-31T14:30:12] ga epoch 001/12 train_loss=0.204220 val_loss=0.206777
+[2026-07-31T14:30:20] ga epoch 002/12 train_loss=0.147241 val_loss=0.144726
+[2026-07-31T14:30:40] ga epoch 003/12 train_loss=0.110626 val_loss=0.106133
+[2026-07-31T14:31:07] ga epoch 004/12 train_loss=0.081130 val_loss=0.078586
+[2026-07-31T14:31:15] ga epoch 005/12 train_loss=0.058491 val_loss=0.058541
+[2026-07-31T14:31:27] ga epoch 006/12 train_loss=0.041990 val_loss=0.043076
+[2026-07-31T14:31:35] ga epoch 007/12 train_loss=0.030140 val_loss=0.032526
+[2026-07-31T14:31:44] ga epoch 008/12 train_loss=0.022050 val_loss=0.025892
+[2026-07-31T14:31:51] ga epoch 009/12 train_loss=0.016789 val_loss=0.021840
+[2026-07-31T14:31:58] ga epoch 010/12 train_loss=0.013411 val_loss=0.018262
+[2026-07-31T14:32:06] ga epoch 011/12 train_loss=0.011003 val_loss=0.015931
+[2026-07-31T14:32:14] ga epoch 012/12 train_loss=0.009183 val_loss=0.014034
+[2026-07-31T14:32:15] SUCCESS ga final_reconstruction_loss=0.014034
+[2026-07-31T14:32:15] START gha
+[2026-07-31T14:32:25] gha epoch 001/12 train_loss=0.205767 val_loss=0.209791
+[2026-07-31T14:32:35] gha epoch 002/12 train_loss=0.135998 val_loss=0.130951
+[2026-07-31T14:32:43] gha epoch 003/12 train_loss=0.089678 val_loss=0.088494
+[2026-07-31T14:32:50] gha epoch 004/12 train_loss=0.057967 val_loss=0.058473
+[2026-07-31T14:32:57] gha epoch 005/12 train_loss=0.038563 val_loss=0.041905
+[2026-07-31T14:33:04] gha epoch 006/12 train_loss=0.027429 val_loss=0.034219
+[2026-07-31T14:33:10] gha epoch 007/12 train_loss=0.020616 val_loss=0.027532
+[2026-07-31T14:33:16] gha epoch 008/12 train_loss=0.016337 val_loss=0.024284
+[2026-07-31T14:33:23] gha epoch 009/12 train_loss=0.013463 val_loss=0.020527
+[2026-07-31T14:33:29] gha epoch 010/12 train_loss=0.011359 val_loss=0.018645
+[2026-07-31T14:33:35] gha epoch 011/12 train_loss=0.009816 val_loss=0.017578
+[2026-07-31T14:33:42] gha epoch 012/12 train_loss=0.008725 val_loss=0.015772
+[2026-07-31T14:33:43] SUCCESS gha final_reconstruction_loss=0.015772
+[2026-07-31T14:33:43] START gyan
+[2026-07-31T14:33:49] gyan epoch 001/12 train_loss=0.183203 val_loss=0.205035
+[2026-07-31T14:33:56] gyan epoch 002/12 train_loss=0.112364 val_loss=0.111018
+[2026-07-31T14:34:01] gyan epoch 003/12 train_loss=0.070875 val_loss=0.066645
+[2026-07-31T14:34:07] gyan epoch 004/12 train_loss=0.047022 val_loss=0.050039
+[2026-07-31T14:34:12] gyan epoch 005/12 train_loss=0.033258 val_loss=0.040633
+[2026-07-31T14:34:17] gyan epoch 006/12 train_loss=0.024864 val_loss=0.034264
+[2026-07-31T14:34:23] gyan epoch 007/12 train_loss=0.019371 val_loss=0.029695
+[2026-07-31T14:34:28] gyan epoch 008/12 train_loss=0.015813 val_loss=0.025476
+[2026-07-31T14:34:33] gyan epoch 009/12 train_loss=0.013189 val_loss=0.022800
+[2026-07-31T14:34:38] gyan epoch 010/12 train_loss=0.011356 val_loss=0.020863
+[2026-07-31T14:34:44] gyan epoch 011/12 train_loss=0.009920 val_loss=0.019571
+[2026-07-31T14:34:49] gyan epoch 012/12 train_loss=0.008899 val_loss=0.018263
+[2026-07-31T14:34:49] SUCCESS gyan final_reconstruction_loss=0.018263
+[2026-07-31T14:34:49] START ha
+[2026-07-31T14:34:55] ha epoch 001/12 train_loss=0.216863 val_loss=0.214876
+[2026-07-31T14:35:01] ha epoch 002/12 train_loss=0.149742 val_loss=0.143725
+[2026-07-31T14:35:06] ha epoch 003/12 train_loss=0.107195 val_loss=0.098324
+[2026-07-31T14:35:12] ha epoch 004/12 train_loss=0.076455 val_loss=0.072990
+[2026-07-31T14:35:17] ha epoch 005/12 train_loss=0.054495 val_loss=0.054876
+[2026-07-31T14:35:23] ha epoch 006/12 train_loss=0.038935 val_loss=0.043661
+[2026-07-31T14:35:28] ha epoch 007/12 train_loss=0.027365 val_loss=0.032643
+[2026-07-31T14:35:33] ha epoch 008/12 train_loss=0.019945 val_loss=0.026575
+[2026-07-31T14:35:38] ha epoch 009/12 train_loss=0.015302 val_loss=0.021839
+[2026-07-31T14:35:44] ha epoch 010/12 train_loss=0.012065 val_loss=0.019025
+[2026-07-31T14:35:49] ha epoch 011/12 train_loss=0.010195 val_loss=0.016638
+[2026-07-31T14:35:54] ha epoch 012/12 train_loss=0.008541 val_loss=0.015266
+[2026-07-31T14:35:54] SUCCESS ha final_reconstruction_loss=0.015266
+[2026-07-31T14:35:54] START i
+[2026-07-31T14:36:00] i epoch 001/12 train_loss=0.149118 val_loss=0.176660
+[2026-07-31T14:36:06] i epoch 002/12 train_loss=0.086518 val_loss=0.111195
+[2026-07-31T14:36:11] i epoch 003/12 train_loss=0.055264 val_loss=0.062340
+[2026-07-31T14:36:17] i epoch 004/12 train_loss=0.036765 val_loss=0.040500
+[2026-07-31T14:36:22] i epoch 005/12 train_loss=0.026035 val_loss=0.032539
+[2026-07-31T14:36:28] i epoch 006/12 train_loss=0.019636 val_loss=0.027364
+[2026-07-31T14:36:33] i epoch 007/12 train_loss=0.015463 val_loss=0.023156
+[2026-07-31T14:36:38] i epoch 008/12 train_loss=0.012634 val_loss=0.020063
+[2026-07-31T14:36:43] i epoch 009/12 train_loss=0.010738 val_loss=0.017849
+[2026-07-31T14:36:48] i epoch 010/12 train_loss=0.009364 val_loss=0.016112
+[2026-07-31T14:36:54] i epoch 011/12 train_loss=0.008125 val_loss=0.014723
+[2026-07-31T14:36:59] i epoch 012/12 train_loss=0.007529 val_loss=0.014397
+[2026-07-31T14:36:59] SUCCESS i final_reconstruction_loss=0.014397
+[2026-07-31T14:36:59] START ii
+[2026-07-31T14:37:05] ii epoch 001/12 train_loss=0.189910 val_loss=0.199849
+[2026-07-31T14:37:10] ii epoch 002/12 train_loss=0.122665 val_loss=0.128766
+[2026-07-31T14:37:16] ii epoch 003/12 train_loss=0.085312 val_loss=0.088129
+[2026-07-31T14:37:21] ii epoch 004/12 train_loss=0.058379 val_loss=0.060552
+[2026-07-31T14:37:27] ii epoch 005/12 train_loss=0.038931 val_loss=0.043212
+[2026-07-31T14:37:32] ii epoch 006/12 train_loss=0.026696 val_loss=0.033977
+[2026-07-31T14:37:37] ii epoch 007/12 train_loss=0.019776 val_loss=0.028006
+[2026-07-31T14:37:42] ii epoch 008/12 train_loss=0.015694 val_loss=0.025468
+[2026-07-31T14:37:47] ii epoch 009/12 train_loss=0.012909 val_loss=0.022759
+[2026-07-31T14:37:51] ii epoch 010/12 train_loss=0.011152 val_loss=0.019911
+[2026-07-31T14:37:56] ii epoch 011/12 train_loss=0.009881 val_loss=0.018991
+[2026-07-31T14:38:01] ii epoch 012/12 train_loss=0.008808 val_loss=0.017918
+[2026-07-31T14:38:01] SUCCESS ii final_reconstruction_loss=0.017918
+[2026-07-31T14:38:01] START ja
+[2026-07-31T14:38:07] ja epoch 001/12 train_loss=0.191323 val_loss=0.219236
+[2026-07-31T14:38:12] ja epoch 002/12 train_loss=0.119753 val_loss=0.138063
+[2026-07-31T14:38:17] ja epoch 003/12 train_loss=0.079490 val_loss=0.086172
+[2026-07-31T14:38:22] ja epoch 004/12 train_loss=0.056507 val_loss=0.061247
+[2026-07-31T14:38:28] ja epoch 005/12 train_loss=0.044442 val_loss=0.052946
+[2026-07-31T14:38:32] ja epoch 006/12 train_loss=0.037142 val_loss=0.045886
+[2026-07-31T14:38:37] ja epoch 007/12 train_loss=0.030813 val_loss=0.038641
+[2026-07-31T14:38:42] ja epoch 008/12 train_loss=0.025086 val_loss=0.032933
+[2026-07-31T14:38:47] ja epoch 009/12 train_loss=0.020757 val_loss=0.029397
+[2026-07-31T14:38:51] ja epoch 010/12 train_loss=0.017445 val_loss=0.025523
+[2026-07-31T14:38:56] ja epoch 011/12 train_loss=0.014643 val_loss=0.022519
+[2026-07-31T14:39:01] ja epoch 012/12 train_loss=0.012549 val_loss=0.020653
+[2026-07-31T14:39:01] SUCCESS ja final_reconstruction_loss=0.020653
+[2026-07-31T14:39:01] START jha
+[2026-07-31T14:39:07] jha epoch 001/12 train_loss=0.141884 val_loss=0.180752
+[2026-07-31T14:39:12] jha epoch 002/12 train_loss=0.074503 val_loss=0.094888
+[2026-07-31T14:39:17] jha epoch 003/12 train_loss=0.044124 val_loss=0.052765
+[2026-07-31T14:39:23] jha epoch 004/12 train_loss=0.027804 val_loss=0.035061
+[2026-07-31T14:39:27] jha epoch 005/12 train_loss=0.019121 val_loss=0.026433
+[2026-07-31T14:39:32] jha epoch 006/12 train_loss=0.014339 val_loss=0.022581
+[2026-07-31T14:39:37] jha epoch 007/12 train_loss=0.011568 val_loss=0.019724
+[2026-07-31T14:39:41] jha epoch 008/12 train_loss=0.009667 val_loss=0.017994
+[2026-07-31T14:39:46] jha epoch 009/12 train_loss=0.008388 val_loss=0.016063
+[2026-07-31T14:39:51] jha epoch 010/12 train_loss=0.007438 val_loss=0.014912
+[2026-07-31T14:39:56] jha epoch 011/12 train_loss=0.006711 val_loss=0.013893
+[2026-07-31T14:40:00] jha epoch 012/12 train_loss=0.005999 val_loss=0.013366
+[2026-07-31T14:40:00] SUCCESS jha final_reconstruction_loss=0.013366
+[2026-07-31T14:40:00] START ka
+[2026-07-31T14:40:06] ka epoch 001/12 train_loss=0.149216 val_loss=0.190088
+[2026-07-31T14:40:11] ka epoch 002/12 train_loss=0.079441 val_loss=0.108070
+[2026-07-31T14:40:17] ka epoch 003/12 train_loss=0.048784 val_loss=0.063185
+[2026-07-31T14:40:22] ka epoch 004/12 train_loss=0.032133 val_loss=0.041002
+[2026-07-31T14:40:27] ka epoch 005/12 train_loss=0.022878 val_loss=0.029891
+[2026-07-31T14:40:32] ka epoch 006/12 train_loss=0.017338 val_loss=0.024072
+[2026-07-31T14:40:36] ka epoch 007/12 train_loss=0.013693 val_loss=0.020576
+[2026-07-31T14:40:41] ka epoch 008/12 train_loss=0.011415 val_loss=0.018299
+[2026-07-31T14:40:46] ka epoch 009/12 train_loss=0.009794 val_loss=0.016124
+[2026-07-31T14:40:50] ka epoch 010/12 train_loss=0.008437 val_loss=0.014514
+[2026-07-31T14:40:55] ka epoch 011/12 train_loss=0.007448 val_loss=0.013591
+[2026-07-31T14:41:00] ka epoch 012/12 train_loss=0.006618 val_loss=0.012777
+[2026-07-31T14:41:00] SUCCESS ka final_reconstruction_loss=0.012777
+[2026-07-31T14:41:00] START kha
+[2026-07-31T14:41:05] kha epoch 001/12 train_loss=0.203076 val_loss=0.217636
+[2026-07-31T14:41:11] kha epoch 002/12 train_loss=0.132172 val_loss=0.137100
+[2026-07-31T14:41:16] kha epoch 003/12 train_loss=0.086903 val_loss=0.085219
+[2026-07-31T14:41:21] kha epoch 004/12 train_loss=0.055978 val_loss=0.056160
+[2026-07-31T14:41:26] kha epoch 005/12 train_loss=0.037110 val_loss=0.040347
+[2026-07-31T14:41:31] kha epoch 006/12 train_loss=0.026249 val_loss=0.032006
+[2026-07-31T14:41:35] kha epoch 007/12 train_loss=0.019729 val_loss=0.027271
+[2026-07-31T14:41:40] kha epoch 008/12 train_loss=0.015487 val_loss=0.023413
+[2026-07-31T14:41:44] kha epoch 009/12 train_loss=0.012806 val_loss=0.020596
+[2026-07-31T14:41:49] kha epoch 010/12 train_loss=0.010759 val_loss=0.018765
+[2026-07-31T14:41:54] kha epoch 011/12 train_loss=0.009335 val_loss=0.017107
+[2026-07-31T14:41:58] kha epoch 012/12 train_loss=0.008284 val_loss=0.015984
+[2026-07-31T14:41:58] SUCCESS kha final_reconstruction_loss=0.015984
+[2026-07-31T14:41:58] START ksa
+[2026-07-31T14:42:04] ksa epoch 001/12 train_loss=0.182548 val_loss=0.210742
+[2026-07-31T14:42:09] ksa epoch 002/12 train_loss=0.111557 val_loss=0.134917
+[2026-07-31T14:42:14] ksa epoch 003/12 train_loss=0.073747 val_loss=0.080717
+[2026-07-31T14:42:19] ksa epoch 004/12 train_loss=0.049195 val_loss=0.054229
+[2026-07-31T14:42:24] ksa epoch 005/12 train_loss=0.033741 val_loss=0.040145
+[2026-07-31T14:42:29] ksa epoch 006/12 train_loss=0.024371 val_loss=0.032266
+[2026-07-31T14:42:33] ksa epoch 007/12 train_loss=0.018629 val_loss=0.027416
+[2026-07-31T14:42:38] ksa epoch 008/12 train_loss=0.015121 val_loss=0.023827
+[2026-07-31T14:42:43] ksa epoch 009/12 train_loss=0.012576 val_loss=0.021067
+[2026-07-31T14:42:47] ksa epoch 010/12 train_loss=0.010678 val_loss=0.018908
+[2026-07-31T14:42:52] ksa epoch 011/12 train_loss=0.009369 val_loss=0.017733
+[2026-07-31T14:42:56] ksa epoch 012/12 train_loss=0.008363 val_loss=0.016077
+[2026-07-31T14:42:56] SUCCESS ksa final_reconstruction_loss=0.016077
+[2026-07-31T14:42:56] START la
+[2026-07-31T14:43:01] la epoch 001/12 train_loss=0.207736 val_loss=0.211370
+[2026-07-31T14:43:06] la epoch 002/12 train_loss=0.146664 val_loss=0.152037
+[2026-07-31T14:43:11] la epoch 003/12 train_loss=0.101845 val_loss=0.097070
+[2026-07-31T14:43:15] la epoch 004/12 train_loss=0.067147 val_loss=0.064786
+[2026-07-31T14:43:21] la epoch 005/12 train_loss=0.043476 val_loss=0.045874
+[2026-07-31T14:43:26] la epoch 006/12 train_loss=0.028953 val_loss=0.035503
+[2026-07-31T14:43:31] la epoch 007/12 train_loss=0.020687 val_loss=0.029333
+[2026-07-31T14:43:35] la epoch 008/12 train_loss=0.015795 val_loss=0.024722
+[2026-07-31T14:43:40] la epoch 009/12 train_loss=0.012681 val_loss=0.021732
+[2026-07-31T14:43:44] la epoch 010/12 train_loss=0.010787 val_loss=0.020077
+[2026-07-31T14:43:49] la epoch 011/12 train_loss=0.009348 val_loss=0.017668
+[2026-07-31T14:43:54] la epoch 012/12 train_loss=0.008201 val_loss=0.017113
+[2026-07-31T14:43:54] SUCCESS la final_reconstruction_loss=0.017113
+[2026-07-31T14:43:54] START lu
+[2026-07-31T14:43:59] lu epoch 001/12 train_loss=0.187761 val_loss=0.219004
+[2026-07-31T14:44:04] lu epoch 002/12 train_loss=0.110296 val_loss=0.129377
+[2026-07-31T14:44:09] lu epoch 003/12 train_loss=0.065925 val_loss=0.075436
+[2026-07-31T14:44:15] lu epoch 004/12 train_loss=0.040133 val_loss=0.047855
+[2026-07-31T14:44:20] lu epoch 005/12 train_loss=0.026863 val_loss=0.035549
+[2026-07-31T14:44:25] lu epoch 006/12 train_loss=0.019765 val_loss=0.029199
+[2026-07-31T14:44:30] lu epoch 007/12 train_loss=0.015504 val_loss=0.025144
+[2026-07-31T14:44:34] lu epoch 008/12 train_loss=0.012804 val_loss=0.022197
+[2026-07-31T14:44:39] lu epoch 009/12 train_loss=0.010904 val_loss=0.020096
+[2026-07-31T14:44:43] lu epoch 010/12 train_loss=0.009563 val_loss=0.018392
+[2026-07-31T14:44:48] lu epoch 011/12 train_loss=0.008594 val_loss=0.017362
+[2026-07-31T14:44:52] lu epoch 012/12 train_loss=0.007693 val_loss=0.016181
+[2026-07-31T14:44:52] SUCCESS lu final_reconstruction_loss=0.016181
+[2026-07-31T14:44:52] START luu
+[2026-07-31T14:44:58] luu epoch 001/12 train_loss=0.155691 val_loss=0.186632
+[2026-07-31T14:45:03] luu epoch 002/12 train_loss=0.084923 val_loss=0.130936
+[2026-07-31T14:45:08] luu epoch 003/12 train_loss=0.050298 val_loss=0.066442
+[2026-07-31T14:45:13] luu epoch 004/12 train_loss=0.031716 val_loss=0.043533
+[2026-07-31T14:45:19] luu epoch 005/12 train_loss=0.022238 val_loss=0.034285
+[2026-07-31T14:45:24] luu epoch 006/12 train_loss=0.016906 val_loss=0.029504
+[2026-07-31T14:45:28] luu epoch 007/12 train_loss=0.013658 val_loss=0.026540
+[2026-07-31T14:45:33] luu epoch 008/12 train_loss=0.011524 val_loss=0.023636
+[2026-07-31T14:45:37] luu epoch 009/12 train_loss=0.009861 val_loss=0.021353
+[2026-07-31T14:45:42] luu epoch 010/12 train_loss=0.008687 val_loss=0.019819
+[2026-07-31T14:45:47] luu epoch 011/12 train_loss=0.007827 val_loss=0.018457
+[2026-07-31T14:45:51] luu epoch 012/12 train_loss=0.007026 val_loss=0.017326
+[2026-07-31T14:45:51] SUCCESS luu final_reconstruction_loss=0.017326
+[2026-07-31T14:45:51] START ma
+[2026-07-31T14:45:57] ma epoch 001/12 train_loss=0.200293 val_loss=0.222277
+[2026-07-31T14:46:02] ma epoch 002/12 train_loss=0.126697 val_loss=0.129053
+[2026-07-31T14:46:07] ma epoch 003/12 train_loss=0.083030 val_loss=0.078960
+[2026-07-31T14:46:12] ma epoch 004/12 train_loss=0.054748 val_loss=0.053854
+[2026-07-31T14:46:18] ma epoch 005/12 train_loss=0.036880 val_loss=0.039586
+[2026-07-31T14:46:23] ma epoch 006/12 train_loss=0.026174 val_loss=0.030725
+[2026-07-31T14:46:27] ma epoch 007/12 train_loss=0.019633 val_loss=0.025160
+[2026-07-31T14:46:32] ma epoch 008/12 train_loss=0.015430 val_loss=0.021393
+[2026-07-31T14:46:36] ma epoch 009/12 train_loss=0.012626 val_loss=0.019014
+[2026-07-31T14:46:41] ma epoch 010/12 train_loss=0.010663 val_loss=0.016711
+[2026-07-31T14:46:45] ma epoch 011/12 train_loss=0.009264 val_loss=0.014909
+[2026-07-31T14:46:50] ma epoch 012/12 train_loss=0.007988 val_loss=0.013557
+[2026-07-31T14:46:50] SUCCESS ma final_reconstruction_loss=0.013557
+[2026-07-31T14:46:50] START na
+[2026-07-31T14:46:55] na epoch 001/12 train_loss=0.164084 val_loss=0.173905
+[2026-07-31T14:47:01] na epoch 002/12 train_loss=0.099967 val_loss=0.114878
+[2026-07-31T14:47:06] na epoch 003/12 train_loss=0.066157 val_loss=0.070542
+[2026-07-31T14:47:11] na epoch 004/12 train_loss=0.045522 val_loss=0.049776
+[2026-07-31T14:47:16] na epoch 005/12 train_loss=0.032358 val_loss=0.038576
+[2026-07-31T14:47:22] na epoch 006/12 train_loss=0.024013 val_loss=0.032024
+[2026-07-31T14:47:27] na epoch 007/12 train_loss=0.018597 val_loss=0.026888
+[2026-07-31T14:47:31] na epoch 008/12 train_loss=0.014804 val_loss=0.023377
+[2026-07-31T14:47:36] na epoch 009/12 train_loss=0.012315 val_loss=0.020315
+[2026-07-31T14:47:40] na epoch 010/12 train_loss=0.010501 val_loss=0.018574
+[2026-07-31T14:47:45] na epoch 011/12 train_loss=0.009098 val_loss=0.016816
+[2026-07-31T14:47:49] na epoch 012/12 train_loss=0.008039 val_loss=0.015627
+[2026-07-31T14:47:50] SUCCESS na final_reconstruction_loss=0.015627
+[2026-07-31T14:47:50] START nine
+[2026-07-31T14:47:55] nine epoch 001/12 train_loss=0.216119 val_loss=0.215753
+[2026-07-31T14:48:01] nine epoch 002/12 train_loss=0.154272 val_loss=0.147021
+[2026-07-31T14:48:06] nine epoch 003/12 train_loss=0.109424 val_loss=0.099031
+[2026-07-31T14:48:11] nine epoch 004/12 train_loss=0.070854 val_loss=0.065644
+[2026-07-31T14:48:16] nine epoch 005/12 train_loss=0.045029 val_loss=0.045519
+[2026-07-31T14:48:21] nine epoch 006/12 train_loss=0.028898 val_loss=0.032553
+[2026-07-31T14:48:26] nine epoch 007/12 train_loss=0.020060 val_loss=0.025812
+[2026-07-31T14:48:30] nine epoch 008/12 train_loss=0.014822 val_loss=0.020557
+[2026-07-31T14:48:34] nine epoch 009/12 train_loss=0.011536 val_loss=0.017101
+[2026-07-31T14:48:38] nine epoch 010/12 train_loss=0.009396 val_loss=0.016307
+[2026-07-31T14:48:42] nine epoch 011/12 train_loss=0.007839 val_loss=0.014020
+[2026-07-31T14:48:46] nine epoch 012/12 train_loss=0.006677 val_loss=0.011615
+[2026-07-31T14:48:46] SUCCESS nine final_reconstruction_loss=0.011615
+[2026-07-31T14:48:46] START nna
+[2026-07-31T14:48:52] nna epoch 001/12 train_loss=0.223744 val_loss=0.233123
+[2026-07-31T14:48:57] nna epoch 002/12 train_loss=0.144524 val_loss=0.136573
+[2026-07-31T14:49:02] nna epoch 003/12 train_loss=0.095862 val_loss=0.084474
+[2026-07-31T14:49:06] nna epoch 004/12 train_loss=0.061659 val_loss=0.057253
+[2026-07-31T14:49:11] nna epoch 005/12 train_loss=0.040794 val_loss=0.042972
+[2026-07-31T14:49:15] nna epoch 006/12 train_loss=0.028519 val_loss=0.034234
+[2026-07-31T14:49:20] nna epoch 007/12 train_loss=0.021276 val_loss=0.028871
+[2026-07-31T14:49:24] nna epoch 008/12 train_loss=0.016663 val_loss=0.024411
+[2026-07-31T14:49:29] nna epoch 009/12 train_loss=0.013669 val_loss=0.021700
+[2026-07-31T14:49:33] nna epoch 010/12 train_loss=0.011438 val_loss=0.019328
+[2026-07-31T14:49:38] nna epoch 011/12 train_loss=0.009870 val_loss=0.017817
+[2026-07-31T14:49:42] nna epoch 012/12 train_loss=0.008620 val_loss=0.016093
+[2026-07-31T14:49:42] SUCCESS nna final_reconstruction_loss=0.016093
+[2026-07-31T14:49:42] START nnna
+[2026-07-31T14:49:48] nnna epoch 001/12 train_loss=0.196651 val_loss=0.184962
+[2026-07-31T14:49:53] nnna epoch 002/12 train_loss=0.140039 val_loss=0.136837
+[2026-07-31T14:49:57] nnna epoch 003/12 train_loss=0.107934 val_loss=0.102125
+[2026-07-31T14:50:02] nnna epoch 004/12 train_loss=0.082845 val_loss=0.078820
+[2026-07-31T14:50:06] nnna epoch 005/12 train_loss=0.061525 val_loss=0.059311
+[2026-07-31T14:50:11] nnna epoch 006/12 train_loss=0.041169 val_loss=0.040811
+[2026-07-31T14:50:15] nnna epoch 007/12 train_loss=0.026445 val_loss=0.028053
+[2026-07-31T14:50:20] nnna epoch 008/12 train_loss=0.017788 val_loss=0.020280
+[2026-07-31T14:50:24] nnna epoch 009/12 train_loss=0.012729 val_loss=0.015915
+[2026-07-31T14:50:29] nnna epoch 010/12 train_loss=0.009657 val_loss=0.013549
+[2026-07-31T14:50:33] nnna epoch 011/12 train_loss=0.007817 val_loss=0.012518
+[2026-07-31T14:50:38] nnna epoch 012/12 train_loss=0.006561 val_loss=0.011071
+[2026-07-31T14:50:38] SUCCESS nnna final_reconstruction_loss=0.011071
+[2026-07-31T14:50:38] START nya
+[2026-07-31T14:50:43] nya epoch 001/12 train_loss=0.164365 val_loss=0.193543
+[2026-07-31T14:50:49] nya epoch 002/12 train_loss=0.087549 val_loss=0.111307
+[2026-07-31T14:50:54] nya epoch 003/12 train_loss=0.053509 val_loss=0.062472
+[2026-07-31T14:50:59] nya epoch 004/12 train_loss=0.034716 val_loss=0.041560
+[2026-07-31T14:51:03] nya epoch 005/12 train_loss=0.024334 val_loss=0.031529
+[2026-07-31T14:51:08] nya epoch 006/12 train_loss=0.018329 val_loss=0.026215
+[2026-07-31T14:51:12] nya epoch 007/12 train_loss=0.014598 val_loss=0.023109
+[2026-07-31T14:51:17] nya epoch 008/12 train_loss=0.012219 val_loss=0.019859
+[2026-07-31T14:51:21] nya epoch 009/12 train_loss=0.010457 val_loss=0.017654
+[2026-07-31T14:51:26] nya epoch 010/12 train_loss=0.009026 val_loss=0.016649
+[2026-07-31T14:51:30] nya epoch 011/12 train_loss=0.008037 val_loss=0.015508
+[2026-07-31T14:51:35] nya epoch 012/12 train_loss=0.007276 val_loss=0.014495
+[2026-07-31T14:51:35] SUCCESS nya final_reconstruction_loss=0.014495
+[2026-07-31T14:51:35] START o
+[2026-07-31T14:51:40] o epoch 001/12 train_loss=0.182863 val_loss=0.195555
+[2026-07-31T14:51:46] o epoch 002/12 train_loss=0.107103 val_loss=0.107533
+[2026-07-31T14:51:51] o epoch 003/12 train_loss=0.069554 val_loss=0.070720
+[2026-07-31T14:51:56] o epoch 004/12 train_loss=0.046177 val_loss=0.051717
+[2026-07-31T14:52:01] o epoch 005/12 train_loss=0.032075 val_loss=0.039549
+[2026-07-31T14:52:06] o epoch 006/12 train_loss=0.023458 val_loss=0.032129
+[2026-07-31T14:52:10] o epoch 007/12 train_loss=0.018175 val_loss=0.027127
+[2026-07-31T14:52:15] o epoch 008/12 train_loss=0.014784 val_loss=0.023610
+[2026-07-31T14:52:19] o epoch 009/12 train_loss=0.012402 val_loss=0.020738
+[2026-07-31T14:52:24] o epoch 010/12 train_loss=0.010715 val_loss=0.019002
+[2026-07-31T14:52:28] o epoch 011/12 train_loss=0.009475 val_loss=0.017519
+[2026-07-31T14:52:33] o epoch 012/12 train_loss=0.008361 val_loss=0.016441
+[2026-07-31T14:52:33] SUCCESS o final_reconstruction_loss=0.016441
+[2026-07-31T14:52:33] START one
+[2026-07-31T14:52:39] one epoch 001/12 train_loss=0.184109 val_loss=0.177832
+[2026-07-31T14:52:44] one epoch 002/12 train_loss=0.132486 val_loss=0.130082
+[2026-07-31T14:52:50] one epoch 003/12 train_loss=0.095909 val_loss=0.089351
+[2026-07-31T14:52:55] one epoch 004/12 train_loss=0.066117 val_loss=0.062158
+[2026-07-31T14:52:59] one epoch 005/12 train_loss=0.043847 val_loss=0.043538
+[2026-07-31T14:53:04] one epoch 006/12 train_loss=0.029710 val_loss=0.032183
+[2026-07-31T14:53:08] one epoch 007/12 train_loss=0.021096 val_loss=0.025026
+[2026-07-31T14:53:13] one epoch 008/12 train_loss=0.015697 val_loss=0.020890
+[2026-07-31T14:53:17] one epoch 009/12 train_loss=0.012227 val_loss=0.017569
+[2026-07-31T14:53:22] one epoch 010/12 train_loss=0.009883 val_loss=0.015501
+[2026-07-31T14:53:27] one epoch 011/12 train_loss=0.008398 val_loss=0.013887
+[2026-07-31T14:53:31] one epoch 012/12 train_loss=0.007219 val_loss=0.012680
+[2026-07-31T14:53:31] SUCCESS one final_reconstruction_loss=0.012680
+[2026-07-31T14:53:31] START pa
+[2026-07-31T14:53:37] pa epoch 001/12 train_loss=0.170029 val_loss=0.178590
+[2026-07-31T14:53:43] pa epoch 002/12 train_loss=0.110066 val_loss=0.117509
+[2026-07-31T14:53:50] pa epoch 003/12 train_loss=0.070613 val_loss=0.073294
+[2026-07-31T14:53:56] pa epoch 004/12 train_loss=0.043737 val_loss=0.043980
+[2026-07-31T14:54:05] pa epoch 005/12 train_loss=0.028567 val_loss=0.032664
+[2026-07-31T14:54:10] pa epoch 006/12 train_loss=0.020092 val_loss=0.025998
+[2026-07-31T14:54:15] pa epoch 007/12 train_loss=0.015074 val_loss=0.021892
+[2026-07-31T14:54:21] pa epoch 008/12 train_loss=0.011910 val_loss=0.018443
+[2026-07-31T14:54:26] pa epoch 009/12 train_loss=0.009730 val_loss=0.016013
+[2026-07-31T14:54:32] pa epoch 010/12 train_loss=0.008262 val_loss=0.014393
+[2026-07-31T14:54:37] pa epoch 011/12 train_loss=0.007232 val_loss=0.012815
+[2026-07-31T14:54:43] pa epoch 012/12 train_loss=0.006306 val_loss=0.012060
+[2026-07-31T14:54:43] SUCCESS pa final_reconstruction_loss=0.012060
+[2026-07-31T14:54:43] START pha
+[2026-07-31T14:54:54] pha epoch 001/12 train_loss=0.201531 val_loss=0.209350
+[2026-07-31T14:55:03] pha epoch 002/12 train_loss=0.141713 val_loss=0.150103
+[2026-07-31T14:55:11] pha epoch 003/12 train_loss=0.106156 val_loss=0.104709
+[2026-07-31T14:55:21] pha epoch 004/12 train_loss=0.075109 val_loss=0.074282
+[2026-07-31T14:55:31] pha epoch 005/12 train_loss=0.051881 val_loss=0.052661
+[2026-07-31T14:55:38] pha epoch 006/12 train_loss=0.036429 val_loss=0.041478
+[2026-07-31T14:55:45] pha epoch 007/12 train_loss=0.026887 val_loss=0.033498
+[2026-07-31T14:55:55] pha epoch 008/12 train_loss=0.020551 val_loss=0.027964
+[2026-07-31T14:56:04] pha epoch 009/12 train_loss=0.016338 val_loss=0.023854
+[2026-07-31T14:56:17] pha epoch 010/12 train_loss=0.013535 val_loss=0.020675
+[2026-07-31T14:56:24] pha epoch 011/12 train_loss=0.011346 val_loss=0.018365
+[2026-07-31T14:56:32] pha epoch 012/12 train_loss=0.009639 val_loss=0.016772
+[2026-07-31T14:56:32] SUCCESS pha final_reconstruction_loss=0.016772
+[2026-07-31T14:56:32] START ra
+[2026-07-31T14:56:45] ra epoch 001/12 train_loss=0.208961 val_loss=0.230527
+[2026-07-31T14:56:58] ra epoch 002/12 train_loss=0.126038 val_loss=0.127240
+[2026-07-31T14:57:08] ra epoch 003/12 train_loss=0.079756 val_loss=0.073736
+[2026-07-31T14:57:17] ra epoch 004/12 train_loss=0.049358 val_loss=0.047168
+[2026-07-31T14:57:26] ra epoch 005/12 train_loss=0.031445 val_loss=0.032918
+[2026-07-31T14:57:35] ra epoch 006/12 train_loss=0.021368 val_loss=0.025252
+[2026-07-31T14:57:44] ra epoch 007/12 train_loss=0.015595 val_loss=0.020183
+[2026-07-31T14:57:54] ra epoch 008/12 train_loss=0.012038 val_loss=0.016692
+[2026-07-31T14:58:05] ra epoch 009/12 train_loss=0.009758 val_loss=0.014481
+[2026-07-31T14:58:14] ra epoch 010/12 train_loss=0.008227 val_loss=0.012822
+[2026-07-31T14:58:24] ra epoch 011/12 train_loss=0.007029 val_loss=0.011471
+[2026-07-31T14:58:34] ra epoch 012/12 train_loss=0.006109 val_loss=0.010489
+[2026-07-31T14:58:35] SUCCESS ra final_reconstruction_loss=0.010489
+[2026-07-31T14:58:35] START ri
+[2026-07-31T14:58:46] ri epoch 001/12 train_loss=0.181207 val_loss=0.197938
+[2026-07-31T14:58:58] ri epoch 002/12 train_loss=0.109198 val_loss=0.135427
+[2026-07-31T14:59:09] ri epoch 003/12 train_loss=0.068145 val_loss=0.093000
+[2026-07-31T14:59:20] ri epoch 004/12 train_loss=0.041809 val_loss=0.052867
+[2026-07-31T14:59:29] ri epoch 005/12 train_loss=0.027138 val_loss=0.032371
+[2026-07-31T14:59:40] ri epoch 006/12 train_loss=0.019222 val_loss=0.024738
+[2026-07-31T14:59:49] ri epoch 007/12 train_loss=0.014667 val_loss=0.020903
+[2026-07-31T14:59:59] ri epoch 008/12 train_loss=0.011704 val_loss=0.017825
+[2026-07-31T15:00:09] ri epoch 009/12 train_loss=0.009747 val_loss=0.015827
+[2026-07-31T15:00:22] ri epoch 010/12 train_loss=0.008516 val_loss=0.014641
+[2026-07-31T15:00:35] ri epoch 011/12 train_loss=0.007408 val_loss=0.013362
+[2026-07-31T15:00:49] ri epoch 012/12 train_loss=0.006517 val_loss=0.012695
+[2026-07-31T15:00:49] SUCCESS ri final_reconstruction_loss=0.012695
+[2026-07-31T15:00:49] START rii
+[2026-07-31T15:01:05] rii epoch 001/12 train_loss=0.201652 val_loss=0.200424
+[2026-07-31T15:01:20] rii epoch 002/12 train_loss=0.161284 val_loss=0.166548
+[2026-07-31T15:01:36] rii epoch 003/12 train_loss=0.130644 val_loss=0.133316
+[2026-07-31T15:01:47] rii epoch 004/12 train_loss=0.100440 val_loss=0.102729
+[2026-07-31T15:01:56] rii epoch 005/12 train_loss=0.067787 val_loss=0.069218
+[2026-07-31T15:02:05] rii epoch 006/12 train_loss=0.041281 val_loss=0.044933
+[2026-07-31T15:02:14] rii epoch 007/12 train_loss=0.026133 val_loss=0.029963
+[2026-07-31T15:02:26] rii epoch 008/12 train_loss=0.018294 val_loss=0.023050
+[2026-07-31T15:02:37] rii epoch 009/12 train_loss=0.013964 val_loss=0.019310
+[2026-07-31T15:02:50] rii epoch 010/12 train_loss=0.011274 val_loss=0.017304
+[2026-07-31T15:03:04] rii epoch 011/12 train_loss=0.009557 val_loss=0.015405
+[2026-07-31T15:03:16] rii epoch 012/12 train_loss=0.008346 val_loss=0.014402
+[2026-07-31T15:03:16] SUCCESS rii final_reconstruction_loss=0.014402
+[2026-07-31T15:03:16] START sa
+[2026-07-31T15:03:30] sa epoch 001/12 train_loss=0.179015 val_loss=0.183209
+[2026-07-31T15:03:45] sa epoch 002/12 train_loss=0.121435 val_loss=0.131735
+[2026-07-31T15:04:03] sa epoch 003/12 train_loss=0.084224 val_loss=0.083872
+[2026-07-31T15:04:16] sa epoch 004/12 train_loss=0.056153 val_loss=0.055347
+[2026-07-31T15:04:27] sa epoch 005/12 train_loss=0.037000 val_loss=0.038598
+[2026-07-31T15:04:40] sa epoch 006/12 train_loss=0.025375 val_loss=0.029438
+[2026-07-31T15:04:51] sa epoch 007/12 train_loss=0.018578 val_loss=0.024144
+[2026-07-31T15:05:08] sa epoch 008/12 train_loss=0.014474 val_loss=0.020033
+[2026-07-31T15:05:18] sa epoch 009/12 train_loss=0.011743 val_loss=0.017406
+[2026-07-31T15:05:31] sa epoch 010/12 train_loss=0.009825 val_loss=0.015184
+[2026-07-31T15:05:50] sa epoch 011/12 train_loss=0.008438 val_loss=0.014029
+[2026-07-31T15:06:04] sa epoch 012/12 train_loss=0.007234 val_loss=0.012914
+[2026-07-31T15:06:05] SUCCESS sa final_reconstruction_loss=0.012914
+[2026-07-31T15:06:05] START saa
+[2026-07-31T15:06:24] saa epoch 001/12 train_loss=0.147910 val_loss=0.181422
+[2026-07-31T15:06:38] saa epoch 002/12 train_loss=0.085385 val_loss=0.099399
+[2026-07-31T15:06:49] saa epoch 003/12 train_loss=0.054073 val_loss=0.054396
+[2026-07-31T15:07:01] saa epoch 004/12 train_loss=0.035404 val_loss=0.039105
+[2026-07-31T15:07:10] saa epoch 005/12 train_loss=0.024823 val_loss=0.030377
+[2026-07-31T15:07:20] saa epoch 006/12 train_loss=0.018546 val_loss=0.024788
+[2026-07-31T15:07:29] saa epoch 007/12 train_loss=0.014673 val_loss=0.021094
+[2026-07-31T15:07:38] saa epoch 008/12 train_loss=0.011970 val_loss=0.018268
+[2026-07-31T15:07:47] saa epoch 009/12 train_loss=0.010065 val_loss=0.016352
+[2026-07-31T15:07:55] saa epoch 010/12 train_loss=0.008774 val_loss=0.014710
+[2026-07-31T15:08:04] saa epoch 011/12 train_loss=0.007738 val_loss=0.013811
+[2026-07-31T15:08:13] saa epoch 012/12 train_loss=0.006828 val_loss=0.012923
+[2026-07-31T15:08:13] SUCCESS saa final_reconstruction_loss=0.012923
+[2026-07-31T15:08:13] START seven
+[2026-07-31T15:08:24] seven epoch 001/12 train_loss=0.167228 val_loss=0.173579
+[2026-07-31T15:08:34] seven epoch 002/12 train_loss=0.101964 val_loss=0.100802
+[2026-07-31T15:08:45] seven epoch 003/12 train_loss=0.067491 val_loss=0.065861
+[2026-07-31T15:08:55] seven epoch 004/12 train_loss=0.044878 val_loss=0.046649
+[2026-07-31T15:09:04] seven epoch 005/12 train_loss=0.030940 val_loss=0.033957
+[2026-07-31T15:09:12] seven epoch 006/12 train_loss=0.022258 val_loss=0.025788
+[2026-07-31T15:09:20] seven epoch 007/12 train_loss=0.016682 val_loss=0.020649
+[2026-07-31T15:09:29] seven epoch 008/12 train_loss=0.012897 val_loss=0.016712
+[2026-07-31T15:09:36] seven epoch 009/12 train_loss=0.010404 val_loss=0.014255
+[2026-07-31T15:09:44] seven epoch 010/12 train_loss=0.008585 val_loss=0.012958
+[2026-07-31T15:09:52] seven epoch 011/12 train_loss=0.007261 val_loss=0.010995
+[2026-07-31T15:10:00] seven epoch 012/12 train_loss=0.006283 val_loss=0.009966
+[2026-07-31T15:10:00] SUCCESS seven final_reconstruction_loss=0.009966
+[2026-07-31T15:10:00] START sha
+[2026-07-31T15:10:10] sha epoch 001/12 train_loss=0.134767 val_loss=0.165549
+[2026-07-31T15:10:19] sha epoch 002/12 train_loss=0.075332 val_loss=0.092075
+[2026-07-31T15:10:28] sha epoch 003/12 train_loss=0.049674 val_loss=0.058433
+[2026-07-31T15:10:36] sha epoch 004/12 train_loss=0.032712 val_loss=0.038274
+[2026-07-31T15:10:43] sha epoch 005/12 train_loss=0.022913 val_loss=0.027939
+[2026-07-31T15:10:50] sha epoch 006/12 train_loss=0.017364 val_loss=0.023418
+[2026-07-31T15:10:57] sha epoch 007/12 train_loss=0.013698 val_loss=0.020317
+[2026-07-31T15:11:05] sha epoch 008/12 train_loss=0.011249 val_loss=0.017727
+[2026-07-31T15:11:12] sha epoch 009/12 train_loss=0.009636 val_loss=0.015980
+[2026-07-31T15:11:19] sha epoch 010/12 train_loss=0.008489 val_loss=0.014640
+[2026-07-31T15:11:26] sha epoch 011/12 train_loss=0.007487 val_loss=0.013433
+[2026-07-31T15:11:33] sha epoch 012/12 train_loss=0.006713 val_loss=0.012873
+[2026-07-31T15:11:33] SUCCESS sha final_reconstruction_loss=0.012873
+[2026-07-31T15:11:33] START six
+[2026-07-31T15:11:42] six epoch 001/12 train_loss=0.163098 val_loss=0.193321
+[2026-07-31T15:11:51] six epoch 002/12 train_loss=0.088874 val_loss=0.107402
+[2026-07-31T15:11:59] six epoch 003/12 train_loss=0.054160 val_loss=0.059625
+[2026-07-31T15:12:07] six epoch 004/12 train_loss=0.035435 val_loss=0.039216
+[2026-07-31T15:12:14] six epoch 005/12 train_loss=0.024681 val_loss=0.029029
+[2026-07-31T15:12:22] six epoch 006/12 train_loss=0.018178 val_loss=0.023358
+[2026-07-31T15:12:29] six epoch 007/12 train_loss=0.014038 val_loss=0.019773
+[2026-07-31T15:12:36] six epoch 008/12 train_loss=0.011363 val_loss=0.017262
+[2026-07-31T15:12:43] six epoch 009/12 train_loss=0.009563 val_loss=0.015322
+[2026-07-31T15:12:50] six epoch 010/12 train_loss=0.008066 val_loss=0.014088
+[2026-07-31T15:12:56] six epoch 011/12 train_loss=0.006985 val_loss=0.012658
+[2026-07-31T15:13:03] six epoch 012/12 train_loss=0.006235 val_loss=0.012238
+[2026-07-31T15:13:04] SUCCESS six final_reconstruction_loss=0.012238
+[2026-07-31T15:13:04] START ta
+[2026-07-31T15:13:12] ta epoch 001/12 train_loss=0.218912 val_loss=0.209178
+[2026-07-31T15:13:21] ta epoch 002/12 train_loss=0.155629 val_loss=0.148770
+[2026-07-31T15:13:30] ta epoch 003/12 train_loss=0.107225 val_loss=0.099463
+[2026-07-31T15:13:37] ta epoch 004/12 train_loss=0.067465 val_loss=0.064716
+[2026-07-31T15:13:43] ta epoch 005/12 train_loss=0.041740 val_loss=0.043079
+[2026-07-31T15:13:50] ta epoch 006/12 train_loss=0.027918 val_loss=0.032729
+[2026-07-31T15:13:57] ta epoch 007/12 train_loss=0.020110 val_loss=0.026871
+[2026-07-31T15:14:04] ta epoch 008/12 train_loss=0.015415 val_loss=0.022518
+[2026-07-31T15:14:11] ta epoch 009/12 train_loss=0.012382 val_loss=0.019048
+[2026-07-31T15:14:18] ta epoch 010/12 train_loss=0.010340 val_loss=0.017630
+[2026-07-31T15:14:24] ta epoch 011/12 train_loss=0.008856 val_loss=0.015077
+[2026-07-31T15:14:31] ta epoch 012/12 train_loss=0.007674 val_loss=0.014004
+[2026-07-31T15:14:31] SUCCESS ta final_reconstruction_loss=0.014004
+[2026-07-31T15:14:31] START tha
+[2026-07-31T15:14:40] tha epoch 001/12 train_loss=0.191612 val_loss=0.190700
+[2026-07-31T15:14:48] tha epoch 002/12 train_loss=0.120951 val_loss=0.116047
+[2026-07-31T15:14:57] tha epoch 003/12 train_loss=0.080760 val_loss=0.075718
+[2026-07-31T15:15:03] tha epoch 004/12 train_loss=0.052914 val_loss=0.050542
+[2026-07-31T15:15:10] tha epoch 005/12 train_loss=0.035068 val_loss=0.036865
+[2026-07-31T15:15:17] tha epoch 006/12 train_loss=0.024171 val_loss=0.028092
+[2026-07-31T15:15:23] tha epoch 007/12 train_loss=0.017731 val_loss=0.022711
+[2026-07-31T15:15:30] tha epoch 008/12 train_loss=0.013693 val_loss=0.018804
+[2026-07-31T15:15:36] tha epoch 009/12 train_loss=0.011032 val_loss=0.016067
+[2026-07-31T15:15:43] tha epoch 010/12 train_loss=0.009114 val_loss=0.014262
+[2026-07-31T15:15:50] tha epoch 011/12 train_loss=0.007787 val_loss=0.012813
+[2026-07-31T15:15:56] tha epoch 012/12 train_loss=0.006752 val_loss=0.011887
+[2026-07-31T15:15:57] SUCCESS tha final_reconstruction_loss=0.011887
+[2026-07-31T15:15:57] START three
+[2026-07-31T15:16:05] three epoch 001/12 train_loss=0.178707 val_loss=0.175470
+[2026-07-31T15:16:13] three epoch 002/12 train_loss=0.127735 val_loss=0.121252
+[2026-07-31T15:16:22] three epoch 003/12 train_loss=0.094800 val_loss=0.088254
+[2026-07-31T15:16:30] three epoch 004/12 train_loss=0.067644 val_loss=0.065598
+[2026-07-31T15:16:38] three epoch 005/12 train_loss=0.045950 val_loss=0.046104
+[2026-07-31T15:16:45] three epoch 006/12 train_loss=0.030625 val_loss=0.033197
+[2026-07-31T15:16:53] three epoch 007/12 train_loss=0.021062 val_loss=0.023911
+[2026-07-31T15:17:00] three epoch 008/12 train_loss=0.015000 val_loss=0.018888
+[2026-07-31T15:17:09] three epoch 009/12 train_loss=0.011277 val_loss=0.016056
+[2026-07-31T15:17:19] three epoch 010/12 train_loss=0.009019 val_loss=0.013308
+[2026-07-31T15:17:28] three epoch 011/12 train_loss=0.007346 val_loss=0.012422
+[2026-07-31T15:17:40] three epoch 012/12 train_loss=0.006202 val_loss=0.010671
+[2026-07-31T15:17:41] SUCCESS three final_reconstruction_loss=0.010671
+[2026-07-31T15:17:41] START tra
+[2026-07-31T15:17:54] tra epoch 001/12 train_loss=0.248326 val_loss=0.246644
+[2026-07-31T15:18:03] tra epoch 002/12 train_loss=0.177577 val_loss=0.179851
+[2026-07-31T15:18:13] tra epoch 003/12 train_loss=0.128640 val_loss=0.122421
+[2026-07-31T15:18:21] tra epoch 004/12 train_loss=0.089177 val_loss=0.085135
+[2026-07-31T15:18:30] tra epoch 005/12 train_loss=0.061659 val_loss=0.061661
+[2026-07-31T15:18:39] tra epoch 006/12 train_loss=0.042303 val_loss=0.045560
+[2026-07-31T15:18:48] tra epoch 007/12 train_loss=0.029260 val_loss=0.034432
+[2026-07-31T15:18:56] tra epoch 008/12 train_loss=0.021193 val_loss=0.027585
+[2026-07-31T15:19:03] tra epoch 009/12 train_loss=0.016343 val_loss=0.023460
+[2026-07-31T15:19:12] tra epoch 010/12 train_loss=0.013131 val_loss=0.020978
+[2026-07-31T15:19:21] tra epoch 011/12 train_loss=0.011043 val_loss=0.018984
+[2026-07-31T15:19:29] tra epoch 012/12 train_loss=0.009439 val_loss=0.015892
+[2026-07-31T15:19:29] SUCCESS tra final_reconstruction_loss=0.015892
+[2026-07-31T15:19:29] START tta
+[2026-07-31T15:19:38] tta epoch 001/12 train_loss=0.203290 val_loss=0.221030
+[2026-07-31T15:19:50] tta epoch 002/12 train_loss=0.117607 val_loss=0.121662
+[2026-07-31T15:20:03] tta epoch 003/12 train_loss=0.070478 val_loss=0.074553
+[2026-07-31T15:20:14] tta epoch 004/12 train_loss=0.044405 val_loss=0.049945
+[2026-07-31T15:20:24] tta epoch 005/12 train_loss=0.029960 val_loss=0.037430
+[2026-07-31T15:20:34] tta epoch 006/12 train_loss=0.021780 val_loss=0.029205
+[2026-07-31T15:20:43] tta epoch 007/12 train_loss=0.016886 val_loss=0.024333
+[2026-07-31T15:20:54] tta epoch 008/12 train_loss=0.013586 val_loss=0.021418
+[2026-07-31T15:21:04] tta epoch 009/12 train_loss=0.011570 val_loss=0.018737
+[2026-07-31T15:21:14] tta epoch 010/12 train_loss=0.009867 val_loss=0.017220
+[2026-07-31T15:21:22] tta epoch 011/12 train_loss=0.008724 val_loss=0.015753
+[2026-07-31T15:21:32] tta epoch 012/12 train_loss=0.007746 val_loss=0.014389
+[2026-07-31T15:21:32] SUCCESS tta final_reconstruction_loss=0.014389
+[2026-07-31T15:21:32] START ttha
+[2026-07-31T15:21:43] ttha epoch 001/12 train_loss=0.174355 val_loss=0.187333
+[2026-07-31T15:21:54] ttha epoch 002/12 train_loss=0.104110 val_loss=0.105268
+[2026-07-31T15:22:02] ttha epoch 003/12 train_loss=0.068630 val_loss=0.066934
+[2026-07-31T15:22:11] ttha epoch 004/12 train_loss=0.045847 val_loss=0.047441
+[2026-07-31T15:22:19] ttha epoch 005/12 train_loss=0.031852 val_loss=0.036706
+[2026-07-31T15:22:27] ttha epoch 006/12 train_loss=0.023419 val_loss=0.029389
+[2026-07-31T15:22:36] ttha epoch 007/12 train_loss=0.018077 val_loss=0.024409
+[2026-07-31T15:22:45] ttha epoch 008/12 train_loss=0.014626 val_loss=0.021346
+[2026-07-31T15:22:53] ttha epoch 009/12 train_loss=0.012157 val_loss=0.018433
+[2026-07-31T15:23:02] ttha epoch 010/12 train_loss=0.010335 val_loss=0.016190
+[2026-07-31T15:23:11] ttha epoch 011/12 train_loss=0.008870 val_loss=0.014808
+[2026-07-31T15:23:20] ttha epoch 012/12 train_loss=0.007867 val_loss=0.014000
+[2026-07-31T15:23:20] SUCCESS ttha final_reconstruction_loss=0.014000
+[2026-07-31T15:23:20] START two
+[2026-07-31T15:23:34] two epoch 001/12 train_loss=0.177906 val_loss=0.189482
+[2026-07-31T15:23:46] two epoch 002/12 train_loss=0.106420 val_loss=0.100894
+[2026-07-31T15:23:59] two epoch 003/12 train_loss=0.065803 val_loss=0.061620
+[2026-07-31T15:24:14] two epoch 004/12 train_loss=0.042031 val_loss=0.043122
+[2026-07-31T15:24:23] two epoch 005/12 train_loss=0.028426 val_loss=0.031736
+[2026-07-31T15:24:31] two epoch 006/12 train_loss=0.020228 val_loss=0.024225
+[2026-07-31T15:24:39] two epoch 007/12 train_loss=0.015173 val_loss=0.019579
+[2026-07-31T15:24:47] two epoch 008/12 train_loss=0.011834 val_loss=0.016203
+[2026-07-31T15:24:57] two epoch 009/12 train_loss=0.009521 val_loss=0.013893
+[2026-07-31T15:25:07] two epoch 010/12 train_loss=0.007971 val_loss=0.012385
+[2026-07-31T15:25:14] two epoch 011/12 train_loss=0.006927 val_loss=0.010944
+[2026-07-31T15:25:23] two epoch 012/12 train_loss=0.005979 val_loss=0.010139
+[2026-07-31T15:25:24] SUCCESS two final_reconstruction_loss=0.010139
+[2026-07-31T15:25:24] START u
+[2026-07-31T15:25:35] u epoch 001/12 train_loss=0.187509 val_loss=0.198343
+[2026-07-31T15:25:47] u epoch 002/12 train_loss=0.123916 val_loss=0.126718
+[2026-07-31T15:26:01] u epoch 003/12 train_loss=0.086436 val_loss=0.086098
+[2026-07-31T15:26:11] u epoch 004/12 train_loss=0.058036 val_loss=0.059608
+[2026-07-31T15:26:22] u epoch 005/12 train_loss=0.039724 val_loss=0.043654
+[2026-07-31T15:26:32] u epoch 006/12 train_loss=0.028359 val_loss=0.033996
+[2026-07-31T15:26:41] u epoch 007/12 train_loss=0.021111 val_loss=0.028230
+[2026-07-31T15:26:50] u epoch 008/12 train_loss=0.016304 val_loss=0.023650
+[2026-07-31T15:27:02] u epoch 009/12 train_loss=0.013024 val_loss=0.020027
+[2026-07-31T15:27:11] u epoch 010/12 train_loss=0.010780 val_loss=0.018347
+[2026-07-31T15:27:22] u epoch 011/12 train_loss=0.009222 val_loss=0.016452
+[2026-07-31T15:27:35] u epoch 012/12 train_loss=0.008199 val_loss=0.015077
+[2026-07-31T15:27:35] SUCCESS u final_reconstruction_loss=0.015077
+[2026-07-31T15:27:35] START uu
+[2026-07-31T15:27:53] uu epoch 001/12 train_loss=0.210088 val_loss=0.208997
+[2026-07-31T15:28:11] uu epoch 002/12 train_loss=0.143568 val_loss=0.134098
+[2026-07-31T15:28:25] uu epoch 003/12 train_loss=0.103331 val_loss=0.089506
+[2026-07-31T15:28:38] uu epoch 004/12 train_loss=0.069629 val_loss=0.064721
+[2026-07-31T15:28:49] uu epoch 005/12 train_loss=0.046356 val_loss=0.046614
+[2026-07-31T15:29:00] uu epoch 006/12 train_loss=0.031718 val_loss=0.035665
+[2026-07-31T15:29:11] uu epoch 007/12 train_loss=0.022820 val_loss=0.029194
+[2026-07-31T15:29:20] uu epoch 008/12 train_loss=0.017369 val_loss=0.024471
+[2026-07-31T15:29:29] uu epoch 009/12 train_loss=0.013848 val_loss=0.020751
+[2026-07-31T15:29:36] uu epoch 010/12 train_loss=0.011382 val_loss=0.017740
+[2026-07-31T15:29:45] uu epoch 011/12 train_loss=0.009662 val_loss=0.016812
+[2026-07-31T15:29:54] uu epoch 012/12 train_loss=0.008415 val_loss=0.014908
+[2026-07-31T15:29:55] SUCCESS uu final_reconstruction_loss=0.014908
+[2026-07-31T15:29:55] START wo
+[2026-07-31T15:30:07] wo epoch 001/12 train_loss=0.161699 val_loss=0.187637
+[2026-07-31T15:30:21] wo epoch 002/12 train_loss=0.098160 val_loss=0.107881
+[2026-07-31T15:30:34] wo epoch 003/12 train_loss=0.064309 val_loss=0.066774
+[2026-07-31T15:30:51] wo epoch 004/12 train_loss=0.042460 val_loss=0.045118
+[2026-07-31T15:31:07] wo epoch 005/12 train_loss=0.028722 val_loss=0.031514
+[2026-07-31T15:31:18] wo epoch 006/12 train_loss=0.020109 val_loss=0.024435
+[2026-07-31T15:31:27] wo epoch 007/12 train_loss=0.014769 val_loss=0.020108
+[2026-07-31T15:31:37] wo epoch 008/12 train_loss=0.011671 val_loss=0.017084
+[2026-07-31T15:31:45] wo epoch 009/12 train_loss=0.009448 val_loss=0.015215
+[2026-07-31T15:31:54] wo epoch 010/12 train_loss=0.007954 val_loss=0.013711
+[2026-07-31T15:32:02] wo epoch 011/12 train_loss=0.006869 val_loss=0.012502
+[2026-07-31T15:32:13] wo epoch 012/12 train_loss=0.006063 val_loss=0.011702
+[2026-07-31T15:32:13] SUCCESS wo final_reconstruction_loss=0.011702
+[2026-07-31T15:32:13] START ya
+[2026-07-31T15:32:23] ya epoch 001/12 train_loss=0.183857 val_loss=0.193094
+[2026-07-31T15:32:30] ya epoch 002/12 train_loss=0.114278 val_loss=0.108086
+[2026-07-31T15:32:37] ya epoch 003/12 train_loss=0.070048 val_loss=0.062593
+[2026-07-31T15:32:42] ya epoch 004/12 train_loss=0.043355 val_loss=0.042549
+[2026-07-31T15:32:48] ya epoch 005/12 train_loss=0.028828 val_loss=0.033370
+[2026-07-31T15:32:53] ya epoch 006/12 train_loss=0.020632 val_loss=0.026412
+[2026-07-31T15:32:58] ya epoch 007/12 train_loss=0.015639 val_loss=0.023048
+[2026-07-31T15:33:03] ya epoch 008/12 train_loss=0.012507 val_loss=0.019526
+[2026-07-31T15:33:08] ya epoch 009/12 train_loss=0.010474 val_loss=0.017120
+[2026-07-31T15:33:13] ya epoch 010/12 train_loss=0.008845 val_loss=0.015672
+[2026-07-31T15:33:18] ya epoch 011/12 train_loss=0.007752 val_loss=0.014552
+[2026-07-31T15:33:23] ya epoch 012/12 train_loss=0.006967 val_loss=0.013519
+[2026-07-31T15:33:24] SUCCESS ya final_reconstruction_loss=0.013519
+[2026-07-31T15:33:24] START zero
+[2026-07-31T15:33:30] zero epoch 001/12 train_loss=0.210805 val_loss=0.190725
+[2026-07-31T15:33:36] zero epoch 002/12 train_loss=0.148180 val_loss=0.137767
+[2026-07-31T15:33:41] zero epoch 003/12 train_loss=0.108905 val_loss=0.101569
+[2026-07-31T15:33:46] zero epoch 004/12 train_loss=0.077247 val_loss=0.075216
+[2026-07-31T15:33:51] zero epoch 005/12 train_loss=0.053261 val_loss=0.052090
+[2026-07-31T15:33:55] zero epoch 006/12 train_loss=0.036945 val_loss=0.038330
+[2026-07-31T15:34:00] zero epoch 007/12 train_loss=0.026358 val_loss=0.029624
+[2026-07-31T15:34:05] zero epoch 008/12 train_loss=0.019269 val_loss=0.024595
+[2026-07-31T15:34:09] zero epoch 009/12 train_loss=0.014505 val_loss=0.019530
+[2026-07-31T15:34:14] zero epoch 010/12 train_loss=0.011439 val_loss=0.016834
+[2026-07-31T15:34:19] zero epoch 011/12 train_loss=0.009328 val_loss=0.015873
+[2026-07-31T15:34:23] zero epoch 012/12 train_loss=0.007978 val_loss=0.013090
+[2026-07-31T15:34:23] SUCCESS zero final_reconstruction_loss=0.013090
+[2026-07-31T15:34:23] FINAL SUMMARY
+[2026-07-31T15:34:23] a trained=YES final_reconstruction_loss=0.015697 error=
+[2026-07-31T15:34:23] aa trained=YES final_reconstruction_loss=0.017007 error=
+[2026-07-31T15:34:23] ah trained=YES final_reconstruction_loss=0.015641 error=
+[2026-07-31T15:34:23] ai trained=YES final_reconstruction_loss=0.013910 error=
+[2026-07-31T15:34:23] am trained=YES final_reconstruction_loss=0.015371 error=
+[2026-07-31T15:34:23] au trained=YES final_reconstruction_loss=0.018230 error=
+[2026-07-31T15:34:23] ba trained=YES final_reconstruction_loss=0.014353 error=
+[2026-07-31T15:34:23] bha trained=YES final_reconstruction_loss=0.012341 error=
+[2026-07-31T15:34:23] ca trained=YES final_reconstruction_loss=0.010244 error=
+[2026-07-31T15:34:23] cha trained=YES final_reconstruction_loss=0.012152 error=
+[2026-07-31T15:34:23] da trained=YES final_reconstruction_loss=0.016390 error=
+[2026-07-31T15:34:23] dda trained=YES final_reconstruction_loss=0.012206 error=
+[2026-07-31T15:34:23] ddha trained=YES final_reconstruction_loss=0.012217 error=
+[2026-07-31T15:34:23] dha trained=YES final_reconstruction_loss=0.016479 error=
+[2026-07-31T15:34:23] e trained=YES final_reconstruction_loss=0.011632 error=
+[2026-07-31T15:34:23] eight trained=YES final_reconstruction_loss=0.008653 error=
+[2026-07-31T15:34:23] five trained=YES final_reconstruction_loss=0.012230 error=
+[2026-07-31T15:34:23] four trained=YES final_reconstruction_loss=0.010273 error=
+[2026-07-31T15:34:23] ga trained=YES final_reconstruction_loss=0.014034 error=
+[2026-07-31T15:34:23] gha trained=YES final_reconstruction_loss=0.015772 error=
+[2026-07-31T15:34:23] gyan trained=YES final_reconstruction_loss=0.018263 error=
+[2026-07-31T15:34:23] ha trained=YES final_reconstruction_loss=0.015266 error=
+[2026-07-31T15:34:23] i trained=YES final_reconstruction_loss=0.014397 error=
+[2026-07-31T15:34:23] ii trained=YES final_reconstruction_loss=0.017918 error=
+[2026-07-31T15:34:23] ja trained=YES final_reconstruction_loss=0.020653 error=
+[2026-07-31T15:34:23] jha trained=YES final_reconstruction_loss=0.013366 error=
+[2026-07-31T15:34:23] ka trained=YES final_reconstruction_loss=0.012777 error=
+[2026-07-31T15:34:23] kha trained=YES final_reconstruction_loss=0.015984 error=
+[2026-07-31T15:34:23] ksa trained=YES final_reconstruction_loss=0.016077 error=
+[2026-07-31T15:34:23] la trained=YES final_reconstruction_loss=0.017113 error=
+[2026-07-31T15:34:23] lu trained=YES final_reconstruction_loss=0.016181 error=
+[2026-07-31T15:34:23] luu trained=YES final_reconstruction_loss=0.017326 error=
+[2026-07-31T15:34:23] ma trained=YES final_reconstruction_loss=0.013557 error=
+[2026-07-31T15:34:23] na trained=YES final_reconstruction_loss=0.015627 error=
+[2026-07-31T15:34:23] nine trained=YES final_reconstruction_loss=0.011615 error=
+[2026-07-31T15:34:23] nna trained=YES final_reconstruction_loss=0.016093 error=
+[2026-07-31T15:34:23] nnna trained=YES final_reconstruction_loss=0.011071 error=
+[2026-07-31T15:34:23] nya trained=YES final_reconstruction_loss=0.014495 error=
+[2026-07-31T15:34:23] o trained=YES final_reconstruction_loss=0.016441 error=
+[2026-07-31T15:34:23] one trained=YES final_reconstruction_loss=0.012680 error=
+[2026-07-31T15:34:23] pa trained=YES final_reconstruction_loss=0.012060 error=
+[2026-07-31T15:34:23] pha trained=YES final_reconstruction_loss=0.016772 error=
+[2026-07-31T15:34:23] ra trained=YES final_reconstruction_loss=0.010489 error=
+[2026-07-31T15:34:23] ri trained=YES final_reconstruction_loss=0.012695 error=
+[2026-07-31T15:34:23] rii trained=YES final_reconstruction_loss=0.014402 error=
+[2026-07-31T15:34:23] sa trained=YES final_reconstruction_loss=0.012914 error=
+[2026-07-31T15:34:23] saa trained=YES final_reconstruction_loss=0.012923 error=
+[2026-07-31T15:34:23] seven trained=YES final_reconstruction_loss=0.009966 error=
+[2026-07-31T15:34:23] sha trained=YES final_reconstruction_loss=0.012873 error=
+[2026-07-31T15:34:23] six trained=YES final_reconstruction_loss=0.012238 error=
+[2026-07-31T15:34:23] ta trained=YES final_reconstruction_loss=0.014004 error=
+[2026-07-31T15:34:23] tha trained=YES final_reconstruction_loss=0.011887 error=
+[2026-07-31T15:34:23] three trained=YES final_reconstruction_loss=0.010671 error=
+[2026-07-31T15:34:23] tra trained=YES final_reconstruction_loss=0.015892 error=
+[2026-07-31T15:34:23] tta trained=YES final_reconstruction_loss=0.014389 error=
+[2026-07-31T15:34:23] ttha trained=YES final_reconstruction_loss=0.014000 error=
+[2026-07-31T15:34:23] two trained=YES final_reconstruction_loss=0.010139 error=
+[2026-07-31T15:34:23] u trained=YES final_reconstruction_loss=0.015077 error=
+[2026-07-31T15:34:23] uu trained=YES final_reconstruction_loss=0.014908 error=
+[2026-07-31T15:34:23] wo trained=YES final_reconstruction_loss=0.011702 error=
+[2026-07-31T15:34:23] ya trained=YES final_reconstruction_loss=0.013519 error=
+[2026-07-31T15:34:23] zero trained=YES final_reconstruction_loss=0.013090 error=

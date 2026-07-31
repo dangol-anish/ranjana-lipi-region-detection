@@ -1,0 +1,934 @@
+{
+  "per_class": {
+    "a": {
+      "class_name": "a",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015696832910180092,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_a.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_a",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_a/autoencoder_a_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_a/autoencoder_a_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_a/autoencoder_a_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_a.json",
+      "error": ""
+    },
+    "aa": {
+      "class_name": "aa",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.017007090151309967,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_aa.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_aa",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_aa/autoencoder_aa_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_aa/autoencoder_aa_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_aa/autoencoder_aa_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_aa.json",
+      "error": ""
+    },
+    "ah": {
+      "class_name": "ah",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015641307458281517,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ah.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ah",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ah/autoencoder_ah_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ah/autoencoder_ah_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ah/autoencoder_ah_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ah.json",
+      "error": ""
+    },
+    "ai": {
+      "class_name": "ai",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.013909615576267242,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ai.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ai",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ai/autoencoder_ai_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ai/autoencoder_ai_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ai/autoencoder_ai_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ai.json",
+      "error": ""
+    },
+    "am": {
+      "class_name": "am",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015371452085673809,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_am.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_am",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_am/autoencoder_am_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_am/autoencoder_am_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_am/autoencoder_am_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_am.json",
+      "error": ""
+    },
+    "au": {
+      "class_name": "au",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01823015883564949,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_au.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_au",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_au/autoencoder_au_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_au/autoencoder_au_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_au/autoencoder_au_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_au.json",
+      "error": ""
+    },
+    "ba": {
+      "class_name": "ba",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014352945610880852,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ba.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ba",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ba/autoencoder_ba_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ba/autoencoder_ba_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ba/autoencoder_ba_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ba.json",
+      "error": ""
+    },
+    "bha": {
+      "class_name": "bha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012340869754552841,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_bha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_bha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_bha/autoencoder_bha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_bha/autoencoder_bha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_bha/autoencoder_bha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_bha.json",
+      "error": ""
+    },
+    "ca": {
+      "class_name": "ca",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.010243990458548069,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ca.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ca",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ca/autoencoder_ca_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ca/autoencoder_ca_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ca/autoencoder_ca_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ca.json",
+      "error": ""
+    },
+    "cha": {
+      "class_name": "cha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012152348645031452,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_cha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_cha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_cha/autoencoder_cha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_cha/autoencoder_cha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_cha/autoencoder_cha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_cha.json",
+      "error": ""
+    },
+    "da": {
+      "class_name": "da",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.016390269622206688,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_da.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_da",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_da/autoencoder_da_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_da/autoencoder_da_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_da/autoencoder_da_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_da.json",
+      "error": ""
+    },
+    "dda": {
+      "class_name": "dda",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012206465005874634,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_dda.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dda",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dda/autoencoder_dda_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dda/autoencoder_dda_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dda/autoencoder_dda_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_dda.json",
+      "error": ""
+    },
+    "ddha": {
+      "class_name": "ddha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01221713237464428,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ddha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ddha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ddha/autoencoder_ddha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ddha/autoencoder_ddha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ddha/autoencoder_ddha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ddha.json",
+      "error": ""
+    },
+    "dha": {
+      "class_name": "dha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.0164790041744709,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_dha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dha/autoencoder_dha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dha/autoencoder_dha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_dha/autoencoder_dha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_dha.json",
+      "error": ""
+    },
+    "e": {
+      "class_name": "e",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01163161639124155,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_e.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_e",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_e/autoencoder_e_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_e/autoencoder_e_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_e/autoencoder_e_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_e.json",
+      "error": ""
+    },
+    "eight": {
+      "class_name": "eight",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.008652973920106888,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_eight.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_eight",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_eight/autoencoder_eight_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_eight/autoencoder_eight_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_eight/autoencoder_eight_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_eight.json",
+      "error": ""
+    },
+    "five": {
+      "class_name": "five",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01222988124936819,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_five.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_five",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_five/autoencoder_five_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_five/autoencoder_five_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_five/autoencoder_five_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_five.json",
+      "error": ""
+    },
+    "four": {
+      "class_name": "four",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01027274876832962,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_four.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_four",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_four/autoencoder_four_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_four/autoencoder_four_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_four/autoencoder_four_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_four.json",
+      "error": ""
+    },
+    "ga": {
+      "class_name": "ga",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014034341089427471,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ga.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ga",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ga/autoencoder_ga_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ga/autoencoder_ga_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ga/autoencoder_ga_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ga.json",
+      "error": ""
+    },
+    "gha": {
+      "class_name": "gha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01577240414917469,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_gha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gha/autoencoder_gha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gha/autoencoder_gha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gha/autoencoder_gha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_gha.json",
+      "error": ""
+    },
+    "gyan": {
+      "class_name": "gyan",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01826322264969349,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_gyan.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gyan",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gyan/autoencoder_gyan_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gyan/autoencoder_gyan_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_gyan/autoencoder_gyan_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_gyan.json",
+      "error": ""
+    },
+    "ha": {
+      "class_name": "ha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01526588574051857,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ha/autoencoder_ha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ha/autoencoder_ha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ha/autoencoder_ha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ha.json",
+      "error": ""
+    },
+    "i": {
+      "class_name": "i",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014397107996046543,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_i.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_i",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_i/autoencoder_i_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_i/autoencoder_i_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_i/autoencoder_i_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_i.json",
+      "error": ""
+    },
+    "ii": {
+      "class_name": "ii",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01791827380657196,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ii.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ii",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ii/autoencoder_ii_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ii/autoencoder_ii_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ii/autoencoder_ii_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ii.json",
+      "error": ""
+    },
+    "ja": {
+      "class_name": "ja",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.020653078332543373,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ja.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ja",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ja/autoencoder_ja_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ja/autoencoder_ja_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ja/autoencoder_ja_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ja.json",
+      "error": ""
+    },
+    "jha": {
+      "class_name": "jha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.013365752063691616,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_jha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_jha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_jha/autoencoder_jha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_jha/autoencoder_jha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_jha/autoencoder_jha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_jha.json",
+      "error": ""
+    },
+    "ka": {
+      "class_name": "ka",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01277715153992176,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ka.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ka",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ka/autoencoder_ka_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ka/autoencoder_ka_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ka/autoencoder_ka_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ka.json",
+      "error": ""
+    },
+    "kha": {
+      "class_name": "kha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015984151512384415,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_kha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_kha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_kha/autoencoder_kha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_kha/autoencoder_kha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_kha/autoencoder_kha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_kha.json",
+      "error": ""
+    },
+    "ksa": {
+      "class_name": "ksa",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01607651077210903,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ksa.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ksa",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ksa/autoencoder_ksa_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ksa/autoencoder_ksa_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ksa/autoencoder_ksa_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ksa.json",
+      "error": ""
+    },
+    "la": {
+      "class_name": "la",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.017112616449594498,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_la.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_la",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_la/autoencoder_la_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_la/autoencoder_la_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_la/autoencoder_la_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_la.json",
+      "error": ""
+    },
+    "lu": {
+      "class_name": "lu",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.016181258484721184,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_lu.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_lu",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_lu/autoencoder_lu_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_lu/autoencoder_lu_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_lu/autoencoder_lu_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_lu.json",
+      "error": ""
+    },
+    "luu": {
+      "class_name": "luu",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.017325645312666893,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_luu.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_luu",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_luu/autoencoder_luu_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_luu/autoencoder_luu_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_luu/autoencoder_luu_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_luu.json",
+      "error": ""
+    },
+    "ma": {
+      "class_name": "ma",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.013557405211031437,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ma.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ma",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ma/autoencoder_ma_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ma/autoencoder_ma_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ma/autoencoder_ma_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ma.json",
+      "error": ""
+    },
+    "na": {
+      "class_name": "na",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015627380460500717,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_na.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_na",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_na/autoencoder_na_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_na/autoencoder_na_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_na/autoencoder_na_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_na.json",
+      "error": ""
+    },
+    "nine": {
+      "class_name": "nine",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.011615414172410965,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_nine.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nine",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nine/autoencoder_nine_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nine/autoencoder_nine_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nine/autoencoder_nine_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_nine.json",
+      "error": ""
+    },
+    "nna": {
+      "class_name": "nna",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.016092712059617043,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_nna.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nna",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nna/autoencoder_nna_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nna/autoencoder_nna_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nna/autoencoder_nna_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_nna.json",
+      "error": ""
+    },
+    "nnna": {
+      "class_name": "nnna",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.011071458458900452,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_nnna.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nnna",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nnna/autoencoder_nnna_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nnna/autoencoder_nnna_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nnna/autoencoder_nnna_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_nnna.json",
+      "error": ""
+    },
+    "nya": {
+      "class_name": "nya",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014494563452899456,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_nya.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nya",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nya/autoencoder_nya_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nya/autoencoder_nya_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_nya/autoencoder_nya_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_nya.json",
+      "error": ""
+    },
+    "o": {
+      "class_name": "o",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.016441499814391136,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_o.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_o",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_o/autoencoder_o_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_o/autoencoder_o_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_o/autoencoder_o_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_o.json",
+      "error": ""
+    },
+    "one": {
+      "class_name": "one",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012679952196776867,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_one.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_one",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_one/autoencoder_one_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_one/autoencoder_one_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_one/autoencoder_one_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_one.json",
+      "error": ""
+    },
+    "pa": {
+      "class_name": "pa",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01206034142524004,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_pa.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pa",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pa/autoencoder_pa_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pa/autoencoder_pa_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pa/autoencoder_pa_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_pa.json",
+      "error": ""
+    },
+    "pha": {
+      "class_name": "pha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.016772249713540077,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_pha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pha/autoencoder_pha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pha/autoencoder_pha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_pha/autoencoder_pha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_pha.json",
+      "error": ""
+    },
+    "ra": {
+      "class_name": "ra",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.010489354841411114,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ra.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ra",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ra/autoencoder_ra_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ra/autoencoder_ra_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ra/autoencoder_ra_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ra.json",
+      "error": ""
+    },
+    "ri": {
+      "class_name": "ri",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012695198878645897,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ri.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ri",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ri/autoencoder_ri_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ri/autoencoder_ri_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ri/autoencoder_ri_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ri.json",
+      "error": ""
+    },
+    "rii": {
+      "class_name": "rii",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01440214179456234,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_rii.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_rii",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_rii/autoencoder_rii_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_rii/autoencoder_rii_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_rii/autoencoder_rii_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_rii.json",
+      "error": ""
+    },
+    "sa": {
+      "class_name": "sa",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.0129135986790061,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_sa.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sa",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sa/autoencoder_sa_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sa/autoencoder_sa_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sa/autoencoder_sa_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_sa.json",
+      "error": ""
+    },
+    "saa": {
+      "class_name": "saa",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012923454865813255,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_saa.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_saa",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_saa/autoencoder_saa_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_saa/autoencoder_saa_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_saa/autoencoder_saa_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_saa.json",
+      "error": ""
+    },
+    "seven": {
+      "class_name": "seven",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.009965730831027031,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_seven.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_seven",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_seven/autoencoder_seven_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_seven/autoencoder_seven_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_seven/autoencoder_seven_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_seven.json",
+      "error": ""
+    },
+    "sha": {
+      "class_name": "sha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012872771359980106,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_sha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sha/autoencoder_sha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sha/autoencoder_sha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_sha/autoencoder_sha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_sha.json",
+      "error": ""
+    },
+    "six": {
+      "class_name": "six",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.012238317169249058,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_six.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_six",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_six/autoencoder_six_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_six/autoencoder_six_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_six/autoencoder_six_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_six.json",
+      "error": ""
+    },
+    "ta": {
+      "class_name": "ta",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014003632590174675,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ta.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ta",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ta/autoencoder_ta_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ta/autoencoder_ta_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ta/autoencoder_ta_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ta.json",
+      "error": ""
+    },
+    "tha": {
+      "class_name": "tha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.011887419037520885,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_tha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tha/autoencoder_tha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tha/autoencoder_tha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tha/autoencoder_tha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_tha.json",
+      "error": ""
+    },
+    "three": {
+      "class_name": "three",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01067128125578165,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_three.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_three",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_three/autoencoder_three_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_three/autoencoder_three_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_three/autoencoder_three_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_three.json",
+      "error": ""
+    },
+    "tra": {
+      "class_name": "tra",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015891805291175842,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_tra.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tra",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tra/autoencoder_tra_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tra/autoencoder_tra_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tra/autoencoder_tra_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_tra.json",
+      "error": ""
+    },
+    "tta": {
+      "class_name": "tta",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01438889279961586,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_tta.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tta",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tta/autoencoder_tta_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tta/autoencoder_tta_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_tta/autoencoder_tta_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_tta.json",
+      "error": ""
+    },
+    "ttha": {
+      "class_name": "ttha",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01399956364184618,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ttha.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ttha",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ttha/autoencoder_ttha_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ttha/autoencoder_ttha_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ttha/autoencoder_ttha_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ttha.json",
+      "error": ""
+    },
+    "two": {
+      "class_name": "two",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.010139120742678642,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_two.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_two",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_two/autoencoder_two_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_two/autoencoder_two_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_two/autoencoder_two_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_two.json",
+      "error": ""
+    },
+    "u": {
+      "class_name": "u",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.015076790936291218,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_u.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_u",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_u/autoencoder_u_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_u/autoencoder_u_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_u/autoencoder_u_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_u.json",
+      "error": ""
+    },
+    "uu": {
+      "class_name": "uu",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.014908436685800552,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_uu.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_uu",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_uu/autoencoder_uu_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_uu/autoencoder_uu_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_uu/autoencoder_uu_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_uu.json",
+      "error": ""
+    },
+    "wo": {
+      "class_name": "wo",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.011701636016368866,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_wo.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_wo",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_wo/autoencoder_wo_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_wo/autoencoder_wo_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_wo/autoencoder_wo_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_wo.json",
+      "error": ""
+    },
+    "ya": {
+      "class_name": "ya",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.01351921446621418,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_ya.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ya",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ya/autoencoder_ya_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ya/autoencoder_ya_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_ya/autoencoder_ya_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_ya.json",
+      "error": ""
+    },
+    "zero": {
+      "class_name": "zero",
+      "success": true,
+      "best_epoch": 12,
+      "final_reconstruction_loss": 0.013090222142636776,
+      "checkpoint": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/autoencoder_zero.pt",
+      "eval_dir": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_zero",
+      "visualizations": [
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_zero/autoencoder_zero_reconstruction_1.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_zero/autoencoder_zero_reconstruction_2.png",
+        "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/eval_zero/autoencoder_zero_reconstruction_3.png"
+      ],
+      "baseline": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/ranjana-lipi-coach/backend/ml/saved_models/autoencoders_general/region_baseline_zero.json",
+      "error": ""
+    }
+  }
+}
