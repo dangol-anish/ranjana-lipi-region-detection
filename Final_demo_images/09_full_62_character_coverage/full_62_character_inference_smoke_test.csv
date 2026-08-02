@@ -1,0 +1,63 @@
+class,sample_file,samples_tried,route,predicted_class,matches_target,overall_score,wrong_character,insufficient_input,status
+a,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/a/Slice 1278.png,1,validated_5_class,a,True,94.12,False,False,PASS
+aa,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/aa/Slice 1286.png,1,validated_5_class,aa,True,94.64,False,False,PASS
+ah,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ah/Slice 1050.png,1,general_62_class,ah,True,78.58,False,False,PASS
+ai,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ai/Slice 1026.png,1,general_62_class,ai,True,84.52,False,False,PASS
+am,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/am/Slice 1044.png,1,general_62_class,am,True,80.77,False,False,PASS
+au,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/au/Slice 1038.png,1,general_62_class,au,True,78.04,False,False,PASS
+ba,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ba/Slice 1194.png,1,general_62_class,ba,True,83.97,False,False,PASS
+bha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/bha/Slice 1200.png,1,general_62_class,bha,True,86.37,False,False,PASS
+ca,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ca/Slice 1501.png,1,general_62_class,ca,True,89.30,False,False,PASS
+cha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/cha/Slice 1502.png,1,general_62_class,cha,True,85.75,False,False,PASS
+da,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/da/Slice 1134.png,1,validated_5_class,da,True,95.54,False,False,PASS
+dda,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/dda/Slice 1164.png,1,validated_5_class,dda,True,94.06,False,False,PASS
+ddha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ddha/Slice 1170.png,1,general_62_class,ddha,True,85.65,False,False,PASS
+dha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/dha/Slice 1140.png,1,general_62_class,dha,True,81.76,False,False,PASS
+e,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/e/Slice 1020.png,1,general_62_class,e,True,86.14,False,False,PASS
+eight,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/eight/Slice 1117.png,2,general_62_class,eight,True,90.10,False,False,PASS
+five,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/five/Slice 1092.png,1,general_62_class,five,True,87.83,False,False,PASS
+four,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/four/Slice 1086.png,1,general_62_class,four,True,88.12,False,False,PASS
+ga,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ga/ga_0001.png,1,general_62_class,ga,True,80.20,False,False,PASS
+gha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/gha/Slice 966.png,1,general_62_class,gha,True,79.44,False,False,PASS
+gyan,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/gyan/Slice 1272.png,1,general_62_class,gyan,True,79.24,False,False,PASS
+ha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ha/Slice 1254.png,1,general_62_class,ha,True,80.74,False,False,PASS
+i,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/i/Slice 1290.png,1,general_62_class,i,True,82.01,False,False,PASS
+ii,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ii/Slice 1296.png,1,general_62_class,ii,True,79.49,False,False,PASS
+ja,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ja/Slice 1503.png,1,general_62_class,ja,True,76.65,False,False,PASS
+jha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/jha/Slice 1000.png,1,general_62_class,jha,True,85.48,False,False,PASS
+ka,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ka/ka_0001.png,1,validated_5_class,ka,True,91.76,False,False,PASS
+kha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/kha/kha_0001.png,1,general_62_class,kha,True,79.61,False,False,PASS
+ksa,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ksa/Slice 1260.png,1,general_62_class,ksa,True,78.01,False,False,PASS
+la,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/la/Slice 1224.png,1,general_62_class,la,True,82.15,False,False,PASS
+lu,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/lu/lu_0001.png,1,general_62_class,lu,True,83.08,False,False,PASS
+luu,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/luu/luu_0001.png,1,general_62_class,luu,True,82.22,False,False,PASS
+ma,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ma/Slice 1206.png,1,general_62_class,ma,True,86.87,False,False,PASS
+na,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/na/na_0001.png,1,general_62_class,na,True,77.69,False,False,PASS
+nine,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/nine/Slice 1122.png,1,general_62_class,nine,True,87.97,False,False,PASS
+nna,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/nna/Slice 1146.png,1,general_62_class,nna,True,79.95,False,False,PASS
+nnna,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/nnna/Slice 1176.png,1,general_62_class,nnna,True,87.20,False,False,PASS
+nya,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/nya/Slice 1002.png,1,general_62_class,nya,True,81.06,False,False,PASS
+o,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/o/Slice 1032.png,1,general_62_class,o,True,79.31,False,False,PASS
+one,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/one/Slice 1068.png,1,general_62_class,one,True,87.30,False,False,PASS
+pa,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/pa/Slice 1182.png,1,general_62_class,pa,True,86.59,False,False,PASS
+pha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/pha/Slice 1188.png,1,general_62_class,pha,True,78.47,False,False,PASS
+ra,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ra/Slice 1218.png,1,general_62_class,ra,True,88.69,False,False,PASS
+ri,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ri/Slice 1314.png,1,general_62_class,ri,True,84.51,False,False,PASS
+rii,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/rii/Slice 1014.png,1,general_62_class,rii,True,83.31,False,False,PASS
+sa,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/sa/Slice 1242.png,1,general_62_class,sa,True,83.27,False,False,PASS
+saa,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/saa/Slice 1248.png,1,general_62_class,saa,True,85.69,False,False,PASS
+seven,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/seven/Slice 1104.png,1,general_62_class,seven,True,88.92,False,False,PASS
+sha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/sha/Slice 1236.png,1,general_62_class,sha,True,83.82,False,False,PASS
+six,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/six/Slice 1098.png,1,general_62_class,six,True,87.75,False,False,PASS
+ta,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ta/Slice 1008.png,1,general_62_class,ta,True,79.73,False,False,PASS
+tha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/tha/Slice 1128.png,1,general_62_class,tha,True,86.99,False,False,PASS
+three,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/three/Slice 1080.png,1,general_62_class,three,True,89.51,False,False,PASS
+tra,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/tra/Slice 1266.png,1,general_62_class,tra,True,82.15,False,False,PASS
+tta,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/tta/Slice 1152.png,1,general_62_class,tta,True,84.17,False,False,PASS
+ttha,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ttha/Slice 1158.png,1,general_62_class,ttha,True,83.22,False,False,PASS
+two,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/two/Slice 1074.png,1,general_62_class,two,True,90.00,False,False,PASS
+u,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/u/Slice 1302.png,1,general_62_class,u,True,81.81,False,False,PASS
+uu,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/uu/Slice 1308.png,1,general_62_class,uu,True,82.29,False,False,PASS
+wo,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/wo/Slice 1230.png,1,general_62_class,wo,True,86.46,False,False,PASS
+ya,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/ya/Slice 1212.png,1,general_62_class,ya,True,85.69,False,False,PASS
+zero,/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/Dataset/zero/Slice 1062.png,1,general_62_class,zero,True,85.28,False,False,PASS

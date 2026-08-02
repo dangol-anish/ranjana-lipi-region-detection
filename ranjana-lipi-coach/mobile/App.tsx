@@ -54,6 +54,7 @@ type SuggestedPick = {
 
 const TOKEN_KEY = "ranjana_lipi_token";
 const API_BASE_URL_KEY = "ranjana_lipi_api_base_url";
+const STALE_API_BASE_URLS = new Set(["http://192.168.8.100:8000", "http://17.1.112.44:8000"]);
 const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
 const PRACTICE_MODES: { value: PracticeMode; label: string }[] = [
   { value: "app_suggested", label: "Suggestive Learning" },
@@ -189,6 +190,9 @@ function attemptCharacterLabel(characters: Character[], attempt: Attempt): strin
 }
 
 function topRegionSummary(feedback: RegionFeedback | null | undefined): string {
+  if (feedback?.wrong_character) {
+    return "Wrong character";
+  }
   if (feedback?.insufficient_input) {
     return "Insufficient input";
   }
@@ -285,6 +289,10 @@ function toSelectedImage(asset: ImagePicker.ImagePickerAsset, source: "camera" |
 }
 
 function problemRegionText(feedback: RegionFeedback | null): string {
+  if (feedback?.wrong_character) {
+    return feedback.message ?? feedback.warning ?? "This attempt does not match the selected character.";
+  }
+
   if (feedback?.insufficient_input) {
     return feedback.message ?? feedback.warning ?? "Insufficient input — please draw the full character.";
   }
@@ -351,18 +359,22 @@ export default function App() {
   const loadSession = useCallback(async () => {
     const storedBaseUrl = await SecureStore.getItemAsync(API_BASE_URL_KEY);
     const storedToken = await SecureStore.getItemAsync(TOKEN_KEY);
+    const resolvedBaseUrl =
+      storedBaseUrl && !STALE_API_BASE_URLS.has(storedBaseUrl)
+        ? storedBaseUrl
+        : DEFAULT_API_BASE_URL;
 
-    if (storedBaseUrl) {
-      setApiBaseUrl(storedBaseUrl);
+    if (storedBaseUrl !== resolvedBaseUrl) {
+      await SecureStore.setItemAsync(API_BASE_URL_KEY, resolvedBaseUrl);
     }
+    setApiBaseUrl(resolvedBaseUrl);
 
     if (!storedToken) {
       return;
     }
 
     try {
-      const baseUrl = storedBaseUrl ?? DEFAULT_API_BASE_URL;
-      const currentUser = await fetchCurrentUser(baseUrl, storedToken);
+      const currentUser = await fetchCurrentUser(resolvedBaseUrl, storedToken);
       setToken(storedToken);
       setUser(currentUser);
       setScreen("home");
@@ -834,6 +846,7 @@ export default function App() {
   function renderResults() {
     const feedback = result?.region_feedback ?? null;
     const score = result?.overall_score ?? feedback?.overall_score ?? null;
+    const isWrongCharacter = Boolean(feedback?.wrong_character);
     const referenceUri = selectedCharacter
       ? `${apiBaseUrl}/${VALIDATED_CLASSES.has(selectedCharacter.name) ? "references" : "references_general"}/${selectedCharacter.name}.png`
       : null;
@@ -842,10 +855,11 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <TopNav title="Feedback" onBack={() => setScreen("practice")} />
         <View style={styles.scorePanel}>
-          <Text style={styles.scoreLabel}>Overall Score</Text>
+          <Text style={styles.scoreLabel}>{isWrongCharacter ? "Character Match" : "Overall Score"}</Text>
           <Text style={[styles.scoreValue, { color: scoreColor(score) }]}>
             {typeof score === "number" ? `${score.toFixed(1)}%` : "--"}
           </Text>
+          {isWrongCharacter ? <Text style={styles.warning}>{feedback?.warning ?? feedback?.message}</Text> : null}
         </View>
 
         <Text style={styles.sectionTitle}>Comparison</Text>
@@ -901,8 +915,9 @@ export default function App() {
 
         <Text style={styles.sectionTitle}>How This Feedback Was Produced</Text>
         <Text style={styles.explainText}>
-          The app compares the normalized attempt with the expected reconstruction for this character. Regions with
-          unusually high ink-masked reconstruction error are highlighted as likely places to improve.
+          {isWrongCharacter
+            ? "The recognizer detected that this attempt does not match the selected character, so scoring was blocked instead of showing a misleading reconstruction score."
+            : "The app compares the normalized attempt with the expected reconstruction for this character. Regions with unusually high ink-masked reconstruction error are highlighted as likely places to improve."}
         </Text>
 
         <View style={styles.resultActions}>

@@ -11,10 +11,14 @@ from app.models.user import User
 from app.schemas.attempt import AttemptOut, PracticeAttemptResponse
 from app.services.attempts import create_attempt_with_progress, save_attempt_image
 from app.services.characters import get_character_by_id
-from ml.inference.pipeline import analyze_attempt
+from ml.inference.service import RanjanaInferenceService, inference_service
 
 
 router = APIRouter(prefix="/practice", tags=["practice"])
+
+
+def get_inference_service() -> RanjanaInferenceService:
+    return inference_service
 
 
 @router.get("/attempts", response_model=list[AttemptOut])
@@ -40,6 +44,7 @@ async def create_practice_attempt(
     image: UploadFile = File(...),
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
+    ml_service: RanjanaInferenceService = Depends(get_inference_service),
 ) -> PracticeAttemptResponse:
     character = get_character_by_id(db, character_id)
     if character is None:
@@ -56,7 +61,7 @@ async def create_practice_attempt(
         )
 
     try:
-        analysis = analyze_attempt(
+        analysis = ml_service.analyze_practice_attempt(
             image_bytes=image_bytes,
             target_class=character.name,
             rows=character.region_grid_rows,

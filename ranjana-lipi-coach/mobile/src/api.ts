@@ -11,7 +11,7 @@ import type {
   UserProfile,
 } from "./types";
 
-export const DEFAULT_API_BASE_URL = "http://192.168.8.100:8000";
+export const DEFAULT_API_BASE_URL = "http://192.168.6.155:8000";
 
 type ApiOptions = {
   token?: string | null;

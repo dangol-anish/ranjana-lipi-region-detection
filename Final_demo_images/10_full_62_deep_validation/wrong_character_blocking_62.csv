@@ -1,0 +1,63 @@
+source_class,wrong_target_class,filename,wrong_character,overall_score,predicted_class,recognizer_confidence,blocking_pass
+a,aa,Slice 1278.png,False,92.55495499819517,aa,0.965873122215271,False
+aa,ah,Slice 1286.png,True,0.0,o,0.6273419260978699,True
+ah,ai,Slice 1050.png,True,0.0,au,0.9945669174194336,True
+ai,am,Slice 1026.png,True,0.0,nine,0.9998264908790588,True
+am,au,Slice 1044.png,True,0.0,three,0.7398839592933655,True
+au,ba,Slice 1038.png,True,0.0,ii,0.5280889868736267,True
+ba,bha,Slice 1194.png,True,0.0,la,0.6304909586906433,True
+bha,ca,Slice 1200.png,True,0.0,la,0.5612713098526001,True
+ca,cha,Slice 1501.png,True,0.0,nna,0.6076401472091675,True
+cha,da,Slice 1502.png,True,0.0,ka,0.5400939583778381,True
+da,dda,Slice 1134.png,True,0.0,da,0.8095653653144836,True
+dda,ddha,Slice 1164.png,True,0.0,la,0.5077189207077026,True
+ddha,dha,Slice 1170.png,True,0.0,la,0.46616330742836,True
+dha,e,Slice 1140.png,True,0.0,kha,0.9510815739631653,True
+e,eight,Slice 1020.png,True,0.0,ksa,0.38879311084747314,True
+eight,five,Slice 1117.png,True,0.0,nine,0.9271078109741211,True
+five,four,Slice 1092.png,True,0.0,three,0.5081729292869568,True
+four,ga,Slice 1086.png,True,0.0,five,0.7322839498519897,True
+ga,gha,ga_0001.png,True,0.0,ksa,0.7666590809822083,True
+gha,gyan,Slice 966.png,True,0.0,ksa,0.9993535876274109,True
+gyan,ha,Slice 1272.png,True,0.0,ii,0.9118025302886963,True
+ha,i,Slice 1254.png,True,0.0,ksa,0.9684261679649353,True
+i,ii,Slice 1290.png,True,0.0,nine,0.6665399670600891,True
+ii,ja,Slice 1296.png,True,0.0,ii,0.9983711838722229,True
+ja,jha,Slice 1503.png,True,0.0,ii,0.7180890440940857,True
+jha,ka,Slice 1000.png,True,0.0,aa,0.5522488951683044,True
+ka,kha,ka_0001.png,True,0.0,au,0.9933174848556519,True
+kha,ksa,kha_0001.png,False,73.04206490516663,ksa,0.9962114095687866,False
+ksa,la,Slice 1260.png,True,0.0,ksa,0.9942650198936462,True
+la,lu,Slice 1224.png,True,0.0,kha,0.9593604207038879,True
+lu,luu,lu_0001.png,True,0.0,ksa,0.8710587620735168,True
+luu,ma,luu_0001.png,True,0.0,ii,0.47256579995155334,True
+ma,na,Slice 1206.png,True,0.0,la,0.8948280811309814,True
+na,nine,na_0001.png,True,0.0,ksa,0.9873858690261841,True
+nine,nna,Slice 1122.png,True,0.0,nine,0.7171563506126404,True
+nna,nnna,Slice 1146.png,True,0.0,nna,0.7419281601905823,True
+nnna,nya,Slice 1176.png,True,0.0,la,0.6108338236808777,True
+nya,o,Slice 1002.png,True,0.0,ksa,0.9985882639884949,True
+o,one,Slice 1032.png,True,0.0,ksa,0.9653235077857971,True
+one,pa,Slice 1068.png,True,0.0,kha,0.47985827922821045,True
+pa,pha,Slice 1182.png,True,0.0,ksa,0.9156273603439331,True
+pha,ra,Slice 1188.png,True,0.0,nna,0.5350257754325867,True
+ra,ri,Slice 1218.png,True,0.0,nna,0.5832891464233398,True
+ri,rii,Slice 1314.png,True,0.0,ja,0.5600007176399231,True
+rii,sa,Slice 1014.png,True,0.0,au,0.6147962212562561,True
+sa,saa,Slice 1242.png,True,0.0,ksa,0.9587047696113586,True
+saa,seven,Slice 1248.png,True,0.0,la,0.8742343187332153,True
+seven,sha,Slice 1104.png,True,0.0,three,0.9253056049346924,True
+sha,six,Slice 1236.png,True,0.0,ksa,0.6815585494041443,True
+six,ta,Slice 1098.png,True,0.0,six,0.9664504528045654,True
+ta,tha,Slice 1008.png,True,0.0,kha,0.807231605052948,True
+tha,three,Slice 1128.png,False,83.7808933109045,three,0.9790307879447937,False
+three,tra,Slice 1080.png,True,0.0,three,0.9942492246627808,True
+tra,tta,Slice 1266.png,True,0.0,la,0.9080034494400024,True
+tta,ttha,Slice 1152.png,True,0.0,la,0.534663200378418,True
+ttha,two,Slice 1158.png,True,0.0,la,0.6224120855331421,True
+two,u,Slice 1074.png,True,0.0,nine,0.5524352192878723,True
+u,uu,Slice 1302.png,True,0.0,ja,0.9940425753593445,True
+uu,wo,Slice 1308.png,True,0.0,am,0.6769409775733948,True
+wo,ya,Slice 1230.png,True,0.0,kha,0.6531599760055542,True
+ya,zero,Slice 1212.png,True,0.0,ksa,0.4249662160873413,True
+zero,a,Slice 1062.png,True,0.0,ka,0.5224049687385559,True

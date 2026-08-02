@@ -23,6 +23,10 @@ CANVAS_SIZE = 128
 VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
 MIN_NORMALIZED_INK_PIXELS = 300
 INSUFFICIENT_INPUT_MESSAGE = "Insufficient input — please draw the full character."
+WRONG_CHARACTER_MESSAGE_TEMPLATE = (
+    "This attempt looks like {predicted_class}, not {target_class}. "
+    "Please choose the matching character or redraw the selected one."
+)
 
 
 @dataclass(frozen=True)
@@ -104,6 +108,64 @@ def insufficient_input_feedback(
             "problem_regions": [],
             "all_regions": [],
             "insufficient_input": True,
+        },
+    }
+
+
+def wrong_character_feedback(
+    class_name: str,
+    recognizer_result: RecognizerResult,
+    rows: int = 3,
+    cols: int = 3,
+    model_route: str = "validated_5_class",
+) -> dict[str, Any]:
+    message = WRONG_CHARACTER_MESSAGE_TEMPLATE.format(
+        predicted_class=recognizer_result.predicted_class,
+        target_class=class_name,
+    )
+    return {
+        "class_name": class_name,
+        "target_class": class_name,
+        "predicted_class": recognizer_result.predicted_class,
+        "recognizer_confidence": recognizer_result.confidence,
+        "grid": {"rows": rows, "cols": cols},
+        "overall_score": 0.0,
+        "mean_error": 0.0,
+        "std_error": 0.0,
+        "max_region_error": 0.0,
+        "threshold": 0.0,
+        "mean_z_score": 0.0,
+        "std_z_score": 0.0,
+        "max_z_score": 0.0,
+        "wrong_character": True,
+        "message": message,
+        "warning": message,
+        "threshold_settings": {
+            "wrong_character_blocking": True,
+        },
+        "problem_regions": [],
+        "all_regions": [],
+        "fine_grid": {
+            "rows": rows,
+            "cols": cols,
+            "problem_regions": [],
+            "all_regions": [],
+            "wrong_character": True,
+        },
+        "broad_bands": {
+            "bands": ["top", "middle", "bottom"],
+            "problem_regions": [],
+            "all_regions": [],
+            "wrong_character": True,
+        },
+        "recognizer": {
+            "predicted_class": recognizer_result.predicted_class,
+            "confidence": recognizer_result.confidence,
+            "probabilities": recognizer_result.probabilities,
+            "matches_target": False,
+            "model_route": model_route,
+            "blocked_scoring": True,
+            "warning": message,
         },
     }
 
@@ -342,6 +404,9 @@ def analyze_attempt(
             feedback["recognizer_confidence"] = 0.0
             return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize(normalized, device_name)
+        if recognizer_result.predicted_class != target_class:
+            feedback = wrong_character_feedback(target_class, recognizer_result, rows, cols, model_route)
+            return {"normalized": normalized, "feedback": feedback}
         feedback = reconstruct_and_feedback(normalized, target_class, rows, cols, device_name)
     else:
         normalized = normalize_general_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
@@ -360,6 +425,9 @@ def analyze_attempt(
             feedback["recognizer_confidence"] = 0.0
             return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize_general(normalized, device_name)
+        if recognizer_result.predicted_class != target_class:
+            feedback = wrong_character_feedback(target_class, recognizer_result, rows, cols, model_route)
+            return {"normalized": normalized, "feedback": feedback}
         feedback = reconstruct_and_feedback_general(normalized, target_class, rows, cols, device_name)
 
     feedback["recognizer"] = {

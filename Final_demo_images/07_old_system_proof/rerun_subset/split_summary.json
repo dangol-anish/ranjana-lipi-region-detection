@@ -1,0 +1,11 @@
+{
+  "dataset_dir": "/Users/anishdangol/Desktop/ranjana-app/model-details/ml/data/Dataset",
+  "total_images": 14232,
+  "classes": 62,
+  "train_images": 11362,
+  "validation_images": 1393,
+  "test_images": 62,
+  "split": "80% train, 10% validation, 10% test, stratified by class",
+  "seed": 42,
+  "max_test_per_class": 1
+}

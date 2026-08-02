@@ -42,6 +42,7 @@ export type RegionFeedback = {
   recognizer_confidence?: number;
   overall_score: number;
   insufficient_input?: boolean;
+  wrong_character?: boolean;
   message?: string | null;
   ink_pixel_count?: number;
   min_required_ink_pixels?: number;
