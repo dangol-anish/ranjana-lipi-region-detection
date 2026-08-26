@@ -24,6 +24,7 @@ import {
   fetchCharacters,
   fetchCurrentUser,
   fetchProfile,
+  fetchPracticeRecommendations,
   fetchProgress,
   loginUser,
   registerUser,
@@ -36,6 +37,7 @@ import type {
   Character,
   CharacterProgressDetail,
   PracticeAttemptResponse,
+  PracticeRecommendation,
   PracticeMode,
   ProgressDashboardItem,
   RegionFeedback,
@@ -333,6 +335,7 @@ export default function App() {
   const [characterSearch, setCharacterSearch] = useState("");
   const [characterPickerOpen, setCharacterPickerOpen] = useState(false);
   const [suggestedReasonText, setSuggestedReasonText] = useState<string | null>(null);
+  const [suggestedRecommendation, setSuggestedRecommendation] = useState<PracticeRecommendation | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const drawingRef = useRef<DrawingCanvasHandle>(null);
@@ -547,17 +550,38 @@ export default function App() {
     }
   }
 
-  function beginPractice(mode: PracticeMode) {
-    if (mode === "app_suggested") {
-      const pick = chooseSuggestedPick(progress);
+  async function loadSuggestedRecommendation(): Promise<void> {
+    if (!token) {
+      return;
+    }
+
+    try {
+      const response = await fetchPracticeRecommendations(apiBaseUrl, token, 5);
+      const pick = response.recommendations[0];
       if (pick) {
-        setSelectedCharacterId(pick.item.character.id);
+        setSelectedCharacterId(pick.character.id);
         setSuggestedReasonText(pick.reason);
-      } else {
-        setSuggestedReasonText(null);
+        setSuggestedRecommendation(pick);
+        return;
       }
+    } catch {
+      // Keep practice usable offline or if the recommendation endpoint is unavailable.
+    }
+
+    const fallbackPick = chooseSuggestedPick(progress);
+    if (fallbackPick) {
+      setSelectedCharacterId(fallbackPick.item.character.id);
+      setSuggestedReasonText(fallbackPick.reason);
+      setSuggestedRecommendation(null);
+    }
+  }
+
+  async function beginPractice(mode: PracticeMode) {
+    if (mode === "app_suggested") {
+      await loadSuggestedRecommendation();
     } else {
       setSuggestedReasonText(null);
+      setSuggestedRecommendation(null);
     }
 
     setSelectedMode(mode);
@@ -570,13 +594,9 @@ export default function App() {
     setScreen("practice");
   }
 
-  function continuePractice() {
+  async function continuePractice() {
     if (selectedMode === "app_suggested") {
-      const pick = chooseSuggestedPick(progress);
-      if (pick) {
-        setSelectedCharacterId(pick.item.character.id);
-        setSuggestedReasonText(pick.reason);
-      }
+      await loadSuggestedRecommendation();
     }
 
     setSelectedImage(null);
@@ -680,7 +700,7 @@ export default function App() {
         <Text style={styles.sectionTitle}>Learn at your pace</Text>
         <View style={styles.modeGrid}>
           {PRACTICE_MODES.map((mode) => (
-            <Pressable key={mode.value} style={styles.modeButton} onPress={() => beginPractice(mode.value)}>
+            <Pressable key={mode.value} style={styles.modeButton} onPress={() => void beginPractice(mode.value)}>
               <Text style={styles.modeTitle}>{mode.label}</Text>
               <Text style={styles.modeText}>
                 {mode.value === "free_practice"
@@ -746,6 +766,33 @@ export default function App() {
               </TouchableOpacity>
             ) : null}
           </View>
+
+          {selectedMode === "app_suggested" && suggestedRecommendation ? (
+            <View style={styles.recommendationPanel}>
+              <Text style={styles.recommendationTitle}>Adaptive Recommendation</Text>
+              <Text style={styles.recommendationText}>{suggestedRecommendation.reason}</Text>
+              <View style={styles.recommendationStats}>
+                <View style={styles.recommendationStat}>
+                  <Text style={styles.recommendationStatValue}>
+                    {suggestedRecommendation.priority_score.toFixed(1)}
+                  </Text>
+                  <Text style={styles.recommendationStatLabel}>Priority</Text>
+                </View>
+                <View style={styles.recommendationStat}>
+                  <Text style={styles.recommendationStatValue}>
+                    {scoreText(suggestedRecommendation.signals.recent_average_score)}
+                  </Text>
+                  <Text style={styles.recommendationStatLabel}>Recent Avg</Text>
+                </View>
+                <View style={styles.recommendationStat}>
+                  <Text style={styles.recommendationStatValue}>
+                    {suggestedRecommendation.signals.weakest_region ?? "None"}
+                  </Text>
+                  <Text style={styles.recommendationStatLabel}>Weak Region</Text>
+                </View>
+              </View>
+            </View>
+          ) : null}
 
           {selectedMode === "free_practice" && characterPickerOpen ? (
             <View style={styles.characterPickerPanel}>
@@ -921,7 +968,7 @@ export default function App() {
         </Text>
 
         <View style={styles.resultActions}>
-          <SecondaryButton label={selectedMode === "app_suggested" ? "Next Suggested" : "Try Again"} onPress={continuePractice} />
+          <SecondaryButton label={selectedMode === "app_suggested" ? "Next Suggested" : "Try Again"} onPress={() => void continuePractice()} />
           <SecondaryButton label="Progress" onPress={() => setScreen("progress")} />
         </View>
       </ScrollView>
@@ -1506,6 +1553,48 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "700",
     marginTop: 3,
+  },
+  recommendationPanel: {
+    backgroundColor: "#ffffff",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    marginTop: 10,
+    padding: 14,
+  },
+  recommendationTitle: {
+    color: "#17211e",
+    fontSize: 15,
+    fontWeight: "900",
+  },
+  recommendationText: {
+    color: "#4f625d",
+    lineHeight: 20,
+    marginTop: 6,
+  },
+  recommendationStats: {
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 12,
+  },
+  recommendationStat: {
+    backgroundColor: "#f8faf7",
+    borderColor: "#d7e0dc",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    padding: 10,
+  },
+  recommendationStatValue: {
+    color: "#17211e",
+    fontSize: 14,
+    fontWeight: "900",
+  },
+  recommendationStatLabel: {
+    color: "#66736f",
+    fontSize: 11,
+    fontWeight: "800",
+    marginTop: 4,
   },
   changeCharacterButton: {
     backgroundColor: "#21443a",

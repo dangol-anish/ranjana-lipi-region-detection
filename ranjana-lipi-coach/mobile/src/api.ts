@@ -3,6 +3,7 @@ import type {
   Attempt,
   CharacterProgressDetail,
   PracticeAttemptResponse,
+  PracticeRecommendationResponse,
   PracticeMode,
   ProgressDashboardItem,
   SelectedImage,
@@ -158,6 +159,14 @@ export function fetchProfile(baseUrl: string, token: string): Promise<UserProfil
 
 export function fetchAttemptHistory(baseUrl: string, token: string, limit = 50): Promise<Attempt[]> {
   return apiRequest<Attempt[]>(baseUrl, `/practice/attempts?limit=${limit}`, { token });
+}
+
+export function fetchPracticeRecommendations(
+  baseUrl: string,
+  token: string,
+  limit = 5,
+): Promise<PracticeRecommendationResponse> {
+  return apiRequest<PracticeRecommendationResponse>(baseUrl, `/recommendations/practice?limit=${limit}`, { token });
 }
 
 export async function submitPracticeAttempt(

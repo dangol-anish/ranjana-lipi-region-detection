@@ -100,6 +100,32 @@ export type ProgressDashboardItem = {
   progress: Progress | null;
 };
 
+export type RecommendationSignal = {
+  recent_average_score: number | null;
+  attempts_count: number;
+  best_score: number | null;
+  last_practiced_at: string | null;
+  weakest_region: string | null;
+  weak_region_repeat_count: number;
+  review_interval_hours: number;
+  elapsed_hours: number | null;
+  due_ratio: number;
+  mastered: boolean;
+};
+
+export type PracticeRecommendation = {
+  character: Character;
+  priority_score: number;
+  reason: string;
+  signals: RecommendationSignal;
+};
+
+export type PracticeRecommendationResponse = {
+  recommendations: PracticeRecommendation[];
+  algorithm: string;
+  formula: string;
+};
+
 export type CharacterProgressDetail = {
   character: Character;
   progress: Progress | null;

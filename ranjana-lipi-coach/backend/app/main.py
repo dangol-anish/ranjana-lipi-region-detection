@@ -11,6 +11,7 @@ from app.api.characters import router as characters_router
 from app.api.practice import router as practice_router
 from app.api.profile import router as profile_router
 from app.api.progress import router as progress_router
+from app.api.recommendations import router as recommendations_router
 from app.core.database import SessionLocal
 from app.services.characters import seed_default_characters
 
@@ -31,6 +32,7 @@ app.include_router(characters_router)
 app.include_router(practice_router)
 app.include_router(profile_router)
 app.include_router(progress_router)
+app.include_router(recommendations_router)
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = BACKEND_ROOT.parents[1]
