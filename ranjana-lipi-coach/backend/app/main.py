@@ -36,6 +36,7 @@ BACKEND_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = BACKEND_ROOT.parents[1]
 REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
 GENERAL_REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed_general" / "references"
+RAW_REFERENCES_DIR = PROJECT_ROOT / "data" / "Reference"
 DISPLAY_GLYPHS_DIR = BACKEND_ROOT / "ml" / "display_glyphs"
 UPLOADS_DIR = BACKEND_ROOT / "uploads"
 DEMO_CANVAS_DIR = PROJECT_ROOT / "data" / "Canvas"
@@ -50,6 +51,8 @@ if GENERAL_REFERENCES_DIR.is_dir():
         StaticFiles(directory=str(GENERAL_REFERENCES_DIR)),
         name="references_general",
     )
+if RAW_REFERENCES_DIR.is_dir():
+    app.mount("/reference_photos", StaticFiles(directory=str(RAW_REFERENCES_DIR)), name="reference_photos")
 if DISPLAY_GLYPHS_DIR.is_dir():
     app.mount("/display_glyphs", StaticFiles(directory=str(DISPLAY_GLYPHS_DIR)), name="display_glyphs")
 if DEMO_CANVAS_DIR.is_dir():

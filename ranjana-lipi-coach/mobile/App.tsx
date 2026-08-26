@@ -54,7 +54,7 @@ type SuggestedPick = {
 
 const TOKEN_KEY = "ranjana_lipi_token";
 const API_BASE_URL_KEY = "ranjana_lipi_api_base_url";
-const STALE_API_BASE_URLS = new Set(["http://192.168.8.100:8000", "http://17.1.112.44:8000"]);
+const STALE_API_BASE_URLS = new Set(["http://17.1.112.44:8000", "http://192.168.6.155:8000"]);
 const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
 const PRACTICE_MODES: { value: PracticeMode; label: string }[] = [
   { value: "app_suggested", label: "Suggestive Learning" },
@@ -848,7 +848,7 @@ export default function App() {
     const score = result?.overall_score ?? feedback?.overall_score ?? null;
     const isWrongCharacter = Boolean(feedback?.wrong_character);
     const referenceUri = selectedCharacter
-      ? `${apiBaseUrl}/${VALIDATED_CLASSES.has(selectedCharacter.name) ? "references" : "references_general"}/${selectedCharacter.name}.png`
+      ? `${apiBaseUrl}/reference_photos/${selectedCharacter.name}/photo-1/${selectedCharacter.name}.jpg`
       : null;
 
     return (
@@ -904,11 +904,7 @@ export default function App() {
         ) : null}
 
         <Text style={styles.sectionTitle}>Region Map</Text>
-        <RegionGrid
-          feedback={feedback}
-          rows={selectedCharacter?.region_grid_rows ?? 3}
-          cols={selectedCharacter?.region_grid_cols ?? 3}
-        />
+        <RegionGrid feedback={feedback} />
 
         <Text style={styles.sectionTitle}>Problem Regions</Text>
         <Text style={styles.problemText}>{problemRegionText(feedback)}</Text>
@@ -917,7 +913,11 @@ export default function App() {
         <Text style={styles.explainText}>
           {isWrongCharacter
             ? "The recognizer detected that this attempt does not match the selected character, so scoring was blocked instead of showing a misleading reconstruction score."
-            : "The app compares the normalized attempt with the expected reconstruction for this character. Regions with unusually high ink-masked reconstruction error are highlighted as likely places to improve."}
+            : feedback?.feedback_method === "structural_part_mask"
+              ? "The app checks whether the normalized attempt covers required structural parts of the taught character form. Missing required parts are shown as top, middle, or bottom feedback."
+              : feedback?.feedback_method === "statistical_template"
+              ? "The app compares the normalized attempt with a statistical handwriting envelope learned from correct samples for this character. Missing required stroke zones and extra ink outside the allowed variation zone are highlighted."
+              : "The app compares the normalized attempt with the expected reconstruction for this character. Regions with unusually high ink-masked reconstruction error are highlighted as likely places to improve."}
         </Text>
 
         <View style={styles.resultActions}>

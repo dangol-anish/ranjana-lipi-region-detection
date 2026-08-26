@@ -13,6 +13,13 @@ import numpy as np
 import torch
 
 from ml.feedback.grid_feedback import DEFAULT_INK_THRESHOLD, build_region_feedback
+from ml.feedback.structural_part_feedback import (
+    StructuralPartTemplate,
+    VALIDATED_STRUCTURAL_CLASSES,
+    build_structural_part_feedback,
+    load_structural_part_template,
+)
+from ml.feedback.template_feedback import StrokeTemplate, build_template_feedback, load_template
 from ml.preprocessing.normalize import apply_fixed_transform
 from ml.training.autoencoder import RanjanaAutoencoder
 from ml.training.dataset import CLASSES as VALIDATED_CLASSES
@@ -21,7 +28,8 @@ from ml.training.model import RanjanaRecognizerCNN
 
 CANVAS_SIZE = 128
 VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
-MIN_NORMALIZED_INK_PIXELS = 300
+STRUCTURAL_CLASS_SET = frozenset(VALIDATED_STRUCTURAL_CLASSES)
+MIN_NORMALIZED_INK_PIXELS = 250
 INSUFFICIENT_INPUT_MESSAGE = "Insufficient input — please draw the full character."
 WRONG_CHARACTER_MESSAGE_TEMPLATE = (
     "This attempt looks like {predicted_class}, not {target_class}. "
@@ -190,6 +198,16 @@ def load_general_alignment_transforms() -> dict[str, dict[str, Any]]:
         return json.load(file)
 
 
+@lru_cache(maxsize=1)
+def load_controlled_alignment_transforms() -> dict[str, dict[str, Any]]:
+    transforms_path = ml_root() / "saved_models" / "structural_part_masks" / "controlled_alignment_transforms.json"
+    if not transforms_path.is_file():
+        raise FileNotFoundError(f"Missing controlled structural alignment transforms: {transforms_path}")
+
+    with transforms_path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
 def normalize_attempt_for_class(
     image: np.ndarray,
     target_class: str,
@@ -198,6 +216,17 @@ def normalize_attempt_for_class(
     transforms = load_alignment_transforms()
     if target_class not in transforms:
         raise ValueError(f"Missing alignment transform for class: {target_class}")
+    return apply_fixed_transform(image, transforms[target_class], canvas_size=canvas_size)
+
+
+def normalize_controlled_structural_attempt_for_class(
+    image: np.ndarray,
+    target_class: str,
+    canvas_size: int = CANVAS_SIZE,
+) -> np.ndarray:
+    transforms = load_controlled_alignment_transforms()
+    if target_class not in transforms:
+        raise ValueError(f"Missing controlled structural alignment transform for class: {target_class}")
     return apply_fixed_transform(image, transforms[target_class], canvas_size=canvas_size)
 
 
@@ -283,6 +312,78 @@ def load_general_region_baseline(class_name: str) -> dict[str, Any]:
         return json.load(file)
 
 
+@lru_cache(maxsize=128)
+def load_stroke_template(class_name: str) -> StrokeTemplate:
+    template_path = ml_root() / "saved_models" / "stroke_templates" / f"{class_name}.npz"
+    return load_template(template_path)
+
+
+@lru_cache(maxsize=128)
+def load_validated_structural_part_template(class_name: str) -> StructuralPartTemplate:
+    return load_structural_part_template(class_name)
+
+
+def merge_template_and_autoencoder_feedback(
+    template_feedback: dict[str, Any],
+    autoencoder_feedback: dict[str, Any],
+) -> dict[str, Any]:
+    """Return template feedback as primary, preserving reconstruction output."""
+
+    merged = dict(template_feedback)
+    merged["autoencoder_feedback"] = autoencoder_feedback
+    merged["autoencoder_overall_score"] = autoencoder_feedback.get("overall_score")
+    merged["autoencoder_problem_regions"] = autoencoder_feedback.get("problem_regions", [])
+    return merged
+
+
+def merge_structural_template_and_autoencoder_feedback(
+    structural_feedback: dict[str, Any],
+    template_feedback: dict[str, Any],
+    autoencoder_feedback: dict[str, Any],
+) -> dict[str, Any]:
+    merged = dict(structural_feedback)
+    merged["template_feedback"] = template_feedback
+    merged["autoencoder_feedback"] = autoencoder_feedback
+    merged["template_overall_score"] = template_feedback.get("overall_score")
+    merged["autoencoder_overall_score"] = autoencoder_feedback.get("overall_score")
+    return merged
+
+
+def attach_recognizer_metadata(
+    feedback: dict[str, Any],
+    recognizer_result: RecognizerResult | None,
+    target_class: str,
+    model_route: str,
+    blocked_scoring: bool = False,
+) -> dict[str, Any]:
+    if recognizer_result is None:
+        feedback["recognizer"] = {
+            "predicted_class": None,
+            "confidence": 0.0,
+            "probabilities": {},
+            "matches_target": False,
+            "model_route": model_route,
+            "skipped": True,
+            "blocked_scoring": blocked_scoring,
+        }
+        feedback["predicted_class"] = None
+        feedback["recognizer_confidence"] = 0.0
+        return feedback
+
+    matches_target = recognizer_result.predicted_class == target_class
+    feedback["recognizer"] = {
+        "predicted_class": recognizer_result.predicted_class,
+        "confidence": recognizer_result.confidence,
+        "probabilities": recognizer_result.probabilities,
+        "matches_target": matches_target,
+        "model_route": model_route,
+        "blocked_scoring": blocked_scoring,
+    }
+    feedback["predicted_class"] = recognizer_result.predicted_class
+    feedback["recognizer_confidence"] = recognizer_result.confidence
+    return feedback
+
+
 def recognize(normalized: np.ndarray, device_name: str = "cpu") -> RecognizerResult:
     device = torch.device(device_name)
     model, classes = load_recognizer(device_name)
@@ -341,7 +442,7 @@ def reconstruct_and_feedback(
     with torch.no_grad():
         reconstruction = model(image_tensor).cpu().squeeze(0).squeeze(0).numpy()
 
-    return build_region_feedback(
+    autoencoder_feedback = build_region_feedback(
         class_name=target_class,
         input_image=normalized,
         reconstruction=reconstruction,
@@ -349,6 +450,29 @@ def reconstruct_and_feedback(
         cols=cols,
         max_regions=3,
         min_problem_region_error=0.012,
+    )
+    template = load_stroke_template(target_class)
+    template_feedback = build_template_feedback(
+        class_name=target_class,
+        input_image=normalized,
+        template=template,
+        rows=rows,
+        cols=cols,
+        max_regions=3,
+    )
+    structural_template = load_validated_structural_part_template(target_class)
+    structural_feedback = build_structural_part_feedback(
+        class_name=target_class,
+        input_image=normalized,
+        template=structural_template,
+        rows=rows,
+        cols=cols,
+        max_regions=3,
+    )
+    return merge_structural_template_and_autoencoder_feedback(
+        structural_feedback,
+        template_feedback,
+        autoencoder_feedback,
     )
 
 
@@ -367,7 +491,7 @@ def reconstruct_and_feedback_general(
     with torch.no_grad():
         reconstruction = model(image_tensor).cpu().squeeze(0).squeeze(0).numpy()
 
-    return build_region_feedback(
+    autoencoder_feedback = build_region_feedback(
         class_name=target_class,
         input_image=normalized,
         reconstruction=reconstruction,
@@ -376,6 +500,33 @@ def reconstruct_and_feedback_general(
         max_regions=3,
         min_problem_region_error=0.012,
         baseline=baseline,
+    )
+    template = load_stroke_template(target_class)
+    template_feedback = build_template_feedback(
+        class_name=target_class,
+        input_image=normalized,
+        template=template,
+        rows=rows,
+        cols=cols,
+        max_regions=3,
+    )
+    return merge_template_and_autoencoder_feedback(template_feedback, autoencoder_feedback)
+
+
+def structural_feedback_for_selected_class(
+    normalized: np.ndarray,
+    target_class: str,
+    rows: int = 3,
+    cols: int = 3,
+) -> dict[str, Any]:
+    structural_template = load_validated_structural_part_template(target_class)
+    return build_structural_part_feedback(
+        class_name=target_class,
+        input_image=normalized,
+        template=structural_template,
+        rows=rows,
+        cols=cols,
+        max_regions=3,
     )
 
 
@@ -387,21 +538,31 @@ def analyze_attempt(
     device_name: str = "cpu",
 ) -> dict[str, Any]:
     decoded = decode_upload_image(image_bytes)
-    if target_class in VALIDATED_CLASS_SET:
+    if target_class in STRUCTURAL_CLASS_SET:
+        normalized = normalize_controlled_structural_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
+        model_route = "controlled_structural_15_class"
+        if not has_enough_ink(normalized):
+            feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
+            attach_recognizer_metadata(feedback, None, target_class, model_route)
+            return {"normalized": normalized, "feedback": feedback}
+        try:
+            recognizer_result = (
+                recognize(normalized, device_name)
+                if target_class in VALIDATED_CLASS_SET
+                else recognize_general(normalized, device_name)
+            )
+        except Exception:
+            recognizer_result = None
+        feedback = structural_feedback_for_selected_class(normalized, target_class, rows, cols)
+        feedback["target_class_structural_scoring"] = True
+        feedback["recognizer_used_as_gate"] = False
+        attach_recognizer_metadata(feedback, recognizer_result, target_class, model_route, blocked_scoring=False)
+    elif target_class in VALIDATED_CLASS_SET:
         normalized = normalize_attempt_for_class(decoded, target_class, canvas_size=CANVAS_SIZE)
         model_route = "validated_5_class"
         if not has_enough_ink(normalized):
             feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
-            feedback["recognizer"] = {
-                "predicted_class": None,
-                "confidence": 0.0,
-                "probabilities": {},
-                "matches_target": False,
-                "model_route": model_route,
-                "skipped": True,
-            }
-            feedback["predicted_class"] = None
-            feedback["recognizer_confidence"] = 0.0
+            attach_recognizer_metadata(feedback, None, target_class, model_route)
             return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize(normalized, device_name)
         if recognizer_result.predicted_class != target_class:
@@ -413,16 +574,7 @@ def analyze_attempt(
         model_route = "general_62_class"
         if not has_enough_ink(normalized):
             feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
-            feedback["recognizer"] = {
-                "predicted_class": None,
-                "confidence": 0.0,
-                "probabilities": {},
-                "matches_target": False,
-                "model_route": model_route,
-                "skipped": True,
-            }
-            feedback["predicted_class"] = None
-            feedback["recognizer_confidence"] = 0.0
+            attach_recognizer_metadata(feedback, None, target_class, model_route)
             return {"normalized": normalized, "feedback": feedback}
         recognizer_result = recognize_general(normalized, device_name)
         if recognizer_result.predicted_class != target_class:
@@ -430,16 +582,12 @@ def analyze_attempt(
             return {"normalized": normalized, "feedback": feedback}
         feedback = reconstruct_and_feedback_general(normalized, target_class, rows, cols, device_name)
 
-    feedback["recognizer"] = {
-        "predicted_class": recognizer_result.predicted_class,
-        "confidence": recognizer_result.confidence,
-        "probabilities": recognizer_result.probabilities,
-        "matches_target": recognizer_result.predicted_class == target_class,
-        "model_route": model_route,
-    }
-    feedback["predicted_class"] = recognizer_result.predicted_class
-    feedback["recognizer_confidence"] = recognizer_result.confidence
-    if not feedback["recognizer"]["matches_target"]:
+    attach_recognizer_metadata(feedback, recognizer_result, target_class, model_route)
+    if (
+        recognizer_result is not None
+        and model_route != "controlled_structural_15_class"
+        and not feedback["recognizer"]["matches_target"]
+    ):
         warning = f"Attempt resembles {recognizer_result.predicted_class}, not {target_class}."
         feedback["recognizer"]["warning"] = warning
         feedback["warning"] = warning

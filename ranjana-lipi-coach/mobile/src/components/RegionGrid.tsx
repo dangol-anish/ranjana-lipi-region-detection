@@ -2,20 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 import type { RegionFeedback, RegionScore } from "../types";
 
-const CELL_LABELS = [
-  "top-left",
-  "top-center",
-  "top-right",
-  "middle-left",
-  "middle-center",
-  "middle-right",
-  "bottom-left",
-  "bottom-center",
-  "bottom-right",
-];
+const BAND_LABELS = ["top", "middle", "bottom"];
 
 function regionKey(region: RegionScore): string {
-  return `${region.row}-${region.col}`;
+  return region.region ?? `${region.row}-${region.col}`;
 }
 
 function extractRegions(feedback: RegionFeedback | null): RegionScore[] {
@@ -24,6 +14,7 @@ function extractRegions(feedback: RegionFeedback | null): RegionScore[] {
   }
 
   const regions =
+    feedback.broad_bands?.all_regions ??
     feedback.fine_grid?.all_regions ??
     feedback.all_regions ??
     feedback.regions ??
@@ -38,13 +29,17 @@ function extractRankMap(feedback: RegionFeedback | null): Map<string, number> {
     return ranks;
   }
 
-  const problemRegions = feedback.fine_grid?.problem_regions ?? feedback.problem_regions ?? [];
+  const problemRegions =
+    feedback.broad_bands?.problem_regions ??
+    feedback.fine_grid?.problem_regions ??
+    feedback.problem_regions ??
+    [];
   if (!Array.isArray(problemRegions) || problemRegions.length === 0) {
     return ranks;
   }
 
   extractRegions(feedback)
-    .filter((region) => typeof region.row === "number" && typeof region.col === "number")
+    .filter((region) => typeof region.region === "string")
     .slice(0, 3)
     .forEach((region, index) => {
       ranks.set(regionKey(region), index + 1);
@@ -74,17 +69,15 @@ type RegionGridProps = {
   cols?: number;
 };
 
-export function RegionGrid({ feedback, rows = 3, cols = 3 }: RegionGridProps) {
+export function RegionGrid({ feedback }: RegionGridProps) {
   const regions = extractRegions(feedback);
   const rankMap = extractRankMap(feedback);
 
   return (
     <View style={styles.grid}>
-      {Array.from({ length: rows * cols }).map((_, index) => {
-        const row = Math.floor(index / cols);
-        const col = index % cols;
-        const key = `${row}-${col}`;
-        const region = regions.find((item) => item.row === row && item.col === col);
+      {BAND_LABELS.map((band) => {
+        const region = regions.find((item) => item.region === band);
+        const key = band;
         const rank = rankMap.get(key);
         const isPrimary = rank === 1;
         const isSecondary = rank === 2 || rank === 3;
@@ -112,7 +105,7 @@ export function RegionGrid({ feedback, rows = 3, cols = 3 }: RegionGridProps) {
                 isSecondary && styles.secondaryText,
               ]}
             >
-              {region?.label ?? region?.region ?? CELL_LABELS[index] ?? key}
+              {region?.label ?? region?.region ?? band}
             </Text>
             <Text
               style={[
@@ -133,15 +126,13 @@ export function RegionGrid({ feedback, rows = 3, cols = 3 }: RegionGridProps) {
 const styles = StyleSheet.create({
   grid: {
     width: "100%",
-    aspectRatio: 1,
+    height: 240,
     borderWidth: 1,
     borderColor: "#263238",
-    flexDirection: "row",
-    flexWrap: "wrap",
     backgroundColor: "#f8faf7",
   },
   cell: {
-    width: "33.3333%",
+    width: "100%",
     height: "33.3333%",
     borderWidth: 0.5,
     borderColor: "#5f6f69",

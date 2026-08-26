@@ -31,6 +31,9 @@ export type RegionScore = {
   normalized_error?: number;
   normalized_score?: number;
   z_score?: number;
+  missing_ratio?: number;
+  extra_ratio?: number;
+  dominant_issue?: "missing" | "extra" | "none";
   message?: string;
   is_problem?: boolean;
   insufficient_data?: boolean;
@@ -43,6 +46,9 @@ export type RegionFeedback = {
   overall_score: number;
   insufficient_input?: boolean;
   wrong_character?: boolean;
+  feedback_method?: string;
+  template_stats?: Record<string, unknown>;
+  autoencoder_overall_score?: number;
   message?: string | null;
   ink_pixel_count?: number;
   min_required_ink_pixels?: number;
@@ -50,6 +56,10 @@ export type RegionFeedback = {
   problem_regions?: RegionScore[];
   all_regions?: RegionScore[];
   fine_grid?: {
+    problem_regions?: RegionScore[];
+    all_regions?: RegionScore[];
+  };
+  broad_bands?: {
     problem_regions?: RegionScore[];
     all_regions?: RegionScore[];
   };

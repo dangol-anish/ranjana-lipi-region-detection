@@ -1,0 +1,41 @@
+type,class,filename,intended_region,feedback_method,overall_score,wrong_character,predicted_class,matches_target,broad_top_1,broad_top_1_score,broad_problem_regions,fine_top_1,fine_top_1_score,fine_problem_regions,parts
+good_sample,a,Slice 1278.png,,structural_part_mask,44.986557960510254,False,a,True,top,0.9359267734553776,top,top-center,0.9359267734553776,top-center,top_head:0.06:0.20:True;middle_body:0.78:0.60:False;right_stem:0.59:0.20:False;lower_tail:0.37:0.20:False
+good_sample,a,Slice 1279.png,,structural_part_mask,44.660043716430664,False,a,True,top,0.8329519450800915,top,top-center,0.8329519450800915,top-center,top_head:0.17:0.20:True;middle_body:0.83:0.60:False;right_stem:0.30:0.20:False;lower_tail:0.49:0.20:False
+good_sample,a,Slice 1287.png,,blocked,0.0,True,aa,False,,,,,,,
+good_sample,a,Slice 906.png,,structural_part_mask,63.81446421146393,False,a,True,top,0.5263157894736843,,top-center,0.5263157894736843,,top_head:0.47:0.20:False;middle_body:0.95:0.60:False;right_stem:0.54:0.20:False;lower_tail:0.59:0.20:False
+good_sample,a,Slice 907.png,,structural_part_mask,74.9724805355072,False,a,True,bottom,0.33498759305210923,,bottom-center,0.33498759305210923,,top_head:0.69:0.20:False;middle_body:0.96:0.60:False;right_stem:0.69:0.20:False;lower_tail:0.67:0.20:False
+flawed_sample,a,a-bottom.jpeg,bottom,blocked,0.0,True,aa,False,,,,,,,
+flawed_sample,a,a-center.jpeg,middle,structural_part_mask,66.26956164836884,False,a,True,bottom,0.4491315136476427,,bottom-center,0.4491315136476427,,top_head:0.72:0.20:False;middle_body:0.67:0.60:False;right_stem:0.71:0.20:False;lower_tail:0.55:0.20:False
+flawed_sample,a,a-top-region.jpeg,top,structural_part_mask,66.57551527023315,False,a,True,top,0.5720823798627002,,top-center,0.5720823798627002,,top_head:0.43:0.20:False;middle_body:0.93:0.60:False;right_stem:0.71:0.20:False;lower_tail:0.60:0.20:False
+good_sample,aa,Slice 1286.png,,structural_part_mask,53.52509021759033,False,aa,True,top,1.0,top,top-center,1.0,top-center,top_head:0.00:0.20:True;left_loop:0.81:0.70:False;right_stem:0.55:0.36:False;lower_tail:0.78:0.39:False
+good_sample,aa,Slice 1288.png,,structural_part_mask,55.960118770599365,False,aa,True,top,0.9512578616352201,top,top-center,0.9512578616352201,top-center,top_head:0.05:0.20:True;left_loop:0.90:0.70:False;right_stem:0.53:0.36:False;lower_tail:0.77:0.39:False
+good_sample,aa,Slice 1289.png,,structural_part_mask,50.197649002075195,False,aa,True,top,1.0,top;middle,top-center,1.0,top-center;middle-right,top_head:0.00:0.20:True;left_loop:0.95:0.70:False;right_stem:0.32:0.36:True;lower_tail:0.73:0.39:False
+good_sample,aa,Slice 1483.png,,structural_part_mask,67.42304861545563,False,aa,True,top,0.5754716981132075,,top-center,0.5754716981132075,,top_head:0.42:0.20:False;left_loop:0.98:0.70:False;right_stem:0.62:0.36:False;lower_tail:0.68:0.39:False
+good_sample,aa,Slice 1549.png,,structural_part_mask,89.11864757537842,False,aa,True,top,0.20911949685534592,,top-center,0.20911949685534592,,top_head:0.79:0.20:False;left_loop:0.97:0.70:False;right_stem:0.93:0.36:False;lower_tail:0.88:0.39:False
+flawed_sample,aa,aa-bottom.jpeg,bottom,structural_part_mask,67.72149801254272,False,aa,True,bottom,0.6674937965260546,bottom,bottom-center,0.6674937965260546,bottom-center,top_head:0.84:0.20:False;left_loop:0.95:0.70:False;right_stem:0.59:0.36:False;lower_tail:0.33:0.39:True
+flawed_sample,aa,aa-center.jpeg,middle,blocked,0.0,True,a,False,,,,,,,
+flawed_sample,aa,aa-top.jpeg,top,structural_part_mask,82.57741034030914,False,aa,True,bottom,0.2382133995037221,,bottom-center,0.2382133995037221,,top_head:0.77:0.20:False;left_loop:0.98:0.70:False;right_stem:0.79:0.36:False;lower_tail:0.76:0.39:False
+good_sample,ka,ka_0001.png,,structural_part_mask,76.09962075948715,False,ka,True,top,0.5807174887892377,,top-center,0.5807174887892377,,top_head:0.42:0.20:False;center_loop:0.85:0.58:False;right_stem:0.87:0.38:False;lower_tail:0.90:0.20:False
+good_sample,ka,ka_00010.png,,structural_part_mask,61.692532896995544,False,ka,True,top,0.9237668161434978,top,top-center,0.9237668161434978,top-center,top_head:0.08:0.20:True;center_loop:0.65:0.58:False;right_stem:0.85:0.38:False;lower_tail:0.89:0.20:False
+good_sample,ka,ka_000100.png,,structural_part_mask,41.06552600860596,False,ka,True,top,0.9775784753363229,top,top-center,0.9775784753363229,top-center,top_head:0.02:0.20:True;center_loop:0.81:0.58:False;right_stem:0.50:0.38:False;lower_tail:0.31:0.20:False
+good_sample,ka,ka_000101.png,,structural_part_mask,38.67993354797363,False,ka,True,top,0.8968609865470852,top;bottom,top-center,0.8968609865470852,top-center;bottom-center,top_head:0.10:0.20:True;center_loop:0.81:0.58:False;right_stem:0.44:0.38:False;lower_tail:0.19:0.20:True
+good_sample,ka,ka_000102.png,,structural_part_mask,69.78231072425842,False,ka,True,top,0.3834080717488789,,top-center,0.3834080717488789,,top_head:0.62:0.20:False;center_loop:0.72:0.58:False;right_stem:0.77:0.38:False;lower_tail:0.68:0.20:False
+flawed_sample,ka,ka-bottom.jpeg,bottom,blocked,0.0,True,aa,False,,,,,,,
+flawed_sample,ka,ka-middle.jpeg,middle,blocked,0.0,True,aa,False,,,,,,,
+flawed_sample,ka,ka-top.jpeg,top,blocked,0.0,True,aa,False,,,,,,,
+good_sample,da,Slice 1134.png,,structural_part_mask,28.474217653274536,False,da,True,top,1.0,top;bottom,top-center,1.0,top-center;bottom-center,top_head:0.00:0.20:True;middle_curve:0.66:0.53:False;bottom_curve:0.19:0.20:True
+good_sample,da,Slice 1135.png,,structural_part_mask,27.0189106464386,False,da,True,top,1.0,top,top-center,1.0,top-center,top_head:0.00:0.20:True;middle_curve:0.56:0.53:False;bottom_curve:0.25:0.20:False
+good_sample,da,Slice 1136.png,,structural_part_mask,27.423089742660522,False,da,True,top,1.0,top;bottom,top-center,1.0,top-center;bottom-center,top_head:0.00:0.20:True;middle_curve:0.64:0.53:False;bottom_curve:0.18:0.20:True
+good_sample,da,Slice 1137.png,,structural_part_mask,18.404561281204224,False,da,True,top,1.0,top;bottom;middle,top-center,1.0,top-center;bottom-center;middle-center,top_head:0.00:0.20:True;middle_curve:0.47:0.53:True;bottom_curve:0.09:0.20:True
+good_sample,da,Slice 1138.png,,structural_part_mask,25.271540880203247,False,da,True,top,1.0,top;middle,top-center,1.0,top-center;middle-center,top_head:0.00:0.20:True;middle_curve:0.47:0.53:True;bottom_curve:0.29:0.20:False
+flawed_sample,da,da-bottom.jpeg,bottom,blocked,0.0,True,a,False,,,,,,,
+flawed_sample,da,da-middle.jpeg,middle,blocked,0.0,True,a,False,,,,,,,
+flawed_sample,da,da-top.jpeg,top,blocked,0.0,True,dda,False,,,,,,,
+good_sample,dda,Slice 1164.png,,structural_part_mask,34.43264961242676,False,dda,True,middle,0.9184027777777778,middle;top,middle-right,0.9184027777777778,middle-right;top-center,top_head:0.15:0.20:True;left_curve:0.82:0.44:False;right_stem:0.08:0.20:True;lower_tail:0.33:0.20:False
+good_sample,dda,Slice 1165.png,,structural_part_mask,54.17584478855133,False,dda,True,middle,0.5249169435215947,,middle-left,0.5249169435215947,,top_head:0.50:0.20:False;left_curve:0.48:0.44:False;right_stem:0.66:0.20:False;lower_tail:0.54:0.20:False
+good_sample,dda,Slice 1166.png,,structural_part_mask,53.923583030700684,False,dda,True,top,0.66991643454039,,top-center,0.66991643454039,,top_head:0.33:0.20:False;left_curve:0.50:0.44:False;right_stem:0.71:0.20:False;lower_tail:0.62:0.20:False
+good_sample,dda,Slice 1167.png,,structural_part_mask,53.97408902645111,False,dda,True,top,0.818941504178273,top,top-center,0.818941504178273,top-center,top_head:0.18:0.20:True;left_curve:0.77:0.44:False;right_stem:0.54:0.20:False;lower_tail:0.67:0.20:False
+good_sample,dda,Slice 1168.png,,structural_part_mask,49.73169565200806,False,dda,True,top,0.9080779944289694,top,top-center,0.9080779944289694,top-center,top_head:0.09:0.20:True;left_curve:0.62:0.44:False;right_stem:0.59:0.20:False;lower_tail:0.68:0.20:False
+flawed_sample,dda,da-middle.jpeg,middle,blocked,0.0,True,a,False,,,,,,,
+flawed_sample,dda,dda-lower-middle.jpeg,middle,blocked,0.0,True,a,False,,,,,,,
+flawed_sample,dda,dda-top.jpeg,top,blocked,0.0,True,a,False,,,,,,,

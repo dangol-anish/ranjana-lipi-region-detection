@@ -34,6 +34,7 @@ if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
 from ml.feedback.grid_feedback import DEFAULT_INK_THRESHOLD, build_region_feedback  # noqa: E402
+from ml.feedback.template_feedback import StrokeTemplate, load_template  # noqa: E402
 from ml.inference.pipeline import (  # noqa: E402
     analyze_attempt,
     load_general_autoencoder,
@@ -155,6 +156,25 @@ def choose_good_samples(class_name: str, count: int) -> list[Path]:
     return selected
 
 
+def choose_clean_template_samples(
+    class_name: str,
+    count: int,
+    device: torch.device,
+    candidate_limit: int = 25,
+) -> list[Path]:
+    candidates = choose_good_samples(class_name, candidate_limit)
+    scored: list[tuple[float, Path]] = []
+    for path in candidates:
+        normalized = read_normalized(path)
+        feedback = run_autoencoder_feedback(normalized, class_name, device)
+        cleanliness_score = max(
+            max_region_score(feedback, "fine_grid"),
+            max_region_score(feedback, "broad_bands"),
+        )
+        scored.append((cleanliness_score, path))
+    return [path for _score, path in sorted(scored, key=lambda item: item[0])[:count]]
+
+
 def erode_band(normalized: np.ndarray, band: str) -> np.ndarray:
     flawed = np.asarray(normalized, dtype=np.float32).copy()
     height, _width = flawed.shape
@@ -177,6 +197,24 @@ def erode_band(normalized: np.ndarray, band: str) -> np.ndarray:
     erase_x0 = local_x0 + box_w // 5
     erase_x1 = local_x0 + (box_w * 4) // 5
     flawed[erase_y0:erase_y1, erase_x0:erase_x1] = 0.0
+    return flawed
+
+
+def remove_expected_template_band(
+    normalized: np.ndarray,
+    band: str,
+    template: StrokeTemplate,
+    expected_threshold: float = 0.08,
+) -> np.ndarray:
+    flawed = np.asarray(normalized, dtype=np.float32).copy()
+    height, _width = flawed.shape
+    band_index = BANDS.index(band)
+    y0 = round(band_index * height / 3)
+    y1 = round((band_index + 1) * height / 3)
+    expected_band = template.mean_ink_map[y0:y1, :] > expected_threshold
+    if np.count_nonzero(expected_band) == 0:
+        return erode_band(normalized, band)
+    flawed[y0:y1, :][expected_band] = 0.0
     return flawed
 
 
@@ -214,8 +252,15 @@ def add_extra_stroke_to_band(normalized: np.ndarray, band: str) -> np.ndarray:
     return flawed
 
 
-def make_synthetic_flaw(normalized: np.ndarray, band: str, flaw_kind: str) -> np.ndarray:
+def make_synthetic_flaw(
+    normalized: np.ndarray,
+    band: str,
+    flaw_kind: str,
+    template: StrokeTemplate | None = None,
+) -> np.ndarray:
     if flaw_kind == "missing_stroke":
+        if template is not None:
+            return remove_expected_template_band(normalized, band, template)
         return erode_band(normalized, band)
     return add_extra_stroke_to_band(normalized, band)
 
@@ -252,6 +297,16 @@ def top_region(feedback: dict[str, Any], group: str) -> str:
 
 def problem_count(feedback: dict[str, Any], group: str) -> int:
     return len(feedback.get(group, {}).get("problem_regions", []))
+
+
+def max_region_score(feedback: dict[str, Any], group: str) -> float:
+    group_feedback = feedback.get(group, {})
+    if "max_z_score" in group_feedback:
+        return float(group_feedback["max_z_score"])
+    regions = group_feedback.get("all_regions", [])
+    if not regions:
+        return 0.0
+    return max(float(region.get("adjusted_score", region.get("z_score", region.get("score", 0.0)))) for region in regions)
 
 
 def validate_assets(classes: list[str]) -> list[dict[str, Any]]:
@@ -305,8 +360,8 @@ def validate_good_samples(
                     "overall_score": feedback["overall_score"],
                     "fine_problem_count": fine_count,
                     "broad_problem_count": broad_count,
-                    "max_fine_z": feedback["fine_grid"]["max_z_score"],
-                    "max_broad_z": feedback["broad_bands"]["max_z_score"],
+                    "max_fine_z": max_region_score(feedback, "fine_grid"),
+                    "max_broad_z": max_region_score(feedback, "broad_bands"),
                     "good_pass": recognizer.predicted_class == class_name and fine_count == 0 and broad_count == 0,
                 }
             )
@@ -324,11 +379,12 @@ def validate_synthetic_flaws(
     synthetic_dir = output_dir / "synthetic_flaws"
     synthetic_dir.mkdir(parents=True, exist_ok=True)
     for class_name in classes:
-        samples = choose_good_samples(class_name, max(1, samples_per_band))
+        template = load_template(BACKEND_ROOT / "ml" / "saved_models" / "stroke_templates" / f"{class_name}.npz")
+        samples = choose_clean_template_samples(class_name, max(1, samples_per_band), device)
         for sample_index, path in enumerate(samples[:samples_per_band], start=1):
             normalized = read_normalized(path)
             for band in BANDS:
-                flawed = make_synthetic_flaw(normalized, band, flaw_kind)
+                flawed = make_synthetic_flaw(normalized, band, flaw_kind, template)
                 synthetic_path = synthetic_dir / f"{class_name}_{flaw_kind}_{band}_{sample_index:02d}.png"
                 Image.fromarray((flawed * 255).astype(np.uint8), mode="L").save(synthetic_path)
                 feedback = run_autoencoder_feedback(flawed, class_name, device)
@@ -349,7 +405,7 @@ def validate_synthetic_flaws(
                         "broad_top_2": ";".join(broad_top_2),
                         "fine_top_1": fine_top,
                         "overall_score": feedback["overall_score"],
-                        "max_broad_z": feedback["broad_bands"]["max_z_score"],
+                        "max_broad_z": max_region_score(feedback, "broad_bands"),
                         "broad_problem_count": problem_count(feedback, "broad_bands"),
                         "exact_match": broad_top == band,
                         "top2_match": band in broad_top_2,

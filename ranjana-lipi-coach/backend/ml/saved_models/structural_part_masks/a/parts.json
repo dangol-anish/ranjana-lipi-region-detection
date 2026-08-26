@@ -1,0 +1,39 @@
+{
+  "class_name": "a",
+  "source": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/StructureValidation",
+  "good_source": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/StructureValidation/a/good/a_good_01.png",
+  "mask_builder": "controlled_good_minus_flawed",
+  "tolerance_pixels": 2,
+  "parts": [
+    {
+      "name": "top_required",
+      "label": "Top structural part",
+      "mask": "top_required.png",
+      "broad_region": "top",
+      "fine_region": "top-center",
+      "min_coverage": 0.55,
+      "required": true,
+      "source_flaw": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/StructureValidation/a/top/a_top_01.png"
+    },
+    {
+      "name": "middle_required",
+      "label": "Middle structural part",
+      "mask": "middle_required.png",
+      "broad_region": "middle",
+      "fine_region": "middle-center",
+      "min_coverage": 0.55,
+      "required": true,
+      "source_flaw": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/StructureValidation/a/middle/a_middle_01.png"
+    },
+    {
+      "name": "bottom_required",
+      "label": "Bottom structural part",
+      "mask": "bottom_required.png",
+      "broad_region": "bottom",
+      "fine_region": "bottom-center",
+      "min_coverage": 0.55,
+      "required": true,
+      "source_flaw": "/Users/anishdangol/Documents/project/ranjana-lipi-region-detection/data/StructureValidation/a/bottom/a_bottom_01.png"
+    }
+  ]
+}

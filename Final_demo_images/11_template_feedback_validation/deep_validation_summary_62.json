@@ -1,0 +1,18 @@
+{
+  "classes_total": 62,
+  "assets_pass": 62,
+  "assets_pass_rate": 100.0,
+  "good_samples_total": 310,
+  "good_samples_pass": 288,
+  "good_samples_pass_rate": 92.90322580645162,
+  "good_samples_any_fine_flag": 20,
+  "good_samples_any_broad_flag": 13,
+  "synthetic_flaws_total": 186,
+  "synthetic_flaws_broad_exact": 112,
+  "synthetic_flaws_broad_exact_rate": 60.215053763440864,
+  "synthetic_flaws_broad_top2": 155,
+  "synthetic_flaws_broad_top2_rate": 83.33333333333333,
+  "wrong_character_total": 62,
+  "wrong_character_blocked": 59,
+  "wrong_character_block_rate": 95.16129032258064
+}
