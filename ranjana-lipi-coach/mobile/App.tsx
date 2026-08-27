@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker";
 import * as SecureStore from "expo-secure-store";
+import { LinearGradient } from "expo-linear-gradient";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -498,7 +499,8 @@ export default function App() {
 
   async function handleAuth() {
     const emailValue = email.trim();
-    const displayNameValue = displayName.trim();
+    const displayNameValue =
+      displayName.trim() || emailValue.split("@")[0] || "Learner";
 
     if (!emailValue || !password.trim()) {
       setMessage("Email and password are required.");
@@ -512,11 +514,6 @@ export default function App() {
 
     if (authMode === "register" && password.length < 8) {
       setMessage("Password must be at least 8 characters.");
-      return;
-    }
-
-    if (authMode === "register" && !displayNameValue) {
-      setMessage("Display name is required for registration.");
       return;
     }
 
@@ -741,89 +738,75 @@ export default function App() {
 
   function renderAuth() {
     return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={styles.centerScreen}
+      <LinearGradient
+        colors={[THEME.accent, THEME.softAccent, THEME.background]}
+        locations={[0, 0.42, 0.62]}
+        style={styles.authGradient}
       >
-        <View style={styles.authPanel}>
-          <Image
-            accessibilityLabel="Ranjana Lipi Handwriting Learner"
-            source={APP_LOGO}
-            style={styles.brandLogo}
-            resizeMode="contain"
-          />
-          <Text style={styles.subtitle}>
-            Sign in to save attempts and progress.
-          </Text>
-
-          <Text style={styles.label}>Backend URL</Text>
-          <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            style={styles.input}
-            value={apiBaseUrl}
-            onChangeText={setApiBaseUrl}
-            placeholder="http://192.168.x.x:8000"
-          />
-          <Text style={styles.fieldHint}>
-            Expo Go on a phone must use this Mac's Wi-Fi IP, not 127.0.0.1.
-          </Text>
-
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType="email-address"
-            style={styles.input}
-            value={email}
-            onChangeText={setEmail}
-          />
-
-          <Text style={styles.label}>Password</Text>
-          <TextInput
-            secureTextEntry
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-          />
-
-          {authMode === "register" ? (
-            <>
-              <Text style={styles.label}>Display name</Text>
-              <TextInput
-                style={styles.input}
-                value={displayName}
-                onChangeText={setDisplayName}
-              />
-            </>
-          ) : null}
-
-          <PrimaryButton
-            disabled={loading}
-            label={
-              loading
-                ? "Please wait..."
-                : authMode === "login"
-                  ? "Log In"
-                  : "Create Account"
-            }
-            onPress={handleAuth}
-          />
-          <TouchableOpacity
-            style={styles.linkButton}
-            onPress={() => {
-              setAuthMode(authMode === "login" ? "register" : "login");
-              setMessage(null);
-            }}
-          >
-            <Text style={styles.linkText}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          style={styles.centerScreen}
+        >
+          <View style={styles.authContent}>
+            <Image
+              accessibilityLabel="Ranjana Lipi Handwriting Learner"
+              source={APP_LOGO}
+              style={styles.brandLogo}
+              resizeMode="contain"
+            />
+            <Text style={[styles.subtitle, styles.authSubtitle]}>
               {authMode === "login"
-                ? "Create a new account"
-                : "Already have an account? Log in"}
+                ? "Log in to continue learning."
+                : "Create your learner account."}
             </Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
+
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              style={[styles.input, styles.authInput]}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Enter your email"
+              placeholderTextColor={THEME.slate}
+            />
+
+            <TextInput
+              secureTextEntry
+              style={[styles.input, styles.authInput]}
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Enter your password"
+              placeholderTextColor={THEME.slate}
+            />
+
+            <PrimaryButton
+              disabled={loading}
+              label={
+                loading
+                  ? "Please wait..."
+                  : authMode === "login"
+                    ? "Log In"
+                    : "Create Account"
+              }
+              onPress={handleAuth}
+            />
+            <TouchableOpacity
+              style={styles.linkButton}
+              onPress={() => {
+                setAuthMode(authMode === "login" ? "register" : "login");
+                setMessage(null);
+              }}
+            >
+              <Text style={styles.linkText}>
+                {authMode === "login"
+                  ? "Create a new account"
+                  : "Already have an account? Log in"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
+      </LinearGradient>
     );
   }
 
@@ -1709,12 +1692,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  authPanel: {
-    backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    padding: 20,
+  authGradient: {
+    flex: 1,
+  },
+  authContent: {
+    width: "100%",
   },
   brand: {
     color: THEME.ink,
@@ -1723,15 +1705,20 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   brandLogo: {
-    alignSelf: "flex-start",
-    height: 54,
-    marginLeft: -34,
-    marginBottom: 12,
-    width: 230,
+    alignSelf: "center",
+    height: 74,
+    marginBottom: 8,
+    transform: [{ translateY: -44 }],
+    width: 274,
   },
   subtitle: {
     color: THEME.slate,
     fontSize: 14,
+  },
+  authSubtitle: {
+    marginBottom: 28,
+    textAlign: "center",
+    transform: [{ translateY: -44 }],
   },
   label: {
     color: THEME.ink,
@@ -1741,13 +1728,16 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
   input: {
-    backgroundColor: THEME.softMuted,
-    borderColor: THEME.muted,
+    backgroundColor: THEME.surface,
+    borderColor: THEME.ink,
     borderRadius: 8,
-    borderWidth: 1,
+    borderWidth: 1.5,
     color: THEME.ink,
     minHeight: 46,
     paddingHorizontal: 12,
+  },
+  authInput: {
+    marginTop: 14,
   },
   fieldHint: {
     color: THEME.slate,
