@@ -15,9 +15,11 @@ from app.models.progress import UserCharacterProgress
 from app.models.user import User
 from app.schemas.character import CharacterOut
 from app.schemas.recommendation import PracticeRecommendation, RecommendationSignal
+from ml.feedback.structural_part_feedback import VALIDATED_STRUCTURAL_CLASSES
 
 
 RECENT_ATTEMPT_LIMIT = 8
+DEFAULT_RECOMMENDATION_CLASSES = tuple(VALIDATED_STRUCTURAL_CLASSES)
 
 
 def _hours_since(value: datetime | None, now: datetime) -> float | None:
@@ -110,9 +112,16 @@ def build_practice_recommendations(
     db: Session,
     user: User,
     limit: int = 5,
+    class_names: tuple[str, ...] = DEFAULT_RECOMMENDATION_CLASSES,
 ) -> list[PracticeRecommendation]:
     now = datetime.now(timezone.utc)
-    characters = list(db.scalars(select(Character).order_by(Character.id)).all())
+    characters = list(
+        db.scalars(
+            select(Character)
+            .where(Character.name.in_(class_names))
+            .order_by(Character.id)
+        ).all()
+    )
     progress_rows = list(
         db.scalars(
             select(UserCharacterProgress).where(UserCharacterProgress.user_id == user.id)
