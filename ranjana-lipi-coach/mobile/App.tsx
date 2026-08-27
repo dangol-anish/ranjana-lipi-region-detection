@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker";
 import * as SecureStore from "expo-secure-store";
 import { LinearGradient } from "expo-linear-gradient";
+import Constants from "expo-constants";
 import {
   GoogleSignin,
   statusCodes,
@@ -861,17 +862,19 @@ export default function App() {
               placeholderTextColor={THEME.slate}
             />
 
-            <PrimaryButton
+            <TouchableOpacity
               disabled={loading}
-              label={
-                loading
+              style={[styles.authPrimaryButton, loading && styles.disabled]}
+              onPress={handleAuth}
+            >
+              <Text style={styles.authPrimaryButtonText}>
+                {loading
                   ? "Please wait..."
                   : authMode === "login"
                     ? "Log In"
-                    : "Create Account"
-              }
-              onPress={handleAuth}
-            />
+                    : "Create your account"}
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity
               disabled={loading}
               style={[styles.googleButton, loading && styles.disabled]}
@@ -909,7 +912,7 @@ export default function App() {
           onProfile={() => setScreen("profile")}
         />
 
-        <Text style={styles.sectionTitle}>Learn at your pace</Text>
+        <Text style={styles.homeEyebrow}>Learn at your pace</Text>
         <View style={styles.modeGrid}>
           {PRACTICE_MODES.map((mode) => (
             <Pressable
@@ -928,7 +931,7 @@ export default function App() {
         </View>
 
         <View style={styles.rowBetween}>
-          <Text style={styles.sectionTitle}>Progress</Text>
+          <Text style={styles.homeSectionTitle}>Progress</Text>
           <TouchableOpacity onPress={() => setScreen("progress")}>
             <Text style={styles.linkText}>Open dashboard</Text>
           </TouchableOpacity>
@@ -972,66 +975,28 @@ export default function App() {
               <Text style={styles.practiceDevanagariLabel}>
                 {characterDisplayLabel(selectedCharacter)}
               </Text>
+              <Text style={styles.practiceCharacterName}>
+                {selectedCharacter.name}
+              </Text>
+              {selectedMode === "free_practice" ? (
+                <TouchableOpacity
+                  style={styles.changeCharacterButton}
+                  onPress={() => setCharacterPickerOpen((current) => !current)}
+                >
+                  <Text style={styles.changeCharacterText}>
+                    {characterPickerOpen ? "Done" : "Change Character"}
+                  </Text>
+                </TouchableOpacity>
+              ) : null}
             </View>
           ) : null}
 
-          <Text style={styles.sectionTitle}>Character</Text>
-          <View style={styles.selectedCharacterPanel}>
-            <View>
-              <Text style={styles.selectedCharacterLabel}>Selected</Text>
-              <Text style={styles.selectedCharacterName}>
-                {selectedCharacter?.name ?? "No character"}
-              </Text>
-              {selectedMode === "app_suggested" && suggestedReasonText ? (
-                <Text style={styles.suggestedReasonText}>
-                  {suggestedReasonText}
-                </Text>
-              ) : null}
-            </View>
-            {selectedMode === "free_practice" ? (
-              <TouchableOpacity
-                style={styles.changeCharacterButton}
-                onPress={() => setCharacterPickerOpen((current) => !current)}
-              >
-                <Text style={styles.changeCharacterText}>
-                  {characterPickerOpen ? "Done" : "Change"}
-                </Text>
-              </TouchableOpacity>
-            ) : null}
-          </View>
-
           {selectedMode === "app_suggested" && suggestedRecommendation ? (
-            <View style={styles.recommendationPanel}>
-              <Text style={styles.recommendationTitle}>
-                Adaptive Recommendation
+            <View style={styles.recommendationNote}>
+              <Text style={styles.recommendationNoteText}>
+                {suggestedReasonText ??
+                  "Recommended for today's spaced repetition practice."}
               </Text>
-              <Text style={styles.recommendationText}>
-                {suggestedRecommendation.reason}
-              </Text>
-              <View style={styles.recommendationStats}>
-                <View style={styles.recommendationStat}>
-                  <Text style={styles.recommendationStatValue}>
-                    {suggestedRecommendation.priority_score.toFixed(1)}
-                  </Text>
-                  <Text style={styles.recommendationStatLabel}>Priority</Text>
-                </View>
-                <View style={styles.recommendationStat}>
-                  <Text style={styles.recommendationStatValue}>
-                    {scoreText(
-                      suggestedRecommendation.signals.recent_average_score,
-                    )}
-                  </Text>
-                  <Text style={styles.recommendationStatLabel}>Recent Avg</Text>
-                </View>
-                <View style={styles.recommendationStat}>
-                  <Text style={styles.recommendationStatValue}>
-                    {suggestedRecommendation.signals.weakest_region ?? "None"}
-                  </Text>
-                  <Text style={styles.recommendationStatLabel}>
-                    Weak Region
-                  </Text>
-                </View>
-              </View>
             </View>
           ) : null}
 
@@ -1456,11 +1421,43 @@ export default function App() {
       user?.display_name ??
       user?.email ??
       "Student";
+    const emailAddress = profile?.user.email ?? user?.email ?? "";
     const heatmap = profile?.heatmap ?? [];
 
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <TopNav title="Profile" onBack={() => setScreen("home")} />
+      <ScrollView
+        contentContainerStyle={[
+          styles.profileScreenContent,
+          { paddingTop: Math.max(Constants.statusBarHeight + 18, 42) },
+        ]}
+      >
+        <View style={styles.profileTopBar}>
+          <TouchableOpacity
+            accessibilityLabel="Go back"
+            style={styles.profileIconButton}
+            onPress={() => setScreen("home")}
+          >
+            <View style={styles.profileBackIcon}>
+              <View
+                style={[styles.profileBackIconLine, styles.profileBackIconLineTop]}
+              />
+              <View
+                style={[
+                  styles.profileBackIconLine,
+                  styles.profileBackIconLineBottom,
+                ]}
+              />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.profileScreenTitle}>Profile</Text>
+          <TouchableOpacity
+            accessibilityLabel="Open attempt history"
+            style={styles.profileIconButton}
+            onPress={() => setScreen("history")}
+          >
+            <Text style={styles.profileGear}>⚙</Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.profileHeader}>
           <View style={styles.profileAvatar}>
@@ -1470,9 +1467,7 @@ export default function App() {
           </View>
           <View style={styles.profileIdentity}>
             <Text style={styles.profileName}>{displayName}</Text>
-            <Text style={styles.profileEmail}>
-              {profile?.user.email ?? user?.email}
-            </Text>
+            <Text style={styles.profileEmail}>{emailAddress}</Text>
           </View>
         </View>
 
@@ -1534,7 +1529,7 @@ export default function App() {
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>Practice Heatmap</Text>
+        <Text style={styles.profileSectionTitle}>Practice Heatmap</Text>
         <View style={styles.heatmapPanel}>
           <View style={styles.heatmapGrid}>
             {heatmap.map((day) => (
@@ -1562,10 +1557,6 @@ export default function App() {
           </View>
         </View>
 
-        <PrimaryButton
-          label="View Attempt History"
-          onPress={() => setScreen("history")}
-        />
       </ScrollView>
     );
   }
@@ -1588,6 +1579,18 @@ export default function App() {
                   : screen === "history"
                     ? renderHistory()
                     : renderCharacterDetail()}
+      {screen !== "auth" ? (
+        <BottomNav
+          activeScreen={screen}
+          onHome={() => setScreen("home")}
+          onPractice={() => {
+            setSelectedMode("free_practice");
+            setScreen("practice");
+          }}
+          onInsights={() => setScreen("progress")}
+          onProfile={() => setScreen("profile")}
+        />
+      ) : null}
       {loading && screen !== "auth" ? (
         <View style={styles.loadingOverlay}>
           <ActivityIndicator color={THEME.surface} />
@@ -1607,7 +1610,7 @@ export default function App() {
 
 function Header({
   title,
-  userName,
+  userName: _userName,
   onLogout,
   onHistory,
   onProfile,
@@ -1684,10 +1687,104 @@ function TopNav({ title, onBack }: { title: string; onBack: () => void }) {
         style={styles.backIconButton}
         onPress={onBack}
       >
-        <Text style={styles.backIconText}>‹</Text>
+        <View style={styles.profileBackIcon}>
+          <View
+            style={[styles.profileBackIconLine, styles.profileBackIconLineTop]}
+          />
+          <View
+            style={[
+              styles.profileBackIconLine,
+              styles.profileBackIconLineBottom,
+            ]}
+          />
+        </View>
       </TouchableOpacity>
       <Text style={styles.screenTitle}>{title}</Text>
       <View style={styles.navSpacer} />
+    </View>
+  );
+}
+
+function BottomNav({
+  activeScreen,
+  onHome,
+  onPractice,
+  onInsights,
+  onProfile,
+}: {
+  activeScreen: Screen;
+  onHome: () => void;
+  onPractice: () => void;
+  onInsights: () => void;
+  onProfile: () => void;
+}) {
+  const items = [
+    {
+      key: "home",
+      label: "Home",
+      icon: "⌂",
+      active: activeScreen === "home",
+      onPress: onHome,
+    },
+    {
+      key: "practice",
+      label: "Practice",
+      icon: "✎",
+      active: activeScreen === "practice" || activeScreen === "results",
+      onPress: onPractice,
+    },
+    {
+      key: "insights",
+      label: "Insights",
+      icon: "▥",
+      active:
+        activeScreen === "progress" ||
+        activeScreen === "history" ||
+        activeScreen === "character_detail",
+      onPress: onInsights,
+    },
+    {
+      key: "profile",
+      label: "Profile",
+      icon: "●",
+      active: activeScreen === "profile",
+      onPress: onProfile,
+    },
+  ];
+
+  return (
+    <View style={styles.bottomNavShell}>
+      <View style={styles.bottomNav}>
+        {items.map((item) => (
+          <TouchableOpacity
+            key={item.key}
+            accessibilityRole="button"
+            accessibilityState={{ selected: item.active }}
+            style={[
+              styles.bottomNavItem,
+              item.active && styles.bottomNavItemActive,
+            ]}
+            onPress={item.onPress}
+          >
+            <Text
+              style={[
+                styles.bottomNavIcon,
+                item.active && styles.bottomNavIconActive,
+              ]}
+            >
+              {item.icon}
+            </Text>
+            <Text
+              style={[
+                styles.bottomNavLabel,
+                item.active && styles.bottomNavLabelActive,
+              ]}
+            >
+              {item.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   );
 }
@@ -1763,9 +1860,15 @@ function ProgressRow({
           {item.progress?.mastered ? " | mastered" : ""}
         </Text>
       </View>
-      <Text style={[styles.progressScore, { color: scoreColor(bestScore) }]}>
-        {typeof bestScore === "number" ? `${bestScore.toFixed(1)}%` : "New"}
-      </Text>
+      {typeof bestScore === "number" ? (
+        <Text style={[styles.progressScore, { color: scoreColor(bestScore) }]}>
+          {bestScore.toFixed(1)}%
+        </Text>
+      ) : (
+        <View style={styles.progressNewBadge}>
+          <Text style={styles.progressNewBadgeText}>New</Text>
+        </View>
+      )}
     </Container>
   );
 }
@@ -1825,7 +1928,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   authInput: {
+    borderColor: "#D9DEE2",
+    borderRadius: 26,
+    borderWidth: 1,
+    color: THEME.ink,
+    fontSize: 15,
     marginTop: 14,
+    minHeight: 54,
+    paddingHorizontal: 22,
   },
   fieldHint: {
     color: THEME.slate,
@@ -1833,24 +1943,30 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   scrollContent: {
-    padding: 18,
-    paddingBottom: 40,
-    paddingTop: 56,
+    padding: 22,
+    paddingBottom: 124,
+    paddingTop: Math.max(Constants.statusBarHeight + 24, 44),
+  },
+  profileScreenContent: {
+    padding: 24,
+    paddingBottom: 132,
   },
   practiceScreen: {
     flex: 1,
   },
   practiceScrollContent: {
-    padding: 18,
-    paddingBottom: 120,
-    paddingTop: 56,
+    padding: 22,
+    paddingBottom: 190,
+    paddingTop: Math.max(Constants.statusBarHeight + 24, 48),
   },
   header: {
+    alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   topNavHeader: {
     alignItems: "center",
+    marginBottom: 22,
   },
   headerBrand: {
     alignItems: "flex-start",
@@ -1859,13 +1975,14 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     color: THEME.ink,
-    fontSize: 26,
-    fontWeight: "800",
+    fontSize: 30,
+    fontWeight: "900",
+    lineHeight: 48,
   },
   headerLogo: {
-    height: 30,
-    marginLeft: -30,
-    width: 146,
+    height: 36,
+    marginLeft: 0,
+    width: 96,
   },
   smallButton: {
     borderColor: THEME.muted,
@@ -1880,15 +1997,9 @@ const styles = StyleSheet.create({
   },
   backIconButton: {
     alignItems: "center",
-    height: 42,
+    height: 48,
     justifyContent: "center",
-    width: 42,
-  },
-  backIconText: {
-    color: THEME.ink,
-    fontSize: 40,
-    fontWeight: "700",
-    lineHeight: 40,
+    width: 48,
   },
   headerMenu: {
     alignItems: "flex-end",
@@ -1938,24 +2049,43 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     marginTop: 12,
   },
+  homeEyebrow: {
+    color: THEME.ink,
+    fontSize: 20,
+    fontWeight: "900",
+    marginTop: 22,
+    marginBottom: 16,
+  },
+  homeSectionTitle: {
+    color: THEME.ink,
+    fontSize: 22,
+    fontWeight: "900",
+  },
   modeGrid: {
-    gap: 10,
+    gap: 16,
   },
   modeButton: {
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    padding: 16,
+    borderRadius: 26,
+    minHeight: 92,
+    paddingHorizontal: 22,
+    paddingVertical: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    elevation: 3,
   },
   modeTitle: {
     color: THEME.ink,
     fontSize: 18,
-    fontWeight: "800",
+    fontWeight: "900",
   },
   modeText: {
     color: THEME.slate,
-    marginTop: 4,
+    fontSize: 14,
+    lineHeight: 20,
+    marginTop: 6,
   },
   characterGrid: {
     flexDirection: "row",
@@ -1977,24 +2107,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 220,
+    borderRadius: 30,
     justifyContent: "center",
-    marginBottom: 10,
-    marginTop: 8,
-    width: "72%",
+    marginBottom: 18,
+    minHeight: 286,
+    paddingHorizontal: 22,
+    paddingVertical: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    elevation: 3,
+    width: "100%",
   },
   practiceGlyphImage: {
-    height: 150,
-    width: "88%",
+    height: 160,
+    width: "92%",
   },
   practiceDevanagariLabel: {
     color: THEME.ink,
-    fontSize: 32,
+    fontSize: 42,
     fontWeight: "900",
-    marginTop: 8,
+    marginTop: 12,
+  },
+  practiceCharacterName: {
+    color: THEME.slate,
+    fontSize: 16,
+    fontWeight: "800",
+    marginTop: 2,
   },
   selectedCharacterPanel: {
     alignItems: "center",
@@ -2065,14 +2205,29 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     marginTop: 4,
   },
+  recommendationNote: {
+    backgroundColor: THEME.softAccent,
+    borderRadius: 20,
+    marginBottom: 22,
+    paddingHorizontal: 18,
+    paddingVertical: 14,
+  },
+  recommendationNoteText: {
+    color: THEME.ink,
+    fontSize: 14,
+    fontWeight: "800",
+    lineHeight: 20,
+  },
   changeCharacterButton: {
     backgroundColor: THEME.accent,
-    borderRadius: 8,
-    paddingHorizontal: 14,
-    paddingVertical: 9,
+    borderRadius: 22,
+    marginTop: 14,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
   },
   changeCharacterText: {
     color: THEME.surface,
+    fontSize: 14,
     fontWeight: "800",
   },
   characterPickerPanel: {
@@ -2099,7 +2254,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
+    marginBottom: 14,
+    marginTop: 32,
   },
   linkButton: {
     alignItems: "center",
@@ -2107,6 +2263,7 @@ const styles = StyleSheet.create({
   },
   linkText: {
     color: THEME.accent,
+    fontSize: 14,
     fontWeight: "800",
   },
   segmented: {
@@ -2134,8 +2291,8 @@ const styles = StyleSheet.create({
   },
   inputActions: {
     flexDirection: "row",
-    gap: 8,
-    marginBottom: 16,
+    gap: 10,
+    marginBottom: 18,
   },
   canvasWrap: {
     alignItems: "center",
@@ -2188,14 +2345,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "800",
   },
+  authPrimaryButton: {
+    alignItems: "center",
+    backgroundColor: THEME.accent,
+    borderRadius: 28,
+    marginTop: 22,
+    minHeight: 56,
+    justifyContent: "center",
+  },
+  authPrimaryButtonText: {
+    color: THEME.surface,
+    fontSize: 16,
+    fontWeight: "800",
+  },
   googleButton: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.ink,
-    borderRadius: 8,
-    borderWidth: 1.5,
-    marginTop: 12,
-    paddingVertical: 14,
+    borderColor: "#D9DEE2",
+    borderRadius: 28,
+    borderWidth: 1,
+    justifyContent: "center",
+    marginTop: 18,
+    minHeight: 56,
   },
   googleButtonText: {
     color: THEME.ink,
@@ -2209,7 +2380,7 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.background,
     borderColor: THEME.muted,
     borderTopWidth: 1,
-    bottom: 0,
+    bottom: 76,
     left: 0,
     padding: 18,
     paddingTop: 2,
@@ -2220,10 +2391,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: THEME.surface,
     borderColor: THEME.muted,
-    borderRadius: 8,
+    borderRadius: 24,
     borderWidth: 1,
     flex: 1,
-    paddingVertical: 11,
+    minHeight: 52,
+    justifyContent: "center",
+    paddingVertical: 12,
   },
   secondaryButtonActive: {
     backgroundColor: THEME.softAccent,
@@ -2231,6 +2404,7 @@ const styles = StyleSheet.create({
   },
   secondaryButtonText: {
     color: THEME.ink,
+    fontSize: 16,
     fontWeight: "800",
   },
   secondaryButtonTextActive: {
@@ -2328,29 +2502,48 @@ const styles = StyleSheet.create({
   progressRow: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: 24,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 10,
-    padding: 14,
+    marginBottom: 12,
+    minHeight: 82,
+    paddingHorizontal: 22,
+    paddingVertical: 16,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.07,
+    shadowRadius: 16,
+    elevation: 2,
   },
   progressRowLarge: {
     padding: 18,
   },
   progressName: {
     color: THEME.ink,
-    fontSize: 17,
-    fontWeight: "800",
+    fontSize: 24,
+    fontWeight: "900",
   },
   progressMeta: {
     color: THEME.slate,
-    marginTop: 3,
+    fontSize: 13,
+    marginTop: 4,
   },
   progressScore: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "900",
+  },
+  progressNewBadge: {
+    alignItems: "center",
+    backgroundColor: THEME.softAccent,
+    borderRadius: 18,
+    minWidth: 58,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+  },
+  progressNewBadgeText: {
+    color: THEME.accent,
+    fontSize: 13,
+    fontWeight: "800",
   },
   attemptCard: {
     alignItems: "center",
@@ -2421,33 +2614,85 @@ const styles = StyleSheet.create({
   profileHeader: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: 30,
     flexDirection: "row",
-    marginBottom: 12,
-    padding: 16,
+    marginBottom: 32,
+    minHeight: 104,
+    padding: 20,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    elevation: 3,
+  },
+  profileTopBar: {
+    alignItems: "center",
+    flexDirection: "row",
+    height: 48,
+    justifyContent: "space-between",
+    marginBottom: 30,
+  },
+  profileIconButton: {
+    alignItems: "center",
+    height: 48,
+    justifyContent: "center",
+    width: 48,
+  },
+  profileBackIcon: {
+    height: 24,
+    position: "relative",
+    width: 24,
+  },
+  profileBackIconLine: {
+    backgroundColor: THEME.ink,
+    borderRadius: 2,
+    height: 3,
+    left: 4,
+    position: "absolute",
+    width: 15,
+  },
+  profileBackIconLineTop: {
+    top: 6,
+    transform: [{ rotate: "-45deg" }],
+  },
+  profileBackIconLineBottom: {
+    bottom: 6,
+    transform: [{ rotate: "45deg" }],
+  },
+  profileGear: {
+    color: THEME.ink,
+    fontSize: 24,
+    fontWeight: "800",
+    lineHeight: 48,
+    textAlign: "center",
+  },
+  profileScreenTitle: {
+    color: THEME.ink,
+    fontSize: 20,
+    fontWeight: "900",
+    lineHeight: 48,
+    textAlign: "center",
   },
   profileAvatar: {
     alignItems: "center",
     backgroundColor: THEME.accent,
-    borderRadius: 28,
-    height: 56,
+    borderRadius: 22,
+    height: 64,
     justifyContent: "center",
-    width: 56,
+    width: 64,
   },
   profileAvatarText: {
     color: THEME.surface,
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "900",
   },
   profileIdentity: {
     flex: 1,
-    marginLeft: 12,
+    marginLeft: 16,
   },
   profileName: {
     color: THEME.ink,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "900",
   },
   profileEmail: {
@@ -2457,55 +2702,72 @@ const styles = StyleSheet.create({
   profileStatsGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
+    gap: 16,
   },
   profileStatBox: {
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    flexBasis: "47%",
+    borderRadius: 28,
+    elevation: 2,
+    flexBasis: "46%",
     flexGrow: 1,
-    padding: 14,
+    minHeight: 100,
+    paddingHorizontal: 22,
+    paddingVertical: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
   },
   profileStatValue: {
     color: THEME.ink,
-    fontSize: 28,
+    fontSize: 34,
     fontWeight: "900",
   },
   profileStatLabel: {
-    color: THEME.slate,
+    color: THEME.ink,
     fontSize: 12,
     fontWeight: "800",
-    marginTop: 3,
+    letterSpacing: 0,
+    marginTop: 4,
+    textTransform: "uppercase",
   },
   profileScoreRow: {
-    backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    backgroundColor: "#E1E2E5",
+    borderRadius: 28,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 12,
-    padding: 14,
+    marginTop: 32,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   profileScoreLabel: {
-    color: THEME.slate,
+    color: THEME.ink,
     fontSize: 11,
     fontWeight: "800",
+    textTransform: "uppercase",
   },
   profileScoreValue: {
     color: THEME.ink,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "900",
-    marginTop: 4,
+    marginTop: 12,
   },
   heatmapPanel: {
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    padding: 12,
+    borderRadius: 28,
+    padding: 20,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.07,
+    shadowRadius: 18,
+    elevation: 3,
+  },
+  profileSectionTitle: {
+    color: THEME.ink,
+    fontSize: 18,
+    fontWeight: "900",
+    marginBottom: 16,
+    marginTop: 34,
   },
   heatmapGrid: {
     flexDirection: "row",
@@ -2533,6 +2795,59 @@ const styles = StyleSheet.create({
     color: THEME.slate,
     fontSize: 11,
     fontWeight: "700",
+  },
+  bottomNavShell: {
+    bottom: 0,
+    left: 0,
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 12,
+    position: "absolute",
+    right: 0,
+  },
+  bottomNav: {
+    alignItems: "center",
+    backgroundColor: THEME.surface,
+    borderRadius: 30,
+    elevation: 14,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    minHeight: 72,
+    paddingHorizontal: 14,
+    shadowColor: THEME.ink,
+    shadowOffset: { width: 0, height: -8 },
+    shadowOpacity: 0.18,
+    shadowRadius: 22,
+  },
+  bottomNavItem: {
+    alignItems: "center",
+    borderRadius: 24,
+    flex: 1,
+    justifyContent: "center",
+    minHeight: 54,
+    paddingHorizontal: 4,
+    paddingVertical: 7,
+  },
+  bottomNavItemActive: {
+    backgroundColor: THEME.accent,
+  },
+  bottomNavIcon: {
+    color: THEME.ink,
+    fontSize: 20,
+    fontWeight: "900",
+    lineHeight: 22,
+  },
+  bottomNavIconActive: {
+    color: THEME.surface,
+  },
+  bottomNavLabel: {
+    color: THEME.ink,
+    fontSize: 11,
+    fontWeight: "700",
+    marginTop: 2,
+  },
+  bottomNavLabelActive: {
+    color: THEME.surface,
   },
   loadingOverlay: {
     alignItems: "center",
