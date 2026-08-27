@@ -2,6 +2,7 @@
   "expo": {
     "name": "Ranjana Lipi Handwriting Learner",
     "slug": "ranjana-lipi-coach",
+    "scheme": "ranjanalipicoach",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,13 +15,15 @@
       }
     },
     "android": {
+      "package": "com.anishdangol.ranjanalipicoach",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,7 +36,14 @@
           "photosPermission": "Choose handwriting practice images for region feedback.",
           "cameraPermission": "Photograph handwriting practice attempts for region feedback."
         }
-      ]
-    ]
+      ],
+      "@react-native-google-signin/google-signin",
+      "expo-web-browser"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f19275e3-b967-4c1a-8c0e-41133da24542"
+      }
+    }
   }
 }

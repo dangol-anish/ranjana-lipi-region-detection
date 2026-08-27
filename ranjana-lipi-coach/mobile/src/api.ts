@@ -40,7 +40,8 @@ function friendlyFieldName(field: string): string {
 
 function friendlyValidationMessage(detail: ValidationDetail): string {
   const field = detail.loc?.[detail.loc.length - 1];
-  const fieldName = typeof field === "string" ? friendlyFieldName(field) : "This field";
+  const fieldName =
+    typeof field === "string" ? friendlyFieldName(field) : "This field";
   const type = detail.type ?? "";
 
   if (field === "password" && type.includes("string_too_short")) {
@@ -56,17 +57,24 @@ function friendlyValidationMessage(detail: ValidationDetail): string {
     return `${fieldName} is required.`;
   }
 
-  return detail.msg ? `${fieldName}: ${detail.msg}` : `${fieldName} is invalid.`;
+  return detail.msg
+    ? `${fieldName}: ${detail.msg}`
+    : `${fieldName} is invalid.`;
 }
 
 function apiErrorMessage(status: number, data: unknown): string {
-  const detail = typeof data === "object" && data !== null && "detail" in data ? (data as { detail?: unknown }).detail : null;
+  const detail =
+    typeof data === "object" && data !== null && "detail" in data
+      ? (data as { detail?: unknown }).detail
+      : null;
 
   if (typeof detail === "string") {
     return detail;
   }
   if (Array.isArray(detail)) {
-    return detail.map((item) => friendlyValidationMessage(item as ValidationDetail)).join("\n");
+    return detail
+      .map((item) => friendlyValidationMessage(item as ValidationDetail))
+      .join("\n");
   }
 
   return `Request failed (${status}). Please try again.`;
@@ -103,7 +111,12 @@ export async function apiRequest<T>(
   const response = await fetch(`${baseUrl}${path}`, {
     method: options.body ? "POST" : "GET",
     headers,
-    body: options.body instanceof FormData ? options.body : options.body ? JSON.stringify(options.body) : undefined,
+    body:
+      options.body instanceof FormData
+        ? options.body
+        : options.body
+          ? JSON.stringify(options.body)
+          : undefined,
   });
 
   return parseApiResponse<T>(response);
@@ -124,7 +137,11 @@ export function registerUser(
   });
 }
 
-export function loginUser(baseUrl: string, email: string, password: string): Promise<TokenResponse> {
+export function loginUser(
+  baseUrl: string,
+  email: string,
+  password: string,
+): Promise<TokenResponse> {
   return apiRequest<TokenResponse>(baseUrl, "/auth/login", {
     body: {
       email,
@@ -133,15 +150,35 @@ export function loginUser(baseUrl: string, email: string, password: string): Pro
   });
 }
 
-export function fetchCurrentUser(baseUrl: string, token: string): Promise<User> {
+export function loginWithGoogle(
+  baseUrl: string,
+  idToken: string,
+): Promise<TokenResponse> {
+  return apiRequest<TokenResponse>(baseUrl, "/auth/google", {
+    body: {
+      id_token: idToken,
+    },
+  });
+}
+
+export function fetchCurrentUser(
+  baseUrl: string,
+  token: string,
+): Promise<User> {
   return apiRequest<User>(baseUrl, "/auth/me", { token });
 }
 
-export function fetchCharacters(baseUrl: string, token: string): Promise<Character[]> {
+export function fetchCharacters(
+  baseUrl: string,
+  token: string,
+): Promise<Character[]> {
   return apiRequest<Character[]>(baseUrl, "/characters", { token });
 }
 
-export function fetchProgress(baseUrl: string, token: string): Promise<ProgressDashboardItem[]> {
+export function fetchProgress(
+  baseUrl: string,
+  token: string,
+): Promise<ProgressDashboardItem[]> {
   return apiRequest<ProgressDashboardItem[]>(baseUrl, "/progress", { token });
 }
 
@@ -150,15 +187,28 @@ export function fetchCharacterProgress(
   token: string,
   characterId: number,
 ): Promise<CharacterProgressDetail> {
-  return apiRequest<CharacterProgressDetail>(baseUrl, `/progress/${characterId}`, { token });
+  return apiRequest<CharacterProgressDetail>(
+    baseUrl,
+    `/progress/${characterId}`,
+    { token },
+  );
 }
 
-export function fetchProfile(baseUrl: string, token: string): Promise<UserProfile> {
+export function fetchProfile(
+  baseUrl: string,
+  token: string,
+): Promise<UserProfile> {
   return apiRequest<UserProfile>(baseUrl, "/profile/me", { token });
 }
 
-export function fetchAttemptHistory(baseUrl: string, token: string, limit = 50): Promise<Attempt[]> {
-  return apiRequest<Attempt[]>(baseUrl, `/practice/attempts?limit=${limit}`, { token });
+export function fetchAttemptHistory(
+  baseUrl: string,
+  token: string,
+  limit = 50,
+): Promise<Attempt[]> {
+  return apiRequest<Attempt[]>(baseUrl, `/practice/attempts?limit=${limit}`, {
+    token,
+  });
 }
 
 export function fetchPracticeRecommendations(
@@ -166,7 +216,11 @@ export function fetchPracticeRecommendations(
   token: string,
   limit = 5,
 ): Promise<PracticeRecommendationResponse> {
-  return apiRequest<PracticeRecommendationResponse>(baseUrl, `/recommendations/practice?limit=${limit}`, { token });
+  return apiRequest<PracticeRecommendationResponse>(
+    baseUrl,
+    `/recommendations/practice?limit=${limit}`,
+    { token },
+  );
 }
 
 export async function submitPracticeAttempt(

@@ -16,6 +16,10 @@ class UserLogin(BaseModel):
     password: str
 
 
+class GoogleLogin(BaseModel):
+    id_token: str = Field(..., min_length=20)
+
+
 class UserOut(BaseModel):
     id: int
     email: str

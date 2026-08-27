@@ -2,6 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker";
 import * as SecureStore from "expo-secure-store";
 import { LinearGradient } from "expo-linear-gradient";
+import {
+  GoogleSignin,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -28,6 +32,7 @@ import {
   fetchPracticeRecommendations,
   fetchProgress,
   loginUser,
+  loginWithGoogle,
   registerUser,
   submitPracticeAttempt,
 } from "./src/api";
@@ -49,6 +54,10 @@ import type {
   User,
   UserProfile,
 } from "./src/types";
+import {
+  GOOGLE_AUTH_CONFIG,
+  isGoogleAuthConfigured,
+} from "./src/googleAuthConfig";
 
 type Screen =
   | "auth"
@@ -74,6 +83,9 @@ const STALE_API_BASE_URLS = new Set([
 ]);
 const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
 const APP_LOGO = require("./assets/app-logo-transparent.png");
+const GOOGLE_WEB_CLIENT_ID =
+  GOOGLE_AUTH_CONFIG.webClientId || GOOGLE_AUTH_CONFIG.expoClientId;
+const GOOGLE_IOS_CLIENT_ID = GOOGLE_AUTH_CONFIG.iosClientId;
 const PRACTICE_MODES: { value: PracticeMode; label: string }[] = [
   { value: "app_suggested", label: "Suggestive Learning" },
   { value: "free_practice", label: "Free Practice" },
@@ -412,6 +424,13 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const drawingRef = useRef<DrawingCanvasHandle>(null);
+  const googleConfigured = isGoogleAuthConfigured();
+  const googleConfiguredForPlatform =
+    Platform.OS === "android"
+      ? GOOGLE_WEB_CLIENT_ID.trim().length > 0
+      : Platform.OS === "ios"
+        ? GOOGLE_AUTH_CONFIG.iosClientId.trim().length > 0
+        : googleConfigured;
 
   const selectedCharacter = useMemo(
     () =>
@@ -488,6 +507,18 @@ export default function App() {
   }, [loadSession]);
 
   useEffect(() => {
+    if (!googleConfigured) {
+      return;
+    }
+    GoogleSignin.configure({
+      iosClientId: GOOGLE_IOS_CLIENT_ID || undefined,
+      offlineAccess: false,
+      profileImageSize: 120,
+      webClientId: GOOGLE_WEB_CLIENT_ID,
+    });
+  }, [googleConfigured]);
+
+  useEffect(() => {
     if (token) {
       void refreshAppData().catch((error: unknown) => {
         setMessage(
@@ -496,6 +527,56 @@ export default function App() {
       });
     }
   }, [refreshAppData, token]);
+
+  async function handleGoogleAuth() {
+    if (!googleConfiguredForPlatform) {
+      setMessage("Google sign-in is not configured for this device yet.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+      await GoogleSignin.signOut().catch(() => undefined);
+      const googleUser = await GoogleSignin.signIn();
+      const idToken = googleUser.data?.idToken;
+      if (!idToken) {
+        throw new Error("Google did not return an identity token.");
+      }
+
+      const response = await loginWithGoogle(apiBaseUrl, idToken);
+      await SecureStore.setItemAsync(TOKEN_KEY, response.access_token);
+      await SecureStore.setItemAsync(API_BASE_URL_KEY, apiBaseUrl);
+      const currentUser = await fetchCurrentUser(
+        apiBaseUrl,
+        response.access_token,
+      );
+      setToken(response.access_token);
+      setUser(currentUser);
+      setScreen("home");
+    } catch (error) {
+      const code =
+        typeof error === "object" && error !== null && "code" in error
+          ? String((error as { code?: unknown }).code)
+          : "";
+      if (code === statusCodes.SIGN_IN_CANCELLED) {
+        setMessage("Google sign-in was cancelled.");
+      } else if (code === statusCodes.IN_PROGRESS) {
+        setMessage("Google sign-in is already in progress.");
+      } else if (code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setMessage("Google Play Services is not available or needs updating.");
+      } else {
+        setMessage(
+          error instanceof Error ? error.message : "Google sign-in failed.",
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function handleAuth() {
     const emailValue = email.trim();
@@ -791,6 +872,13 @@ export default function App() {
               }
               onPress={handleAuth}
             />
+            <TouchableOpacity
+              disabled={loading}
+              style={[styles.googleButton, loading && styles.disabled]}
+              onPress={() => void handleGoogleAuth()}
+            >
+              <Text style={styles.googleButtonText}>Continue with Google</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.linkButton}
               onPress={() => {
@@ -2097,6 +2185,20 @@ const styles = StyleSheet.create({
   },
   primaryButtonText: {
     color: THEME.surface,
+    fontSize: 16,
+    fontWeight: "800",
+  },
+  googleButton: {
+    alignItems: "center",
+    backgroundColor: THEME.surface,
+    borderColor: THEME.ink,
+    borderRadius: 8,
+    borderWidth: 1.5,
+    marginTop: 12,
+    paddingVertical: 14,
+  },
+  googleButtonText: {
+    color: THEME.ink,
     fontSize: 16,
     fontWeight: "800",
   },
