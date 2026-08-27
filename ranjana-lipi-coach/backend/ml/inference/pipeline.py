@@ -30,6 +30,8 @@ CANVAS_SIZE = 128
 VALIDATED_CLASS_SET = frozenset(VALIDATED_CLASSES)
 STRUCTURAL_CLASS_SET = frozenset(VALIDATED_STRUCTURAL_CLASSES)
 MIN_NORMALIZED_INK_PIXELS = 250
+STRUCTURAL_WRONG_CLASS_MIN_BEST_SCORE = 60.0
+STRUCTURAL_WRONG_CLASS_MIN_SCORE_GAP = 15.0
 INSUFFICIENT_INPUT_MESSAGE = "Insufficient input — please draw the full character."
 WRONG_CHARACTER_MESSAGE_TEMPLATE = (
     "This attempt looks like {predicted_class}, not {target_class}. "
@@ -530,6 +532,73 @@ def structural_feedback_for_selected_class(
     )
 
 
+def structural_match_scores(
+    decoded_image: np.ndarray,
+    selected_class: str,
+    selected_normalized: np.ndarray,
+    selected_feedback: dict[str, Any],
+    rows: int = 3,
+    cols: int = 3,
+) -> list[dict[str, Any]]:
+    scores: list[dict[str, Any]] = []
+    for class_name in VALIDATED_STRUCTURAL_CLASSES:
+        if class_name == selected_class:
+            feedback = selected_feedback
+        else:
+            normalized = normalize_controlled_structural_attempt_for_class(
+                decoded_image,
+                class_name,
+                canvas_size=CANVAS_SIZE,
+            )
+            if not has_enough_ink(normalized):
+                score = 0.0
+                feedback_method = "insufficient_input"
+            else:
+                feedback = structural_feedback_for_selected_class(normalized, class_name, rows, cols)
+                score = float(feedback.get("overall_score", 0.0))
+                feedback_method = str(feedback.get("feedback_method", "structural_part_mask"))
+            scores.append(
+                {
+                    "class_name": class_name,
+                    "score": score,
+                    "feedback_method": feedback_method,
+                }
+            )
+            continue
+
+        scores.append(
+            {
+                "class_name": class_name,
+                "score": float(feedback.get("overall_score", 0.0)),
+                "feedback_method": str(feedback.get("feedback_method", "structural_part_mask")),
+            }
+        )
+
+    return sorted(scores, key=lambda item: float(item["score"]), reverse=True)
+
+
+def should_block_structural_wrong_character(
+    match_scores: list[dict[str, Any]],
+    target_class: str,
+) -> tuple[bool, dict[str, Any] | None, float]:
+    if not match_scores:
+        return False, None, 0.0
+
+    selected = next((item for item in match_scores if item["class_name"] == target_class), None)
+    best = match_scores[0]
+    if selected is None or best["class_name"] == target_class:
+        return False, best, 0.0
+
+    selected_score = float(selected["score"])
+    best_score = float(best["score"])
+    score_gap = best_score - selected_score
+    should_block = (
+        best_score >= STRUCTURAL_WRONG_CLASS_MIN_BEST_SCORE
+        and score_gap >= STRUCTURAL_WRONG_CLASS_MIN_SCORE_GAP
+    )
+    return should_block, best, score_gap
+
+
 def analyze_attempt(
     image_bytes: bytes,
     target_class: str,
@@ -545,6 +614,32 @@ def analyze_attempt(
             feedback = insufficient_input_feedback(target_class, normalized, rows, cols)
             attach_recognizer_metadata(feedback, None, target_class, model_route)
             return {"normalized": normalized, "feedback": feedback}
+        feedback = structural_feedback_for_selected_class(normalized, target_class, rows, cols)
+        match_scores = structural_match_scores(decoded, target_class, normalized, feedback, rows, cols)
+        should_block, best_match, score_gap = should_block_structural_wrong_character(match_scores, target_class)
+        if should_block and best_match is not None:
+            structural_result = RecognizerResult(
+                predicted_class=str(best_match["class_name"]),
+                confidence=float(best_match["score"]) / 100.0,
+                probabilities={
+                    str(item["class_name"]): float(item["score"]) / 100.0
+                    for item in match_scores
+                },
+            )
+            blocked_feedback = wrong_character_feedback(target_class, structural_result, rows, cols, model_route)
+            blocked_feedback["structural_match"] = {
+                "selected_class": target_class,
+                "selected_score": next(
+                    float(item["score"]) for item in match_scores if item["class_name"] == target_class
+                ),
+                "best_class": best_match["class_name"],
+                "best_score": float(best_match["score"]),
+                "score_gap": float(score_gap),
+                "all_scores": match_scores,
+                "min_best_score": STRUCTURAL_WRONG_CLASS_MIN_BEST_SCORE,
+                "min_score_gap": STRUCTURAL_WRONG_CLASS_MIN_SCORE_GAP,
+            }
+            return {"normalized": normalized, "feedback": blocked_feedback}
         try:
             recognizer_result = (
                 recognize(normalized, device_name)
@@ -553,8 +648,19 @@ def analyze_attempt(
             )
         except Exception:
             recognizer_result = None
-        feedback = structural_feedback_for_selected_class(normalized, target_class, rows, cols)
         feedback["target_class_structural_scoring"] = True
+        feedback["structural_match"] = {
+            "selected_class": target_class,
+            "selected_score": next(
+                float(item["score"]) for item in match_scores if item["class_name"] == target_class
+            ),
+            "best_class": match_scores[0]["class_name"] if match_scores else target_class,
+            "best_score": float(match_scores[0]["score"]) if match_scores else float(feedback.get("overall_score", 0.0)),
+            "score_gap": float(score_gap),
+            "all_scores": match_scores,
+            "min_best_score": STRUCTURAL_WRONG_CLASS_MIN_BEST_SCORE,
+            "min_score_gap": STRUCTURAL_WRONG_CLASS_MIN_SCORE_GAP,
+        }
         feedback["recognizer_used_as_gate"] = False
         attach_recognizer_metadata(feedback, recognizer_result, target_class, model_route, blocked_scoring=False)
     elif target_class in VALIDATED_CLASS_SET:
