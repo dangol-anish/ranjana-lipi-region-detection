@@ -45,6 +45,7 @@ export type RegionFeedback = {
   predicted_class?: string;
   recognizer_confidence?: number;
   overall_score: number;
+  invalid_input?: boolean;
   insufficient_input?: boolean;
   wrong_character?: boolean;
   feedback_method?: string;

@@ -378,6 +378,9 @@ function topRegionSummary(feedback: RegionFeedback | null | undefined): string {
   if (feedback?.wrong_character) {
     return "Wrong character";
   }
+  if (feedback?.invalid_input) {
+    return "Invalid input";
+  }
   if (feedback?.insufficient_input) {
     return "Insufficient input";
   }
@@ -522,6 +525,160 @@ function problemRegionText(feedback: RegionFeedback | null): string {
     .join("\n");
 }
 
+function resultStatusText(
+  score: number | null | undefined,
+  feedback: RegionFeedback | null,
+): string {
+  if (feedback?.wrong_character) {
+    return "Wrong character";
+  }
+  if (feedback?.invalid_input) {
+    return "Invalid input";
+  }
+  if (feedback?.insufficient_input) {
+    return "Draw more clearly";
+  }
+  if (typeof score !== "number") {
+    return "Feedback ready";
+  }
+  if (score >= 90) {
+    return "Great work";
+  }
+  if (score >= 75) {
+    return "Good attempt";
+  }
+  return "Needs practice";
+}
+
+function learnerFeedbackText(feedback: RegionFeedback | null): string {
+  if (!feedback) {
+    return "Submit an attempt to see handwriting feedback.";
+  }
+  if (feedback.wrong_character) {
+    return (
+      feedback.warning ??
+      feedback.message ??
+      "This looks like a different character. Try writing the selected character again."
+    );
+  }
+  if (feedback.invalid_input) {
+    return (
+      feedback.warning ??
+      feedback.message ??
+      "This does not look like a supported character. Try a clear character image."
+    );
+  }
+  if (feedback.insufficient_input) {
+    return (
+      feedback.message ??
+      "Please draw the full character before submitting."
+    );
+  }
+
+  const broadProblems = feedback.broad_bands?.problem_regions ?? [];
+  const mainProblem = broadProblems[0];
+  if (mainProblem?.region) {
+    return `${mainProblem.region[0].toUpperCase()}${mainProblem.region.slice(
+      1,
+    )} region needs improvement.`;
+  }
+  return "No major problem region detected. Keep practicing this form.";
+}
+
+function regionDisplayName(region: string): string {
+  return `${region[0].toUpperCase()}${region.slice(1)}`;
+}
+
+function broadProblemRegions(feedback: RegionFeedback | null): string[] {
+  const regions = feedback?.broad_bands?.problem_regions ?? [];
+  return regions
+    .map((region) => region.region)
+    .filter((region): region is string => typeof region === "string");
+}
+
+function regionSummary(feedback: RegionFeedback | null): {
+  main: string;
+  secondary: string;
+  clear: string;
+} {
+  if (feedback?.wrong_character) {
+    return {
+      main: "Character mismatch",
+      secondary: "Check selected character",
+      clear: "Score blocked",
+    };
+  }
+  if (feedback?.invalid_input) {
+    return {
+      main: "Invalid input",
+      secondary: "Use a clear character",
+      clear: "Try again",
+    };
+  }
+  if (feedback?.insufficient_input) {
+    return {
+      main: "Input incomplete",
+      secondary: "Draw the full form",
+      clear: "Try again",
+    };
+  }
+
+  const problems = broadProblemRegions(feedback);
+  const allBands = ["top", "middle", "bottom"];
+  return {
+    main: problems[0] ? regionDisplayName(problems[0]) : "None",
+    secondary: problems
+      .slice(1, 3)
+      .map(regionDisplayName)
+      .join(", ") || "None",
+    clear:
+      allBands
+        .filter((band) => !problems.includes(band))
+        .map(regionDisplayName)
+        .join(", ") || "Keep practicing",
+  };
+}
+
+function coachingSuggestion(feedback: RegionFeedback | null): string {
+  if (feedback?.wrong_character) {
+    return "Choose the correct target character and submit that form again.";
+  }
+  if (feedback?.invalid_input) {
+    return "Use a clear photo or drawing of one supported character, without extra objects or background clutter.";
+  }
+  if (feedback?.insufficient_input) {
+    return "Draw the full character with enough visible strokes before submitting.";
+  }
+
+  const main = broadProblemRegions(feedback)[0];
+  if (main === "top") {
+    return "Focus on completing the upper headline and top stroke clearly.";
+  }
+  if (main === "middle") {
+    return "Focus on keeping the main body and middle loop connected.";
+  }
+  if (main === "bottom") {
+    return "Focus on completing the lower tail or base stroke.";
+  }
+  return "This attempt looks clean. Repeat it once more to build consistency.";
+}
+
+function technicalResultText(feedback: RegionFeedback | null): string {
+  if (feedback?.wrong_character) {
+    return "The recognizer checks whether the submitted writing matches the selected character before regional scoring is shown.";
+  }
+  if (feedback?.invalid_input) {
+    return "The app first checks whether the upload resembles one of the supported character structures. If no character structure matches strongly enough, scoring is blocked.";
+  }
+  if (feedback?.feedback_method === "structural_part_mask") {
+    return "The app checks whether the submitted writing covers the required structural parts of the selected character.";
+  }
+  if (feedback?.feedback_method === "statistical_template") {
+    return "The app compares the submitted writing with the learned variation range for the selected character.";
+  }
+  return "The app compares the submitted writing with the expected character structure and highlights the region that needs the most attention.";
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>("auth");
   const [authMode, setAuthMode] = useState<AuthMode>("login");
@@ -561,6 +718,7 @@ export default function App() {
   );
   const [suggestedRecommendation, setSuggestedRecommendation] =
     useState<PracticeRecommendation | null>(null);
+  const [resultDetailsOpen, setResultDetailsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const drawingRef = useRef<DrawingCanvasHandle>(null);
@@ -999,6 +1157,7 @@ export default function App() {
         selectedMode,
         image,
       );
+      setResultDetailsOpen(false);
       setResult(response);
       await refreshAppData();
       setScreen("results");
@@ -1049,6 +1208,7 @@ export default function App() {
     setSelectedImage(null);
     setSubmittedImage(null);
     setResult(null);
+    setResultDetailsOpen(false);
     setMessage(null);
     setCharacterSearch("");
     setCharacterPickerOpen(false);
@@ -1063,6 +1223,7 @@ export default function App() {
     setSelectedImage(null);
     setSubmittedImage(null);
     setResult(null);
+    setResultDetailsOpen(false);
     setMessage(null);
     drawingRef.current?.clear();
     setScreen("practice");
@@ -1336,16 +1497,19 @@ export default function App() {
           <View style={styles.inputActions}>
             <SecondaryButton
               label="Gallery"
+              icon="▧"
               onPress={pickFromGallery}
               active={inputMode === "gallery"}
             />
             <SecondaryButton
               label="Camera"
+              icon="◉"
               onPress={takePhoto}
               active={inputMode === "camera"}
             />
             <SecondaryButton
               label="Canvas"
+              icon="✎"
               onPress={() => {
                 setInputMode("canvas");
                 setSelectedImage(null);
@@ -1397,9 +1561,10 @@ export default function App() {
               <Text style={styles.previewText}>{selectedImage.name}</Text>
             </View>
           ) : (
-            <Text style={styles.emptyText}>
-              Choose a photo from gallery or camera.
-            </Text>
+            <EmptyState
+              title="No input selected"
+              text="Choose a gallery photo, take a camera photo, or draw on the canvas."
+            />
           )}
         </ScrollView>
 
@@ -1418,26 +1583,52 @@ export default function App() {
     const feedback = result?.region_feedback ?? null;
     const score = result?.overall_score ?? feedback?.overall_score ?? null;
     const isWrongCharacter = Boolean(feedback?.wrong_character);
+    const isBlockedFeedback = Boolean(
+      feedback?.wrong_character ||
+        feedback?.invalid_input ||
+        feedback?.insufficient_input,
+    );
+    const canShowRegionFeedback = !(
+      feedback?.wrong_character ||
+      feedback?.invalid_input ||
+      feedback?.insufficient_input
+    );
+    const summary = regionSummary(feedback);
+    const predictedLabel =
+      feedback?.predicted_class && DEVANAGARI_LABELS[feedback.predicted_class]
+        ? DEVANAGARI_LABELS[feedback.predicted_class]
+        : null;
     const referenceUri = selectedCharacter
-      ? `${apiBaseUrl}/reference_photos/${selectedCharacter.name}/photo-1/${selectedCharacter.name}.jpg`
+      ? characterGlyphUri(apiBaseUrl, selectedCharacter.name)
       : null;
 
     return (
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <TopNav title="Feedback" onBack={() => setScreen("practice")} />
         <View style={styles.scorePanel}>
-          <Text style={styles.scoreLabel}>
-            {isWrongCharacter ? "Character Match" : "Overall Score"}
-          </Text>
+          <Text style={styles.scoreLabel}>{resultStatusText(score, feedback)}</Text>
           <Text style={[styles.scoreValue, { color: scoreColor(score) }]}>
             {typeof score === "number" ? `${score.toFixed(1)}%` : "--"}
           </Text>
-          {isWrongCharacter ? (
-            <Text style={styles.warning}>
-              {feedback?.warning ?? feedback?.message}
-            </Text>
-          ) : null}
+          <Text
+            style={[
+              styles.resultFeedbackMessage,
+              isBlockedFeedback && styles.resultFeedbackWarning,
+            ]}
+          >
+            {learnerFeedbackText(feedback)}
+          </Text>
         </View>
+
+        {isWrongCharacter && selectedCharacter ? (
+          <View style={styles.matchStatusCard}>
+            <Text style={styles.matchStatusLabel}>Character match</Text>
+            <Text style={styles.matchStatusText}>
+              Expected {characterDisplayLabel(selectedCharacter)}
+              {predictedLabel ? `, detected ${predictedLabel}` : ""}
+            </Text>
+          </View>
+        ) : null}
 
         <Text style={styles.sectionTitle}>Comparison</Text>
         <View style={styles.comparisonRow}>
@@ -1456,7 +1647,7 @@ export default function App() {
             )}
           </View>
           <View style={styles.comparisonPanel}>
-            <Text style={styles.comparisonLabel}>Your Input</Text>
+            <Text style={styles.comparisonLabel}>Your writing</Text>
             {submittedImage ? (
               <Image
                 source={{ uri: submittedImage.uri }}
@@ -1471,40 +1662,54 @@ export default function App() {
           </View>
         </View>
 
-        {result?.attempt ? (
+        {canShowRegionFeedback ? (
           <>
-            <Text style={styles.sectionTitle}>Normalized Input</Text>
-            <View style={styles.pipelinePanel}>
-              <Image
-                source={{ uri: attemptImageUri(apiBaseUrl, result.attempt) }}
-                style={styles.pipelineImage}
-                resizeMode="contain"
-              />
-              <Text style={styles.explainText}>
-                The submitted image is binarized, aligned to the selected
-                character reference, and placed on a fixed canvas before
-                feedback is calculated.
-              </Text>
+            <Text style={styles.sectionTitle}>Region guide</Text>
+            <RegionGrid feedback={feedback} />
+
+            <View style={styles.feedbackSummaryCard}>
+              <View style={styles.feedbackSummaryItem}>
+                <Text style={styles.feedbackSummaryLabel}>Main focus</Text>
+                <Text style={styles.feedbackSummaryValue}>{summary.main}</Text>
+              </View>
+              <View style={styles.feedbackSummaryDivider} />
+              <View style={styles.feedbackSummaryItem}>
+                <Text style={styles.feedbackSummaryLabel}>Also check</Text>
+                <Text style={styles.feedbackSummaryValue}>
+                  {summary.secondary}
+                </Text>
+              </View>
+              <View style={styles.feedbackSummaryDivider} />
+              <View style={styles.feedbackSummaryItem}>
+                <Text style={styles.feedbackSummaryLabel}>Looks good</Text>
+                <Text style={styles.feedbackSummaryValue}>{summary.clear}</Text>
+              </View>
             </View>
           </>
         ) : null}
 
-        <Text style={styles.sectionTitle}>Region Map</Text>
-        <RegionGrid feedback={feedback} />
+        <View style={styles.nextStepCard}>
+          <Text style={styles.nextStepTitle}>Next step</Text>
+          <Text style={styles.nextStepText}>{coachingSuggestion(feedback)}</Text>
+        </View>
 
-        <Text style={styles.sectionTitle}>Problem Regions</Text>
-        <Text style={styles.problemText}>{problemRegionText(feedback)}</Text>
-
-        <Text style={styles.sectionTitle}>How This Feedback Was Produced</Text>
-        <Text style={styles.explainText}>
-          {isWrongCharacter
-            ? "The recognizer detected that this attempt does not match the selected character, so scoring was blocked instead of showing a misleading reconstruction score."
-            : feedback?.feedback_method === "structural_part_mask"
-              ? "The app checks whether the normalized attempt covers required structural parts of the taught character form. Missing required parts are shown as top, middle, or bottom feedback."
-              : feedback?.feedback_method === "statistical_template"
-                ? "The app compares the normalized attempt with a statistical handwriting envelope learned from correct samples for this character. Missing required stroke zones and extra ink outside the allowed variation zone are highlighted."
-                : "The app compares the normalized attempt with the expected reconstruction for this character. Regions with unusually high ink-masked reconstruction error are highlighted as likely places to improve."}
-        </Text>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          style={styles.whyResultToggle}
+          onPress={() => setResultDetailsOpen((open) => !open)}
+        >
+          <Text style={styles.whyResultToggleText}>Why this result?</Text>
+          <Text style={styles.whyResultToggleIcon}>
+            {resultDetailsOpen ? "-" : "+"}
+          </Text>
+        </TouchableOpacity>
+        {resultDetailsOpen ? (
+          <View style={styles.whyResultPanel}>
+            <Text style={styles.whyResultText}>
+              {technicalResultText(feedback)}
+            </Text>
+          </View>
+        ) : null}
 
         <View style={styles.resultActions}>
           <SecondaryButton
@@ -1640,15 +1845,19 @@ export default function App() {
     return (
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <TopNav title="Attempt History" onBack={() => setScreen("profile")} />
-        <Text style={styles.explainText}>
-          Saved attempts show the normalized handwriting image, score, and
-          strongest region feedback from the same reconstruction-based pipeline
-          used during practice.
-        </Text>
+        <View style={styles.historyIntroCard}>
+          <Text style={styles.historyIntroTitle}>Recent practice</Text>
+          <Text style={styles.historyIntroText}>
+            Review submitted work, scores, and the strongest feedback region.
+          </Text>
+        </View>
         {attemptHistory.length > 0 ? (
           attemptHistory.map((attempt) => renderAttemptCard(attempt))
         ) : (
-          <Text style={styles.emptyText}>No attempts yet.</Text>
+          <EmptyState
+            title="No attempts yet"
+            text="Practice a character once and your history will appear here."
+          />
         )}
       </ScrollView>
     );
@@ -1663,7 +1872,10 @@ export default function App() {
             title="Character Profile"
             onBack={() => setScreen("progress")}
           />
-          <Text style={styles.emptyText}>No character profile loaded.</Text>
+          <EmptyState
+            title="No character loaded"
+            text="Go back to Insights and choose a character again."
+          />
         </ScrollView>
       );
     }
@@ -1746,9 +1958,10 @@ export default function App() {
             .slice(0, 10)
             .map((attempt) => renderAttemptCard(attempt))
         ) : (
-          <Text style={styles.emptyText}>
-            No attempts for this character yet.
-          </Text>
+          <EmptyState
+            title="No attempts yet"
+            text="Practice this character once to start building progress."
+          />
         )}
       </ScrollView>
     );
@@ -1949,7 +2162,13 @@ export default function App() {
       ) : null}
       {loading && screen !== "auth" ? (
         <View style={styles.loadingOverlay}>
-          <ActivityIndicator color={THEME.surface} />
+          <View style={styles.loadingCard}>
+            <ActivityIndicator color={THEME.accent} />
+            <Text style={styles.loadingTitle}>Working on it</Text>
+            <Text style={styles.loadingText}>
+              Please wait while the app updates your practice data.
+            </Text>
+          </View>
         </View>
       ) : null}
       {message ? (
@@ -2110,10 +2329,12 @@ function PrimaryButton({
 
 function SecondaryButton({
   label,
+  icon,
   onPress,
   active,
 }: {
   label: string;
+  icon?: string;
   onPress: () => void;
   active?: boolean;
 }) {
@@ -2122,6 +2343,16 @@ function SecondaryButton({
       style={[styles.secondaryButton, active && styles.secondaryButtonActive]}
       onPress={onPress}
     >
+      {icon ? (
+        <Text
+          style={[
+            styles.secondaryButtonIcon,
+            active && styles.secondaryButtonTextActive,
+          ]}
+        >
+          {icon}
+        </Text>
+      ) : null}
       <Text
         style={[
           styles.secondaryButtonText,
@@ -2131,6 +2362,15 @@ function SecondaryButton({
         {label}
       </Text>
     </TouchableOpacity>
+  );
+}
+
+function EmptyState({ title, text }: { title: string; text: string }) {
+  return (
+    <View style={styles.emptyStateCard}>
+      <Text style={styles.emptyStateTitle}>{title}</Text>
+      <Text style={styles.emptyStateText}>{text}</Text>
+    </View>
   );
 }
 
@@ -2603,8 +2843,8 @@ const styles = StyleSheet.create({
   },
   inputActions: {
     flexDirection: "row",
-    gap: 10,
-    marginBottom: 18,
+    gap: 12,
+    marginBottom: 20,
   },
   canvasWrap: {
     alignItems: "center",
@@ -2614,9 +2854,16 @@ const styles = StyleSheet.create({
   demoCanvasButton: {
     alignItems: "center",
     backgroundColor: THEME.accent,
-    borderRadius: 8,
-    marginBottom: 10,
+    borderRadius: 26,
+    elevation: 2,
+    marginBottom: 14,
+    minHeight: 54,
+    justifyContent: "center",
     paddingVertical: 12,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
     width: "100%",
   },
   demoCanvasButtonText: {
@@ -2626,11 +2873,15 @@ const styles = StyleSheet.create({
   previewWrap: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: 28,
+    elevation: 2,
     marginBottom: 18,
-    padding: 12,
+    padding: 16,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
+    width: "100%",
   },
   previewImage: {
     height: 240,
@@ -2645,11 +2896,40 @@ const styles = StyleSheet.create({
     color: THEME.slate,
     marginBottom: 18,
   },
+  emptyStateCard: {
+    alignItems: "center",
+    backgroundColor: THEME.surface,
+    borderRadius: 28,
+    elevation: 2,
+    marginBottom: 18,
+    paddingHorizontal: 22,
+    paddingVertical: 24,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
+  },
+  emptyStateTitle: {
+    color: THEME.ink,
+    fontSize: 18,
+    fontWeight: "900",
+    textAlign: "center",
+  },
+  emptyStateText: {
+    color: THEME.slate,
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 21,
+    marginTop: 8,
+    textAlign: "center",
+  },
   primaryButton: {
     alignItems: "center",
     backgroundColor: THEME.accent,
-    borderRadius: 8,
+    borderRadius: 28,
     marginTop: 16,
+    minHeight: 56,
+    justifyContent: "center",
     paddingVertical: 14,
   },
   primaryButtonText: {
@@ -2690,8 +2970,6 @@ const styles = StyleSheet.create({
   },
   stickySubmitBar: {
     backgroundColor: THEME.background,
-    borderColor: THEME.muted,
-    borderTopWidth: 1,
     bottom: 76,
     left: 0,
     padding: 18,
@@ -2702,21 +2980,30 @@ const styles = StyleSheet.create({
   secondaryButton: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 24,
-    borderWidth: 1,
+    borderRadius: 26,
+    elevation: 2,
     flex: 1,
-    minHeight: 52,
+    minHeight: 66,
     justifyContent: "center",
-    paddingVertical: 12,
+    paddingVertical: 10,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
   },
   secondaryButtonActive: {
     backgroundColor: THEME.softAccent,
-    borderColor: THEME.accent,
+  },
+  secondaryButtonIcon: {
+    color: THEME.ink,
+    fontSize: 22,
+    fontWeight: "900",
+    lineHeight: 24,
+    marginBottom: 3,
   },
   secondaryButtonText: {
     color: THEME.ink,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "800",
   },
   secondaryButtonTextActive: {
@@ -2725,19 +3012,60 @@ const styles = StyleSheet.create({
   scorePanel: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    padding: 18,
+    borderRadius: 30,
+    elevation: 3,
+    paddingHorizontal: 22,
+    paddingVertical: 26,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
   },
   scoreLabel: {
-    color: THEME.slate,
-    fontWeight: "700",
+    color: THEME.ink,
+    fontSize: 22,
+    fontWeight: "900",
   },
   scoreValue: {
-    fontSize: 48,
+    fontSize: 58,
     fontWeight: "900",
-    marginTop: 4,
+    marginTop: 8,
+  },
+  resultFeedbackMessage: {
+    color: THEME.slate,
+    fontSize: 16,
+    fontWeight: "800",
+    lineHeight: 23,
+    marginTop: 14,
+    textAlign: "center",
+  },
+  resultFeedbackWarning: {
+    color: THEME.danger,
+  },
+  matchStatusCard: {
+    backgroundColor: THEME.surface,
+    borderRadius: 24,
+    elevation: 2,
+    marginTop: 14,
+    paddingHorizontal: 20,
+    paddingVertical: 18,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
+  },
+  matchStatusLabel: {
+    color: THEME.slate,
+    fontSize: 13,
+    fontWeight: "900",
+    textTransform: "uppercase",
+  },
+  matchStatusText: {
+    color: THEME.danger,
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 25,
+    marginTop: 6,
   },
   resultMeta: {
     color: THEME.ink,
@@ -2778,38 +3106,167 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: 18,
   },
+  feedbackSummaryCard: {
+    backgroundColor: THEME.surface,
+    borderRadius: 26,
+    elevation: 2,
+    flexDirection: "row",
+    marginTop: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 18,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
+  },
+  feedbackSummaryItem: {
+    flex: 1,
+    minWidth: 0,
+    paddingHorizontal: 6,
+  },
+  feedbackSummaryDivider: {
+    backgroundColor: THEME.softMuted,
+    width: 1,
+  },
+  feedbackSummaryLabel: {
+    color: THEME.slate,
+    fontSize: 11,
+    fontWeight: "900",
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
+  feedbackSummaryValue: {
+    color: THEME.ink,
+    fontSize: 15,
+    fontWeight: "900",
+    lineHeight: 20,
+    marginTop: 8,
+    textAlign: "center",
+  },
+  nextStepCard: {
+    backgroundColor: THEME.accent,
+    borderRadius: 26,
+    elevation: 2,
+    marginTop: 14,
+    paddingHorizontal: 22,
+    paddingVertical: 20,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.08,
+    shadowRadius: 14,
+  },
+  nextStepTitle: {
+    color: THEME.surface,
+    fontSize: 14,
+    fontWeight: "900",
+    textTransform: "uppercase",
+  },
+  nextStepText: {
+    color: THEME.surface,
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 25,
+    marginTop: 8,
+  },
+  whyResultToggle: {
+    alignItems: "center",
+    backgroundColor: THEME.surface,
+    borderRadius: 22,
+    elevation: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 14,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+  },
+  whyResultToggleText: {
+    color: THEME.ink,
+    fontSize: 15,
+    fontWeight: "900",
+  },
+  whyResultToggleIcon: {
+    color: THEME.accent,
+    fontSize: 22,
+    fontWeight: "900",
+  },
+  whyResultPanel: {
+    backgroundColor: THEME.softAccent,
+    borderRadius: 22,
+    marginTop: 8,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+  },
+  whyResultText: {
+    color: THEME.slate,
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 21,
+  },
   comparisonRow: {
     flexDirection: "row",
-    gap: 10,
+    gap: 14,
   },
   comparisonPanel: {
+    alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: 26,
+    elevation: 2,
     flex: 1,
-    padding: 10,
+    padding: 14,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
   },
   comparisonLabel: {
     color: THEME.ink,
-    fontSize: 12,
-    fontWeight: "800",
-    marginBottom: 8,
+    fontSize: 14,
+    fontWeight: "900",
+    marginBottom: 10,
     textAlign: "center",
   },
   comparisonImage: {
     aspectRatio: 1,
     backgroundColor: THEME.softMuted,
-    borderRadius: 6,
+    borderRadius: 18,
     width: "100%",
   },
   comparisonPlaceholder: {
     alignItems: "center",
     aspectRatio: 1,
     backgroundColor: THEME.softMuted,
-    borderRadius: 6,
+    borderRadius: 18,
     justifyContent: "center",
     width: "100%",
+  },
+  historyIntroCard: {
+    backgroundColor: THEME.accent,
+    borderRadius: 30,
+    elevation: 3,
+    marginBottom: 18,
+    paddingHorizontal: 22,
+    paddingVertical: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+  },
+  historyIntroTitle: {
+    color: THEME.surface,
+    fontSize: 22,
+    fontWeight: "900",
+  },
+  historyIntroText: {
+    color: THEME.surface,
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 21,
+    marginTop: 8,
+    opacity: 0.92,
   },
   progressRow: {
     alignItems: "center",
@@ -2860,62 +3317,72 @@ const styles = StyleSheet.create({
   attemptCard: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: 28,
+    elevation: 2,
     flexDirection: "row",
-    marginBottom: 10,
-    padding: 10,
+    marginBottom: 14,
+    minHeight: 112,
+    padding: 16,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
   },
   attemptThumb: {
     backgroundColor: THEME.softMuted,
-    borderRadius: 6,
-    height: 72,
-    width: 72,
+    borderRadius: 22,
+    height: 82,
+    width: 82,
   },
   attemptBody: {
     flex: 1,
-    marginLeft: 12,
+    marginLeft: 16,
   },
   attemptTitle: {
     color: THEME.ink,
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: "900",
   },
   attemptMeta: {
     color: THEME.slate,
-    fontSize: 12,
-    marginTop: 2,
+    fontSize: 13,
+    fontWeight: "700",
+    marginTop: 4,
   },
   attemptScore: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "900",
-    marginTop: 5,
+    marginTop: 8,
   },
   attemptRegion: {
     color: THEME.slate,
-    fontSize: 12,
-    fontWeight: "700",
-    marginTop: 3,
+    fontSize: 13,
+    fontWeight: "800",
+    lineHeight: 18,
+    marginTop: 4,
   },
   characterDetailHero: {
     alignItems: "center",
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    marginBottom: 12,
-    padding: 16,
+    borderRadius: 30,
+    elevation: 3,
+    marginBottom: 18,
+    minHeight: 260,
+    padding: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
   },
   characterDetailGlyph: {
-    height: 140,
-    width: "80%",
+    height: 170,
+    width: "92%",
   },
   characterDetailDevanagari: {
     color: THEME.ink,
-    fontSize: 34,
+    fontSize: 46,
     fontWeight: "900",
-    marginTop: 6,
+    marginTop: 10,
   },
   profileHeader: {
     alignItems: "center",
@@ -3058,8 +3525,9 @@ const styles = StyleSheet.create({
   },
   profileStatValue: {
     color: THEME.ink,
-    fontSize: 34,
+    fontSize: 30,
     fontWeight: "900",
+    lineHeight: 34,
   },
   profileStatLabel: {
     color: THEME.ink,
@@ -3167,16 +3635,16 @@ const styles = StyleSheet.create({
     shadowRadius: 14,
   },
   accountLabel: {
-    color: THEME.ink,
-    fontSize: 13,
+    color: THEME.slate,
+    fontSize: 12,
     fontWeight: "900",
     marginBottom: 8,
     marginTop: 12,
     textTransform: "uppercase",
   },
   accountInput: {
-    backgroundColor: THEME.softMuted,
-    borderRadius: 24,
+    backgroundColor: THEME.background,
+    borderRadius: 26,
     color: THEME.ink,
     fontSize: 16,
     fontWeight: "700",
@@ -3297,6 +3765,33 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     top: 0,
+  },
+  loadingCard: {
+    alignItems: "center",
+    backgroundColor: THEME.surface,
+    borderRadius: 30,
+    elevation: 4,
+    paddingHorizontal: 28,
+    paddingVertical: 26,
+    shadowColor: THEME.ink,
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.18,
+    shadowRadius: 24,
+    width: "78%",
+  },
+  loadingTitle: {
+    color: THEME.ink,
+    fontSize: 18,
+    fontWeight: "900",
+    marginTop: 14,
+  },
+  loadingText: {
+    color: THEME.slate,
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 20,
+    marginTop: 6,
+    textAlign: "center",
   },
   message: {
     backgroundColor: THEME.ink,

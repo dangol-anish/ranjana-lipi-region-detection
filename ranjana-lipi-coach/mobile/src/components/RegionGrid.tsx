@@ -8,7 +8,9 @@ const UI = {
   paper: "#FDFDFF",
   muted: "#C6C5B9",
   slate: "#546A7B",
+  accent: "#62929E",
   softMuted: "#EFEFEB",
+  softAccent: "#E7F0F2",
   primaryProblem: "#B33B2E",
   primaryProblemSoft: "#F7DFDB",
   secondaryProblem: "#A46A16",
@@ -59,19 +61,18 @@ function extractRankMap(feedback: RegionFeedback | null): Map<string, number> {
   return ranks;
 }
 
-function regionDisplayValue(region?: RegionScore): string {
-  if (region?.insufficient_data) {
-    return "n/a";
-  }
+function bandLabel(band: string): string {
+  return `${band[0].toUpperCase()}${band.slice(1)}`;
+}
 
-  const value =
-    region?.z_score ??
-    region?.normalized_score ??
-    region?.score ??
-    region?.normalized_error ??
-    region?.mean_error ??
-    region?.error;
-  return typeof value === "number" ? value.toFixed(value > 1 ? 1 : 3) : "";
+function bandMessage(band: string, rank?: number): string {
+  if (rank === 1) {
+    return "Needs attention";
+  }
+  if (rank === 2 || rank === 3) {
+    return "Check this area";
+  }
+  return "Looks okay";
 }
 
 type RegionGridProps = {
@@ -116,7 +117,7 @@ export function RegionGrid({ feedback }: RegionGridProps) {
                 isSecondary && styles.secondaryText,
               ]}
             >
-              {region?.label ?? region?.region ?? band}
+              {region?.label ?? bandLabel(region?.region ?? band)}
             </Text>
             <Text
               style={[
@@ -125,7 +126,7 @@ export function RegionGrid({ feedback }: RegionGridProps) {
                 isSecondary && styles.secondaryText,
               ]}
             >
-              {regionDisplayValue(region)}
+              {bandMessage(band, rank)}
             </Text>
           </View>
         );
@@ -137,37 +138,41 @@ export function RegionGrid({ feedback }: RegionGridProps) {
 const styles = StyleSheet.create({
   grid: {
     width: "100%",
-    height: 240,
-    borderWidth: 1,
-    borderColor: UI.ink,
-    backgroundColor: UI.softMuted,
+    backgroundColor: UI.paper,
+    borderRadius: 28,
+    elevation: 3,
+    gap: 10,
+    padding: 14,
+    shadowColor: UI.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
   },
   cell: {
     width: "100%",
-    height: "33.3333%",
-    borderWidth: 0.5,
-    borderColor: UI.muted,
+    minHeight: 76,
+    backgroundColor: UI.softMuted,
+    borderRadius: 22,
     alignItems: "center",
     justifyContent: "center",
-    padding: 6,
+    paddingHorizontal: 18,
+    paddingVertical: 14,
   },
   primaryCell: {
     backgroundColor: UI.primaryProblemSoft,
-    borderColor: UI.primaryProblem,
   },
   secondaryCell: {
     backgroundColor: UI.secondaryProblemSoft,
-    borderColor: UI.secondaryProblem,
   },
   rankBadge: {
     alignItems: "center",
-    borderRadius: 10,
-    height: 20,
+    borderRadius: 14,
+    height: 28,
     justifyContent: "center",
     position: "absolute",
-    right: 5,
-    top: 5,
-    width: 20,
+    right: 14,
+    top: 14,
+    width: 28,
   },
   primaryBadge: {
     backgroundColor: UI.primaryProblem,
@@ -176,7 +181,7 @@ const styles = StyleSheet.create({
     backgroundColor: UI.secondaryProblem,
   },
   rankText: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: "900",
   },
   primaryRankText: {
@@ -187,14 +192,15 @@ const styles = StyleSheet.create({
   },
   cellLabel: {
     color: UI.ink,
-    fontSize: 11,
+    fontSize: 18,
+    fontWeight: "900",
     textAlign: "center",
   },
   cellValue: {
     color: UI.slate,
-    fontSize: 12,
-    fontWeight: "700",
-    marginTop: 4,
+    fontSize: 13,
+    fontWeight: "800",
+    marginTop: 6,
   },
   primaryText: {
     color: UI.primaryProblem,

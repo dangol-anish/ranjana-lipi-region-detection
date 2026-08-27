@@ -32,7 +32,9 @@ STRUCTURAL_CLASS_SET = frozenset(VALIDATED_STRUCTURAL_CLASSES)
 MIN_NORMALIZED_INK_PIXELS = 250
 STRUCTURAL_WRONG_CLASS_MIN_BEST_SCORE = 60.0
 STRUCTURAL_WRONG_CLASS_MIN_SCORE_GAP = 15.0
+STRUCTURAL_VALID_INPUT_MIN_BEST_SCORE = 35.0
 INSUFFICIENT_INPUT_MESSAGE = "Insufficient input — please draw the full character."
+INVALID_INPUT_MESSAGE = "This does not look like a supported character. Please upload or draw a clear character."
 WRONG_CHARACTER_MESSAGE_TEMPLATE = (
     "This attempt looks like {predicted_class}, not {target_class}. "
     "Please choose the matching character or redraw the selected one."
@@ -118,6 +120,65 @@ def insufficient_input_feedback(
             "problem_regions": [],
             "all_regions": [],
             "insufficient_input": True,
+        },
+    }
+
+
+def invalid_input_feedback(
+    class_name: str,
+    normalized: np.ndarray,
+    match_scores: list[dict[str, Any]] | None = None,
+    rows: int = 3,
+    cols: int = 3,
+) -> dict[str, Any]:
+    ink_pixel_count = normalized_ink_pixel_count(normalized)
+    best_match = match_scores[0] if match_scores else None
+    best_score = float(best_match["score"]) if best_match else 0.0
+    return {
+        "class_name": class_name,
+        "target_class": class_name,
+        "predicted_class": None,
+        "recognizer_confidence": 0.0,
+        "grid": {"rows": rows, "cols": cols},
+        "overall_score": 0.0,
+        "mean_error": 0.0,
+        "std_error": 0.0,
+        "max_region_error": 0.0,
+        "threshold": 0.0,
+        "mean_z_score": 0.0,
+        "std_z_score": 0.0,
+        "max_z_score": 0.0,
+        "invalid_input": True,
+        "message": INVALID_INPUT_MESSAGE,
+        "warning": INVALID_INPUT_MESSAGE,
+        "ink_pixel_count": ink_pixel_count,
+        "threshold_settings": {
+            "valid_input_gate": "structural_best_score",
+            "min_structural_best_score": STRUCTURAL_VALID_INPUT_MIN_BEST_SCORE,
+            "best_structural_score": best_score,
+        },
+        "problem_regions": [],
+        "all_regions": [],
+        "fine_grid": {
+            "rows": rows,
+            "cols": cols,
+            "problem_regions": [],
+            "all_regions": [],
+            "invalid_input": True,
+        },
+        "broad_bands": {
+            "bands": ["top", "middle", "bottom"],
+            "problem_regions": [],
+            "all_regions": [],
+            "invalid_input": True,
+        },
+        "structural_match": {
+            "selected_class": class_name,
+            "best_class": best_match["class_name"] if best_match else None,
+            "best_score": best_score,
+            "all_scores": match_scores or [],
+            "min_valid_input_best_score": STRUCTURAL_VALID_INPUT_MIN_BEST_SCORE,
+            "input_blocked": True,
         },
     }
 
@@ -616,6 +677,11 @@ def analyze_attempt(
             return {"normalized": normalized, "feedback": feedback}
         feedback = structural_feedback_for_selected_class(normalized, target_class, rows, cols)
         match_scores = structural_match_scores(decoded, target_class, normalized, feedback, rows, cols)
+        best_structural_score = float(match_scores[0]["score"]) if match_scores else 0.0
+        if best_structural_score < STRUCTURAL_VALID_INPUT_MIN_BEST_SCORE:
+            blocked_feedback = invalid_input_feedback(target_class, normalized, match_scores, rows, cols)
+            attach_recognizer_metadata(blocked_feedback, None, target_class, model_route, blocked_scoring=True)
+            return {"normalized": normalized, "feedback": blocked_feedback}
         should_block, best_match, score_gap = should_block_structural_wrong_character(match_scores, target_class)
         if should_block and best_match is not None:
             structural_result = RecognizerResult(
