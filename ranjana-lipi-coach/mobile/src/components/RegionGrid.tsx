@@ -3,6 +3,17 @@ import { StyleSheet, Text, View } from "react-native";
 import type { RegionFeedback, RegionScore } from "../types";
 
 const BAND_LABELS = ["top", "middle", "bottom"];
+const UI = {
+  ink: "#393D3F",
+  paper: "#FDFDFF",
+  muted: "#C6C5B9",
+  slate: "#546A7B",
+  softMuted: "#EFEFEB",
+  primaryProblem: "#B33B2E",
+  primaryProblemSoft: "#F7DFDB",
+  secondaryProblem: "#A46A16",
+  secondaryProblemSoft: "#F5EBCB",
+};
 
 function regionKey(region: RegionScore): string {
   return region.region ?? `${region.row}-${region.col}`;
@@ -128,25 +139,25 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 240,
     borderWidth: 1,
-    borderColor: "#263238",
-    backgroundColor: "#f8faf7",
+    borderColor: UI.ink,
+    backgroundColor: UI.softMuted,
   },
   cell: {
     width: "100%",
     height: "33.3333%",
     borderWidth: 0.5,
-    borderColor: "#5f6f69",
+    borderColor: UI.muted,
     alignItems: "center",
     justifyContent: "center",
     padding: 6,
   },
   primaryCell: {
-    backgroundColor: "#ffe3dc",
-    borderColor: "#b9432e",
+    backgroundColor: UI.primaryProblemSoft,
+    borderColor: UI.primaryProblem,
   },
   secondaryCell: {
-    backgroundColor: "#fff1bf",
-    borderColor: "#c58b18",
+    backgroundColor: UI.secondaryProblemSoft,
+    borderColor: UI.secondaryProblem,
   },
   rankBadge: {
     alignItems: "center",
@@ -159,36 +170,36 @@ const styles = StyleSheet.create({
     width: 20,
   },
   primaryBadge: {
-    backgroundColor: "#b9432e",
+    backgroundColor: UI.primaryProblem,
   },
   secondaryBadge: {
-    backgroundColor: "#c58b18",
+    backgroundColor: UI.secondaryProblem,
   },
   rankText: {
     fontSize: 11,
     fontWeight: "900",
   },
   primaryRankText: {
-    color: "#ffffff",
+    color: UI.paper,
   },
   secondaryRankText: {
-    color: "#ffffff",
+    color: UI.paper,
   },
   cellLabel: {
-    color: "#263238",
+    color: UI.ink,
     fontSize: 11,
     textAlign: "center",
   },
   cellValue: {
-    color: "#52615b",
+    color: UI.slate,
     fontSize: 12,
     fontWeight: "700",
     marginTop: 4,
   },
   primaryText: {
-    color: "#8e2f1e",
+    color: UI.primaryProblem,
   },
   secondaryText: {
-    color: "#76500d",
+    color: UI.secondaryProblem,
   },
 });

@@ -21,8 +21,18 @@ type DrawingCanvasProps = {
   size?: number | DimensionValue;
 };
 
-const INK_COLOR = "#111816";
-const PAPER_COLOR = "#fffefb";
+const UI = {
+  ink: "#393D3F",
+  paper: "#FDFDFF",
+  muted: "#C6C5B9",
+  accent: "#62929E",
+  slate: "#546A7B",
+  softAccent: "#E7F0F2",
+  softMuted: "#EFEFEB",
+};
+
+const INK_COLOR = UI.ink;
+const PAPER_COLOR = UI.paper;
 const STROKE_WIDTHS = [6, 10, 14, 18];
 
 export const DrawingCanvas = forwardRef<DrawingCanvasHandle, DrawingCanvasProps>(
@@ -212,7 +222,7 @@ const styles = StyleSheet.create({
   },
   canvas: {
     backgroundColor: PAPER_COLOR,
-    borderColor: "#263238",
+    borderColor: UI.ink,
     borderRadius: 8,
     borderWidth: 1,
     overflow: "hidden",
@@ -222,8 +232,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   toolbar: {
-    backgroundColor: "#ffffff",
-    borderColor: "#d7e0dc",
+    backgroundColor: UI.paper,
+    borderColor: UI.muted,
     borderRadius: 8,
     borderWidth: 1,
     marginBottom: 10,
@@ -236,8 +246,8 @@ const styles = StyleSheet.create({
   },
   strokeButton: {
     alignItems: "center",
-    backgroundColor: "#f8faf7",
-    borderColor: "#cfdad5",
+    backgroundColor: UI.softMuted,
+    borderColor: UI.muted,
     borderRadius: 7,
     borderWidth: 1,
     flex: 1,
@@ -245,8 +255,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   strokeButtonActive: {
-    backgroundColor: "#dce9e3",
-    borderColor: "#246b55",
+    backgroundColor: UI.softAccent,
+    borderColor: UI.accent,
   },
   strokePreview: {
     backgroundColor: INK_COLOR,
@@ -259,8 +269,8 @@ const styles = StyleSheet.create({
   },
   toolButton: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#b8c6c1",
+    backgroundColor: UI.paper,
+    borderColor: UI.muted,
     borderRadius: 7,
     borderWidth: 1,
     flexGrow: 1,
@@ -268,23 +278,23 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   toolButtonActive: {
-    backgroundColor: "#21443a",
-    borderColor: "#21443a",
+    backgroundColor: UI.accent,
+    borderColor: UI.accent,
   },
   toolButtonText: {
-    color: "#263238",
+    color: UI.ink,
     fontSize: 12,
     fontWeight: "800",
   },
   toolButtonTextActive: {
-    color: "#ffffff",
+    color: UI.paper,
   },
   canvasFooter: {
     alignItems: "center",
     marginTop: 8,
   },
   hint: {
-    color: "#65736f",
+    color: UI.slate,
     fontSize: 12,
   },
 });

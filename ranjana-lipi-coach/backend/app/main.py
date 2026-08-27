@@ -16,7 +16,7 @@ from app.core.database import SessionLocal
 from app.services.characters import seed_default_characters
 
 
-app = FastAPI(title="Ranjana Lipi Coach API")
+app = FastAPI(title="Ranjana Lipi Handwriting Learner API")
 
 # Development only: allow all origins while the Expo app and backend are local.
 app.add_middleware(
