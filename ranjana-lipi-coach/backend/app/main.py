@@ -3,7 +3,9 @@
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.auth import router as auth_router
@@ -40,8 +42,28 @@ REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed" / "references"
 GENERAL_REFERENCES_DIR = BACKEND_ROOT / "ml" / "processed_general" / "references"
 RAW_REFERENCES_DIR = PROJECT_ROOT / "data" / "Reference"
 DISPLAY_GLYPHS_DIR = BACKEND_ROOT / "ml" / "display_glyphs"
+STRUCTURE_VALIDATION_DIR = PROJECT_ROOT / "data" / "StructureValidation"
 UPLOADS_DIR = BACKEND_ROOT / "uploads"
 DEMO_CANVAS_DIR = PROJECT_ROOT / "data" / "Canvas"
+SPECIALIZED_DISPLAY_CLASSES = {
+    "a",
+    "aa",
+    "cha",
+    "da",
+    "dda",
+    "ddha",
+    "ga",
+    "gha",
+    "ja",
+    "jha",
+    "ka",
+    "ma",
+    "nna",
+    "ta",
+    "ya",
+}
+DISPLAY_IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg")
+NO_CACHE_HEADERS = {"Cache-Control": "no-store, max-age=0"}
 
 UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -55,8 +77,25 @@ if GENERAL_REFERENCES_DIR.is_dir():
     )
 if RAW_REFERENCES_DIR.is_dir():
     app.mount("/reference_photos", StaticFiles(directory=str(RAW_REFERENCES_DIR)), name="reference_photos")
-if DISPLAY_GLYPHS_DIR.is_dir():
-    app.mount("/display_glyphs", StaticFiles(directory=str(DISPLAY_GLYPHS_DIR)), name="display_glyphs")
+
+
+@app.get("/display_glyphs/{filename}")
+def display_glyph(filename: str) -> FileResponse:
+    character_name = Path(filename).stem
+    if character_name in SPECIALIZED_DISPLAY_CLASSES:
+        good_dir = STRUCTURE_VALIDATION_DIR / character_name / "good"
+        for extension in DISPLAY_IMAGE_EXTENSIONS:
+            candidate = good_dir / f"{character_name}_good_01{extension}"
+            if candidate.is_file():
+                return FileResponse(str(candidate), headers=NO_CACHE_HEADERS)
+
+    fallback = DISPLAY_GLYPHS_DIR / f"{character_name}.png"
+    if fallback.is_file():
+        return FileResponse(str(fallback), headers=NO_CACHE_HEADERS)
+
+    raise HTTPException(status_code=404, detail="Display glyph not found.")
+
+
 if DEMO_CANVAS_DIR.is_dir():
     app.mount("/demo_canvas", StaticFiles(directory=str(DEMO_CANVAS_DIR)), name="demo_canvas")
 app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")

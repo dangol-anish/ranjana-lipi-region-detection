@@ -189,7 +189,7 @@ function characterDisplayLabel(character: Character): string {
 }
 
 function characterGlyphUri(baseUrl: string, characterName: string): string {
-  return `${baseUrl}/display_glyphs/${characterName}.png`;
+  return `${baseUrl}/display_glyphs/${characterName}.png?v=structure-good-15`;
 }
 
 function demoCanvasUri(baseUrl: string, characterName: string): string {
@@ -235,7 +235,7 @@ function attemptCharacterLabel(
 ): string {
   const character = characters.find((item) => item.id === attempt.character_id);
   return character
-    ? `${characterDisplayLabel(character)} ${character.name}`
+    ? characterDisplayLabel(character)
     : `Character ${attempt.character_id}`;
 }
 
@@ -775,7 +775,7 @@ export default function App() {
     setResult(null);
     setMessage(null);
     setCharacterSearch("");
-    setCharacterPickerOpen(mode === "free_practice");
+    setCharacterPickerOpen(false);
     setScreen("practice");
   }
 
@@ -906,10 +906,6 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Header
           title="Ranjana Lipi Handwriting Learner"
-          userName={user?.display_name ?? user?.email ?? "Student"}
-          onLogout={handleLogout}
-          onHistory={() => setScreen("history")}
-          onProfile={() => setScreen("profile")}
         />
 
         <Text style={styles.homeEyebrow}>Learn at your pace</Text>
@@ -933,7 +929,7 @@ export default function App() {
         <View style={styles.rowBetween}>
           <Text style={styles.homeSectionTitle}>Progress</Text>
           <TouchableOpacity onPress={() => setScreen("progress")}>
-            <Text style={styles.linkText}>Open dashboard</Text>
+            <Text style={styles.linkText}>Open insights</Text>
           </TouchableOpacity>
         </View>
         {progress.slice(0, 5).map((item) => (
@@ -975,9 +971,6 @@ export default function App() {
               <Text style={styles.practiceDevanagariLabel}>
                 {characterDisplayLabel(selectedCharacter)}
               </Text>
-              <Text style={styles.practiceCharacterName}>
-                {selectedCharacter.name}
-              </Text>
               {selectedMode === "free_practice" ? (
                 <TouchableOpacity
                   style={styles.changeCharacterButton}
@@ -1002,15 +995,24 @@ export default function App() {
 
           {selectedMode === "free_practice" && characterPickerOpen ? (
             <View style={styles.characterPickerPanel}>
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Search characters"
-                style={styles.input}
-                value={characterSearch}
-                onChangeText={setCharacterSearch}
-              />
-              <View style={styles.characterGrid}>
+              <View style={styles.characterSearchBar}>
+                <Text style={styles.characterSearchIcon}>⌕</Text>
+                <TextInput
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  placeholder="Search by name or letter"
+                  placeholderTextColor={THEME.slate}
+                  style={styles.characterSearchInput}
+                  value={characterSearch}
+                  onChangeText={setCharacterSearch}
+                />
+              </View>
+              <ScrollView
+                nestedScrollEnabled
+                style={styles.characterPickerList}
+                contentContainerStyle={styles.characterGrid}
+                keyboardShouldPersistTaps="handled"
+              >
                 {filteredCharacters.map((character) => (
                   <TouchableOpacity
                     key={character.id}
@@ -1034,18 +1036,9 @@ export default function App() {
                     >
                       {characterDisplayLabel(character)}
                     </Text>
-                    <Text
-                      style={[
-                        styles.characterSlug,
-                        selectedCharacter?.id === character.id &&
-                          styles.selectedChipText,
-                      ]}
-                    >
-                      {character.name}
-                    </Text>
                   </TouchableOpacity>
                 ))}
-              </View>
+              </ScrollView>
               {filteredCharacters.length === 0 ? (
                 <Text style={styles.emptyText}>
                   No characters match that search.
@@ -1245,9 +1238,70 @@ export default function App() {
   }
 
   function renderProgress() {
+    const stats = profile?.stats;
+
     return (
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <TopNav title="Progress Dashboard" onBack={() => setScreen("home")} />
+        <TopNav title="Insights" onBack={() => setScreen("home")} />
+        <View style={styles.insightStatsGrid}>
+          <View style={styles.insightStatBox}>
+            <Text style={styles.insightStatValue}>
+              {stats?.total_attempts ?? 0}
+            </Text>
+            <Text style={styles.insightStatLabel}>Attempts</Text>
+          </View>
+          <View style={styles.insightStatBox}>
+            <Text style={styles.insightStatValue}>
+              {stats?.practiced_characters ?? 0}
+            </Text>
+            <Text style={styles.insightStatLabel}>Practiced</Text>
+          </View>
+          <View style={styles.insightStatBox}>
+            <Text style={styles.insightStatValue}>
+              {stats?.mastered_characters ?? 0}
+            </Text>
+            <Text style={styles.insightStatLabel}>Mastered</Text>
+          </View>
+          <View style={styles.insightStatBox}>
+            <Text style={styles.insightStatValue}>
+              {stats?.current_streak_days ?? 0}
+            </Text>
+            <Text style={styles.insightStatLabel}>Day Streak</Text>
+          </View>
+        </View>
+
+        <View style={styles.insightScoreRow}>
+          <View>
+            <Text style={styles.insightScoreLabel}>Average Score</Text>
+            <Text
+              style={[
+                styles.insightScoreValue,
+                { color: scoreColor(stats?.average_score) },
+              ]}
+            >
+              {scoreText(stats?.average_score)}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.insightScoreLabel}>Best Score</Text>
+            <Text
+              style={[
+                styles.insightScoreValue,
+                { color: scoreColor(stats?.best_score) },
+              ]}
+            >
+              {scoreText(stats?.best_score)}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.insightScoreLabel}>Longest Streak</Text>
+            <Text style={styles.insightScoreValue}>
+              {stats?.longest_streak_days ?? 0}d
+            </Text>
+          </View>
+        </View>
+
+        <Text style={styles.profileSectionTitle}>Character Progress</Text>
         {progress.map((item) => (
           <ProgressRow
             key={item.character.id}
@@ -1356,9 +1410,6 @@ export default function App() {
           <Text style={styles.characterDetailDevanagari}>
             {characterDisplayLabel(detail.character)}
           </Text>
-          <Text style={styles.characterDetailSlug}>
-            {detail.character.name}
-          </Text>
         </View>
 
         <View style={styles.profileStatsGrid}>
@@ -1414,7 +1465,6 @@ export default function App() {
   }
 
   function renderProfile() {
-    const stats = profile?.stats;
     const displayName =
       profile?.user.display_name ??
       profile?.user.email ??
@@ -1450,13 +1500,7 @@ export default function App() {
             </View>
           </TouchableOpacity>
           <Text style={styles.profileScreenTitle}>Profile</Text>
-          <TouchableOpacity
-            accessibilityLabel="Open attempt history"
-            style={styles.profileIconButton}
-            onPress={() => setScreen("history")}
-          >
-            <Text style={styles.profileGear}>⚙</Text>
-          </TouchableOpacity>
+          <View style={styles.profileIconButton} />
         </View>
 
         <View style={styles.profileHeader}>
@@ -1471,65 +1515,7 @@ export default function App() {
           </View>
         </View>
 
-        <View style={styles.profileStatsGrid}>
-          <View style={styles.profileStatBox}>
-            <Text style={styles.profileStatValue}>
-              {stats?.total_attempts ?? 0}
-            </Text>
-            <Text style={styles.profileStatLabel}>Attempts</Text>
-          </View>
-          <View style={styles.profileStatBox}>
-            <Text style={styles.profileStatValue}>
-              {stats?.practiced_characters ?? 0}
-            </Text>
-            <Text style={styles.profileStatLabel}>Practiced</Text>
-          </View>
-          <View style={styles.profileStatBox}>
-            <Text style={styles.profileStatValue}>
-              {stats?.mastered_characters ?? 0}
-            </Text>
-            <Text style={styles.profileStatLabel}>Mastered</Text>
-          </View>
-          <View style={styles.profileStatBox}>
-            <Text style={styles.profileStatValue}>
-              {stats?.current_streak_days ?? 0}
-            </Text>
-            <Text style={styles.profileStatLabel}>Day Streak</Text>
-          </View>
-        </View>
-
-        <View style={styles.profileScoreRow}>
-          <View>
-            <Text style={styles.profileScoreLabel}>Average Score</Text>
-            <Text
-              style={[
-                styles.profileScoreValue,
-                { color: scoreColor(stats?.average_score) },
-              ]}
-            >
-              {scoreText(stats?.average_score)}
-            </Text>
-          </View>
-          <View>
-            <Text style={styles.profileScoreLabel}>Best Score</Text>
-            <Text
-              style={[
-                styles.profileScoreValue,
-                { color: scoreColor(stats?.best_score) },
-              ]}
-            >
-              {scoreText(stats?.best_score)}
-            </Text>
-          </View>
-          <View>
-            <Text style={styles.profileScoreLabel}>Longest Streak</Text>
-            <Text style={styles.profileScoreValue}>
-              {stats?.longest_streak_days ?? 0}d
-            </Text>
-          </View>
-        </View>
-
-        <Text style={styles.profileSectionTitle}>Practice Heatmap</Text>
+        <Text style={styles.profileSectionTitle}>Your logs</Text>
         <View style={styles.heatmapPanel}>
           <View style={styles.heatmapGrid}>
             {heatmap.map((day) => (
@@ -1556,6 +1542,10 @@ export default function App() {
             <Text style={styles.heatmapLegendText}>More</Text>
           </View>
         </View>
+
+        <TouchableOpacity style={styles.profileLogoutButton} onPress={handleLogout}>
+          <Text style={styles.profileLogoutButtonText}>Logout</Text>
+        </TouchableOpacity>
 
       </ScrollView>
     );
@@ -1608,21 +1598,7 @@ export default function App() {
   );
 }
 
-function Header({
-  title,
-  userName: _userName,
-  onLogout,
-  onHistory,
-  onProfile,
-}: {
-  title: string;
-  userName: string;
-  onLogout: () => void;
-  onHistory: () => void;
-  onProfile: () => void;
-}) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+function Header({ title }: { title: string }) {
   return (
     <View style={styles.header}>
       <View style={styles.headerBrand}>
@@ -1632,48 +1608,6 @@ function Header({
           style={styles.headerLogo}
           resizeMode="contain"
         />
-      </View>
-      <View style={styles.headerMenu}>
-        <TouchableOpacity
-          accessibilityLabel="Open account menu"
-          style={styles.iconButton}
-          onPress={() => setMenuOpen((current) => !current)}
-        >
-          <View style={styles.menuDot} />
-          <View style={styles.menuDot} />
-          <View style={styles.menuDot} />
-        </TouchableOpacity>
-        {menuOpen ? (
-          <View style={styles.menuPopover}>
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => {
-                setMenuOpen(false);
-                onProfile();
-              }}
-            >
-              <Text style={styles.menuItemText}>Profile</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => {
-                setMenuOpen(false);
-                onHistory();
-              }}
-            >
-              <Text style={styles.menuItemText}>Attempt History</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => {
-                setMenuOpen(false);
-                onLogout();
-              }}
-            >
-              <Text style={styles.menuItemText}>Logout</Text>
-            </TouchableOpacity>
-          </View>
-        ) : null}
       </View>
     </View>
   );
@@ -1739,7 +1673,6 @@ function BottomNav({
       icon: "▥",
       active:
         activeScreen === "progress" ||
-        activeScreen === "history" ||
         activeScreen === "character_detail",
       onPress: onInsights,
     },
@@ -1969,9 +1902,8 @@ const styles = StyleSheet.create({
     marginBottom: 22,
   },
   headerBrand: {
-    alignItems: "flex-start",
+    alignItems: "center",
     flex: 1,
-    paddingRight: 14,
   },
   screenTitle: {
     color: THEME.ink,
@@ -2000,44 +1932,6 @@ const styles = StyleSheet.create({
     height: 48,
     justifyContent: "center",
     width: 48,
-  },
-  headerMenu: {
-    alignItems: "flex-end",
-    position: "relative",
-  },
-  iconButton: {
-    alignItems: "center",
-    borderRadius: 18,
-    gap: 3,
-    height: 36,
-    justifyContent: "center",
-    marginTop: 1,
-    width: 36,
-  },
-  menuDot: {
-    backgroundColor: THEME.ink,
-    borderRadius: 2,
-    height: 4,
-    width: 4,
-  },
-  menuPopover: {
-    backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    minWidth: 156,
-    position: "absolute",
-    right: 0,
-    top: 42,
-    zIndex: 20,
-  },
-  menuItem: {
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-  },
-  menuItemText: {
-    color: THEME.ink,
-    fontWeight: "800",
   },
   navSpacer: {
     width: 42,
@@ -2090,18 +1984,24 @@ const styles = StyleSheet.create({
   characterGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
-    marginTop: 12,
+    gap: 12,
+    paddingBottom: 4,
   },
   characterChip: {
     backgroundColor: THEME.surface,
-    borderColor: THEME.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    flexBasis: "30%",
+    borderRadius: 22,
+    elevation: 1,
+    flexBasis: "29%",
     flexGrow: 1,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    minHeight: 86,
+    paddingHorizontal: 12,
+    paddingVertical: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
   },
   practiceGlyphBox: {
     alignItems: "center",
@@ -2129,12 +2029,6 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: "900",
     marginTop: 12,
-  },
-  practiceCharacterName: {
-    color: THEME.slate,
-    fontSize: 16,
-    fontWeight: "800",
-    marginTop: 2,
   },
   selectedCharacterPanel: {
     alignItems: "center",
@@ -2231,21 +2125,50 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
   characterPickerPanel: {
-    marginTop: 10,
+    backgroundColor: THEME.surface,
+    borderRadius: 26,
+    elevation: 2,
+    marginBottom: 22,
+    padding: 16,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.07,
+    shadowRadius: 16,
+  },
+  characterPickerList: {
+    maxHeight: 372,
+    marginTop: 16,
+  },
+  characterSearchBar: {
+    alignItems: "center",
+    backgroundColor: THEME.softMuted,
+    borderRadius: 28,
+    flexDirection: "row",
+    minHeight: 54,
+    paddingHorizontal: 18,
+  },
+  characterSearchIcon: {
+    color: THEME.accent,
+    fontSize: 24,
+    fontWeight: "900",
+    lineHeight: 26,
+    marginRight: 10,
+  },
+  characterSearchInput: {
+    color: THEME.ink,
+    flex: 1,
+    fontSize: 16,
+    fontWeight: "700",
+    minHeight: 54,
+    padding: 0,
   },
   selectedChip: {
     backgroundColor: THEME.accent,
-    borderColor: THEME.accent,
   },
   characterName: {
     color: THEME.ink,
-    fontSize: 18,
-    fontWeight: "800",
-  },
-  characterSlug: {
-    color: THEME.slate,
-    fontSize: 12,
-    marginTop: 2,
+    fontSize: 26,
+    fontWeight: "900",
   },
   selectedChipText: {
     color: THEME.surface,
@@ -2605,12 +2528,6 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     marginTop: 6,
   },
-  characterDetailSlug: {
-    color: THEME.slate,
-    fontSize: 14,
-    fontWeight: "800",
-    marginTop: 2,
-  },
   profileHeader: {
     alignItems: "center",
     backgroundColor: THEME.surface,
@@ -2704,6 +2621,38 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: 16,
   },
+  insightStatsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    rowGap: 16,
+  },
+  insightStatBox: {
+    backgroundColor: THEME.surface,
+    borderRadius: 28,
+    elevation: 2,
+    minHeight: 112,
+    paddingHorizontal: 22,
+    paddingVertical: 22,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
+    width: "47.5%",
+  },
+  insightStatValue: {
+    color: THEME.ink,
+    fontSize: 38,
+    fontWeight: "900",
+  },
+  insightStatLabel: {
+    color: THEME.ink,
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0,
+    marginTop: 8,
+    textTransform: "uppercase",
+  },
   profileStatBox: {
     backgroundColor: THEME.surface,
     borderRadius: 28,
@@ -2752,6 +2701,27 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     marginTop: 12,
   },
+  insightScoreRow: {
+    backgroundColor: "#E1E2E5",
+    borderRadius: 28,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 26,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+  insightScoreLabel: {
+    color: THEME.ink,
+    fontSize: 10,
+    fontWeight: "800",
+    textTransform: "uppercase",
+  },
+  insightScoreValue: {
+    color: THEME.ink,
+    fontSize: 20,
+    fontWeight: "900",
+    marginTop: 12,
+  },
   heatmapPanel: {
     backgroundColor: THEME.surface,
     borderRadius: 28,
@@ -2795,6 +2765,19 @@ const styles = StyleSheet.create({
     color: THEME.slate,
     fontSize: 11,
     fontWeight: "700",
+  },
+  profileLogoutButton: {
+    alignItems: "center",
+    backgroundColor: THEME.ink,
+    borderRadius: 28,
+    justifyContent: "center",
+    marginTop: 28,
+    minHeight: 56,
+  },
+  profileLogoutButtonText: {
+    color: THEME.surface,
+    fontSize: 16,
+    fontWeight: "900",
   },
   bottomNavShell: {
     bottom: 0,

@@ -21,6 +21,8 @@ type DrawingCanvasProps = {
   size?: number | DimensionValue;
 };
 
+type ToolIconName = "pen" | "eraser" | "undo" | "redo" | "clear";
+
 const UI = {
   ink: "#393D3F",
   paper: "#FDFDFF",
@@ -34,6 +36,52 @@ const UI = {
 const INK_COLOR = UI.ink;
 const PAPER_COLOR = UI.paper;
 const STROKE_WIDTHS = [6, 10, 14, 18];
+
+function ToolIcon({ name, active = false }: { name: ToolIconName; active?: boolean }) {
+  const color = active ? UI.paper : UI.ink;
+  const common = {
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 2.4,
+  };
+
+  const paths: Record<ToolIconName, string[]> = {
+    pen: [
+      "M4 20l4.5-1 10.7-10.7a2.2 2.2 0 0 0 0-3.1l-.4-.4a2.2 2.2 0 0 0-3.1 0L5 15.5 4 20z",
+      "M13.8 5.7l4.5 4.5",
+    ],
+    eraser: [
+      "M4 15.5l8.9-8.9a2.2 2.2 0 0 1 3.1 0l2.4 2.4a2.2 2.2 0 0 1 0 3.1L11.5 19H4v-3.5z",
+      "M9.5 10.5l5 5",
+      "M13 19h7",
+    ],
+    undo: [
+      "M9 7H4v5",
+      "M4.8 11.2A7.5 7.5 0 1 0 7 6.6",
+    ],
+    redo: [
+      "M15 7h5v5",
+      "M19.2 11.2A7.5 7.5 0 1 1 17 6.6",
+    ],
+    clear: [
+      "M5 7h14",
+      "M9 7V5h6v2",
+      "M7 10l1 10h8l1-10",
+      "M10.5 13v4",
+      "M13.5 13v4",
+    ],
+  };
+
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      {paths[name].map((path) => (
+        <Path key={path} d={path} {...common} />
+      ))}
+    </Svg>
+  );
+}
 
 export const DrawingCanvas = forwardRef<DrawingCanvasHandle, DrawingCanvasProps>(
   ({ size = "100%" }, ref) => {
@@ -145,6 +193,7 @@ export const DrawingCanvas = forwardRef<DrawingCanvasHandle, DrawingCanvasProps>
     return (
       <View style={styles.container}>
         <View style={styles.toolbar}>
+          <Text style={styles.toolbarLabel}>Stroke width</Text>
           <View style={styles.strokeOptions}>
             {STROKE_WIDTHS.map((width) => (
               <TouchableOpacity
@@ -159,21 +208,30 @@ export const DrawingCanvas = forwardRef<DrawingCanvasHandle, DrawingCanvasProps>
               </TouchableOpacity>
             ))}
           </View>
+          <Text style={styles.toolbarLabel}>Tools</Text>
           <View style={styles.toolRow}>
             <TouchableOpacity
+              accessibilityLabel="Pen"
+              style={[styles.toolButton, tool === "pen" && styles.toolButtonActive]}
+              onPress={() => setTool("pen")}
+            >
+              <ToolIcon name="pen" active={tool === "pen"} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityLabel="Eraser"
               style={[styles.toolButton, tool === "eraser" && styles.toolButtonActive]}
               onPress={() => setTool("eraser")}
             >
-              <Text style={[styles.toolButtonText, tool === "eraser" && styles.toolButtonTextActive]}>Eraser</Text>
+              <ToolIcon name="eraser" active={tool === "eraser"} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.toolButton} onPress={undo}>
-              <Text style={styles.toolButtonText}>Undo</Text>
+            <TouchableOpacity accessibilityLabel="Undo" style={styles.toolButton} onPress={undo}>
+              <ToolIcon name="undo" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.toolButton} onPress={redo}>
-              <Text style={styles.toolButtonText}>Redo</Text>
+            <TouchableOpacity accessibilityLabel="Redo" style={styles.toolButton} onPress={redo}>
+              <ToolIcon name="redo" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.toolButton} onPress={clear}>
-              <Text style={styles.toolButtonText}>Clear</Text>
+            <TouchableOpacity accessibilityLabel="Clear" style={styles.toolButton} onPress={clear}>
+              <ToolIcon name="clear" />
             </TouchableOpacity>
           </View>
         </View>
@@ -218,12 +276,20 @@ export const DrawingCanvas = forwardRef<DrawingCanvasHandle, DrawingCanvasProps>
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: UI.paper,
+    borderRadius: 30,
+    elevation: 3,
+    padding: 16,
+    shadowColor: UI.slate,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
     width: "100%",
   },
   canvas: {
     backgroundColor: PAPER_COLOR,
-    borderColor: UI.ink,
-    borderRadius: 8,
+    borderColor: UI.softMuted,
+    borderRadius: 24,
     borderWidth: 1,
     overflow: "hidden",
   },
@@ -232,31 +298,33 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   toolbar: {
-    backgroundColor: UI.paper,
-    borderColor: UI.muted,
-    borderRadius: 8,
-    borderWidth: 1,
-    marginBottom: 10,
-    padding: 10,
+    backgroundColor: UI.softMuted,
+    borderRadius: 24,
+    marginBottom: 14,
+    padding: 12,
+  },
+  toolbarLabel: {
+    color: UI.ink,
+    fontSize: 12,
+    fontWeight: "900",
+    marginBottom: 8,
+    textTransform: "uppercase",
   },
   strokeOptions: {
     flexDirection: "row",
     gap: 8,
-    marginBottom: 10,
+    marginBottom: 14,
   },
   strokeButton: {
     alignItems: "center",
-    backgroundColor: UI.softMuted,
-    borderColor: UI.muted,
-    borderRadius: 7,
-    borderWidth: 1,
+    backgroundColor: UI.paper,
+    borderRadius: 18,
     flex: 1,
-    height: 34,
+    height: 42,
     justifyContent: "center",
   },
   strokeButtonActive: {
-    backgroundColor: UI.softAccent,
-    borderColor: UI.accent,
+    backgroundColor: UI.accent,
   },
   strokePreview: {
     backgroundColor: INK_COLOR,
@@ -270,31 +338,22 @@ const styles = StyleSheet.create({
   toolButton: {
     alignItems: "center",
     backgroundColor: UI.paper,
-    borderColor: UI.muted,
-    borderRadius: 7,
-    borderWidth: 1,
+    borderRadius: 20,
     flexGrow: 1,
+    minHeight: 42,
     paddingHorizontal: 10,
-    paddingVertical: 8,
+    paddingVertical: 10,
   },
   toolButtonActive: {
     backgroundColor: UI.accent,
-    borderColor: UI.accent,
-  },
-  toolButtonText: {
-    color: UI.ink,
-    fontSize: 12,
-    fontWeight: "800",
-  },
-  toolButtonTextActive: {
-    color: UI.paper,
   },
   canvasFooter: {
     alignItems: "center",
-    marginTop: 8,
+    marginTop: 12,
   },
   hint: {
     color: UI.slate,
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: "700",
   },
 });
