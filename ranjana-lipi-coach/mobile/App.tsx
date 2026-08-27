@@ -25,6 +25,8 @@ import {
 
 import {
   DEFAULT_API_BASE_URL,
+  changeCurrentUserPassword,
+  deactivateCurrentUser,
   fetchAttemptHistory,
   fetchCharacterProgress,
   fetchCharacters,
@@ -36,6 +38,7 @@ import {
   loginWithGoogle,
   registerUser,
   submitPracticeAttempt,
+  updateCurrentUser,
 } from "./src/api";
 import {
   DrawingCanvas,
@@ -83,6 +86,7 @@ const STALE_API_BASE_URLS = new Set([
   "http://192.168.6.155:8000",
 ]);
 const VALIDATED_CLASSES = new Set(["aa", "a", "ka", "da", "dda"]);
+const HIDDEN_CHARACTER_NAMES = new Set(["rii", "lu", "luu"]);
 const APP_LOGO = require("./assets/app-logo-transparent.png");
 const GOOGLE_WEB_CLIENT_ID =
   GOOGLE_AUTH_CONFIG.webClientId || GOOGLE_AUTH_CONFIG.expoClientId;
@@ -103,10 +107,10 @@ const DEVANAGARI_LABELS: Record<string, string> = {
   bha: "भ",
   ca: "च",
   cha: "छ",
-  da: "द",
-  dda: "ड",
-  ddha: "ढ",
-  dha: "ध",
+  da: "ड",
+  dda: "द",
+  ddha: "ध",
+  dha: "ढ",
   e: "ए",
   eight: "८",
   five: "५",
@@ -126,10 +130,10 @@ const DEVANAGARI_LABELS: Record<string, string> = {
   lu: "ऌ",
   luu: "ॡ",
   ma: "म",
-  na: "न",
+  na: "ङ",
   nine: "९",
   nna: "ण",
-  nnna: "ऩ",
+  nnna: "न",
   nya: "ञ",
   o: "ओ",
   one: "१",
@@ -138,17 +142,17 @@ const DEVANAGARI_LABELS: Record<string, string> = {
   ra: "र",
   ri: "ऋ",
   rii: "ॠ",
-  sa: "स",
-  saa: "ष",
+  sa: "ष",
+  saa: "स",
   seven: "७",
   sha: "श",
   six: "६",
-  ta: "त",
-  tha: "थ",
+  ta: "ट",
+  tha: "ठ",
   three: "३",
   tra: "त्र",
-  tta: "ट",
-  ttha: "ठ",
+  tta: "त",
+  ttha: "थ",
   two: "२",
   u: "उ",
   uu: "ऊ",
@@ -156,6 +160,101 @@ const DEVANAGARI_LABELS: Record<string, string> = {
   ya: "य",
   zero: "०",
 };
+
+type CharacterSectionKey = "vowels" | "consonants" | "numbers" | "other";
+
+const CHARACTER_SECTION_LABELS: Record<CharacterSectionKey, string> = {
+  vowels: "Vowels",
+  consonants: "Consonants",
+  numbers: "Numbers",
+  other: "Other",
+};
+
+const CHARACTER_SECTION_ORDER: CharacterSectionKey[] = [
+  "vowels",
+  "consonants",
+  "numbers",
+  "other",
+];
+
+const VOWEL_ORDER = [
+  "a",
+  "aa",
+  "i",
+  "ii",
+  "u",
+  "uu",
+  "ri",
+  "rii",
+  "lu",
+  "luu",
+  "e",
+  "ai",
+  "o",
+  "au",
+  "am",
+  "ah",
+];
+
+const CONSONANT_ORDER = [
+  "ka",
+  "kha",
+  "ga",
+  "gha",
+  "na",
+  "ca",
+  "cha",
+  "ja",
+  "jha",
+  "nya",
+  "ta",
+  "tha",
+  "da",
+  "dha",
+  "nna",
+  "tta",
+  "ttha",
+  "dda",
+  "ddha",
+  "nnna",
+  "pa",
+  "pha",
+  "ba",
+  "bha",
+  "ma",
+  "ya",
+  "ra",
+  "la",
+  "wo",
+  "sha",
+  "sa",
+  "saa",
+  "ha",
+  "ksa",
+  "tra",
+  "gyan",
+];
+
+const NUMBER_ORDER = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+];
+
+const CHARACTER_ORDER_MAP = new Map<string, number>(
+  [
+    ...VOWEL_ORDER.map((name, index) => [name, index] as const),
+    ...CONSONANT_ORDER.map((name, index) => [name, 100 + index] as const),
+    ...NUMBER_ORDER.map((name, index) => [name, 300 + index] as const),
+  ],
+);
 
 const THEME = {
   ink: "#393D3F",
@@ -186,6 +285,42 @@ function scoreColor(score: number | null | undefined): string {
 
 function characterDisplayLabel(character: Character): string {
   return DEVANAGARI_LABELS[character.name] ?? character.display_label;
+}
+
+function characterSection(characterName: string): CharacterSectionKey {
+  if (VOWEL_ORDER.includes(characterName)) {
+    return "vowels";
+  }
+  if (CONSONANT_ORDER.includes(characterName)) {
+    return "consonants";
+  }
+  if (NUMBER_ORDER.includes(characterName)) {
+    return "numbers";
+  }
+  return "other";
+}
+
+function compareCharacters(a: Character, b: Character): number {
+  const aOrder = CHARACTER_ORDER_MAP.get(a.name) ?? 999;
+  const bOrder = CHARACTER_ORDER_MAP.get(b.name) ?? 999;
+  if (aOrder !== bOrder) {
+    return aOrder - bOrder;
+  }
+  return characterDisplayLabel(a).localeCompare(characterDisplayLabel(b));
+}
+
+function groupCharacters(characters: Character[]): Array<{
+  key: CharacterSectionKey;
+  title: string;
+  characters: Character[];
+}> {
+  return CHARACTER_SECTION_ORDER.map((key) => ({
+    key,
+    title: CHARACTER_SECTION_LABELS[key],
+    characters: characters
+      .filter((character) => characterSection(character.name) === key)
+      .sort(compareCharacters),
+  })).filter((section) => section.characters.length > 0);
 }
 
 function characterGlyphUri(baseUrl: string, characterName: string): string {
@@ -415,6 +550,10 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [accountEmail, setAccountEmail] = useState("");
+  const [accountDisplayName, setAccountDisplayName] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [characterSearch, setCharacterSearch] = useState("");
   const [characterPickerOpen, setCharacterPickerOpen] = useState(false);
   const [suggestedReasonText, setSuggestedReasonText] = useState<string | null>(
@@ -443,17 +582,36 @@ export default function App() {
 
   const filteredCharacters = useMemo(() => {
     const query = characterSearch.trim().toLowerCase();
-    if (!query) {
-      return characters;
-    }
-    return characters.filter((character) => {
+    const visibleCharacters = characters.filter(
+      (character) => !HIDDEN_CHARACTER_NAMES.has(character.name),
+    );
+    const source = query
+      ? visibleCharacters.filter((character) => {
       return (
         character.name.toLowerCase().includes(query) ||
         character.display_label.toLowerCase().includes(query) ||
         characterDisplayLabel(character).includes(query)
       );
-    });
+    })
+      : visibleCharacters;
+    return [...source].sort(compareCharacters);
   }, [characterSearch, characters]);
+
+  const filteredCharacterSections = useMemo(
+    () => groupCharacters(filteredCharacters),
+    [filteredCharacters],
+  );
+
+  const progressSections = useMemo(() => {
+    return CHARACTER_SECTION_ORDER.map((key) => ({
+      key,
+      title: CHARACTER_SECTION_LABELS[key],
+      items: progress
+        .filter((item) => !HIDDEN_CHARACTER_NAMES.has(item.character.name))
+        .filter((item) => characterSection(item.character.name) === key)
+        .sort((a, b) => compareCharacters(a.character, b.character)),
+    })).filter((section) => section.items.length > 0);
+  }, [progress]);
 
   const loadSession = useCallback(async () => {
     const storedBaseUrl = await SecureStore.getItemAsync(API_BASE_URL_KEY);
@@ -506,6 +664,13 @@ export default function App() {
   useEffect(() => {
     void loadSession();
   }, [loadSession]);
+
+  useEffect(() => {
+    if (user) {
+      setAccountEmail(user.email);
+      setAccountDisplayName(user.display_name ?? "");
+    }
+  }, [user]);
 
   useEffect(() => {
     if (!googleConfigured) {
@@ -633,10 +798,121 @@ export default function App() {
     await SecureStore.deleteItemAsync(TOKEN_KEY);
     setToken(null);
     setUser(null);
+    setProfile(null);
+    setCurrentPassword("");
+    setNewPassword("");
     setScreen("auth");
     setResult(null);
     setSelectedImage(null);
     setSubmittedImage(null);
+  }
+
+  async function handleAccountUpdate() {
+    if (!token) {
+      return;
+    }
+
+    const nextEmail = accountEmail.trim();
+    const nextDisplayName = accountDisplayName.trim();
+    if (!EMAIL_PATTERN.test(nextEmail)) {
+      setMessage("Enter a valid email address, for example name@example.com.");
+      return;
+    }
+    if (!nextDisplayName) {
+      setMessage("Display name cannot be empty.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      const updatedUser = await updateCurrentUser(apiBaseUrl, token, {
+        email: nextEmail,
+        display_name: nextDisplayName,
+      });
+      setUser(updatedUser);
+      setProfile((current) =>
+        current ? { ...current, user: updatedUser } : current,
+      );
+      setMessage("Account details updated.");
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "Could not update account.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handlePasswordChange() {
+    if (!token) {
+      return;
+    }
+    if (!currentPassword || !newPassword) {
+      setMessage("Enter your current password and a new password.");
+      return;
+    }
+    if (newPassword.length < 8) {
+      setMessage("New password must be at least 8 characters.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      await changeCurrentUserPassword(
+        apiBaseUrl,
+        token,
+        currentPassword,
+        newPassword,
+      );
+      setCurrentPassword("");
+      setNewPassword("");
+      setMessage("Password changed.");
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "Could not change password.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function confirmDeactivateAccount() {
+    Alert.alert(
+      "Deactivate account?",
+      "You will be logged out and this account will no longer be able to sign in.",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Deactivate",
+          style: "destructive",
+          onPress: () => void handleDeactivateAccount(),
+        },
+      ],
+    );
+  }
+
+  async function handleDeactivateAccount() {
+    if (!token) {
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      await deactivateCurrentUser(apiBaseUrl, token);
+      await handleLogout();
+      setMessage("Your account has been deactivated.");
+    } catch (error) {
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Could not deactivate account.",
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function pickFromGallery() {
@@ -1010,33 +1286,42 @@ export default function App() {
               <ScrollView
                 nestedScrollEnabled
                 style={styles.characterPickerList}
-                contentContainerStyle={styles.characterGrid}
+                contentContainerStyle={styles.characterPickerListContent}
                 keyboardShouldPersistTaps="handled"
               >
-                {filteredCharacters.map((character) => (
-                  <TouchableOpacity
-                    key={character.id}
-                    style={[
-                      styles.characterChip,
-                      selectedCharacter?.id === character.id &&
-                        styles.selectedChip,
-                    ]}
-                    onPress={() => {
-                      setSelectedCharacterId(character.id);
-                      setCharacterPickerOpen(false);
-                      setCharacterSearch("");
-                    }}
-                  >
-                    <Text
-                      style={[
-                        styles.characterName,
-                        selectedCharacter?.id === character.id &&
-                          styles.selectedChipText,
-                      ]}
-                    >
-                      {characterDisplayLabel(character)}
+                {filteredCharacterSections.map((section) => (
+                  <View key={section.key} style={styles.characterSection}>
+                    <Text style={styles.characterSectionTitle}>
+                      {section.title}
                     </Text>
-                  </TouchableOpacity>
+                    <View style={styles.characterGrid}>
+                      {section.characters.map((character) => (
+                        <TouchableOpacity
+                          key={character.id}
+                          style={[
+                            styles.characterChip,
+                            selectedCharacter?.id === character.id &&
+                              styles.selectedChip,
+                          ]}
+                          onPress={() => {
+                            setSelectedCharacterId(character.id);
+                            setCharacterPickerOpen(false);
+                            setCharacterSearch("");
+                          }}
+                        >
+                          <Text
+                            style={[
+                              styles.characterName,
+                              selectedCharacter?.id === character.id &&
+                                styles.selectedChipText,
+                            ]}
+                          >
+                            {characterDisplayLabel(character)}
+                          </Text>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+                  </View>
                 ))}
               </ScrollView>
               {filteredCharacters.length === 0 ? (
@@ -1302,13 +1587,18 @@ export default function App() {
         </View>
 
         <Text style={styles.profileSectionTitle}>Character Progress</Text>
-        {progress.map((item) => (
-          <ProgressRow
-            key={item.character.id}
-            item={item}
-            large
-            onPress={() => void openCharacterDetail(item.character.id)}
-          />
+        {progressSections.map((section) => (
+          <View key={section.key} style={styles.progressSection}>
+            <Text style={styles.progressSectionTitle}>{section.title}</Text>
+            {section.items.map((item) => (
+              <ProgressRow
+                key={item.character.id}
+                item={item}
+                large
+                onPress={() => void openCharacterDetail(item.character.id)}
+              />
+            ))}
+          </View>
         ))}
       </ScrollView>
     );
@@ -1542,6 +1832,82 @@ export default function App() {
             <Text style={styles.heatmapLegendText}>More</Text>
           </View>
         </View>
+
+        <Text style={styles.profileSectionTitle}>Account</Text>
+        <View style={styles.accountPanel}>
+          <Text style={styles.accountLabel}>Display name</Text>
+          <TextInput
+            autoCapitalize="words"
+            autoCorrect={false}
+            placeholder="Your name"
+            placeholderTextColor={THEME.slate}
+            style={styles.accountInput}
+            value={accountDisplayName}
+            onChangeText={setAccountDisplayName}
+          />
+
+          <Text style={styles.accountLabel}>Email</Text>
+          <TextInput
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
+            placeholder="name@example.com"
+            placeholderTextColor={THEME.slate}
+            style={styles.accountInput}
+            value={accountEmail}
+            onChangeText={setAccountEmail}
+          />
+
+          <TouchableOpacity
+            disabled={loading}
+            style={[styles.accountPrimaryButton, loading && styles.disabled]}
+            onPress={handleAccountUpdate}
+          >
+            <Text style={styles.accountPrimaryButtonText}>Save Changes</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.accountPanel}>
+          <Text style={styles.accountLabel}>Current password</Text>
+          <TextInput
+            secureTextEntry
+            placeholder="Current password"
+            placeholderTextColor={THEME.slate}
+            style={styles.accountInput}
+            value={currentPassword}
+            onChangeText={setCurrentPassword}
+          />
+
+          <Text style={styles.accountLabel}>New password</Text>
+          <TextInput
+            secureTextEntry
+            placeholder="New password"
+            placeholderTextColor={THEME.slate}
+            style={styles.accountInput}
+            value={newPassword}
+            onChangeText={setNewPassword}
+          />
+
+          <TouchableOpacity
+            disabled={loading}
+            style={[styles.accountSecondaryButton, loading && styles.disabled]}
+            onPress={handlePasswordChange}
+          >
+            <Text style={styles.accountSecondaryButtonText}>
+              Change Password
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          disabled={loading}
+          style={[styles.profileDeactivateButton, loading && styles.disabled]}
+          onPress={confirmDeactivateAccount}
+        >
+          <Text style={styles.profileDeactivateButtonText}>
+            Deactivate Account
+          </Text>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.profileLogoutButton} onPress={handleLogout}>
           <Text style={styles.profileLogoutButtonText}>Logout</Text>
@@ -2139,6 +2505,19 @@ const styles = StyleSheet.create({
     maxHeight: 372,
     marginTop: 16,
   },
+  characterPickerListContent: {
+    paddingBottom: 4,
+  },
+  characterSection: {
+    marginBottom: 18,
+  },
+  characterSectionTitle: {
+    color: THEME.ink,
+    fontSize: 14,
+    fontWeight: "900",
+    marginBottom: 10,
+    textTransform: "uppercase",
+  },
   characterSearchBar: {
     alignItems: "center",
     backgroundColor: THEME.softMuted,
@@ -2172,6 +2551,16 @@ const styles = StyleSheet.create({
   },
   selectedChipText: {
     color: THEME.surface,
+  },
+  progressSection: {
+    marginBottom: 18,
+  },
+  progressSectionTitle: {
+    color: THEME.slate,
+    fontSize: 13,
+    fontWeight: "900",
+    marginBottom: 10,
+    textTransform: "uppercase",
   },
   rowBetween: {
     alignItems: "center",
@@ -2765,6 +3154,73 @@ const styles = StyleSheet.create({
     color: THEME.slate,
     fontSize: 11,
     fontWeight: "700",
+  },
+  accountPanel: {
+    backgroundColor: THEME.surface,
+    borderRadius: 28,
+    elevation: 2,
+    marginBottom: 18,
+    padding: 20,
+    shadowColor: THEME.slate,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
+  },
+  accountLabel: {
+    color: THEME.ink,
+    fontSize: 13,
+    fontWeight: "900",
+    marginBottom: 8,
+    marginTop: 12,
+    textTransform: "uppercase",
+  },
+  accountInput: {
+    backgroundColor: THEME.softMuted,
+    borderRadius: 24,
+    color: THEME.ink,
+    fontSize: 16,
+    fontWeight: "700",
+    minHeight: 52,
+    paddingHorizontal: 18,
+  },
+  accountPrimaryButton: {
+    alignItems: "center",
+    backgroundColor: THEME.accent,
+    borderRadius: 26,
+    justifyContent: "center",
+    marginTop: 20,
+    minHeight: 52,
+  },
+  accountPrimaryButtonText: {
+    color: THEME.surface,
+    fontSize: 15,
+    fontWeight: "900",
+  },
+  accountSecondaryButton: {
+    alignItems: "center",
+    backgroundColor: THEME.softAccent,
+    borderRadius: 26,
+    justifyContent: "center",
+    marginTop: 20,
+    minHeight: 52,
+  },
+  accountSecondaryButtonText: {
+    color: THEME.accent,
+    fontSize: 15,
+    fontWeight: "900",
+  },
+  profileDeactivateButton: {
+    alignItems: "center",
+    backgroundColor: "#F9E7E4",
+    borderRadius: 28,
+    justifyContent: "center",
+    marginTop: 4,
+    minHeight: 56,
+  },
+  profileDeactivateButtonText: {
+    color: THEME.danger,
+    fontSize: 16,
+    fontWeight: "900",
   },
   profileLogoutButton: {
     alignItems: "center",

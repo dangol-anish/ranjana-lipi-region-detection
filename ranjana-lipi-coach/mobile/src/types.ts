@@ -12,6 +12,7 @@ export type User = {
   id: number;
   email: string;
   display_name: string | null;
+  is_active: boolean;
   created_at: string;
 };
 

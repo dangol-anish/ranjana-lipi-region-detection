@@ -18,6 +18,7 @@ type ApiOptions = {
   token?: string | null;
   body?: unknown;
   headers?: Record<string, string>;
+  method?: "GET" | "POST" | "PATCH" | "DELETE";
 };
 
 type ValidationDetail = {
@@ -109,7 +110,7 @@ export async function apiRequest<T>(
   }
 
   const response = await fetch(`${baseUrl}${path}`, {
-    method: options.body ? "POST" : "GET",
+    method: options.method ?? (options.body ? "POST" : "GET"),
     headers,
     body:
       options.body instanceof FormData
@@ -120,6 +121,43 @@ export async function apiRequest<T>(
   });
 
   return parseApiResponse<T>(response);
+}
+
+export function updateCurrentUser(
+  baseUrl: string,
+  token: string,
+  payload: { email?: string; display_name?: string },
+): Promise<User> {
+  return apiRequest<User>(baseUrl, "/auth/me", {
+    method: "PATCH",
+    token,
+    body: payload,
+  });
+}
+
+export function changeCurrentUserPassword(
+  baseUrl: string,
+  token: string,
+  currentPassword: string,
+  newPassword: string,
+): Promise<User> {
+  return apiRequest<User>(baseUrl, "/auth/me/password", {
+    token,
+    body: {
+      current_password: currentPassword,
+      new_password: newPassword,
+    },
+  });
+}
+
+export function deactivateCurrentUser(
+  baseUrl: string,
+  token: string,
+): Promise<User> {
+  return apiRequest<User>(baseUrl, "/auth/me", {
+    method: "DELETE",
+    token,
+  });
 }
 
 export function registerUser(
